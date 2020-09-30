@@ -1,0 +1,162 @@
+---
+title: "Gates Mobility Metrics Fact Pages"
+author: ""
+date: "`r format(Sys.time(), '%B %d, %Y %H:%M')`"
+font: Lato
+output:
+  html_document:
+    self_contained: TRUE
+    toc: TRUE
+    toc_float: TRUE
+    css: www/web_report.css
+    editor_options:
+      chunk_output_type: console
+params:
+  state_county: !r c("Arlington County, Virginia", "Fairfax County, Virginia", "Loudoun County, Virginia", "Montgomery County, Maryland")
+---
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+</style>
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato" />
+
+```{r header-image, fig.width = 5.14, fig.height = 1.46, echo = FALSE}
+# All defaults
+knitr::include_graphics("www/images/urban-institute-logo.png")
+```
+
+# Mobility Metrics Report
+
+## Upward County in the State of Mobility
+
+```{r setup, include=FALSE}
+
+library(ggplot2)
+library(urbnthemes)
+library(here)
+library(data.table)
+library(gt)
+library(tidyverse)
+library(glue)
+
+options(scipen = 999)
+
+
+```
+
+```{r read-in-data, include=FALSE}
+
+fpath = 'data/mobility-metrics.csv'
+data <- fread(fpath)
+
+#checking missing 
+
+#summary(data)
+#sapply(data, function(x) sum(is.na(x)))
+
+```
+
+
+```{r clean-check-data, include=FALSE}
+
+#create unique state-county identifier
+data <- data %>% 
+  unite('state_county', county_name, state_name, sep = ', ', remove = FALSE) 
+
+```
+
+```{r set vars, include=FALSE}
+
+# set constant variables 
+
+tb_title_size = 18
+tb_title_font = 'bold'
+
+tb_subtitle_size = 14
+tb_title_font = 'normal'
+
+source_note_size = 11
+source_note_font = 'normal'
+
+tb_font_size = 12 
+
+desp_doc_link = 'urban.org'
+
+fixed_colname <- c('Upward MB', 'Comp1', 'Comp2', 'Comp3')
+
+tb_width_perc = 80
+tb_align = 'left'
+```
+
+```{r functions, include=FALSE}
+
+create_tb <- function(dataset, mb_metrics, mb_vars, metrics_desp, data_source, recode_vars) {
+  dataset %>% 
+    filter(state_county %in% (params$state_county)) %>% 
+    select(matches(glue('{vars_in_data}|state_county'))) %>% 
+    pivot_longer(!state_county, names_to='metrics', values_to='value') %>%  #transpose data 
+    pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
+    mutate(metrics=recode(metrics, !!!vars_recode)) %>% 
+    rename_at(vars(params$state_county), function(x) fixed_colname) %>% 
+    select(metrics, fixed_colname) %>% 
+    gt(rowname_col = 'metrics') %>% 
+    tab_header(
+      title = html(glue('<p style="font-weight: bold;">{metrics_to_use}</p>')), 
+      subtitle = var_desp
+  ) %>% 
+    tab_source_note("Quality: ") %>% 
+    tab_source_note(str_c('Source:', dsource, sep=' ')) %>% 
+    cols_align(
+      align = "left",
+      columns = TRUE
+   ) %>% 
+  cols_align(
+    align = "left",
+    columns = TRUE
+  ) %>% 
+  opt_align_table_header('left') %>% 
+  tab_options(
+    heading.title.font.size = tb_title_size, 
+    heading.subtitle.font.size = tb_subtitle_size, 
+    column_labels.font.size = tb_font_size,
+    table.font.size = tb_font_size,
+    source_notes.font.size = source_note_size, 
+    table.width = pct(tb_width_perc), 
+    table.align = tb_align)
+} 
+
+```
+
+### Financial well-being
+```{r income, echo=FALSE, message=FALSE, warning=FALSE}
+
+metrics_to_use <- 'Income'
+vars_in_data <- 'pctl'
+var_desp <- 'Household income at the 20th, 50th, and 80th percentiles'
+dsource <- 'American Community Survey (ACS) Public Use Microdata Sample (PUMS), 2018'
+vars_recode <- c(pctl_20 = "20th percentile", pctl_50 = "50th percentile", pctl_80 = "80th percentile")
+
+create_tb(data, metrics_to_use, vars_in_data, var_desp, dsource, vars_recode)
+
+```
+
+### Housing 
+```{r Financial Security, echo=FALSE, message=FALSE, warning=FALSE}
+
+metrics_to_use <- 'Affordable housing'
+vars_in_data <- 'share_affordable'
+var_desp <- 'Ratio of affordable housing units to households with low-and very-low-income levels'
+dsource <- 'U.S. Department of Housing and Urban Devlopment Office of Policy  Development and Research (HUD PD&R) Fair Market Rents and Income Limits, 2018;  American Community Survey, 2018'
+
+vars_recode <- c(share_affordable_80_ami = "Ratio for low-income households", 
+                 share_affordable_50_ami = "Ratio for very low-income households") 
+
+create_tb(data, metrics_to_use, vars_in_data, var_desp, dsource, vars_recode)
+
+```
+
+
+
+
+
