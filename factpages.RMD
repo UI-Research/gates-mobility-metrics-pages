@@ -100,14 +100,14 @@ create_tb <- function(dataset, mb_metrics, mb_vars, quality_var, metrics_desp, d
     select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
     pivot_longer(!state_county, names_to='metrics', values_to='value') %>%    #transpose data 
     pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
-    mutate(metrics=recode(metrics, !!!vars_recode)) %>% 
+    mutate(metrics=recode(metrics, !!!recode_vars)) %>% 
     select(metrics, everything()) %>% 
     gt(rowname_col = 'metrics') %>% 
     tab_header(
-      title = html(glue('<p style="font-weight: bold;">{metrics_to_use}</p>')), 
-      subtitle = var_desp
+      title = html(glue('<p style="font-weight: bold;">{mb_metrics}</p>')), 
+      subtitle = metrics_desp
   ) %>% 
-    tab_source_note(str_c('Source:', dsource, sep=' ')) %>% 
+    tab_source_note(str_c('Source:', data_source, sep=' ')) %>% 
     cols_align(
       align = "left",
       columns = TRUE
@@ -160,7 +160,8 @@ create_tb(dataset = data,
           metrics_desp = 'Ratio of affordable housing units to households with low-and very-low-income levels', 
           data_source = 'U.S. Department of Housing and Urban Devlopment Office of Policy  Development and Research (HUD PD&R) Fair Market Rents and Income Limits, 2018;  American Community Survey, 2018',  
           recode_vars = c(share_affordable_80_ami = "Ratio for low-income households", 
-                          share_affordable_50_ami = "Ratio for very low-income households"))
+                          share_affordable_50_ami = "Ratio for very low-income households", 
+                          income_quality = 'Quality'))
 
 
 ```
