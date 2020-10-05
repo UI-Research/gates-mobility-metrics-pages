@@ -1,0 +1,172 @@
+---
+title: "Gates Mobility Metrics Fact Pages"
+author: ""
+date: "`r format(Sys.time(), '%B %d, %Y %H:%M')`"
+font: Lato
+output:
+  html_document:
+    self_contained: TRUE
+    toc: TRUE
+    toc_float: TRUE
+    css: www/web_report.css
+    editor_options:
+      chunk_output_type: console
+params:
+  state_county: !r c("51013", "06037", "53033", "36061")
+---
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+</style>
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato" />
+
+```{r header-image, fig.width = 5.14, fig.height = 1.46, echo = FALSE}
+# All defaults
+knitr::include_graphics("www/images/urban-institute-logo.png")
+```
+
+# Mobility Metrics Report
+
+## Upward County in the State of Mobility
+
+```{r setup, include=FALSE}
+
+library(here)
+library(data.table)
+library(gt)
+library(tidyverse)
+library(glue)
+
+options(scipen = 999)
+
+```
+
+```{r read-in-data, include=FALSE}
+
+fpath = 'data/mobility-metrics.csv'
+data <- fread(fpath)
+
+#checking missing 
+
+#summary(data)
+#sapply(data, function(x) sum(is.na(x)))
+
+```
+
+
+```{r clean-check-data, include=FALSE}
+
+#create unique state-county identifier
+
+data <- data %>% 
+  mutate(state = str_pad(state, width = 2, side ='left', pad = "0"), 
+         county = str_pad(county, width = 3, side ='left', pad = "0")) %>% 
+  unite('state_county', county_name, state_name, sep = ', ', remove = FALSE) %>% 
+  unite('full_fips', state, county, sep = '', remove = FALSE) %>% 
+  filter(full_fips %in% (params$state_county)) 
+
+
+#adding a quality var for housing - make up as an example 
+data <- data %>% mutate(income_quality=0.5)
+
+```
+
+```{r set vars, include=FALSE}
+
+# set constant variables 
+
+tb_title_size <- 18
+tb_title_font <- 'bold'
+
+tb_subtitle_size <- 14
+tb_title_font <- 'normal'
+tb_font_size <- 12 
+
+source_note_size <- 11
+source_note_font <- 'normal'
+
+tb_width_perc <- 80
+tb_align <- 'left'
+
+desp_doc_link <- 'urban.org'  #temp 
+
+```
+
+```{r functions, include=FALSE}
+
+create_tb <- function(dataset, mb_metrics, mb_vars, quality_var, metrics_desp, data_source, recode_vars) {
+  dataset %>% 
+    select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
+    pivot_longer(!state_county, names_to='metrics', values_to='value') %>%    #transpose data 
+    pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
+    mutate(metrics=recode(metrics, !!!recode_vars)) %>% 
+    select(metrics, everything()) %>% 
+    gt(rowname_col = 'metrics') %>% 
+    tab_header(
+      title = html(glue('<p style="font-weight: bold;">{mb_metrics}</p>')), 
+      subtitle = metrics_desp
+  ) %>% 
+    tab_source_note(str_c('Source:', data_source, sep=' ')) %>% 
+    cols_align(
+      align = "left",
+      columns = TRUE
+   ) %>% 
+  cols_align(
+    align = "left",
+    columns = TRUE
+  ) %>% 
+  opt_align_table_header('left') %>% 
+  tab_options(
+    heading.title.font.size = tb_title_size, 
+    heading.subtitle.font.size = tb_subtitle_size, 
+    column_labels.font.size = tb_font_size,
+    table.font.size = tb_font_size,
+    source_notes.font.size = source_note_size, 
+    table.width = pct(tb_width_perc), 
+    table.align = tb_align)
+} 
+
+
+```
+
+### Financial well-being
+```{r income, echo=FALSE, message=FALSE, warning=FALSE}
+
+
+create_tb(dataset = data, 
+          mb_metrics = 'Income', 
+          mb_vars = 'pctl', 
+          quality_var = 'income_quality',   #temp - needs to update once the data is updated 
+          metrics_desp = 'Household income at the 20th, 50th, and 80th percentiles', 
+          data_source = 'American Community Survey (ACS) Public Use Microdata Sample (PUMS), 2018', 
+          recode_vars =  c(pctl_20 = "20th percentile", 
+                           pctl_50 = "50th percentile", 
+                           pctl_80 = "80th percentile", 
+                           income_quality = 'Quality'))
+
+
+```
+
+
+### Housing 
+```{r Financial Security, echo=FALSE, message=FALSE, warning=FALSE}
+
+
+create_tb(dataset = data, 
+          mb_metrics ='Affordable housing', 
+          mb_vars = 'share_affordable', 
+          quality_var = 'income_quality',   #temp - needs to update once the data is updated 
+          metrics_desp = 'Ratio of affordable housing units to households with low-and very-low-income levels', 
+          data_source = 'U.S. Department of Housing and Urban Devlopment Office of Policy  Development and Research (HUD PD&R) Fair Market Rents and Income Limits, 2018;  American Community Survey, 2018',  
+          recode_vars = c(share_affordable_80_ami = "Ratio for low-income households", 
+                          share_affordable_50_ami = "Ratio for very low-income households", 
+                          income_quality = 'Quality'))
+
+
+```
+
+
+
+
+
