@@ -1,5 +1,5 @@
 ---
-title: "Gates Mobility Metrics Fact Pages"
+title: ""
 author: ""
 date: ""
 font: Lato
@@ -34,8 +34,6 @@ knitr::include_graphics("www/images/urban-institute-logo.png")
 
 ```
 
-# Mobility Metrics Report
-
 ## Upward County in the State of Mobility
 
 ```{r setup}
@@ -60,7 +58,6 @@ data <- fread(fpath)
 
 ```
 
-
 ```{r clean-check-data}
 
 #create unique state-county identifier
@@ -74,7 +71,8 @@ data <- data %>%
 
 
 #adding a quality var for housing - make up as an example 
-data <- data %>% mutate(income_quality=0.5)
+data <- data %>% 
+  mutate(income_quality=0.5)
 
 ```
 
@@ -136,7 +134,9 @@ create_tb <- function(dataset, mb_metrics, mb_vars, quality_var, metrics_desp, d
 
 ```
 
-### Financial well-being
+### Financial well-being {.tabset}
+
+#### Summary
 
 ```{r income}
 create_tb(dataset = data, 
@@ -153,8 +153,14 @@ create_tb(dataset = data,
 
 ```
 
+#### Detail
 
-### Housing 
+MORE INFORMATION
+
+### Housing {.tabset}
+
+#### Summary
+
 ```{r financial-security}
 create_tb(dataset = data, 
           mb_metrics ='Affordable housing', 
@@ -169,7 +175,7 @@ create_tb(dataset = data,
 
 ```
 
+#### Detail
 
-
-
+MORE INFORMATION
 
