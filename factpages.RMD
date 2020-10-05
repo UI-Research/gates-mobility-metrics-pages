@@ -1,7 +1,7 @@
 ---
-title: "Gates Mobility Metrics Fact Pages"
+title: ""
 author: ""
-date: "`r format(Sys.time(), '%B %d, %Y %H:%M')`"
+date: ""
 font: Lato
 output:
   html_document:
@@ -21,17 +21,22 @@ params:
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato" />
 
+```{r echo = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+
+```
+
 ```{r header-image, fig.width = 5.14, fig.height = 1.46, echo = FALSE}
 # All defaults
 knitr::include_graphics("www/images/urban-institute-logo.png")
-```
 
-# Mobility Metrics Report
+```
 
 ## Upward County in the State of Mobility
 
-```{r setup, include=FALSE}
-
+```{r setup}
 library(here)
 library(data.table)
 library(gt)
@@ -42,8 +47,7 @@ options(scipen = 999)
 
 ```
 
-```{r read-in-data, include=FALSE}
-
+```{r read-in-data}
 fpath = 'data/mobility-metrics.csv'
 data <- fread(fpath)
 
@@ -54,8 +58,7 @@ data <- fread(fpath)
 
 ```
 
-
-```{r clean-check-data, include=FALSE}
+```{r clean-check-data}
 
 #create unique state-county identifier
 
@@ -68,11 +71,12 @@ data <- data %>%
 
 
 #adding a quality var for housing - make up as an example 
-data <- data %>% mutate(income_quality=0.5)
+data <- data %>% 
+  mutate(income_quality=0.5)
 
 ```
 
-```{r set vars, include=FALSE}
+```{r set vars}
 
 # set constant variables 
 
@@ -93,7 +97,7 @@ desp_doc_link <- 'urban.org'  #temp
 
 ```
 
-```{r functions, include=FALSE}
+```{r functions}
 
 create_tb <- function(dataset, mb_metrics, mb_vars, quality_var, metrics_desp, data_source, recode_vars) {
   dataset %>% 
@@ -130,10 +134,11 @@ create_tb <- function(dataset, mb_metrics, mb_vars, quality_var, metrics_desp, d
 
 ```
 
-### Financial well-being
-```{r income, echo=FALSE, message=FALSE, warning=FALSE}
+### Financial well-being {.tabset}
 
+#### Summary
 
+```{r income}
 create_tb(dataset = data, 
           mb_metrics = 'Income', 
           mb_vars = 'pctl', 
@@ -148,11 +153,15 @@ create_tb(dataset = data,
 
 ```
 
+#### Detail
 
-### Housing 
-```{r Financial Security, echo=FALSE, message=FALSE, warning=FALSE}
+MORE INFORMATION
 
+### Housing {.tabset}
 
+#### Summary
+
+```{r financial-security}
 create_tb(dataset = data, 
           mb_metrics ='Affordable housing', 
           mb_vars = 'share_affordable', 
@@ -166,7 +175,7 @@ create_tb(dataset = data,
 
 ```
 
+#### Detail
 
-
-
+MORE INFORMATION
 
