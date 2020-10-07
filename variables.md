@@ -16,18 +16,18 @@ ratio for very low-income households, `share_affordable_50_ami`
 Quality, `NA`
 
 ## Housing stability and homelessness
-Number homeless
-Share homeless
-Quality:
+Number homeless, `homeless_count`
+Share homeless, `homeless_share`
+Quality, `homeless_quality`
 
 ## Family structure and stability
-Two married biological/adoptive parents
-One biological/adoptive parent and that parent's current spouse/partner
-One biological/adoptive parent and at least one other adult
-One biological/adoptive parent
-Two adults, no parent
-Other
-Quality:
+Two married biological/adoptive parents, `famstruc_2par_married`
+One biological/adoptive parent and that parent's current spouse/partner, `famstruc_2par_unmarried`
+One biological/adoptive parent and at least one other adult, `famstruc_1par_plusadults`
+One biological/adoptive parent, `famstruc_1par_noadults`
+Zero biological/adoptive parents, but at least two adults, `famstruc_0par_2adults`
+Other, `famstruc_0par_other`
+Quality, `NA`
 
 ## Access to and utilization of health services
 Ranking (0-25, higher = greater shortage), `hpse_yn`
