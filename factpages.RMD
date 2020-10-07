@@ -87,7 +87,7 @@ upward_county <- data %>%
 
 ```
 
-## `r upward_county` in the State of Mobility
+# `r upward_county` in the State of Mobility
 
 ```{r set vars}
 
@@ -276,6 +276,11 @@ create_tb_level2 <- function(metrics_info_df, dataset){
 } 
 
 ```
+
+**Driver:  Strong and Healthy Families**
+
+## Predictors:
+
 ### Financial well-being {.tabset}
 
 #### Summary
@@ -404,13 +409,13 @@ create_tb_level2(m_info_lst, data_sub)
 
 ```
 
-### Notes on Data Quality
+## Notes on Data Quality
 | 'Good' indicates that the metric is measured with adequate accuracy at sample size.
 | 'Marginal' indicates that there are known shortcomings of the data for this metric for this county, and the metric should be used with caution.
 | 'Poor' indicates that although the metric could be computed for this county, we have serious concerns about how accurately it is measured for this county and do not recommend its use.
 
 
-### Additional Notes
+## Additional Notes
 | Metrics requiring orginal data collection: 
 |    Overall health: Share of adults who rate their own and their children’s health as good or excellent
 | *CI not available at this time.
