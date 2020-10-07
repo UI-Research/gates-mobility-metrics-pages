@@ -1,7 +1,7 @@
 ---
-title: ""
-author: ""
-date: ""
+title: ''
+author: ''
+date: ''
 font: Lato
 output:
   html_document:
@@ -12,25 +12,27 @@ output:
     editor_options:
       chunk_output_type: console
 params:
-  state_county: !r c("51013", "06037", "53033", "36061")
+  state_county: !r c('51013', '06037', '53033', '36061')
 ---
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 </style>
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato" />
+<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Lato' />
 
 ```{r echo = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 knitr::opts_chunk$set(warning = FALSE)
 knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(error = TRUE)
+knitr::opts_chunk$set(results = 'asis')
 
 ```
 
 ```{r header-image, fig.width = 5.14, fig.height = 1.46, echo = FALSE}
 # All defaults
-knitr::include_graphics("www/images/urban-institute-logo.png")
+knitr::include_graphics('www/images/urban-institute-logo.png')
 
 ```
 
@@ -42,6 +44,8 @@ library(data.table)
 library(gt)
 library(tidyverse)
 library(glue)
+library(rlang)
+library(scales)
 
 options(scipen = 999)
 
@@ -51,20 +55,18 @@ options(scipen = 999)
 fpath = 'data/mobility-metrics.csv'
 data <- fread(fpath)
 
-#checking missing 
+metrics_summary <- 'metrics_summary.csv'
+m_info <- fread(metrics_summary)
 
+#checking missing 
 #summary(data)
 #sapply(data, function(x) sum(is.na(x)))
 
-```
-
-```{r clean-check-data}
 
 #create unique state-county identifier
-
 data <- data %>% 
-  mutate(state = str_pad(state, width = 2, side ='left', pad = "0"), 
-         county = str_pad(county, width = 3, side ='left', pad = "0")) %>% 
+  mutate(state = str_pad(state, width = 2, side ='left', pad = '0'), 
+         county = str_pad(county, width = 3, side ='left', pad = '0')) %>% 
   unite('state_county', county_name, state_name, sep = ', ', remove = FALSE) %>% 
   unite('full_fips', state, county, sep = '', remove = FALSE) %>% 
   filter(full_fips %in% (params$state_county)) 
@@ -72,7 +74,7 @@ data <- data %>%
 
 #adding a quality var for housing - make up as an example 
 data <- data %>% 
-  mutate(income_quality=0.5)
+  mutate(income_quality=1)
 
 ```
 
@@ -93,33 +95,148 @@ source_note_font <- 'normal'
 tb_width_perc <- 80
 tb_align <- 'left'
 
-desp_doc_link <- 'urban.org'  #temp 
+decimal_points <- 2
 
 ```
 
 ```{r functions}
 
-create_tb <- function(dataset, mb_metrics, mb_vars, quality_var, metrics_desp, data_source, recode_vars) {
+create_tb <- function(metrics_info_df, dataset){
+  
+  mb_metrics <- metrics_info_df[3]
+  mb_vars  <- metrics_info_df[4][[1]]
+  varname_lst <- strsplit(metrics_info_df[5][[1]], ';')[[1]]
+  quality_var  <- metrics_info_df[6][[1]]
+  metrics_desp  <- metrics_info_df[8]
+  data_source <- metrics_info_df[9]
+  
   dataset %>% 
     select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
-    pivot_longer(!state_county, names_to='metrics', values_to='value') %>%    #transpose data 
+    select(-matches('_lb|_ub')) %>% 
+    select(sort(tidyselect::peek_vars())) %>% 
+    relocate(!!sym(quality_var), .after = last_col()) %>% 
+    #rename_at(vars(matches(mb_vars)), ~ varname_lst) %>% 
+    pivot_longer(!state_county, names_to='metrics', values_to='value') %>%   
     pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
-    mutate(metrics=recode(metrics, !!!recode_vars)) %>% 
+    #mutate(metrics=recode(metrics, !!!recode_vars)) %>% 
+    mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
+    select(metrics, everything()) %>% 
+    gt(rowname_col = 'metrics') %>% 
+    tab_header(
+      title = html(glue('<p style="font-weight: bold;">{mb_metrics}</p>')), 
+        subtitle = metrics_desp
+    ) %>% 
+      tab_source_note(str_c('Source:', data_source, sep=' ')) %>% 
+      cols_align(
+        align = 'left',
+        columns = TRUE
+     ) %>% 
+    cols_align(
+      align = 'left',
+      columns = TRUE
+    ) %>% 
+    opt_align_table_header('left') %>% 
+    tab_options(
+      heading.title.font.size = tb_title_size, 
+      heading.subtitle.font.size = tb_subtitle_size, 
+      column_labels.font.size = tb_font_size,
+      table.font.size = tb_font_size,
+      source_notes.font.size = source_note_size, 
+      table.width = pct(tb_width_perc), 
+      table.align = tb_align)
+}
+
+unite_col_values <- function(df, colname_str){
+
+    df <- df %>% 
+              unite(!!sym(glue('{colname_str}_ci')), 
+                            glue('{colname_str}_lb'), 
+                            glue('{colname_str}_ub'), 
+                    sep = ', ', 
+                    remove=TRUE,
+                    na.rm = TRUE) %>% 
+      
+              mutate_at(vars(matches(glue('{colname_str}_ci'))), function(x) glue('({x})'))
+    
+    return(df)
+}
+
+
+create_tb_level2 <- function(metrics_info_df, dataset){
+  
+  mb_metrics <- metrics_info_df[3][[1]]
+  mb_vars  <- metrics_info_df[4][[1]]
+  varname_lst <- strsplit(metrics_info_df[5][[1]], ';')[[1]]
+  quality_var  <- metrics_info_df[6][[1]]
+  ci_vars <- metrics_info_df[7]
+  metrics_desp  <- metrics_info_df[8]
+  data_source <- metrics_info_df[9]
+  notes <- metrics_info_df[10]
+
+  mb_vars_lst <- colnames(dataset %>% select(setdiff(starts_with(mb_vars), matches('_lb|_ub'))))
+
+  if (ci_vars == 1){
+    
+    for (val in mb_vars_lst){      # update this to purrr 
+      dataset <- unite_col_values(dataset, val)
+    }
+    
+    ci_str <- 'CI'
+    
+  } else if (ci_vars == 2){
+    
+    ci_str <- '*CI'   # *CI not available at this time.
+    
+    # create an empty df      #take this part out as a sep func 
+    col_names <- glue('{mb_vars_lst}_ci')
+    vec <- vector(mode = 'character', length = nrow(dataset) * length(mb_vars_lst))
+    empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
+    colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
+
+    # bind df with '*_ci' columns with original df 
+    dataset <- dataset %>% bind_cols(empty_ci_df)
+              
+  } else if (ci_vars == 3){
+    
+    ci_str <- '+CI'   # '+CI not applicable.
+    
+    # create an empty df 
+    col_names <- glue('{mb_vars_lst}_ci')
+    vec <- vector(mode = 'character', length = nrow(dataset) * length(mb_vars_lst))
+    empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
+    colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
+
+    # bind df with '*_ci' columns with original df 
+    dataset <- dataset %>% bind_cols(empty_ci_df)
+  }
+  
+  dataset %>% 
+    select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
+    mutate_all(as.character) %>% 
+    select(sort(tidyselect::peek_vars())) %>% 
+    relocate(!!sym(quality_var), .after = last_col()) %>% 
+    #rename_at(vars(matches(mb_vars)), ~ varname_lst) %>% 
+    pivot_longer(!state_county, names_to='metrics', values_to='value') %>%
+    pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
+    #mutate(metrics=recode(metrics, !!!recode_vars)) %>% 
+    mutate(metrics = gsub('.*_ci', ci_str, metrics)) %>% 
+    mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
     select(metrics, everything()) %>% 
     gt(rowname_col = 'metrics') %>% 
     tab_header(
       title = html(glue('<p style="font-weight: bold;">{mb_metrics}</p>')), 
       subtitle = metrics_desp
-  ) %>% 
+    ) %>% 
     tab_source_note(str_c('Source:', data_source, sep=' ')) %>% 
+    tab_source_note(str_c('Notes:', notes, sep=' ')) %>% 
     cols_align(
-      align = "left",
+      align = 'left',
       columns = TRUE
    ) %>% 
-  cols_align(
-    align = "left",
-    columns = TRUE
-  ) %>% 
+    cols_align(
+      align = 'left',
+      columns = TRUE
+    ) %>% 
   opt_align_table_header('left') %>% 
   tab_options(
     heading.title.font.size = tb_title_size, 
@@ -128,54 +245,149 @@ create_tb <- function(dataset, mb_metrics, mb_vars, quality_var, metrics_desp, d
     table.font.size = tb_font_size,
     source_notes.font.size = source_note_size, 
     table.width = pct(tb_width_perc), 
-    table.align = tb_align)
+    table.align = tb_align) 
 } 
 
-
 ```
-
 ### Financial well-being {.tabset}
 
 #### Summary
 
-```{r income}
-create_tb(dataset = data, 
-          mb_metrics = 'Income', 
-          mb_vars = 'pctl', 
-          quality_var = 'income_quality',   #temp - needs to update once the data is updated 
-          metrics_desp = 'Household income at the 20th, 50th, and 80th percentiles', 
-          data_source = 'American Community Survey (ACS) Public Use Microdata Sample (PUMS), 2018', 
-          recode_vars =  c(pctl_20 = "20th percentile", 
-                           pctl_50 = "50th percentile", 
-                           pctl_80 = "80th percentile", 
-                           income_quality = 'Quality'))
+```{r Financial well-being}
 
+m_info %>% 
+     filter(sub_topic %in% c('financial_well_being')) %>% 
+     purrr::transpose() %>% 
+     simplify() %>%
+     first() %>% 
+     create_tb(data) %>% 
+     fmt_currency(
+      columns = everything(), 
+      rows = contains('pctl'), #try automate this line; only exclude "quality" column
+      currency = 'USD', 
+      decimals = decimal_points 
+    ) 
 
 ```
 
 #### Detail
 
-MORE INFORMATION
+```{r Financial well-being detailed}
+
+m_info_lst <- m_info %>% 
+     filter(sub_topic %in% c('financial_well_being')) %>% 
+     purrr::transpose() %>% 
+     simplify() %>%
+     first()
+
+mb_vars <- m_info_lst[4][[1]]
+quality_var <- m_info_lst[5][[1]]
+
+data_sub <- data %>% 
+         mutate_at(vars(matches(glue('{mb_vars}|_lb|_ub'))), funs(round(., decimal_points))) %>% 
+         mutate_all(as.character) %>% 
+         mutate_at(vars(matches(mb_vars)), function(x) glue('${x}'))
+
+create_tb_level2(m_info_lst, data_sub)
+
+```
+
 
 ### Housing {.tabset}
 
 #### Summary
 
-```{r financial-security}
-create_tb(dataset = data, 
-          mb_metrics ='Affordable housing', 
-          mb_vars = 'share_affordable', 
-          quality_var = 'income_quality',   #temp - needs to update once the data is updated 
-          metrics_desp = 'Ratio of affordable housing units to households with low-and very-low-income levels', 
-          data_source = 'U.S. Department of Housing and Urban Devlopment Office of Policy  Development and Research (HUD PD&R) Fair Market Rents and Income Limits, 2018;  American Community Survey, 2018',  
-          recode_vars = c(share_affordable_80_ami = "Ratio for low-income households", 
-                          share_affordable_50_ami = "Ratio for very low-income households", 
-                          income_quality = 'Quality'))
 
+```{r housing summary}
+
+m_info %>% 
+     filter(metric_name == 'Affordable housing') %>% 
+     purrr::transpose() %>% 
+     simplify() %>%
+     first() %>% 
+     create_tb(data) %>% 
+     fmt_number(
+        columns = everything(), 
+        rows = starts_with('share'), 
+        decimals = decimal_points
+    )
+
+```
+
+
+#### Detail
+
+```{r housing detailed}
+
+m_info_lst <- m_info %>% 
+     filter(metric_name == 'Affordable housing') %>% 
+     purrr::transpose() %>% 
+     simplify() %>%
+     first()
+
+mb_vars <- m_info_lst[4][[1]]
+quality_var <- m_info_lst[6][[1]]
+
+data_sub <- data %>% 
+         mutate_at(vars(matches(glue('{mb_vars}|_lb|_ub'))), funs(round(., decimal_points))) %>% 
+         mutate_all(as.character)
+
+create_tb_level2(m_info_lst, data_sub)
+
+```
+
+
+
+### Family {.tabset}
+
+#### Summary
+
+```{r family summary}
+
+m_info %>% 
+     filter(sub_topic %in% c('family')) %>% 
+     purrr::transpose() %>% 
+     simplify() %>%
+     first() %>% 
+     create_tb(dataset=data) %>% 
+     fmt_number(
+        columns = everything(), 
+        rows = starts_with('famstruc'), 
+        decimals = decimal_points
+    )
 
 ```
 
 #### Detail
 
-MORE INFORMATION
+```{r family detailed}
 
+m_info_lst <- m_info %>% 
+     filter(sub_topic %in% c('family')) %>% 
+     purrr::transpose() %>% 
+     simplify() %>%
+     first()
+
+mb_vars <- m_info_lst[4][[1]]
+quality_var <- m_info_lst[6][[1]]
+
+data_sub <- data %>% 
+         select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
+         mutate_at(vars(matches(glue('{mb_vars}|_lb|_ub'))), funs(round(., decimal_points))) %>% 
+         mutate_all(as.character)
+
+create_tb_level2(m_info_lst, data_sub)
+
+```
+
+### Notes on Data Quality
+| 'Good' indicates that the metric is measured with adequate accuracy at sample size.
+| 'Marginal' indicates that there are known shortcomings of the data for this metric for this county, and the metric should be used with caution.
+| 'Poor' indicates that although the metric could be computed for this county, we have serious concerns about how accurately it is measured for this county and do not recommend its use.
+
+
+### Additional Notes
+| Metrics requiring orginal data collection: 
+|    Overall health: Share of adults who rate their own and their children’s health as good or excellent
+| *CI not available at this time.
+| +CI not applicable.
