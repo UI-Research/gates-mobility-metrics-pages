@@ -50,6 +50,73 @@ options(scipen = 999)
 
 ```
 
+
+```{r set vars}
+
+# set constant variables 
+
+tb_title_size <- 18
+tb_title_font <- 'bold'
+
+tb_subtitle_size <- 14
+tb_title_font <- 'normal'
+tb_font_size <- 12 
+
+source_note_size <- 11
+source_note_font <- 'normal'
+
+tb_width_perc <- 80
+tb_align <- 'left'
+
+decimal_points <- 2
+income_decimal <- 0
+
+
+income_varlist <- list(
+      c(
+        'pctl_20', 
+        'pctl_50', 
+        'pctl_80'
+        ), 
+      c(
+        '20th Percentile', 
+        '50th Percentile', 
+        '80th Percentile'
+      ))
+
+
+famstruc_varlist <- list(c(
+  'famstruc_2par_married', 
+  'famstruc_2par_unmarried', 
+  'famstruc_1par_plusadults', 
+  'famstruc_1par_noadults',
+  'famstruc_0par_2adults',	
+  'famstruc_0par_other'
+  ), 
+  c(
+  'Two married biological/adoptive parents', 
+  'One biological/adoptive parent and that parents current spouse/partner', 
+  'One biological/adoptive parent and at least one other adult', 
+  'One biological/adoptive parent',
+  'Zero biological/adoptive parents, but at least two adults',
+  'Other'
+))
+
+
+housing_varlist <- list(
+  c(
+    'share_affordable_80_ami', 
+    'share_affordable_50_ami'
+  ), 
+  c(
+    'Ratio for low-income households', 
+    'Ratio for very low-income households' 
+  )
+)
+
+```
+
+
 ```{r read-in-data}
 fpath = 'data/mobility-metrics.csv'
 data <- fread(fpath)
@@ -76,7 +143,7 @@ data <- data %>%
 
 #adding a quality var for housing - make up as an example 
 data <- data %>% 
-  mutate(income_quality=1)
+  mutate(income_quality='NA')
 
 
 #get the upward county - the first element in the parameter 
@@ -85,37 +152,18 @@ upward_county <- data %>%
   select(state_county) %>% 
   pull()
 
+data <- data %>% 
+  mutate_if(is.numeric, function(x) {format(round(x, 2), big.mark=",",scientific=FALSE)})
+
+ 
 ```
 
-# `r upward_county` in the State of Mobility
-
-```{r set vars}
-
-# set constant variables 
-
-tb_title_size <- 18
-tb_title_font <- 'bold'
-
-tb_subtitle_size <- 14
-tb_title_font <- 'normal'
-tb_font_size <- 12 
-
-source_note_size <- 11
-source_note_font <- 'normal'
-
-tb_width_perc <- 80
-tb_align <- 'left'
-
-decimal_points <- 2
-income_decimal <- 0
-
-```
+# `r upward_county`
 
 ```{r functions}
 
 
 quality_value_mapping <- function(input){
-  print(input)
   if (input == '1.00') {
     return ('Good')
   } else if (input == '2.00'){
@@ -126,9 +174,7 @@ quality_value_mapping <- function(input){
     stop("Wrong input for Quality")
 }
 
-
-
-create_tb <- function(metrics_info_df, dataset){
+create_tb <- function(metrics_info_df, dataset, varname_maps){
   
   mb_metrics <- metrics_info_df[3]
   mb_vars  <- metrics_info_df[4][[1]]
@@ -136,16 +182,19 @@ create_tb <- function(metrics_info_df, dataset){
   quality_var  <- metrics_info_df[6][[1]]
   metrics_desp  <- metrics_info_df[8]
   data_source <- metrics_info_df[9]
+  col_from <- varname_maps[1][[1]]
+  col_to <- varname_maps[2][[1]]
   
   dataset %>% 
     select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
     select(-matches('_lb|_ub')) %>% 
     select(sort(tidyselect::peek_vars())) %>% 
     relocate(!!sym(quality_var), .after = last_col()) %>% 
+    rename_at(vars(col_from), function(x) col_to) %>% 
     #mutate(!!quality_var := recode(!!quality_var, "1"="Good", "2"="Marginal", "3"="Poor")) %>%  #this line does not work 
-    #rename_at(vars(matches(quality_var)), ~ varname_lst) %>% 
     pivot_longer(!state_county, names_to='metrics', values_to='value') %>%   
     pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
+    arrange(match(metrics, col_to)) %>% 
     mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
     select(metrics, everything()) %>% 
     gt(rowname_col = 'metrics') %>% 
@@ -189,9 +238,9 @@ unite_col_values <- function(df, colname_str){
 }
 
 
-create_tb_level2 <- function(metrics_info_df, dataset){
-  
-  mb_metrics <- metrics_info_df[3][[1]]
+create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
+    
+  mb_metrics <- metrics_info_df[3]
   mb_vars  <- metrics_info_df[4][[1]]
   varname_lst <- strsplit(metrics_info_df[5][[1]], ';')[[1]]
   quality_var  <- metrics_info_df[6][[1]]
@@ -199,6 +248,8 @@ create_tb_level2 <- function(metrics_info_df, dataset){
   metrics_desp  <- metrics_info_df[8]
   data_source <- metrics_info_df[9]
   notes <- metrics_info_df[10]
+  col_from <- varname_maps[1][[1]]
+  col_to <- varname_maps[2][[1]]
 
   mb_vars_lst <- colnames(dataset %>% select(setdiff(starts_with(mb_vars), matches('_lb|_ub'))))
 
@@ -208,11 +259,11 @@ create_tb_level2 <- function(metrics_info_df, dataset){
       dataset <- unite_col_values(dataset, val)
     }
     
-    ci_str <- 'CI'
+    ci_str <- 'Confidence Interval'
     
   } else if (ci_vars == 2){
     
-    ci_str <- '*CI'   # *CI not available at this time.
+    ci_str <- '*Confidence Interval'   # *CI not available at this time.
     
     # create an empty df      #take this part out as a sep func 
     col_names <- glue('{mb_vars_lst}_ci')
@@ -225,7 +276,7 @@ create_tb_level2 <- function(metrics_info_df, dataset){
               
   } else if (ci_vars == 3){
     
-    ci_str <- '+CI'   # '+CI not applicable.
+    ci_str <- '+Confidence Interval'   # '+CI not applicable.
     
     # create an empty df 
     col_names <- glue('{mb_vars_lst}_ci')
@@ -242,7 +293,7 @@ create_tb_level2 <- function(metrics_info_df, dataset){
     mutate_all(as.character) %>% 
     select(sort(tidyselect::peek_vars())) %>% 
     relocate(!!sym(quality_var), .after = last_col()) %>% 
-    #rename_at(vars(matches(mb_vars)), ~ varname_lst) %>% 
+    rename_at(vars(col_from), function(x) col_to) %>% 
     pivot_longer(!state_county, names_to='metrics', values_to='value') %>%
     pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
     #mutate(metrics=recode(metrics, !!!recode_vars)) %>% 
@@ -277,9 +328,9 @@ create_tb_level2 <- function(metrics_info_df, dataset){
 
 ```
 
-**Driver:  Strong and Healthy Families**
+## Driver:  Strong and Healthy Families
 
-## Predictors:
+**Predictors**
 
 ### Financial well-being {.tabset}
 
@@ -297,17 +348,11 @@ mb_vars <- m_info_lst[4][[1]]
 quality_var <- m_info_lst[6][[1]]
 
 data_sub <- data %>% 
-         mutate_at(vars(matches(glue('{mb_vars}|_lb|_ub'))), funs(round(., income_decimal))) %>% 
+         #mutate_at(vars(matches(glue('{mb_vars}|_lb|_ub'))), funs(round(., income_decimal))) %>% 
          mutate_all(as.character) %>% 
-         mutate_at(vars(matches(mb_vars)), function(x) glue('${x}'))
+         mutate_at(vars(matches(mb_vars)), function(x) gsub("\\..*","", glue('${x}')))
 
-create_tb(m_info_lst, data_sub) 
-     #fmt_currency(
-    #  columns = everything(), 
-    #  rows = contains('pctl'), #try automate this line; only exclude "quality" column
-    #  currency = 'USD', 
-    #  decimals = income_decimal
-    #)  
+create_tb(m_info_lst, data_sub, income_varlist) 
 
 ```
 
@@ -315,11 +360,12 @@ create_tb(m_info_lst, data_sub)
 
 ```{r Financial well-being detailed}
 
-
-
-create_tb_level2(m_info_lst, data_sub)
+create_tb_level2(m_info_lst, data_sub, income_varlist)
 
 ```
+
+
+#### Description
 
 
 ### Housing {.tabset}
@@ -334,12 +380,7 @@ m_info %>%
      purrr::transpose() %>% 
      simplify() %>%
      first() %>% 
-     create_tb(data) %>% 
-     fmt_number(
-        columns = everything(), 
-        rows = starts_with('share'), 
-        decimals = decimal_points
-    )
+     create_tb(data, housing_varlist) 
 
 ```
 
@@ -358,10 +399,9 @@ mb_vars <- m_info_lst[4][[1]]
 quality_var <- m_info_lst[6][[1]]
 
 data_sub <- data %>% 
-         mutate_at(vars(matches(glue('{mb_vars}|_lb|_ub'))), funs(round(., decimal_points))) %>% 
          mutate_all(as.character)
 
-create_tb_level2(m_info_lst, data_sub)
+create_tb_level2(m_info_lst, data_sub, housing_varlist)
 
 ```
 
@@ -378,12 +418,7 @@ m_info %>%
      purrr::transpose() %>% 
      simplify() %>%
      first() %>% 
-     create_tb(dataset=data) %>% 
-     fmt_number(
-        columns = everything(), 
-        rows = starts_with('famstruc'), 
-        decimals = decimal_points
-    )
+     create_tb(dataset=data, famstruc_varlist) 
 
 ```
 
@@ -401,13 +436,42 @@ mb_vars <- m_info_lst[4][[1]]
 quality_var <- m_info_lst[6][[1]]
 
 data_sub <- data %>% 
-         select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
-         mutate_at(vars(matches(glue('{mb_vars}|_lb|_ub'))), funs(round(., decimal_points))) %>% 
          mutate_all(as.character)
 
-create_tb_level2(m_info_lst, data_sub)
+create_tb_level2(m_info_lst, data_sub, famstruc_varlist)
 
 ```
+
+
+## Driver: Supportive Communities
+
+**Predictors**
+
+
+### Local Governance {.tabset}
+
+
+#### Summary 
+
+#### Details 
+
+
+### Neighborhoods {.tabset}
+
+#### Summary 
+
+#### Details 
+
+
+### Safety {.tabset}
+
+#### Summary 
+
+#### Details 
+
+
+
+
 
 ## Notes on Data Quality
 | 'Good' indicates that the metric is measured with adequate accuracy at sample size.
@@ -418,5 +482,5 @@ create_tb_level2(m_info_lst, data_sub)
 ## Additional Notes
 | Metrics requiring orginal data collection: 
 |    Overall health: Share of adults who rate their own and their children’s health as good or excellent
-| *CI not available at this time.
-| +CI not applicable.
+| *Confidence Interval: Confidence interval not available at this time
+| +Confidence Interval: Confidence interval not applicable
