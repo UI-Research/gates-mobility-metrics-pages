@@ -78,13 +78,13 @@ AQI, `haz_idx`
 Quality, `haz_idx, quality`
 
 ## Exposure to crime
-Violent crime
-Property crime
-Quality:
+Violent crime, `violent_crime_rate`
+Property crime, `property_crime_rate`
+Quality, `crime_rate_quality`
 
 ## Overly punitive policing
-Juvenile arrests
-Quality:
+Juvenile arrests, `juvenile_arrest_rate`
+Quality, `jjarrest_rate_quality`
 
 # Earn and Learn
 
