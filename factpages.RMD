@@ -71,7 +71,6 @@ tb_align <- 'left'
 decimal_points <- 2
 income_decimal <- 0
 
-
 income_varlist <- list(
       c(
         'pctl_20', 
@@ -82,10 +81,28 @@ income_varlist <- list(
         '20th Percentile', 
         '50th Percentile', 
         '80th Percentile'
-      ))
+      ), 
+      c(
+        'pctl_20', 
+        'pctl_20_ci', 
+        'pctl_50', 
+        'pctl_50_ci', 
+        'pctl_80',
+        'pctl_80_ci'
+        ), 
+      c(
+        '20th Percentile', 
+        '20th Percentile ci', 
+        '50th Percentile', 
+        '50th Percentile ci', 
+        '80th Percentile', 
+        '80th Percentile ci'
+      ) 
+    )
 
 
-famstruc_varlist <- list(c(
+famstruc_varlist <- list(
+  c(
   'famstruc_2par_married', 
   'famstruc_2par_unmarried', 
   'famstruc_1par_plusadults', 
@@ -100,7 +117,37 @@ famstruc_varlist <- list(c(
   'One biological/adoptive parent',
   'Zero biological/adoptive parents, but at least two adults',
   'Other'
-))
+), 
+  c(
+  'famstruc_2par_married', 
+  'famstruc_2par_married_ci',
+  'famstruc_2par_unmarried', 
+  'famstruc_2par_unmarried_ci',
+  'famstruc_1par_plusadults', 
+  'famstruc_1par_plusadults_ci', 
+  'famstruc_1par_noadults',
+  'famstruc_1par_noadults_ci',
+  'famstruc_0par_2adults',	
+  'famstruc_0par_2adults_ci',	
+  'famstruc_0par_other',
+  'famstruc_0par_other_ci'
+  ), 
+c(
+  'Two married biological/adoptive parents', 
+  'Two married biological/adoptive parents ci', 
+  'One biological/adoptive parent and that parents current spouse/partner', 
+  'One biological/adoptive parent and that parents current spouse/partner ci', 
+  'One biological/adoptive parent and at least one other adult', 
+  'One biological/adoptive parent and at least one other adult ci', 
+  'One biological/adoptive parent',
+  'One biological/adoptive parent ci',
+  'Zero biological/adoptive parents, but at least two adults',
+  'Zero biological/adoptive parents, but at least two adults ci',
+  'Other', 
+  'Other ci'
+) 
+)
+
 
 
 housing_varlist <- list(
@@ -111,6 +158,17 @@ housing_varlist <- list(
   c(
     'Ratio for low-income households', 
     'Ratio for very low-income households' 
+  ), 
+  c(
+    'share_affordable_80_ami', 
+    'share_affordable_80_ami_ci', 
+    'share_affordable_50_ami',
+    'share_affordable_50_ami_ci'
+  ), 
+  c('Ratio for low-income households', 
+    'Ratio for low-income households ci', 
+    'Ratio for very low-income households', 
+    'Ratio for very low-income households ci' 
   )
 )
 
@@ -248,8 +306,8 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
   metrics_desp  <- metrics_info_df[8]
   data_source <- metrics_info_df[9]
   notes <- metrics_info_df[10]
-  col_from <- varname_maps[1][[1]]
-  col_to <- varname_maps[2][[1]]
+  col_from <- varname_maps[3][[1]]
+  col_to <- varname_maps[4][[1]]
 
   mb_vars_lst <- colnames(dataset %>% select(setdiff(starts_with(mb_vars), matches('_lb|_ub'))))
 
@@ -288,16 +346,16 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     dataset <- dataset %>% bind_cols(empty_ci_df)
   }
   
+  
   dataset %>% 
     select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
     mutate_all(as.character) %>% 
-    select(sort(tidyselect::peek_vars())) %>% 
     relocate(!!sym(quality_var), .after = last_col()) %>% 
     rename_at(vars(col_from), function(x) col_to) %>% 
     pivot_longer(!state_county, names_to='metrics', values_to='value') %>%
     pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
-    #mutate(metrics=recode(metrics, !!!recode_vars)) %>% 
-    mutate(metrics = gsub('.*_ci', ci_str, metrics)) %>% 
+    arrange(match(metrics, col_to)) %>% 
+    mutate(metrics = gsub('.*ci', ci_str, metrics)) %>% 
     mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
     select(metrics, everything()) %>% 
     gt(rowname_col = 'metrics') %>% 
@@ -345,11 +403,10 @@ m_info_lst <- m_info %>%
      first()
 
 mb_vars <- m_info_lst[4][[1]]
-#quality_var <- m_info_lst[6][[1]]
+quality_var <- m_info_lst[6][[1]]
+
 
 data_sub <- data %>% 
-         #mutate_at(vars(matches(glue('{mb_vars}|_lb|_ub'))), funs(round(., income_decimal))) %>% 
-         #mutate_all(as.character) %>% 
          mutate_at(vars(matches(mb_vars)), function(x) gsub("\\..*","", glue('${x}')))
 
 create_tb(m_info_lst, data_sub, income_varlist) 
@@ -363,9 +420,6 @@ create_tb(m_info_lst, data_sub, income_varlist)
 create_tb_level2(m_info_lst, data_sub, income_varlist)
 
 ```
-
-
-#### Description
 
 
 ### Housing {.tabset}
@@ -386,7 +440,6 @@ m_info_lst <- m_info %>%
 create_tb(m_info_lst, data, housing_varlist) 
 
 ```
-
 
 #### Detail
 
@@ -433,21 +486,21 @@ create_tb_level2(m_info_lst, data, famstruc_varlist)
 
 #### Summary 
 
-#### Details 
+#### Detail
 
 
 ### Neighborhoods {.tabset}
 
 #### Summary 
 
-#### Details 
+#### Detail
 
 
 ### Safety {.tabset}
 
 #### Summary 
 
-#### Details 
+#### Detail
 
 
 
