@@ -345,11 +345,11 @@ m_info_lst <- m_info %>%
      first()
 
 mb_vars <- m_info_lst[4][[1]]
-quality_var <- m_info_lst[6][[1]]
+#quality_var <- m_info_lst[6][[1]]
 
 data_sub <- data %>% 
          #mutate_at(vars(matches(glue('{mb_vars}|_lb|_ub'))), funs(round(., income_decimal))) %>% 
-         mutate_all(as.character) %>% 
+         #mutate_all(as.character) %>% 
          mutate_at(vars(matches(mb_vars)), function(x) gsub("\\..*","", glue('${x}')))
 
 create_tb(m_info_lst, data_sub, income_varlist) 
@@ -375,12 +375,15 @@ create_tb_level2(m_info_lst, data_sub, income_varlist)
 
 ```{r housing summary}
 
-m_info %>% 
+
+m_info_lst <- m_info %>% 
      filter(metric_name == 'Affordable housing') %>% 
      purrr::transpose() %>% 
      simplify() %>%
-     first() %>% 
-     create_tb(data, housing_varlist) 
+     first()
+
+
+create_tb(m_info_lst, data, housing_varlist) 
 
 ```
 
@@ -389,19 +392,7 @@ m_info %>%
 
 ```{r housing detailed}
 
-m_info_lst <- m_info %>% 
-     filter(metric_name == 'Affordable housing') %>% 
-     purrr::transpose() %>% 
-     simplify() %>%
-     first()
-
-mb_vars <- m_info_lst[4][[1]]
-quality_var <- m_info_lst[6][[1]]
-
-data_sub <- data %>% 
-         mutate_all(as.character)
-
-create_tb_level2(m_info_lst, data_sub, housing_varlist)
+create_tb_level2(m_info_lst, data, housing_varlist)
 
 ```
 
@@ -413,12 +404,13 @@ create_tb_level2(m_info_lst, data_sub, housing_varlist)
 
 ```{r family summary}
 
-m_info %>% 
+m_info_lst <- m_info %>% 
      filter(sub_topic %in% c('family')) %>% 
      purrr::transpose() %>% 
      simplify() %>%
-     first() %>% 
-     create_tb(dataset=data, famstruc_varlist) 
+     first()
+
+create_tb(m_info_lst, data, famstruc_varlist) 
 
 ```
 
@@ -426,19 +418,7 @@ m_info %>%
 
 ```{r family detailed}
 
-m_info_lst <- m_info %>% 
-     filter(sub_topic %in% c('family')) %>% 
-     purrr::transpose() %>% 
-     simplify() %>%
-     first()
-
-mb_vars <- m_info_lst[4][[1]]
-quality_var <- m_info_lst[6][[1]]
-
-data_sub <- data %>% 
-         mutate_all(as.character)
-
-create_tb_level2(m_info_lst, data_sub, famstruc_varlist)
+create_tb_level2(m_info_lst, data, famstruc_varlist)
 
 ```
 
