@@ -4,7 +4,7 @@
 20th percentile, `pctl_20`
 50th percentile, `pctl_50`
 80th percentile, `pctl_80`
-Quality, `NA`
+Quality, `pctl_quality`
 
 ## Financial security
 % with debt, `share_debt_coll`
@@ -13,7 +13,7 @@ Quality, `share_debt_coll_quality`
 ## Affordable housing
 ratio for low-income households, `share_affordable_80_ami`
 ratio for very low-income households, `share_affordable_50_ami`
-Quality, `NA`
+Quality, `housing_quality`
 
 ## Housing stability and homelessness
 Number homeless, `homeless_count`
@@ -27,7 +27,7 @@ One biological/adoptive parent and at least one other adult, `famstruc_1par_plus
 One biological/adoptive parent, `famstruc_1par_noadults`
 Zero biological/adoptive parents, but at least two adults, `famstruc_0par_2adults`
 Other, `famstruc_0par_other`
-Quality, `NA`
+Quality, `famstruc_quality`
 
 ## Access to and utilization of health services
 Ranking (0-25, higher = greater shortage), `hpse_yn`
@@ -78,13 +78,13 @@ AQI, `haz_idx`
 Quality, `haz_idx, quality`
 
 ## Exposure to crime
-Violent crime
-Property crime
-Quality:
+Violent crime, `violent_crime_rate`
+Property crime, `property_crime_rate`
+Quality, `crime_rate_quality`
 
 ## Overly punitive policing
-Juvenile arrests
-Quality:
+Juvenile arrests, `juvenile_arrest_rate`
+Quality, `jjarrest_rate_quality`
 
 # Earn and Learn
 
