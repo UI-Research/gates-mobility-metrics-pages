@@ -8,7 +8,7 @@ Quality, `NA`
 
 ## Financial security
 % with debt, `share_debt_coll`
-Quality, `share_debt_coll_quality`
+Quality, `share_debt_coll_quality` - not exist 
 
 ## Affordable housing
 ratio for low-income households, `share_affordable_80_ami`
@@ -75,7 +75,7 @@ Quality, `transit_cost_quality`
 
 ## Environmental quality
 AQI, `haz_idx`
-Quality, `haz_idx, quality`
+Quality, `haz_idx_quality`
 
 ## Exposure to crime
 Violent crime
