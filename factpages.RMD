@@ -225,6 +225,10 @@ upward_county <- data %>%
 data <- data %>% 
   mutate_if(is.numeric, function(x) {format(round(x, 2), big.mark=",",scientific=FALSE)})
 
+
+data <- data %>% 
+  mutate(na_quality = 'NA')  #to be used for metrics where there is no quality variable
+
  
 ```
 
@@ -254,7 +258,7 @@ create_tb <- function(metrics_info_df, dataset, varname_maps){
   col_from <- varname_maps[1][[1]]
   col_to <- varname_maps[2][[1]]
   
-  dataset %>% 
+  test <- dataset %>% 
     select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
     select(-matches('_lb|_ub')) %>% 
     select(sort(tidyselect::peek_vars())) %>% 
@@ -263,7 +267,10 @@ create_tb <- function(metrics_info_df, dataset, varname_maps){
     #mutate(!!quality_var := recode(!!quality_var, "1"="Good", "2"="Marginal", "3"="Poor")) %>%  #this line does not work 
     pivot_longer(!state_county, names_to='metrics', values_to='value') %>%   
     pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
-    arrange(match(metrics, col_to)) %>% 
+    arrange(match(metrics, col_to)) 
+  
+  print(test)
+  test %>% 
     mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
     select(metrics, everything()) %>% 
     gt(rowname_col = 'metrics') %>% 
@@ -322,7 +329,10 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
   col_from <- varname_maps[3][[1]]
   col_to <- varname_maps[4][[1]]
 
-  mb_vars_lst <- colnames(dataset %>% select(setdiff(starts_with(mb_vars), matches('_lb|_ub|_quality'))))
+  print(mb_vars)
+  mb_vars_lst <- colnames(dataset %>% select(setdiff(matches(mb_vars), matches('_lb|_ub|_quality'))))
+  
+  print(mb_vars_lst)
 
   if (ci_vars == 1){
     
@@ -333,7 +343,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     ci_str <- 'Confidence Interval'
     
   } else if (ci_vars == 2){
-    
+  
     ci_str <- 'Confidence Interval*'   # *CI not available at this time.
     
     # create an empty df      #take this part out as a sep func 
@@ -346,6 +356,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     dataset <- dataset %>% bind_cols(empty_ci_df)
               
   } else if (ci_vars == 3){
+    print('yes ci level 3')
     
     ci_str <- 'Confidence Interval+'   # '+CI not applicable.
     
@@ -357,6 +368,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
 
     # bind df with '*_ci' columns with original df 
     dataset <- dataset %>% bind_cols(empty_ci_df)
+    print(dataset)
   }
   
   
@@ -365,14 +377,6 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     mutate_all(as.character) %>% 
     relocate(!!sym(quality_var), .after = last_col()) 
 
-  print(colnames(test))
-  
-  print(test)
-  
-  print('testing')
-  
-  print(varname_maps[3])
-  print(varname_maps[4])
   test %>% 
     rename_at(vars(col_from), function(x) col_to) %>% 
     pivot_longer(!state_county, names_to='metrics', values_to='value') %>%
@@ -433,12 +437,13 @@ get_vars_info <- function(varname, data_summary_file=m_info){
 #### Summary
 ```{r income}
 
-m_info_lst <- get_vars_info('Income')
 
-mb_vars <- m_info_lst[4][[1]]
+m_info_lst <- get_vars_info('Income')$info_lst
+mb_vars <- get_vars_info('Income')$mb_vars
 
 data_sub <- data %>% 
-         mutate_at(vars(matches(mb_vars)), function(x) gsub("\\..*","", glue('${x}')))
+         mutate_at(vars(matches(mb_vars), -ends_with('_quality')), 
+                   function(x) gsub("\\..*","", glue('${x}')))
 
 create_tb(m_info_lst, data_sub, income_varlist) 
 
@@ -453,20 +458,29 @@ create_tb_level2(m_info_lst, data_sub, income_varlist)
 #### Summary
 ```{r debt}
 
-m_info_lst <- get_vars_info('Financial Security')
+debt_varlist <- list(
+  c('share_debt_coll'),
+  c('% with debt'), 
+  c(
+    'share_debt_coll', 
+    'share_debt_coll_ci'
+  ),
+  c(
+    '% with debt', 
+    '% with debt ci')
+)
 
-mb_vars <- m_info_lst[4][[1]]
+m_info_lst <- get_vars_info('Financial Security')$info_lst
+mb_vars <- get_vars_info('Financial Security')$mb_vars
 
-data_sub <- data %>% 
-         mutate_at(vars(matches(mb_vars)), function(x) gsub("\\..*","", glue('${x}')))
 
-create_tb(m_info_lst, data, income_varlist) 
+create_tb(m_info_lst, data, debt_varlist) 
 
 ```
 
 #### Detail
 ```{r debt}
-create_tb_level2(m_info_lst, data_sub, income_varlist)
+create_tb_level2(m_info_lst, data, debt_varlist)
 ```
 
 
@@ -475,9 +489,8 @@ create_tb_level2(m_info_lst, data_sub, income_varlist)
 #### Summary
 ```{r housing summary}
 
-m_info_lst <- get_vars_info('Affordable housing')
 
-mb_vars <- m_info_lst[4][[1]]
+m_info_lst <- get_vars_info('Affordable housing')$info_lst
 
 create_tb(m_info_lst, data, housing_varlist) 
 
@@ -494,13 +507,48 @@ create_tb_level2(m_info_lst, data, housing_varlist)
 #### Summary
 ```{r Housing instablity and homelessness}
 
-m_info_lst <- get_vars_info('Housing instablity and homelessness')
 
-mb_vars <- m_info_lst[4][[1]]
+housing_insta_varlist <- list(
+  c(
+    'homeless_count', 
+    'homeless_share'
+  ), 
+  c(
+    'Number homeless',
+    'Share homeless'
+  ),
+  c(
+    'homeless_count', 
+    'homeless_count_ci', 
+    'homeless_share',
+    'homeless_share_ci'
+  ), 
+  c(
+    'Number homeless',
+    'Number homeless ci',
+    'Share homeless',
+    'Share homeless ci'
+  )
+)
+  
 
-create_tb(m_info_lst, data, housing_varlist) 
+m_info_lst <- get_vars_info('Housing instablity and homelessness')$info_lst
+
+create_tb(m_info_lst, data, housing_insta_varlist) 
+
 
 ```
+
+#### Detail
+
+```{r housing2}
+
+##problem
+
+create_tb_level2(m_info_lst, data, housing_insta_varlist) 
+
+```
+
 
 ### Family {.tabset}
 
@@ -509,10 +557,7 @@ create_tb(m_info_lst, data, housing_varlist)
 ```{r family summary}
 
 
-m_info_lst <- get_vars_info('Family structure and stability')
-
-mb_vars <- m_info_lst[4][[1]]
-
+m_info_lst <- get_vars_info('Family structure and stability')$info_lst
 
 create_tb(m_info_lst, data, famstruc_varlist) 
 
@@ -533,9 +578,8 @@ create_tb_level2(m_info_lst, data, famstruc_varlist)
 
 ```{r Access to and utilization of health services}
 
-m_info_lst <- get_vars_info('Access to and utilization of health services')
 
-mb_vars <- m_info_lst[4][[1]]
+m_info_lst <- get_vars_info('Access to and utilization of health services')$info_lst
 
 create_tb(m_info_lst, data, accuils_varlist) 
 
@@ -555,6 +599,7 @@ create_tb_level2(m_info_lst, data, accuils_varlist)
 
 ```{r Neonatal} 
 
+###Problem
 neonatal_varlist <- list(
   c('lbw'),
   c('% low-weight birth'),
@@ -614,6 +659,62 @@ create_tb(m_info_lst, data, election_turnout_varlist)
 create_tb_level2(m_info_lst, data, election_turnout_varlist) 
 
 ```
+
+
+#### Summary 
+
+```{r Descriptive representation among local officials}
+
+desp_rep_varlist <- list(
+  c('white_nonhispanic,
+    black_nonhispanic',
+    'hispanic',
+    'asian_other'),
+  c('Non-Black, Non-Hispanic', 
+    'Black, Non-Hispanic', 
+    'Hispanic', 
+    'Asian'
+    ),
+  c(
+    'white_nonhispanic', 
+    'white_nonhispanic_ci',
+    'black_nonhispanic',
+    'black_nonhispanic_ci',
+    'hispanic', 
+    'hispanic_ci',
+    'asian_other', 
+    'asian_other_ci' 
+    ),
+  c('Non-Black, Non-Hispanic', 
+    'Non-Black, Non-Hispanic ci', 
+    'Black, Non-Hispanic', 
+    'Black, Non-Hispanic ci', 
+    'Hispanic', 
+    'Hispanic ci', 
+    'Asian',
+    'Asian ci'
+    )
+)
+
+
+m_info_lst <- get_vars_info('Descriptive representation among local officials')$info_lst
+
+create_tb(m_info_lst, data, desp_rep_varlist) 
+
+
+```
+
+
+#### Detail
+
+```{r trans cost transit_trips}
+
+create_tb_level2(m_info_lst, data, desp_rep_varlist) 
+
+
+```
+
+
 
 ### Neighborhoods {.tabset}
 
@@ -703,11 +804,7 @@ trans_cost_varlist <- list(
 m_info_lst <- get_vars_info('Transportation access-cost')$info_lst
 mb_vars <- get_vars_info('Transportation access-cost')$mb_vars
 
-data_sub <- data %>% 
-  mutate_at(vars(matches(mb_vars), -ends_with('_quality')), function(x) gsub("\\..*","", glue('${x}')))
-
-
-create_tb(m_info_lst, data_sub, trans_cost_varlist) 
+create_tb(m_info_lst, data, trans_cost_varlist) 
 
 ```
 
@@ -716,7 +813,7 @@ create_tb(m_info_lst, data_sub, trans_cost_varlist)
 
 ```{r trans cost transit_trips}
 
-create_tb_level2(m_info_lst, data_sub, trans_cost_varlist) 
+create_tb_level2(m_info_lst, data, trans_cost_varlist) 
 
 ```
 
@@ -751,17 +848,299 @@ create_tb(m_info_lst, data, env_varlist)
 
 create_tb_level2(m_info_lst, data, env_varlist) 
 
-
 ```
 
 
 ### Safety {.tabset}
 
+
 #### Summary 
+
+```{r Exposure to crime}
+
+exp_crime_varlist <- list(
+  c(
+    'violent_crime_rate',
+    'property_crime_rate'
+    ),
+  c(
+    'Violent crime', 
+    'Property crime'
+    ),
+  c(
+    'violent_crime_rate',
+    'violent_crime_rate_ci', 
+    'property_crime_rate',
+    'property_crime_rate_ci'
+    ),
+    c(
+    'Violent crime', 
+    'Violent crime ci', 
+    'Property crime', 
+    'Property crime ci'
+    )
+)
+
+m_info_lst <- get_vars_info('Exposure to crime')$info_lst
+
+create_tb(m_info_lst, data, exp_crime_varlist) 
+
+
+```
+
 
 #### Detail
 
+```{r trans cost transit_trips}
 
+create_tb_level2(m_info_lst, data, exp_crime_varlist) 
+
+
+```
+
+
+
+#### Summary 
+
+```{r Overly punative policing}
+
+punative_policing <- list(
+  c('juvenile_arrest_rate'),
+  c('Juvenile arrests'),
+  c(
+    'juvenile_arrest_rate', 
+    'juvenile_arrest_rate_ci'
+    ),
+  c(
+    'Juvenile arrests', 
+    'Juvenile arrests ci')
+)
+
+
+m_info_lst <- get_vars_info('Overly punative policing')$info_lst
+
+create_tb(m_info_lst, data, punative_policing) 
+
+
+```
+
+
+#### Detail
+
+```{r trans cost transit_trips}
+
+create_tb_level2(m_info_lst, data, punative_policing) 
+
+```
+
+## Driver: earn_and_learn
+
+### education	
+
+#### Summary 
+
+```{r share_in_preschool}
+
+share_in_presch_varlist <- list(
+  c('share_in_preschool'),
+  c('% in pre-k'),
+  c(
+    'share_in_preschool', 
+    'share_in_preschool_ci'
+    ),
+  c(
+    '% in pre-k', 
+    '% in pre-k ci')
+)
+
+m_info_lst <- get_vars_info('Access to Preschool')$info_lst
+
+create_tb(m_info_lst, data, share_in_presch_varlist) 
+
+```
+
+#### Detail
+
+```{r trans cost transit_trips}
+
+create_tb_level2(m_info_lst, data, share_in_presch_varlist) 
+
+
+```
+
+
+
+#### Summary 
+
+```{r Effective public education}
+
+eff_pub_ed <- list(
+  c('learning_rate'),
+  c('change in ELA achievement'),
+  c(
+    'learning_rate', 
+    'learning_rate_ci'
+    ),
+  c(
+    'change in ELA achievement', 
+    'change in ELA achievement ci')
+)
+
+
+m_info_lst <- get_vars_info('Effective public education')$info_lst
+
+create_tb(m_info_lst, data, eff_pub_ed) 
+
+
+```
+
+
+#### Detail
+
+```{r trans cost transit_trips}
+
+create_tb_level2(m_info_lst, data, eff_pub_ed) 
+
+
+```
+
+
+
+#### Summary 
+
+```{r Student poverty concentration}
+
+stu_poverty <- list(
+  c('transit_trips'),
+  c('Transit trips'),
+  c(
+    'transit_trips', 
+    'transit_trips_ci'
+    ),
+  c(
+    'Transit trips', 
+    'Transit trips ci')
+)
+
+
+m_info_lst <- get_vars_info('Student poverty concentration')$info_lst
+
+create_tb(m_info_lst, data, stu_poverty) 
+
+
+```
+
+
+#### Detail
+
+```{r trans cost transit_trips}
+
+create_tb_level2(m_info_lst, data, stu_poverty) 
+
+
+```
+
+
+#### Summary 
+
+```{r College readiness}
+
+college_readiness <- list(
+  c('share_hs_degree'),
+  c('% with HS degree'),
+  c(
+    'share_hs_degree', 
+    'share_hs_degree_ci'
+    ),
+  c(
+    '% with HS degree', 
+    '% with HS degree ci')
+)
+
+m_info_lst <- get_vars_info('College readiness')$info_lst
+create_tb(m_info_lst, data, college_readiness) 
+
+
+```
+
+#### Detail
+
+```{r trans cost transit_trips}
+
+create_tb_level2(m_info_lst, data, college_readiness) 
+
+```
+
+
+### Work	
+
+
+#### Summary 
+
+```{r Employment}
+
+emp_lst <- list(
+  c('share_employed'),
+  c('Employment to population ratio'),
+  c(
+    'share_employed', 
+    'share_employed_ci'
+    ),
+  c(
+    'Employment to population ratio', 
+    'Employment to population ratio ci')
+)
+
+
+m_info_lst <- get_vars_info('Employment')$info_lst
+
+create_tb(m_info_lst, data, emp_lst) 
+
+
+```
+
+
+#### Detail
+
+```{r trans cost transit_trips}
+
+create_tb_level2(m_info_lst, data, emp_lst) 
+
+```
+
+
+
+#### Summary 
+
+```{r trans cost transit_trips}
+
+job_wage <- list(
+  c('average_to_living_wage_ratio'),
+  c('Ratio of pay to living wage'),
+  c(
+    'average_to_living_wage_ratio', 
+    'average_to_living_wage_ratio_ci'
+    ),
+  c(
+    'Ratio of pay to living wage', 
+    'Ratio of pay to living wage ci')
+)
+
+
+m_info_lst <- get_vars_info('Access to jobs paying a living wage')$info_lst
+
+create_tb(m_info_lst, data, job_wage) 
+
+```
+
+
+#### Detail
+
+```{r trans cost transit_trips}
+
+create_tb_level2(m_info_lst, data, job_wage) 
+
+```
 
 
 
