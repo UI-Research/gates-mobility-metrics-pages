@@ -321,7 +321,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     
   } else if (ci_vars == 2){
     
-    ci_str <- '*Confidence Interval'   # *CI not available at this time.
+    ci_str <- 'Confidence Interval*'   # *CI not available at this time.
     
     # create an empty df      #take this part out as a sep func 
     col_names <- glue('{mb_vars_lst}_ci')
@@ -334,7 +334,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
               
   } else if (ci_vars == 3){
     
-    ci_str <- '+Confidence Interval'   # '+CI not applicable.
+    ci_str <- 'Confidence Interval+'   # '+CI not applicable.
     
     # create an empty df 
     col_names <- glue('{mb_vars_lst}_ci')
