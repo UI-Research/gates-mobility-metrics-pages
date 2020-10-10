@@ -37,6 +37,7 @@ knitr::include_graphics('www/images/urban-institute-logo.png')
 ```
 
 ```{r setup}
+
 library(here)
 library(data.table)
 library(gt)
@@ -72,83 +73,393 @@ decimal_points <- 2
 income_decimal <- 0
 
 income_varlist <- list(
-      c(
-        'pctl_20', 
-        'pctl_50', 
-        'pctl_80'
-        ), 
-      c(
-        '20th Percentile', 
-        '50th Percentile', 
-        '80th Percentile'
-      ), 
-      c(
-        'pctl_20', 
-        'pctl_20_ci', 
-        'pctl_50', 
-        'pctl_50_ci', 
-        'pctl_80',
-        'pctl_80_ci'
-        ), 
-      c(
-        '20th Percentile', 
-        '20th Percentile ci', 
-        '50th Percentile', 
-        '50th Percentile ci', 
-        '80th Percentile', 
-        '80th Percentile ci'
-      ) 
-    )
-
-
-famstruc_varlist <- list(
   c(
-  'famstruc_2par_married', 
-  'famstruc_2par_unmarried', 
-  'famstruc_1par_plusadults', 
-  'famstruc_1par_noadults',
-  'famstruc_0par_2adults',	
-  'famstruc_0par_other'
+    'pctl_20', 
+    'pctl_50', 
+    'pctl_80'
   ), 
   c(
-  'Two married biological/adoptive parents', 
-  'One biological/adoptive parent and that parents current spouse/partner', 
-  'One biological/adoptive parent and at least one other adult', 
-  'One biological/adoptive parent',
-  'Zero biological/adoptive parents, but at least two adults',
-  'Other'
-), 
-  c(
-  'famstruc_2par_married', 
-  'famstruc_2par_married_ci',
-  'famstruc_2par_unmarried', 
-  'famstruc_2par_unmarried_ci',
-  'famstruc_1par_plusadults', 
-  'famstruc_1par_plusadults_ci', 
-  'famstruc_1par_noadults',
-  'famstruc_1par_noadults_ci',
-  'famstruc_0par_2adults',	
-  'famstruc_0par_2adults_ci',	
-  'famstruc_0par_other',
-  'famstruc_0par_other_ci'
+    '20th Percentile', 
+    '50th Percentile', 
+    '80th Percentile'
   ), 
-c(
-  'Two married biological/adoptive parents', 
-  'Two married biological/adoptive parents ci', 
-  'One biological/adoptive parent and that parents current spouse/partner', 
-  'One biological/adoptive parent and that parents current spouse/partner ci', 
-  'One biological/adoptive parent and at least one other adult', 
-  'One biological/adoptive parent and at least one other adult ci', 
-  'One biological/adoptive parent',
-  'One biological/adoptive parent ci',
-  'Zero biological/adoptive parents, but at least two adults',
-  'Zero biological/adoptive parents, but at least two adults ci',
-  'Other', 
-  'Other ci'
-) 
+  c(
+    'pctl_20', 
+    'pctl_20_ci', 
+    'pctl_50', 
+    'pctl_50_ci', 
+    'pctl_80',
+    'pctl_80_ci'
+  ), 
+  c(
+    '20th Percentile', 
+    '20th Percentile ci', 
+    '50th Percentile', 
+    '50th Percentile ci', 
+    '80th Percentile', 
+    '80th Percentile ci'
+  ) 
+)
+
+```
+
+
+```{r read-in-data}
+
+fpath <- 'data/mobility-metrics.csv'
+data <- read_csv(fpath, )
+
+metrics_summary <- 'metrics_summary.csv'
+m_info <- fread(metrics_summary)
+
+#checking missing 
+#summary(data)
+#sapply(data, function(x) sum(is.na(x)))
+
+
+#create unique state-county identifier
+data <- data %>% 
+  mutate(state = str_pad(state, width = 2, side ='left', pad = '0'), 
+         county = str_pad(county, width = 3, side ='left', pad = '0')) %>% 
+  unite('state_county', county_name, state_name, sep = ', ', remove = FALSE) %>% 
+  unite('full_fips', state, county, sep = '', remove = FALSE) %>% 
+  filter(full_fips %in% (params$state_county)) %>% 
+  arrange(factor(full_fips, levels = params$state_county)) %>% 
+  mutate(state_county = gsub('County', '', state_county)) %>% 
+  mutate(state_county = rm_white_comma(state_county))
+
+#get the upward county - the first element in the parameter 
+upward_county <- data %>% 
+  filter(full_fips == params$state_county[1]) %>% 
+  select(state_county) %>% 
+  pull()
+
+
+
+#convert to percentage 
+perc_vars <- c(
+  "share_debt_coll", # % with debt
+  "homeless_share", # share homeless
+  "famstruc_2par_married", # Two married biological/adoptive parents
+  "famstruc_1par_noadults", # One biological/adoptive parent and that parent's current spouse/partner
+  "famstruc_1par_plusadults", # One biological/adoptive parent and at least one other adult
+  "famstruc_0par_2adults", # One biological/adoptive parent
+  "famstruc_2par_unmarried", # Two adults, no parent
+  "famstruc_0par_other", # Other
+  "election_turnout", # % voting 
+  "lbw", # % low birthweight
+  "poverty_exposure", # % in high poverty
+  "frpl40_total", # student poverty concentration
+  "share_in_preschool", # % in pre k 
+  "share_hs_degree" # % with HS degree
+)
+
+data <- data %>% 
+  mutate_at(perc_vars, 
+            function (x) scales::percent(x))
+
+
+data <- data %>% 
+  mutate_if(is.numeric, function(x) {format(round(x, 2), big.mark=",",scientific=FALSE)})
+
+
+data <- data %>% 
+  mutate(na_quality = 'NA')  #to be used for metrics where there is no quality variable
+
+
+data <- data %>% 
+  mutate_at(vars(ends_with('_quality')), 
+            function(x) recode(x, `1` = 'Good', `2` = 'Marginal', `3` = 'Poor'))
+
+
+data <- data %>% 
+  rename(hispanic_representation = hispanic,
+         hispanic_representation_quality = hispanic_quality) 
+
+note_ul_bound <- 'Lower/Upper bound'
+
+```
+
+# `r upward_county`
+
+```{r functions}
+
+
+quality_value_mapping <- function(input){
+  if (input == '1.00') {
+    return ('Good')
+  } else if (input == '2.00'){
+    return ('Marginal')
+  } else if (input == '3.00'){
+    return ('Poor')
+  } else 
+    stop("Wrong input for Quality")
+}
+
+
+create_tb <- function(metrics_info_df, dataset, varname_maps){
+  
+  mb_metrics <- metrics_info_df[3]
+  mb_vars  <- metrics_info_df[4][[1]]
+  quality_var  <- metrics_info_df[5][[1]]
+  metrics_desp  <- metrics_info_df[7]
+  data_source <- metrics_info_df[8]
+  col_from <- varname_maps[1][[1]]
+  col_to <- varname_maps[2][[1]]
+
+  temp <- dataset %>% 
+      select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
+      select(-matches('_lb|_ub')) %>% 
+      select(sort(tidyselect::peek_vars())) %>% 
+      rename_at(vars(all_of(col_from)), function(x) col_to) 
+
+  if (str_detect(quality_var, '|') == FALSE){ #each variable has its own quality variable  
+    
+    temp <- temp %>% 
+       relocate(!!sym(quality_var), .after = last_col())  
+    
+  } 
+  
+  temp %>% 
+    pivot_longer(!state_county, names_to='metrics', values_to='value') %>%   
+    pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
+    arrange(match(metrics, col_to)) %>% 
+    mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
+    select(metrics, everything()) %>% 
+    gt(rowname_col = 'metrics') %>% 
+    tab_header(
+      title = html(glue('<p style="font-weight: bold;">{mb_metrics}</p>')), 
+      subtitle = metrics_desp
+    ) %>% 
+    tab_source_note(str_c('Source:', data_source, sep=' ')) %>% 
+    cols_align(
+      align = 'left',
+      columns = TRUE
+    ) %>% 
+    cols_align(
+      align = 'left',
+      columns = TRUE
+    ) %>% 
+    opt_align_table_header('left') %>% 
+    tab_options(
+      heading.title.font.size = tb_title_size, 
+      heading.subtitle.font.size = tb_subtitle_size, 
+      column_labels.font.size = tb_font_size,
+      table.font.size = tb_font_size,
+      source_notes.font.size = source_note_size, 
+      table.width = pct(tb_width_perc), 
+      table.align = tb_align)
+}
+
+
+unite_col_values <- function(df, colname_str){
+  
+  df <- df %>% 
+    unite(!!sym(glue('{colname_str}_ci')), 
+          glue('{colname_str}_lb'), 
+          glue('{colname_str}_ub'), 
+          sep = ', ', 
+          remove=TRUE,
+          na.rm = TRUE) %>% 
+    
+    mutate_at(vars(matches(glue('{colname_str}_ci'))), function(x) glue('({x})'))
+  
+  return(df)
+}
+
+
+create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
+  
+  mb_metrics <- metrics_info_df[3]
+  mb_vars  <- metrics_info_df[4][[1]]
+  quality_var  <- metrics_info_df[5][[1]]
+  metrics_desp  <- metrics_info_df[7]
+  data_source <- metrics_info_df[8]
+  ci_vars <- metrics_info_df[6]
+  notes <- metrics_info_df[9]
+  col_from <- varname_maps[3][[1]]
+  col_to <- varname_maps[4][[1]]
+  
+  mb_vars_lst <- colnames(dataset %>% select(setdiff(matches(mb_vars), matches('_lb|_ub|_quality'))))
+  
+
+  if (ci_vars == 1){
+    
+    for (val in mb_vars_lst){      # update this to purrr 
+      dataset <- unite_col_values(dataset, val)
+    }
+    
+    ci_str <- 'Confidence Interval'
+    
+  } else if (ci_vars == 2){
+    
+    ci_str <- 'Confidence Interval*'   # *CI not available at this time.
+    
+    # create an empty df      #take this part out as a sep func 
+    col_names <- glue('{mb_vars_lst}_ci')
+    vec <- vector(mode = 'character', length = nrow(dataset) * length(mb_vars_lst))
+    empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
+    colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
+    
+    # bind df with '*_ci' columns with original df 
+    dataset <- dataset %>% bind_cols(empty_ci_df)
+    
+  } else if (ci_vars == 3){
+
+    ci_str <- 'Confidence Interval+'   # '+CI not applicable.
+    
+    # create an empty df 
+    col_names <- glue('{mb_vars_lst}_ci')
+    vec <- vector(mode = 'character', length = nrow(dataset) * length(mb_vars_lst))
+    empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
+    colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
+    
+    # bind df with '*_ci' columns with original df 
+    dataset <- dataset %>% bind_cols(empty_ci_df)
+  }
+  
+  temp <- dataset %>% 
+    select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub')) %>% 
+    mutate_all(as.character) %>% 
+    rename_at(vars(col_from), function(x) col_to)
+    
+  if (str_detect(quality_var, '|') == FALSE){ #each variable has its own quality variable  
+    
+    temp <- temp %>% 
+       relocate(!!sym(quality_var), .after = last_col())  
+    
+  } 
+  
+  temp %>% 
+    pivot_longer(!state_county, names_to='metrics', values_to='value') %>%
+    pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
+    arrange(match(metrics, col_to)) %>% 
+    mutate(metrics = gsub('.*ci', ci_str, metrics)) %>% 
+    mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
+    select(metrics, everything()) %>% 
+    gt(rowname_col = 'metrics') %>% 
+    tab_header(
+      title = html(glue('<p style="font-weight: bold;">{mb_metrics}</p>')), 
+      subtitle = metrics_desp
+    ) %>% 
+    tab_source_note(str_c('Source:', data_source, sep=' ')) %>% 
+    tab_source_note(str_c('Notes:', notes, sep=' ')) %>% 
+    cols_align(
+      align = 'left',
+      columns = TRUE
+    ) %>% 
+    cols_align(
+      align = 'left',
+      columns = TRUE
+    ) %>% 
+    opt_align_table_header('left') %>% 
+    tab_options(
+      heading.title.font.size = tb_title_size, 
+      heading.subtitle.font.size = tb_subtitle_size, 
+      column_labels.font.size = tb_font_size,
+      table.font.size = tb_font_size,
+      source_notes.font.size = source_note_size, 
+      table.width = pct(tb_width_perc), 
+      table.align = tb_align) 
+} 
+
+
+get_vars_info <- function(varname, data_summary_file=m_info){
+  
+  info_lst <- data_summary_file %>% 
+    filter(metric_name == varname) %>%
+    purrr::transpose() %>% 
+    simplify() %>%
+    first()
+  
+  mb_vars <- info_lst[4][[1]]
+  
+  return(list(info_lst=info_lst, mb_vars=mb_vars))
+}
+
+```
+
+## Driver:  Strong and Healthy Families
+
+### Predictor: Financial well-being {.tabset}
+
+#### Summary
+```{r income}
+
+income_varlist <- list(
+  c(
+    'pctl_20', 
+    'pctl_50', 
+    'pctl_80'
+  ), 
+  c(
+    '20th Percentile', 
+    '50th Percentile', 
+    '80th Percentile'
+  ), 
+  c(
+    'pctl_20', 
+    'pctl_20_ci', 
+    'pctl_50', 
+    'pctl_50_ci', 
+    'pctl_80',
+    'pctl_80_ci'
+  ), 
+  c(
+    '20th Percentile', 
+    '20th Percentile ci', 
+    '50th Percentile', 
+    '50th Percentile ci', 
+    '80th Percentile', 
+    '80th Percentile ci'
+  ) 
 )
 
 
+income_m_info_lst <- get_vars_info('Income')$info_lst
+mb_vars <- get_vars_info('Income')$mb_vars
+
+data_sub <- data %>% 
+  mutate_at(vars(matches(mb_vars), -ends_with('_quality')), 
+            function(x) gsub("\\..*","", glue('${x}')))
+
+create_tb(income_m_info_lst, data_sub, income_varlist) 
+
+
+debt_varlist <- list(
+  c('share_debt_coll'),
+  c('% with debt'), 
+  c(
+    'share_debt_coll', 
+    'share_debt_coll_ci'
+  ),
+  c(
+    '% with debt', 
+    '% with debt ci')
+)
+
+m_info_lst <- get_vars_info('Financial Security')$info_lst
+mb_vars <- get_vars_info('Financial Security')$mb_vars
+
+create_tb(m_info_lst, data, debt_varlist) 
+
+```
+
+#### Detail
+
+```{r income detailed}
+
+create_tb_level2(income_m_info_lst, data_sub, income_varlist)
+
+create_tb_level2(m_info_lst, data, debt_varlist)
+
+```
+
+
+### Predictor: Housing {.tabset}
+
+#### Summary
+```{r housing summary}
 
 housing_varlist <- list(
   c(
@@ -172,341 +483,15 @@ housing_varlist <- list(
   )
 )
 
+af_m_info_lst <- get_vars_info('Affordable housing')$info_lst
 
-accuils_varlist <- list(
-  c(
-    'hpsa_yn'
-  ), 
-  c(
-    'Ranking (0-25, higher = greater shortage)'
-  ), 
-  c(
-    'hpsa_yn',
-    'hpsa_yn_ci'
-  ), 
-  c(
-    'Ranking (0-25, higher = greater shortage)',
-    'Ranking (0-25, higher = greater shortage) ci'
-  )
-)
+create_tb(af_m_info_lst, data, housing_varlist) 
 
 ```
 
 
-```{r read-in-data}
-fpath <- 'data/mobility-metrics.csv'
-data <- read_csv(fpath, )
 
-metrics_summary <- 'metrics_summary.csv'
-m_info <- fread(metrics_summary)
-
-#checking missing 
-#summary(data)
-#sapply(data, function(x) sum(is.na(x)))
-
-
-#create unique state-county identifier
-data <- data %>% 
-  mutate(state = str_pad(state, width = 2, side ='left', pad = '0'), 
-         county = str_pad(county, width = 3, side ='left', pad = '0')) %>% 
-  unite('state_county', county_name, state_name, sep = ', ', remove = FALSE) %>% 
-  unite('full_fips', state, county, sep = '', remove = FALSE) %>% 
-  filter(full_fips %in% (params$state_county)) %>% 
-  arrange(factor(full_fips, levels = params$state_county)) %>% 
-  mutate(state_county = gsub('County', '', state_county)) %>% 
-  mutate(state_county = rm_white_comma(state_county))
-  
-#get the upward county - the first element in the parameter 
-upward_county <- data %>% 
-  filter(full_fips == params$state_county[1]) %>% 
-  select(state_county) %>% 
-  pull()
-
-data <- data %>% 
-  mutate_if(is.numeric, function(x) {format(round(x, 2), big.mark=",",scientific=FALSE)})
-
-
-data <- data %>% 
-  mutate(na_quality = 'NA')  #to be used for metrics where there is no quality variable
-
- 
-```
-
-# `r upward_county`
-
-```{r functions}
-
-
-quality_value_mapping <- function(input){
-  if (input == '1.00') {
-    return ('Good')
-  } else if (input == '2.00'){
-    return ('Marginal')
-  } else if (input == '3.00'){
-    return ('Poor')
-  } else 
-    stop("Wrong input for Quality")
-}
-
-create_tb <- function(metrics_info_df, dataset, varname_maps){
-  
-  mb_metrics <- metrics_info_df[3]
-  mb_vars  <- metrics_info_df[4][[1]]
-  quality_var  <- metrics_info_df[5][[1]]
-  metrics_desp  <- metrics_info_df[7]
-  data_source <- metrics_info_df[8]
-  col_from <- varname_maps[1][[1]]
-  col_to <- varname_maps[2][[1]]
-  
-  test <- dataset %>% 
-    select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
-    select(-matches('_lb|_ub')) %>% 
-    select(sort(tidyselect::peek_vars())) %>% 
-    relocate(!!sym(quality_var), .after = last_col()) %>% 
-    rename_at(vars(all_of(col_from)), function(x) col_to) %>% 
-    #mutate(!!quality_var := recode(!!quality_var, "1"="Good", "2"="Marginal", "3"="Poor")) %>%  #this line does not work 
-    pivot_longer(!state_county, names_to='metrics', values_to='value') %>%   
-    pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
-    arrange(match(metrics, col_to)) 
-  
-  print(test)
-  test %>% 
-    mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
-    select(metrics, everything()) %>% 
-    gt(rowname_col = 'metrics') %>% 
-    tab_header(
-      title = html(glue('<p style="font-weight: bold;">{mb_metrics}</p>')), 
-        subtitle = metrics_desp
-    ) %>% 
-      tab_source_note(str_c('Source:', data_source, sep=' ')) %>% 
-      cols_align(
-        align = 'left',
-        columns = TRUE
-     ) %>% 
-    cols_align(
-      align = 'left',
-      columns = TRUE
-    ) %>% 
-    opt_align_table_header('left') %>% 
-    tab_options(
-      heading.title.font.size = tb_title_size, 
-      heading.subtitle.font.size = tb_subtitle_size, 
-      column_labels.font.size = tb_font_size,
-      table.font.size = tb_font_size,
-      source_notes.font.size = source_note_size, 
-      table.width = pct(tb_width_perc), 
-      table.align = tb_align)
-}
-
-
-unite_col_values <- function(df, colname_str){
-
-    df <- df %>% 
-              unite(!!sym(glue('{colname_str}_ci')), 
-                            glue('{colname_str}_lb'), 
-                            glue('{colname_str}_ub'), 
-                    sep = ', ', 
-                    remove=TRUE,
-                    na.rm = TRUE) %>% 
-      
-              mutate_at(vars(matches(glue('{colname_str}_ci'))), function(x) glue('({x})'))
-    
-    return(df)
-}
-
-
-create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
-    
-  mb_metrics <- metrics_info_df[3]
-  mb_vars  <- metrics_info_df[4][[1]]
-  quality_var  <- metrics_info_df[5][[1]]
-  metrics_desp  <- metrics_info_df[7]
-  data_source <- metrics_info_df[8]
-  
-  ci_vars <- metrics_info_df[6]
-  
-  notes <- metrics_info_df[9]
-  col_from <- varname_maps[3][[1]]
-  col_to <- varname_maps[4][[1]]
-
-  print(mb_vars)
-  mb_vars_lst <- colnames(dataset %>% select(setdiff(matches(mb_vars), matches('_lb|_ub|_quality'))))
-  
-  print(mb_vars_lst)
-
-  if (ci_vars == 1){
-    
-    for (val in mb_vars_lst){      # update this to purrr 
-      dataset <- unite_col_values(dataset, val)
-    }
-    
-    ci_str <- 'Confidence Interval'
-    
-  } else if (ci_vars == 2){
-  
-    ci_str <- 'Confidence Interval*'   # *CI not available at this time.
-    
-    # create an empty df      #take this part out as a sep func 
-    col_names <- glue('{mb_vars_lst}_ci')
-    vec <- vector(mode = 'character', length = nrow(dataset) * length(mb_vars_lst))
-    empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
-    colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
-
-    # bind df with '*_ci' columns with original df 
-    dataset <- dataset %>% bind_cols(empty_ci_df)
-              
-  } else if (ci_vars == 3){
-    print('yes ci level 3')
-    
-    ci_str <- 'Confidence Interval+'   # '+CI not applicable.
-    
-    # create an empty df 
-    col_names <- glue('{mb_vars_lst}_ci')
-    vec <- vector(mode = 'character', length = nrow(dataset) * length(mb_vars_lst))
-    empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
-    colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
-
-    # bind df with '*_ci' columns with original df 
-    dataset <- dataset %>% bind_cols(empty_ci_df)
-    print(dataset)
-  }
-  
-  
-  test <- dataset %>% 
-    select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
-    mutate_all(as.character) %>% 
-    relocate(!!sym(quality_var), .after = last_col()) 
-
-  test %>% 
-    rename_at(vars(col_from), function(x) col_to) %>% 
-    pivot_longer(!state_county, names_to='metrics', values_to='value') %>%
-    pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
-    arrange(match(metrics, col_to)) %>% 
-    mutate(metrics = gsub('.*ci', ci_str, metrics)) %>% 
-    mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
-    select(metrics, everything()) %>% 
-    gt(rowname_col = 'metrics') %>% 
-    tab_header(
-      title = html(glue('<p style="font-weight: bold;">{mb_metrics}</p>')), 
-      subtitle = metrics_desp
-    ) %>% 
-    tab_source_note(str_c('Source:', data_source, sep=' ')) %>% 
-    tab_source_note(str_c('Notes:', notes, sep=' ')) %>% 
-    cols_align(
-      align = 'left',
-      columns = TRUE
-   ) %>% 
-    cols_align(
-      align = 'left',
-      columns = TRUE
-    ) %>% 
-  opt_align_table_header('left') %>% 
-  tab_options(
-    heading.title.font.size = tb_title_size, 
-    heading.subtitle.font.size = tb_subtitle_size, 
-    column_labels.font.size = tb_font_size,
-    table.font.size = tb_font_size,
-    source_notes.font.size = source_note_size, 
-    table.width = pct(tb_width_perc), 
-    table.align = tb_align) 
-} 
-
-```
-
-```{r func2}
-
-get_vars_info <- function(varname, data_summary_file=m_info){
-  
-  info_lst <- data_summary_file %>% 
-    filter(metric_name == varname) %>%
-    purrr::transpose() %>% 
-    simplify() %>%
-    first()
-  
-  mb_vars <- info_lst[4][[1]]
-  
-  return(list(info_lst=info_lst, mb_vars=mb_vars))
-}
-
-```
-
-## Driver:  Strong and Healthy Families
-
-### Predictors: Financial well-being {.tabset}
-
-#### Summary
-```{r income}
-
-
-m_info_lst <- get_vars_info('Income')$info_lst
-mb_vars <- get_vars_info('Income')$mb_vars
-
-data_sub <- data %>% 
-         mutate_at(vars(matches(mb_vars), -ends_with('_quality')), 
-                   function(x) gsub("\\..*","", glue('${x}')))
-
-create_tb(m_info_lst, data_sub, income_varlist) 
-
-```
-
-#### Detail
-```{r income detailed}
-create_tb_level2(m_info_lst, data_sub, income_varlist)
-```
-
-
-#### Summary
-```{r debt}
-
-debt_varlist <- list(
-  c('share_debt_coll'),
-  c('% with debt'), 
-  c(
-    'share_debt_coll', 
-    'share_debt_coll_ci'
-  ),
-  c(
-    '% with debt', 
-    '% with debt ci')
-)
-
-m_info_lst <- get_vars_info('Financial Security')$info_lst
-mb_vars <- get_vars_info('Financial Security')$mb_vars
-
-
-create_tb(m_info_lst, data, debt_varlist) 
-
-```
-
-#### Detail
-```{r debt}
-create_tb_level2(m_info_lst, data, debt_varlist)
-```
-
-
-### Housing {.tabset}
-
-#### Summary
-```{r housing summary}
-
-
-m_info_lst <- get_vars_info('Affordable housing')$info_lst
-
-create_tb(m_info_lst, data, housing_varlist) 
-
-```
-
-#### Detail
-
-```{r housing detailed}
-
-create_tb_level2(m_info_lst, data, housing_varlist)
-
-```
-
-#### Summary
-```{r Housing instablity and homelessness}
-
+```{r}
 
 housing_insta_varlist <- list(
   c(
@@ -525,12 +510,11 @@ housing_insta_varlist <- list(
   ), 
   c(
     'Number homeless',
-    'Number homeless ci',
+    note_ul_bound, 
     'Share homeless',
     'Share homeless ci'
   )
 )
-  
 
 m_info_lst <- get_vars_info('Housing instablity and homelessness')$info_lst
 
@@ -539,27 +523,74 @@ create_tb(m_info_lst, data, housing_insta_varlist)
 
 ```
 
+
 #### Detail
 
-```{r housing2}
+```{r housing detailed}
 
-##problem
+create_tb_level2(af_m_info_lst, data, housing_varlist)
 
 create_tb_level2(m_info_lst, data, housing_insta_varlist) 
 
 ```
 
 
-### Family {.tabset}
+### Predictor: Family {.tabset}
 
 #### Summary
 
 ```{r family summary}
 
+famstruc_varlist <- list(
+  c(
+    'famstruc_2par_married', 
+    'famstruc_2par_unmarried', 
+    'famstruc_1par_plusadults', 
+    'famstruc_1par_noadults',
+    'famstruc_0par_2adults',	
+    'famstruc_0par_other'
+  ), 
+  c(
+    'Two married biological/adoptive parents', 
+    'One biological/adoptive parent and that parents current spouse/partner', 
+    'One biological/adoptive parent and at least one other adult', 
+    'One biological/adoptive parent',
+    'Zero biological/adoptive parents, but at least two adults',
+    'Other'
+  ), 
+  c(
+    'famstruc_2par_married', 
+    'famstruc_2par_married_ci',
+    'famstruc_2par_unmarried', 
+    'famstruc_2par_unmarried_ci',
+    'famstruc_1par_plusadults', 
+    'famstruc_1par_plusadults_ci', 
+    'famstruc_1par_noadults',
+    'famstruc_1par_noadults_ci',
+    'famstruc_0par_2adults',	
+    'famstruc_0par_2adults_ci',	
+    'famstruc_0par_other',
+    'famstruc_0par_other_ci'
+  ), 
+  c(
+    'Two married biological/adoptive parents', 
+    'Two married biological/adoptive parents ci', 
+    'One biological/adoptive parent and that parents current spouse/partner', 
+    'One biological/adoptive parent and that parents current spouse/partner ci', 
+    'One biological/adoptive parent and at least one other adult', 
+    'One biological/adoptive parent and at least one other adult ci', 
+    'One biological/adoptive parent',
+    'One biological/adoptive parent ci',
+    'Zero biological/adoptive parents, but at least two adults',
+    'Zero biological/adoptive parents, but at least two adults ci',
+    'Other', 
+    'Other ci'
+  ) 
+)
 
-m_info_lst <- get_vars_info('Family structure and stability')$info_lst
+fss_m_info_lst <- get_vars_info('Family structure and stability')$info_lst
 
-create_tb(m_info_lst, data, famstruc_varlist) 
+create_tb(fss_m_info_lst, data, famstruc_varlist) 
 
 ```
 
@@ -567,68 +598,74 @@ create_tb(m_info_lst, data, famstruc_varlist)
 
 ```{r family detailed}
 
-create_tb_level2(m_info_lst, data, famstruc_varlist)
+create_tb_level2(fss_m_info_lst, data, famstruc_varlist)
 
 ```
 
 
-### Health
+### Predictor: Health {.tabset}
 
 #### Summary 
 
 ```{r Access to and utilization of health services}
 
+accuils_varlist <- list(
+  c(
+    'hpsa_yn'
+  ), 
+  c(
+    'Ranking (0-25, higher = greater shortage)'
+  ), 
+  c(
+    'hpsa_yn',
+    'hpsa_yn_ci'
+  ), 
+  c(
+    'Ranking (0-25, higher = greater shortage)',
+    'Ranking (0-25, higher = greater shortage) ci'
+  )
+)
 
 m_info_lst <- get_vars_info('Access to and utilization of health services')$info_lst
 
 create_tb(m_info_lst, data, accuils_varlist) 
 
 
-```
 
-#### Detail
-
-```{r accuils detailed}
-
-create_tb_level2(m_info_lst, data, accuils_varlist) 
-
-```
-
-
-#### Summary 
-
-```{r Neonatal} 
-
-###Problem
 neonatal_varlist <- list(
   c('lbw'),
   c('% low-weight birth'),
   c(
     'lbw', 
     'lbw_ci'
-    ),
+  ),
   c(
     '% low-weight birth', 
-    '% low-weight birth ci')
+    note_ul_bound)
 )
 
-m_info_lst <- get_vars_info('Neonatal Health')$info_lst
+nh_m_info_lst <- get_vars_info('Neonatal Health')$info_lst
 
-create_tb(m_info_lst, data, neonatal_varlist) 
+create_tb(nh_m_info_lst, data, neonatal_varlist) 
+
 
 ```
+
 
 #### Detail
 
-```{r Neonatal detailed}
+```{r}
 
-create_tb_level2(m_info_lst, data, neonatal_varlist) 
+create_tb_level2(m_info_lst, data, accuils_varlist) 
+
+create_tb_level2(nh_m_info_lst, data, neonatal_varlist) 
 
 ```
 
+
 ## Driver: Supportive Communities
 
-### Predictors: Local Governance {.tabset}
+### Predictor: Local Governance {.tabset}
 
 #### Summary 
 
@@ -640,62 +677,64 @@ election_turnout_varlist <- list(
   c(
     'election_turnout', 
     'election_turnout_ci'
-    ),
+  ),
   c(
     '% voting', 
     '% voting ci')
 )
 
-m_info_lst <- get_vars_info('Political Participation')$info_lst
+et_m_info_lst <- get_vars_info('Political Participation')$info_lst
 
-create_tb(m_info_lst, data, election_turnout_varlist) 
-
-```
-
-#### Detail
-
-```{r ele detailed}
-
-create_tb_level2(m_info_lst, data, election_turnout_varlist) 
-
-```
+create_tb(et_m_info_lst, data, election_turnout_varlist) 
 
 
-#### Summary 
-
-```{r Descriptive representation among local officials}
 
 desp_rep_varlist <- list(
-  c('white_nonhispanic,
-    black_nonhispanic',
-    'hispanic',
-    'asian_other'),
+  c('white_nonhispanic',
+    'white_nonhispanic_quality',
+    'black_nonhispanic',
+    'black_nonhispanic_quality', 
+    'hispanic_representation',
+    'hispanic_representation_quality',
+    'asian_other',
+    'asian_other_quality'),
   c('Non-Black, Non-Hispanic', 
+    'Non-Black, Non-Hispanic_quality', 
     'Black, Non-Hispanic', 
-    'Hispanic', 
-    'Asian'
-    ),
+    'Black, Non-Hispanic_quality', 
+    'hispanic_representation', 
+    'hispanic_representation_quality',
+    'Asian',
+    'Asian_quality'
+  ),
   c(
     'white_nonhispanic', 
     'white_nonhispanic_ci',
+    'white_nonhispanic_quality',
     'black_nonhispanic',
     'black_nonhispanic_ci',
-    'hispanic', 
-    'hispanic_ci',
+    'black_nonhispanic_quality', 
+    'hispanic_representation', 
+    'hispanic_representation_ci',
+    'hispanic_representation_quality',
     'asian_other', 
-    'asian_other_ci' 
-    ),
+    'asian_other_ci',
+    'asian_other_quality'
+  ),
   c('Non-Black, Non-Hispanic', 
     'Non-Black, Non-Hispanic ci', 
+    'Non-Black, Non-Hispanic_quality',
     'Black, Non-Hispanic', 
     'Black, Non-Hispanic ci', 
-    'Hispanic', 
-    'Hispanic ci', 
+    'Black, Non-Hispanic_quality', 
+    'hispanic ', 
+    'hispanic ci', 
+    'hispanic_quality',
     'Asian',
-    'Asian ci'
-    )
+    'Asian ci',
+    'Asian_quality'
+  )
 )
-
 
 m_info_lst <- get_vars_info('Descriptive representation among local officials')$info_lst
 
@@ -704,19 +743,19 @@ create_tb(m_info_lst, data, desp_rep_varlist)
 
 ```
 
-
 #### Detail
 
-```{r trans cost transit_trips}
+```{r ele detailed}
+
+create_tb_level2(et_m_info_lst, data, election_turnout_varlist) 
 
 create_tb_level2(m_info_lst, data, desp_rep_varlist) 
-
 
 ```
 
 
 
-### Neighborhoods {.tabset}
+### Predictor: Neighborhoods {.tabset}
 
 #### Summary 
 
@@ -728,30 +767,56 @@ econ_inc_varlist <- list(
   c(
     'poverty_exposure', 
     'poverty_exposure_ci'
-    ),
+  ),
   c(
     '% in high poverty neigborhoods', 
     '% in high poverty neigborhoods ci')
 )
 
-m_info_lst <- get_vars_info('Economic Inclusion')$info_lst
+ei_m_info_lst <- get_vars_info('Economic Inclusion')$info_lst
 
-create_tb(m_info_lst, data, econ_inc_varlist) 
+create_tb(ei_m_info_lst, data, econ_inc_varlist) 
 
 
-```
 
-#### Detail
+race_div <- list(
+  c('white_nh_exposure',
+    'white_nh_exposure_quality', 
+    'black_nh_exposure',
+    'black_nh_exposure_quality', 
+    'hispanic_exposure',
+    'hispanic_exposure_quality'),
+  c('Non-Black, Non-Hispanic to all other', 
+    'Non-Black, Non-Hispanic to all other_quality', 
+    'Black, Non-Hispanic to all other', 
+    'Black, Non-Hispanic to all other_quality', 
+    'Hispanic to all other', 
+    'Hispanic to all other_quality'
+  ),
+  c('white_nh_exposure',
+    'white_nh_exposure_ci',
+    'white_nh_exposure_quality', 
+    'black_nh_exposure',
+    'black_nh_exposure_ci',
+    'black_nh_exposure_quality', 
+    'hispanic_exposure',
+    'hispanic_exposure_ci',
+    'hispanic_exposure_quality'),
+  c('Non-Black, Non-Hispanic to all other', 
+    'Non-Black, Non-Hispanic to all other_ci', 
+    'Non-Black, Non-Hispanic to all other_quality',
+    'Black, Non-Hispanic to all other', 
+    'Black, Non-Hispanic to all other_ci',
+    'Black, Non-Hispanic to all other_quality', 
+    'Hispanic to all other', 
+    'Hispanic to all other_ci', 
+    'Hispanic to all other_quality'
+  )
+)
 
-```{r Economic Inclusion}
+rd_m_info_lst <- get_vars_info('Racial Diversity')$info_lst
+create_tb(rd_m_info_lst, data, race_div) 
 
-create_tb_level2(m_info_lst, data, econ_inc_varlist) 
-
-```
-
-#### Summary 
-
-```{r trans transit_trips}
 
 trans_access <- list(
   c('transit_trips'),
@@ -759,35 +824,18 @@ trans_access <- list(
   c(
     'transit_trips', 
     'transit_trips_ci'
-    ),
+  ),
   c(
     'Transit trips', 
     'Transit trips ci')
 )
 
 
-m_info_lst <- get_vars_info('Transportation access')$info_lst
+trans_info_lst <- get_vars_info('Transportation access')$info_lst
 
-create_tb(m_info_lst, data, trans_access) 
-
-
-```
+create_tb(trans_info_lst, data, trans_access) 
 
 
-#### Detail
-
-```{r trans transit_trips}
-
-create_tb_level2(m_info_lst, data, trans_access) 
-
-
-```
-
-
-
-#### Summary 
-
-```{r trans cost transit_trips}
 
 trans_cost_varlist <- list(
   c('transit_cost'),
@@ -795,32 +843,17 @@ trans_cost_varlist <- list(
   c(
     'transit_cost', 
     'transit_cost_ci'
-    ),
+  ),
   c(
     'Transit cost', 
     'Transit cost ci')
 )
 
-m_info_lst <- get_vars_info('Transportation access-cost')$info_lst
-mb_vars <- get_vars_info('Transportation access-cost')$mb_vars
+tr_cost_m_info_lst <- get_vars_info('Transportation access-cost')$info_lst
 
-create_tb(m_info_lst, data, trans_cost_varlist) 
-
-```
+create_tb(tr_cost_m_info_lst, data, trans_cost_varlist) 
 
 
-#### Detail
-
-```{r trans cost transit_trips}
-
-create_tb_level2(m_info_lst, data, trans_cost_varlist) 
-
-```
-
-
-#### Summary 
-
-```{r trans cost transit_trips}
 
 env_varlist <- list(
   c('haz_idx'),
@@ -828,30 +861,37 @@ env_varlist <- list(
   c(
     'haz_idx', 
     'haz_idx_ci'
-    ),
+  ),
   c(
     'AQI', 
     'AQI ci')
 )
 
-m_info_lst <- get_vars_info('Environmental Quality')$info_lst
+env_m_info_lst <- get_vars_info('Environmental Quality')$info_lst
 
-create_tb(m_info_lst, data, env_varlist) 
+create_tb(env_m_info_lst, data, env_varlist) 
 
 
 ```
-
 
 #### Detail
 
-```{r trans cost transit_trips}
+```{r Economic Inclusion detailed}
 
-create_tb_level2(m_info_lst, data, env_varlist) 
+create_tb_level2(ei_m_info_lst, data, econ_inc_varlist) 
+
+create_tb_level2(rd_m_info_lst, data, race_div) 
+
+create_tb_level2(trans_info_lst, data, trans_access) 
+
+create_tb_level2(tr_cost_m_info_lst, data, trans_cost_varlist) 
+
+create_tb_level2(env_m_info_lst, data, env_varlist) 
 
 ```
 
 
-### Safety {.tabset}
+### Predictor: Safety {.tabset}
 
 
 #### Summary 
@@ -862,47 +902,29 @@ exp_crime_varlist <- list(
   c(
     'violent_crime_rate',
     'property_crime_rate'
-    ),
+  ),
   c(
     'Violent crime', 
     'Property crime'
-    ),
+  ),
   c(
     'violent_crime_rate',
     'violent_crime_rate_ci', 
     'property_crime_rate',
     'property_crime_rate_ci'
-    ),
-    c(
+  ),
+  c(
     'Violent crime', 
     'Violent crime ci', 
     'Property crime', 
     'Property crime ci'
-    )
+  )
 )
 
-m_info_lst <- get_vars_info('Exposure to crime')$info_lst
+ec_m_info_lst <- get_vars_info('Exposure to crime')$info_lst
 
-create_tb(m_info_lst, data, exp_crime_varlist) 
+create_tb(ec_m_info_lst, data, exp_crime_varlist) 
 
-
-```
-
-
-#### Detail
-
-```{r trans cost transit_trips}
-
-create_tb_level2(m_info_lst, data, exp_crime_varlist) 
-
-
-```
-
-
-
-#### Summary 
-
-```{r Overly punative policing}
 
 punative_policing <- list(
   c('juvenile_arrest_rate'),
@@ -910,7 +932,7 @@ punative_policing <- list(
   c(
     'juvenile_arrest_rate', 
     'juvenile_arrest_rate_ci'
-    ),
+  ),
   c(
     'Juvenile arrests', 
     'Juvenile arrests ci')
@@ -927,15 +949,17 @@ create_tb(m_info_lst, data, punative_policing)
 
 #### Detail
 
-```{r trans cost transit_trips}
+```{r exp_crime_varlist d}
+
+create_tb_level2(ec_m_info_lst, data, exp_crime_varlist) 
 
 create_tb_level2(m_info_lst, data, punative_policing) 
 
 ```
 
-## Driver: earn_and_learn
+## Driver: Earn and learn
 
-### education	
+### Predictor: Education	{.tabset}
 
 #### Summary 
 
@@ -947,32 +971,16 @@ share_in_presch_varlist <- list(
   c(
     'share_in_preschool', 
     'share_in_preschool_ci'
-    ),
+  ),
   c(
     '% in pre-k', 
     '% in pre-k ci')
 )
 
-m_info_lst <- get_vars_info('Access to Preschool')$info_lst
+ap_m_info_lst <- get_vars_info('Access to Preschool')$info_lst
 
-create_tb(m_info_lst, data, share_in_presch_varlist) 
+create_tb(ap_m_info_lst, data, share_in_presch_varlist) 
 
-```
-
-#### Detail
-
-```{r trans cost transit_trips}
-
-create_tb_level2(m_info_lst, data, share_in_presch_varlist) 
-
-
-```
-
-
-
-#### Summary 
-
-```{r Effective public education}
 
 eff_pub_ed <- list(
   c('learning_rate'),
@@ -980,70 +988,62 @@ eff_pub_ed <- list(
   c(
     'learning_rate', 
     'learning_rate_ci'
-    ),
+  ),
   c(
-    'change in ELA achievement', 
-    'change in ELA achievement ci')
+    'Change in ELA achievement', 
+    note_ul_bound)
 )
 
 
-m_info_lst <- get_vars_info('Effective public education')$info_lst
+epd_m_info_lst <- get_vars_info('Effective public education')$info_lst
+create_tb(epd_m_info_lst, data, eff_pub_ed) 
 
-create_tb(m_info_lst, data, eff_pub_ed) 
-
-
-```
-
-
-#### Detail
-
-```{r trans cost transit_trips}
-
-create_tb_level2(m_info_lst, data, eff_pub_ed) 
-
-
-```
-
-
-
-#### Summary 
-
-```{r Student poverty concentration}
 
 stu_poverty <- list(
-  c('transit_trips'),
-  c('Transit trips'),
-  c(
-    'transit_trips', 
-    'transit_trips_ci'
+  c('frpl40_white', 
+    'frpl40_white_quality',
+    'frpl40_black',
+    'frpl40_black_quality',
+    'frpl40_hispanic', 
+    'frpl40_hispanic_quality'
     ),
   c(
-    'Transit trips', 
-    'Transit trips ci')
+    'White, non-Hispanic', 
+    'White, non-Hispanic_quality',
+    'Black, non-Hispanic', 
+    'Black, non-Hispanic_quality', 
+    'Hispanic', 
+    'Hispanic_quality'
+    ),
+  c('frpl40_white', 
+    'frpl40_white_ci', 
+    'frpl40_white_quality',
+    'frpl40_black',
+    'frpl40_black_ci', 
+    'frpl40_black_quality',
+    'frpl40_hispanic', 
+    'frpl40_hispanic_ci',
+    'frpl40_hispanic_quality'
+    ),
+  c(
+    'White, non-Hispanic', 
+    'White, non-Hispanic_ci', 
+    'White, non-Hispanic_quality',
+    'Black, non-Hispanic', 
+    'Black, non-Hispanic_ci',
+    'Black, non-Hispanic_quality', 
+    'Hispanic', 
+    'Hispanic_ci',
+    'Hispanic_quality'
+    )
 )
 
 
-m_info_lst <- get_vars_info('Student poverty concentration')$info_lst
+spoverty_m_info_lst <- get_vars_info('Student poverty concentration')$info_lst
 
-create_tb(m_info_lst, data, stu_poverty) 
-
-
-```
+create_tb(spoverty_m_info_lst, data, stu_poverty) 
 
 
-#### Detail
-
-```{r trans cost transit_trips}
-
-create_tb_level2(m_info_lst, data, stu_poverty) 
-
-
-```
-
-
-#### Summary 
-
-```{r College readiness}
 
 college_readiness <- list(
   c('share_hs_degree'),
@@ -1051,7 +1051,7 @@ college_readiness <- list(
   c(
     'share_hs_degree', 
     'share_hs_degree_ci'
-    ),
+  ),
   c(
     '% with HS degree', 
     '% with HS degree ci')
@@ -1061,23 +1061,30 @@ m_info_lst <- get_vars_info('College readiness')$info_lst
 create_tb(m_info_lst, data, college_readiness) 
 
 
+
+
 ```
 
 #### Detail
 
-```{r trans cost transit_trips}
+```{r share_in_presch_varlist d}
+
+create_tb_level2(ap_m_info_lst, data, share_in_presch_varlist) 
+
+create_tb_level2(epd_m_info_lst, data, eff_pub_ed) 
+
+create_tb_level2(spoverty_m_info_lst, data, stu_poverty) 
 
 create_tb_level2(m_info_lst, data, college_readiness) 
 
 ```
 
 
-### Work	
-
+### Predictor: Work {.tabset}
 
 #### Summary 
 
-```{r Employment}
+```{r}
 
 emp_lst <- list(
   c('share_employed'),
@@ -1085,34 +1092,18 @@ emp_lst <- list(
   c(
     'share_employed', 
     'share_employed_ci'
-    ),
+  ),
   c(
     'Employment to population ratio', 
     'Employment to population ratio ci')
 )
 
 
-m_info_lst <- get_vars_info('Employment')$info_lst
+emp_m_info_lst <- get_vars_info('Employment')$info_lst
 
-create_tb(m_info_lst, data, emp_lst) 
-
-
-```
+create_tb(emp_m_info_lst, data, emp_lst) 
 
 
-#### Detail
-
-```{r trans cost transit_trips}
-
-create_tb_level2(m_info_lst, data, emp_lst) 
-
-```
-
-
-
-#### Summary 
-
-```{r trans cost transit_trips}
 
 job_wage <- list(
   c('average_to_living_wage_ratio'),
@@ -1120,7 +1111,7 @@ job_wage <- list(
   c(
     'average_to_living_wage_ratio', 
     'average_to_living_wage_ratio_ci'
-    ),
+  ),
   c(
     'Ratio of pay to living wage', 
     'Ratio of pay to living wage ci')
@@ -1131,12 +1122,15 @@ m_info_lst <- get_vars_info('Access to jobs paying a living wage')$info_lst
 
 create_tb(m_info_lst, data, job_wage) 
 
+
 ```
 
 
 #### Detail
 
-```{r trans cost transit_trips}
+```{r}
+
+create_tb_level2(emp_m_info_lst, data, emp_lst) 
 
 create_tb_level2(m_info_lst, data, job_wage) 
 
@@ -1153,5 +1147,10 @@ create_tb_level2(m_info_lst, data, job_wage)
 ## Additional Notes
 | Metrics requiring orginal data collection: 
 |    Overall health: Share of adults who rate their own and their children’s health as good or excellent
+|    Belonginess: Inclusion of other in the self scale
+|    Social Capital: Social capital community benchmark scale
+|    Exposure to Trauma: Adverse childhood experiences scale
+|
 | *Confidence Interval: Confidence interval not available at this time
 | +Confidence Interval: Confidence interval not applicable
+| Lower/Upper bound:  The data used to construct this metric do not lend themselves to conventional confidence intervals. The value of the metric shown represents are best estimate; the lower and upper bounds represent alternative estimates of the metric under different assumptions about missing data.
