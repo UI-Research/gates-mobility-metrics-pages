@@ -175,8 +175,7 @@ data <- data %>%
 
 
 data <- data %>% 
-  mutate_at(vars(ends_with('_quality')), 
-            function(x) gsub('\\s+', '', x)) %>% 
+  mutate_at(vars(-one_of('state_county')), function(x) gsub('\\s+', '', x)) %>% 
   mutate_at(vars(ends_with('_quality')), 
             function(x) recode(x, `1` = 'Good', `2` = 'Marginal', `3` = 'Poor'))
 
@@ -525,7 +524,7 @@ housing_insta_varlist <- list(
   )
 )
 
-m_info_lst <- get_vars_info('Housing instablity and homelessness')$info_lst
+m_info_lst <- get_vars_info('Housing instability and homelessness')$info_lst
 
 create_tb(m_info_lst, data, housing_insta_varlist) 
 
@@ -772,14 +771,14 @@ create_tb_level2(m_info_lst, data, desp_rep_varlist)
 
 econ_inc_varlist <- list(
   c('poverty_exposure'),
-  c('% in high poverty neigborhoods'),
+  c('% in high poverty neighborhoods'),
   c(
     'poverty_exposure', 
     'poverty_exposure_ci'
   ),
   c(
-    '% in high poverty neigborhoods', 
-    '% in high poverty neigborhoods ci')
+    '% in high poverty neighborhoods', 
+    '% in high poverty neighborhoods ci')
 )
 
 ei_m_info_lst <- get_vars_info('Economic inclusion')$info_lst
@@ -860,10 +859,7 @@ trans_cost_varlist <- list(
 
 tr_cost_m_info_lst <- get_vars_info('Transportation access-cost')$info_lst
 
-create_tb(tr_cost_m_info_lst, data, trans_cost_varlist) %>% 
-  tab_header(
-    title = html(glue('<p style="font-weight: bold;">Transportation access</p>'))
-  )
+create_tb(tr_cost_m_info_lst, data, trans_cost_varlist) 
 
 
 env_varlist <- list(
@@ -895,10 +891,7 @@ create_tb_level2(rd_m_info_lst, data, race_div)
 
 create_tb_level2(trans_info_lst, data, trans_access) 
 
-create_tb_level2(tr_cost_m_info_lst, data, trans_cost_varlist) %>% 
-  tab_header(
-    title = html(glue('<p style="font-weight: bold;">Transportation access</p>'))
-  )
+create_tb_level2(tr_cost_m_info_lst, data, trans_cost_varlist) 
 
 create_tb_level2(env_m_info_lst, data, env_varlist) 
 
@@ -1169,7 +1162,7 @@ create_tb_level2(m_info_lst, data, job_wage)
 
 
 ## Additional Notes
-| Metrics requiring orginal data collection: 
+| Metrics requiring original data collection: 
 |    Overall health: Share of adults who rate their own and their children’s health as good or excellent
 |    Belonginess: Inclusion of other in the self scale
 |    Social Capital: Social capital community benchmark scale
