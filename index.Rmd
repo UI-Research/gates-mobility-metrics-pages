@@ -366,7 +366,9 @@ get_vars_info <- function(varname, data_summary_file=m_info){
 
 ## Driver:  Strong and Healthy Families
 
-### Predictor: Financial well-being 
+### Domain: Financial well-being 
+
+*Visit [here](description.html#domain-financial-well-being) for a thorough description of this domain.*
 
 #### Income {.tabset}
 
@@ -465,7 +467,9 @@ create_tb_level2(m_info_lst, data, debt_varlist)
 <br><br>
 
 
-### Predictor: Housing
+### Domain: Housing
+
+*Visit [here](description.html#domain-housing) for a thorough description of this domain.*
 
 #### Affordable housing {.tabset}
 
@@ -559,7 +563,9 @@ create_tb_level2(m_info_lst, data, housing_insta_varlist)
 <br><br>
 
 
-### Predictor: Family 
+### Domain: Family 
+
+*Visit [here](description.html#domain-family-stability) for a thorough description of this domain.*
 
 #### Family structure and stability {.tabset}
 
@@ -632,7 +638,9 @@ create_tb_level2(fss_m_info_lst, data, famstruc_varlist)
 <br><br>
 
 
-### Predictor: Health 
+### Domain: Health 
+
+*Visit [here](description.html#domain-health) for a thorough description of this domain.*
 
 #### Access to and utilization of health services {.tabset}
 
@@ -707,7 +715,9 @@ create_tb_level2(nh_m_info_lst, data, neonatal_varlist)
 
 ## Driver: Supportive Communities
 
-### Predictor: Local Governance 
+### Domain: Local Governance 
+
+*Visit [here](description.html#domain-local-governance) for a thorough description of this domain.*
 
 #### Political participation {.tabset}
 
@@ -816,7 +826,9 @@ create_tb_level2(m_info_lst, data, desp_rep_varlist)
 ```
 
 
-### Predictor: Neighborhoods 
+### Domain: Neighborhoods 
+
+*Visit [here](description.html#domain-neighborhoods) for a thorough description of this domain.*
 
 #### Economic inclusion {.tabset}
 
@@ -1029,7 +1041,9 @@ create_tb_level2(env_m_info_lst, data, env_varlist)
 
 
 
-### Predictor: Safety
+### Domain: Safety
+
+*Visit [here](description.html#domain-safety) for a thorough description of this domain.*
 
 #### Exposure to crime {.tabset}
 
@@ -1131,7 +1145,9 @@ create_tb_level2(m_info_lst, data_sub_punitive, punative_policing)
 
 ## Driver: Earn and learn
 
-### Predictor: Education
+### Domain: Education
+
+*Visit [here](description.html#domain-education) for a thorough description of this domain.*
 
 #### Access to preschool {.tabset}
 
@@ -1304,7 +1320,9 @@ create_tb_level2(m_info_lst, data, college_readiness)
 <br><br>
 
 
-### Predictor: Work
+### Domain: Work
+
+*Visit [here](description.html#domain-work) for a thorough description of this domain.*
 
 #### Employment {.tabset}
 
