@@ -75,7 +75,7 @@ Quality, `transit_cost_quality`
 
 ## Environmental quality
 AQI, `haz_idx`
-Quality, `haz_idx, quality`
+Quality, `haz_idx_quality`
 
 ## Exposure to crime
 Violent crime, `violent_crime_rate`
@@ -90,7 +90,7 @@ Quality, `jjarrest_rate_quality`
 
 ## Access to preschool
 % in pre-k, `share_in_preschool`
-Quality, `share_in_preschool_quality`
+Quality, `preschool_quality`
 
 ## Effective public education
 change in ELA achievement, `learning_rate`
@@ -106,12 +106,12 @@ Quality, `frpl40_hispanic_quality`
 
 ## College readiness
 % with HS degree, `share_hs_degree`
-Quality, `share_hs_degree_quality`
+Quality, `hs_degree_quality`
 
 ## Employment
 Employment to population ratio, `share_employed`
-Quality, `share_employed_quality`
+Quality, `employed_quality`
 
 ## Ratio of pay to living wage
 Ratio of pay to living wage, `average_to_living_wage_ratio`
-Quality, `average_to_living_wage_ratio_quality`
+Quality, `wage_ratio_quality`
