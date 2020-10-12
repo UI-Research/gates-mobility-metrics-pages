@@ -113,6 +113,13 @@ data <- read_csv(fpath, )
 metrics_summary <- 'metrics_summary.csv'
 m_info <- fread(metrics_summary)
 
+m_info <- m_info %>% 
+  mutate_at(vars(c('notes', 'metrics_description', 'source_data')), 
+            function(x) gsub("&#700;", "'", x)) %>% 
+  mutate_at(vars(c('notes', 'metrics_description', 'source_data')), 
+            function(x) gsub("\"\"", "\"", x)) 
+
+
 #checking missing 
 #summary(data)
 #sapply(data, function(x) sum(is.na(x)))
@@ -189,17 +196,17 @@ create_tb <- function(metrics_info_df, dataset, varname_maps){
   data_source <- metrics_info_df[8]
   col_from <- varname_maps[1][[1]]
   col_to <- varname_maps[2][[1]]
-
+  
   temp <- dataset %>% 
-      select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
-      select(-matches('_lb|_ub')) %>% 
-      select(sort(tidyselect::peek_vars())) %>% 
-      rename_at(vars(all_of(col_from)), function(x) col_to) 
-
+    select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
+    select(-matches('_lb|_ub')) %>% 
+    select(sort(tidyselect::peek_vars())) %>% 
+    rename_at(vars(all_of(col_from)), function(x) col_to) 
+  
   if (str_detect(quality_var, '|') == FALSE){ #each variable has its own quality variable  
     
     temp <- temp %>% 
-       relocate(!!sym(quality_var), .after = last_col())  
+      relocate(!!sym(quality_var), .after = last_col())  
     
   } 
   
@@ -231,7 +238,15 @@ create_tb <- function(metrics_info_df, dataset, varname_maps){
       table.font.size = tb_font_size,
       source_notes.font.size = source_note_size, 
       table.width = pct(tb_width_perc), 
-      table.align = tb_align)
+      table.align = tb_align) %>% 
+    tab_style(
+      style = list(
+        cell_text(style = "italic")
+      ),
+      locations = cells_body(
+        columns = TRUE,
+        rows = metrics == 'Quality')
+    )
 }
 
 
@@ -265,7 +280,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
   
   mb_vars_lst <- colnames(dataset %>% select(setdiff(matches(mb_vars), matches('_lb|_ub|_quality'))))
   
-
+  
   if (ci_vars == 1){
     
     for (val in mb_vars_lst){      # update this to purrr 
@@ -288,7 +303,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     dataset <- dataset %>% bind_cols(empty_ci_df)
     
   } else if (ci_vars == 3){
-
+    
     ci_str <- 'Confidence Interval+'   # '+CI not applicable.
     
     # create an empty df 
@@ -305,11 +320,11 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub')) %>% 
     mutate_all(as.character) %>% 
     rename_at(vars(col_from), function(x) col_to)
-    
+  
   if (str_detect(quality_var, '|') == FALSE){ #each variable has its own quality variable  
     
     temp <- temp %>% 
-       relocate(!!sym(quality_var), .after = last_col())  
+      relocate(!!sym(quality_var), .after = last_col())  
     
   } 
   
@@ -343,7 +358,15 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
       table.font.size = tb_font_size,
       source_notes.font.size = source_note_size, 
       table.width = pct(tb_width_perc), 
-      table.align = tb_align) 
+      table.align = tb_align) %>% 
+    tab_style(
+      style = list(
+        cell_text(style = "italic")
+      ),
+      locations = cells_body(
+        columns = TRUE,
+        rows = metrics == 'Quality')
+    )
 } 
 
 
@@ -365,10 +388,12 @@ get_vars_info <- function(varname, data_summary_file=m_info){
 <br>
 
 ## Driver:  Strong and Healthy Families
+<br>
 
 ### Domain: Financial well-being 
 
 *Visit [here](description.html#domain-financial-well-being) for a thorough description of this domain.*
+
 
 #### Income {.tabset}
 
@@ -419,7 +444,7 @@ create_tb(income_m_info_lst, data_sub, income_varlist)
 
 
 ```
-<br><br>
+<br>
 
 ##### Detail
 ```{r}
@@ -427,8 +452,7 @@ create_tb(income_m_info_lst, data_sub, income_varlist)
 create_tb_level2(income_m_info_lst, data_sub, income_varlist)
 
 ```
-<br><br>
-
+<br>
 
 #### Financial security {.tabset}
 
@@ -505,7 +529,7 @@ create_tb(af_m_info_lst, data, housing_varlist)
 
 
 ```
-<br><br>
+<br>
 
 ##### Detail
 ```{r}
@@ -514,7 +538,7 @@ create_tb_level2(af_m_info_lst, data, housing_varlist)
 
 
 ```
-<br><br>
+<br>
 
 
 #### Housing instability and homelessness {.tabset}
@@ -668,7 +692,7 @@ m_info_lst <- get_vars_info('Access to and utilization of health services')$info
 
 create_tb(m_info_lst, data, accuils_varlist) 
 ```
-<br><br>
+<br>
 
 ##### Detail
 
@@ -677,7 +701,7 @@ create_tb(m_info_lst, data, accuils_varlist)
 create_tb_level2(m_info_lst, data, accuils_varlist) 
 
 ```
-<br><br>
+<br>
 
 
 #### Neonatal health {.tabset}
@@ -714,6 +738,7 @@ create_tb_level2(nh_m_info_lst, data, neonatal_varlist)
 
 
 ## Driver: Supportive Communities
+<br>
 
 ### Domain: Local Governance 
 
@@ -743,7 +768,7 @@ create_tb(et_m_info_lst, data, election_turnout_varlist)
 
 
 ```
-<br><br>
+<br>
 
 
 ##### Detail
@@ -752,7 +777,7 @@ create_tb(et_m_info_lst, data, election_turnout_varlist)
 create_tb_level2(et_m_info_lst, data, election_turnout_varlist) 
 
 ```
-<br><br>
+<br>
 
 
 #### Descriptive representation among local officials {.tabset}
@@ -775,8 +800,8 @@ desp_rep_varlist <- list(
     'Non-Black, Non-Hispanic_quality', 
     'Black, Non-Hispanic', 
     'Black, Non-Hispanic_quality', 
-    'hispanic_representation', 
-    'hispanic_representation_quality',
+    'Hispanic', 
+    'hispanic_quality',
     'Asian',
     'Asian_quality'
   ),
@@ -800,9 +825,9 @@ desp_rep_varlist <- list(
     'Black, Non-Hispanic', 
     'Black, Non-Hispanic ci', 
     'Black, Non-Hispanic_quality', 
-    'hispanic ', 
-    'hispanic ci', 
-    'hispanic_quality',
+    'Hispanic ', 
+    'Hispanic ci', 
+    'Hispanic_quality',
     'Asian',
     'Asian ci',
     'Asian_quality'
@@ -815,6 +840,7 @@ create_tb(m_info_lst, data, desp_rep_varlist)
 
 
 ```
+<br><br>
 
 ##### Detail 
 
@@ -824,7 +850,7 @@ create_tb_level2(m_info_lst, data, desp_rep_varlist)
 
 
 ```
-
+<br><br>
 
 ### Domain: Neighborhoods 
 
@@ -852,10 +878,8 @@ ei_m_info_lst <- get_vars_info('Economic inclusion')$info_lst
 create_tb(ei_m_info_lst, data, econ_inc_varlist) 
 
 
-
-
 ```
-<br><br>
+<br>
 
 
 ##### Detail
@@ -865,14 +889,13 @@ create_tb_level2(ei_m_info_lst, data, econ_inc_varlist)
 
 
 ```
-<br><br>
+<br>
 
 
 #### Racial diversity {.tabset}
 
 ##### Summary
 ```{r}
-
 
 race_div <- list(
   c('white_nh_exposure',
@@ -917,7 +940,7 @@ create_tb(rd_m_info_lst, data, race_div)
 
 
 ```
-<br><br>
+<br>
 
 
 ##### Detail
@@ -926,7 +949,7 @@ create_tb(rd_m_info_lst, data, race_div)
 create_tb_level2(rd_m_info_lst, data, race_div) 
 
 ```
-<br><br>
+<br>
 
 
 #### Transportation access {.tabset}
@@ -953,8 +976,7 @@ create_tb(trans_info_lst, data, trans_access)
 
 
 ```
-<br><br>
-
+<br>
 
 ##### Detail
 ```{r}
@@ -963,8 +985,9 @@ create_tb_level2(trans_info_lst, data, trans_access)
 
 
 ```
-<br><br>
+<br>
 
+####  {.tabset}
 
 ##### Summary
 ```{r}
@@ -989,7 +1012,7 @@ create_tb(tr_cost_m_info_lst, data, trans_cost_varlist)
 
 
 ```
-<br><br>
+<br>
 
 
 ##### Detail
@@ -999,7 +1022,7 @@ create_tb_level2(tr_cost_m_info_lst, data, trans_cost_varlist)
 
 
 ```
-<br><br>
+<br>
 
 
 #### Environmental quality {.tabset}
@@ -1076,7 +1099,7 @@ exp_crime_varlist <- list(
 
 ec_m_info_lst <- get_vars_info('Exposure to crime')$info_lst
 mb_vars <- get_vars_info('Exposure to crime')$mb_vars
-  
+
 data_sub_exp_crime <- data %>% 
   mutate_at(vars(matches(mb_vars), -ends_with('_quality')), 
             function(x) gsub("\\..*","", x))
@@ -1085,7 +1108,7 @@ create_tb(ec_m_info_lst, data_sub_exp_crime, exp_crime_varlist)
 
 
 ```
-<br><br>
+<br>
 
 
 ##### Detail
@@ -1095,9 +1118,7 @@ create_tb_level2(ec_m_info_lst, data_sub_exp_crime, exp_crime_varlist)
 
 
 ```
-<br><br>
-
-
+<br>
 
 #### Overly punitive policing {.tabset}
 
@@ -1119,7 +1140,7 @@ punative_policing <- list(
 
 m_info_lst <- get_vars_info('Overly punitive policing')$info_lst
 mb_vars <- get_vars_info('Overly punitive policing')$mb_vars
-  
+
 data_sub_punitive <- data %>% 
   mutate_at(vars(matches(mb_vars), -ends_with('_quality')), 
             function(x) gsub("\\..*","", x))
@@ -1144,6 +1165,7 @@ create_tb_level2(m_info_lst, data_sub_punitive, punative_policing)
 
 
 ## Driver: Earn and learn
+<br>
 
 ### Domain: Education
 
@@ -1173,7 +1195,7 @@ create_tb(ap_m_info_lst, data, share_in_presch_varlist)
 
 
 ```
-<br><br>
+<br>
 
 
 ##### Detail
@@ -1183,7 +1205,7 @@ create_tb_level2(ap_m_info_lst, data, share_in_presch_varlist)
 
 
 ```
-<br><br>
+<br>
 
 #### Effective public education {.tabset}
 
@@ -1207,7 +1229,7 @@ epd_m_info_lst <- get_vars_info('Effective public education')$info_lst
 create_tb(epd_m_info_lst, data, eff_pub_ed) 
 
 ```
-<br><br>
+<br>
 
 
 ##### Detail
@@ -1217,7 +1239,7 @@ create_tb(epd_m_info_lst, data, eff_pub_ed)
 create_tb_level2(epd_m_info_lst, data, eff_pub_ed) 
 
 ```
-<br><br>
+<br>
 
 
 #### Student poverty concentration {.tabset}
@@ -1232,7 +1254,7 @@ stu_poverty <- list(
     'frpl40_black_quality',
     'frpl40_hispanic', 
     'frpl40_hispanic_quality'
-    ),
+  ),
   c(
     '% White, non-Hispanic', 
     '% White, non-Hispanic_quality',
@@ -1240,7 +1262,7 @@ stu_poverty <- list(
     '% Black, non-Hispanic_quality', 
     '% Hispanic', 
     '% Hispanic_quality'
-    ),
+  ),
   c('frpl40_white', 
     'frpl40_white_ci', 
     'frpl40_white_quality',
@@ -1250,7 +1272,7 @@ stu_poverty <- list(
     'frpl40_hispanic', 
     'frpl40_hispanic_ci',
     'frpl40_hispanic_quality'
-    ),
+  ),
   c(
     '% White, non-Hispanic', 
     '% White, non-Hispanic_ci', 
@@ -1261,7 +1283,7 @@ stu_poverty <- list(
     '% Hispanic', 
     '% Hispanic_ci',
     '% Hispanic_quality'
-    )
+  )
 )
 
 
@@ -1272,7 +1294,7 @@ create_tb(spoverty_m_info_lst, data, stu_poverty)
 
 
 ```
-<br><br>
+<br>
 
 
 ##### Detail
@@ -1282,7 +1304,7 @@ create_tb(spoverty_m_info_lst, data, stu_poverty)
 create_tb_level2(spoverty_m_info_lst, data, stu_poverty) 
 
 ```
-<br><br>
+<br>
 
 
 #### College readiness {.tabset}
@@ -1349,7 +1371,7 @@ create_tb(emp_m_info_lst, data, emp_lst)
 
 
 ```
-<br><br>
+<br>
 
 
 ##### Detail
@@ -1359,7 +1381,7 @@ create_tb_level2(emp_m_info_lst, data, emp_lst)
 
 
 ```
-<br><br>
+<br>
 
 
 #### Access to jobs paying a living wage {.tabset}
@@ -1406,7 +1428,7 @@ create_tb_level2(m_info_lst, data, job_wage)
 <br><br>
 
 ## Additional Notes
-| Metrics requiring original data collection: 
+| The following metrics require orginal data collection: 
 |    Overall health: Share of adults who rate their own and their children’s health as good or excellent
 |    Belonginess: Inclusion of other in the self scale
 |    Social Capital: Social capital community benchmark scale
