@@ -3,11 +3,11 @@ navbar:
   title: Mobility Metrics
   left:
   - text: Home
-    href: main-page.html
+    href: index.html
   - text: Description
     href: description.html
 output:
   html_document:
     output_dir: '.'
-    css: styles.css
+    css: www/styles.css
 output_dir: '.'
