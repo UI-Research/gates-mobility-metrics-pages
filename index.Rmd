@@ -445,8 +445,8 @@ debt_varlist <- list(
     '% with debt ci')
 )
 
-m_info_lst <- get_vars_info('Financial Security')$info_lst
-mb_vars <- get_vars_info('Financial Security')$mb_vars
+m_info_lst <- get_vars_info('Financial security')$info_lst
+mb_vars <- get_vars_info('Financial security')$mb_vars
 
 create_tb(m_info_lst, data, debt_varlist) 
 
@@ -651,7 +651,7 @@ neonatal_varlist <- list(
     note_ul_bound)
 )
 
-nh_m_info_lst <- get_vars_info('Neonatal Health')$info_lst
+nh_m_info_lst <- get_vars_info('Neonatal health')$info_lst
 
 create_tb(nh_m_info_lst, data, neonatal_varlist) 
 
@@ -690,7 +690,7 @@ election_turnout_varlist <- list(
     '% voting ci')
 )
 
-et_m_info_lst <- get_vars_info('Political Participation')$info_lst
+et_m_info_lst <- get_vars_info('Political participation')$info_lst
 
 create_tb(et_m_info_lst, data, election_turnout_varlist) 
 
@@ -780,7 +780,7 @@ econ_inc_varlist <- list(
     '% in high poverty neigborhoods ci')
 )
 
-ei_m_info_lst <- get_vars_info('Economic Inclusion')$info_lst
+ei_m_info_lst <- get_vars_info('Economic inclusion')$info_lst
 
 create_tb(ei_m_info_lst, data, econ_inc_varlist) 
 
@@ -821,7 +821,7 @@ race_div <- list(
   )
 )
 
-rd_m_info_lst <- get_vars_info('Racial Diversity')$info_lst
+rd_m_info_lst <- get_vars_info('Racial diversity')$info_lst
 create_tb(rd_m_info_lst, data, race_div) 
 
 
@@ -874,7 +874,7 @@ env_varlist <- list(
     'AQI ci')
 )
 
-env_m_info_lst <- get_vars_info('Environmental Quality')$info_lst
+env_m_info_lst <- get_vars_info('Environmental quality')$info_lst
 
 create_tb(env_m_info_lst, data, env_varlist) 
 
@@ -929,8 +929,14 @@ exp_crime_varlist <- list(
 )
 
 ec_m_info_lst <- get_vars_info('Exposure to crime')$info_lst
+mb_vars <- get_vars_info('Exposure to crime')$mb_vars
+  
+data_sub <- data %>% 
+  mutate_at(vars(matches(mb_vars), -ends_with('_quality')), 
+            function(x) gsub("\\..*","", x))
 
-create_tb(ec_m_info_lst, data, exp_crime_varlist) 
+create_tb(ec_m_info_lst, data_sub, exp_crime_varlist) 
+
 
 
 punative_policing <- list(
@@ -945,10 +951,14 @@ punative_policing <- list(
     'Juvenile arrests ci')
 )
 
+m_info_lst <- get_vars_info('Overly punitive policing')$info_lst
+mb_vars <- get_vars_info('Overly punitive policing')$mb_vars
+  
+data_sub <- data %>% 
+  mutate_at(vars(matches(mb_vars), -ends_with('_quality')), 
+            function(x) gsub("\\..*","", x))
 
-m_info_lst <- get_vars_info('Overly punative policing')$info_lst
-
-create_tb(m_info_lst, data, punative_policing) 
+create_tb(m_info_lst, data_sub, punative_policing) 
 
 
 ```
@@ -984,7 +994,7 @@ share_in_presch_varlist <- list(
     '% in pre-k ci')
 )
 
-ap_m_info_lst <- get_vars_info('Access to Preschool')$info_lst
+ap_m_info_lst <- get_vars_info('Access to preschool')$info_lst
 
 create_tb(ap_m_info_lst, data, share_in_presch_varlist) 
 
