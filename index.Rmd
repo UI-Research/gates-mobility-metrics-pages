@@ -176,6 +176,8 @@ data <- data %>%
 
 data <- data %>% 
   mutate_at(vars(ends_with('_quality')), 
+            function(x) gsub('\\s+', '', x)) %>% 
+  mutate_at(vars(ends_with('_quality')), 
             function(x) recode(x, `1` = 'Good', `2` = 'Marginal', `3` = 'Poor'))
 
 
@@ -858,8 +860,10 @@ trans_cost_varlist <- list(
 
 tr_cost_m_info_lst <- get_vars_info('Transportation access-cost')$info_lst
 
-create_tb(tr_cost_m_info_lst, data, trans_cost_varlist) 
-
+create_tb(tr_cost_m_info_lst, data, trans_cost_varlist) %>% 
+  tab_header(
+    title = html(glue('<p style="font-weight: bold;">Transportation access</p>'))
+  )
 
 
 env_varlist <- list(
@@ -876,7 +880,7 @@ env_varlist <- list(
 
 env_m_info_lst <- get_vars_info('Environmental quality')$info_lst
 
-create_tb(env_m_info_lst, data, env_varlist) 
+create_tb(env_m_info_lst, data, env_varlist)
 
 
 ```
@@ -891,7 +895,10 @@ create_tb_level2(rd_m_info_lst, data, race_div)
 
 create_tb_level2(trans_info_lst, data, trans_access) 
 
-create_tb_level2(tr_cost_m_info_lst, data, trans_cost_varlist) 
+create_tb_level2(tr_cost_m_info_lst, data, trans_cost_varlist) %>% 
+  tab_header(
+    title = html(glue('<p style="font-weight: bold;">Transportation access</p>'))
+  )
 
 create_tb_level2(env_m_info_lst, data, env_varlist) 
 
