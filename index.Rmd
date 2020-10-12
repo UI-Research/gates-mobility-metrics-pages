@@ -73,6 +73,34 @@ tb_align <- 'left'
 decimal_points <- 2
 income_decimal <- 0
 
+income_varlist <- list(
+  c(
+    'pctl_20', 
+    'pctl_50', 
+    'pctl_80'
+  ), 
+  c(
+    '20th Percentile', 
+    '50th Percentile', 
+    '80th Percentile'
+  ), 
+  c(
+    'pctl_20', 
+    'pctl_20_ci', 
+    'pctl_50', 
+    'pctl_50_ci', 
+    'pctl_80',
+    'pctl_80_ci'
+  ), 
+  c(
+    '20th Percentile', 
+    '20th Percentile ci', 
+    '50th Percentile', 
+    '50th Percentile ci', 
+    '80th Percentile', 
+    '80th Percentile ci'
+  ) 
+)
 
 ```
 
@@ -203,15 +231,7 @@ create_tb <- function(metrics_info_df, dataset, varname_maps){
       table.font.size = tb_font_size,
       source_notes.font.size = source_note_size, 
       table.width = pct(tb_width_perc), 
-      table.align = tb_align) %>% 
-    tab_style(
-      style = list(
-        cell_text(style = "italic")
-        ),
-      locations = cells_body(
-        columns = TRUE,
-        rows = metrics == 'Quality')
-  )
+      table.align = tb_align)
 }
 
 
@@ -323,15 +343,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
       table.font.size = tb_font_size,
       source_notes.font.size = source_note_size, 
       table.width = pct(tb_width_perc), 
-      table.align = tb_align) %>% 
-    tab_style(
-      style = list(
-        cell_text(style = "italic")
-        ),
-      locations = cells_body(
-        columns = TRUE,
-        rows = metrics == 'Quality')
-  )
+      table.align = tb_align) 
 } 
 
 
@@ -402,8 +414,10 @@ data_sub <- data %>%
 create_tb(income_m_info_lst, data_sub, income_varlist) 
 
 
+
+
 ```
-<br>
+<br><br>
 
 ##### Detail
 ```{r}
@@ -411,7 +425,7 @@ create_tb(income_m_info_lst, data_sub, income_varlist)
 create_tb_level2(income_m_info_lst, data_sub, income_varlist)
 
 ```
-<br>
+<br><br>
 
 
 #### Financial security {.tabset}
@@ -487,7 +501,7 @@ create_tb(af_m_info_lst, data, housing_varlist)
 
 
 ```
-<br>
+<br><br>
 
 ##### Detail
 ```{r}
@@ -496,7 +510,7 @@ create_tb_level2(af_m_info_lst, data, housing_varlist)
 
 
 ```
-<br>
+<br><br>
 
 
 #### Housing instability and homelessness {.tabset}
@@ -646,7 +660,7 @@ m_info_lst <- get_vars_info('Access to and utilization of health services')$info
 
 create_tb(m_info_lst, data, accuils_varlist) 
 ```
-<br>
+<br><br>
 
 ##### Detail
 
@@ -655,7 +669,7 @@ create_tb(m_info_lst, data, accuils_varlist)
 create_tb_level2(m_info_lst, data, accuils_varlist) 
 
 ```
-<br>
+<br><br>
 
 
 #### Neonatal health {.tabset}
@@ -719,7 +733,7 @@ create_tb(et_m_info_lst, data, election_turnout_varlist)
 
 
 ```
-<br>
+<br><br>
 
 
 ##### Detail
@@ -728,7 +742,7 @@ create_tb(et_m_info_lst, data, election_turnout_varlist)
 create_tb_level2(et_m_info_lst, data, election_turnout_varlist) 
 
 ```
-<br>
+<br><br>
 
 
 #### Descriptive representation among local officials {.tabset}
@@ -776,9 +790,9 @@ desp_rep_varlist <- list(
     'Black, Non-Hispanic', 
     'Black, Non-Hispanic ci', 
     'Black, Non-Hispanic_quality', 
-    'Hispanic ', 
-    'Hispanic ci', 
-    'Hispanic_quality',
+    'hispanic ', 
+    'hispanic ci', 
+    'hispanic_quality',
     'Asian',
     'Asian ci',
     'Asian_quality'
@@ -791,7 +805,6 @@ create_tb(m_info_lst, data, desp_rep_varlist)
 
 
 ```
-<br><br>
 
 ##### Detail 
 
@@ -801,7 +814,7 @@ create_tb_level2(m_info_lst, data, desp_rep_varlist)
 
 
 ```
-<br><br>
+
 
 ### Predictor: Neighborhoods 
 
@@ -827,8 +840,10 @@ ei_m_info_lst <- get_vars_info('Economic inclusion')$info_lst
 create_tb(ei_m_info_lst, data, econ_inc_varlist) 
 
 
+
+
 ```
-<br>
+<br><br>
 
 
 ##### Detail
@@ -838,7 +853,7 @@ create_tb_level2(ei_m_info_lst, data, econ_inc_varlist)
 
 
 ```
-<br>
+<br><br>
 
 
 #### Racial diversity {.tabset}
@@ -890,7 +905,7 @@ create_tb(rd_m_info_lst, data, race_div)
 
 
 ```
-<br>
+<br><br>
 
 
 ##### Detail
@@ -899,7 +914,7 @@ create_tb(rd_m_info_lst, data, race_div)
 create_tb_level2(rd_m_info_lst, data, race_div) 
 
 ```
-<br>
+<br><br>
 
 
 #### Transportation access {.tabset}
@@ -926,7 +941,7 @@ create_tb(trans_info_lst, data, trans_access)
 
 
 ```
-<br>
+<br><br>
 
 
 ##### Detail
@@ -936,9 +951,8 @@ create_tb_level2(trans_info_lst, data, trans_access)
 
 
 ```
-<br>
+<br><br>
 
-####   {.tabset}
 
 ##### Summary
 ```{r}
@@ -963,7 +977,8 @@ create_tb(tr_cost_m_info_lst, data, trans_cost_varlist)
 
 
 ```
-<br>
+<br><br>
+
 
 ##### Detail
 ```{r}
@@ -972,7 +987,7 @@ create_tb_level2(tr_cost_m_info_lst, data, trans_cost_varlist)
 
 
 ```
-<br>
+<br><br>
 
 
 #### Environmental quality {.tabset}
@@ -1011,6 +1026,7 @@ create_tb_level2(env_m_info_lst, data, env_varlist)
 
 ```
 <br><br>
+
 
 
 ### Predictor: Safety
@@ -1055,7 +1071,7 @@ create_tb(ec_m_info_lst, data_sub_exp_crime, exp_crime_varlist)
 
 
 ```
-<br>
+<br><br>
 
 
 ##### Detail
@@ -1065,7 +1081,7 @@ create_tb_level2(ec_m_info_lst, data_sub_exp_crime, exp_crime_varlist)
 
 
 ```
-<br>
+<br><br>
 
 
 
@@ -1141,7 +1157,7 @@ create_tb(ap_m_info_lst, data, share_in_presch_varlist)
 
 
 ```
-<br>
+<br><br>
 
 
 ##### Detail
@@ -1151,7 +1167,7 @@ create_tb_level2(ap_m_info_lst, data, share_in_presch_varlist)
 
 
 ```
-<br>
+<br><br>
 
 #### Effective public education {.tabset}
 
@@ -1175,7 +1191,7 @@ epd_m_info_lst <- get_vars_info('Effective public education')$info_lst
 create_tb(epd_m_info_lst, data, eff_pub_ed) 
 
 ```
-<br>
+<br><br>
 
 
 ##### Detail
@@ -1185,7 +1201,7 @@ create_tb(epd_m_info_lst, data, eff_pub_ed)
 create_tb_level2(epd_m_info_lst, data, eff_pub_ed) 
 
 ```
-<br>
+<br><br>
 
 
 #### Student poverty concentration {.tabset}
@@ -1240,7 +1256,7 @@ create_tb(spoverty_m_info_lst, data, stu_poverty)
 
 
 ```
-<br>
+<br><br>
 
 
 ##### Detail
@@ -1250,7 +1266,7 @@ create_tb(spoverty_m_info_lst, data, stu_poverty)
 create_tb_level2(spoverty_m_info_lst, data, stu_poverty) 
 
 ```
-<br>
+<br><br>
 
 
 #### College readiness {.tabset}
@@ -1315,7 +1331,7 @@ create_tb(emp_m_info_lst, data, emp_lst)
 
 
 ```
-<br>
+<br><br>
 
 
 ##### Detail
@@ -1325,7 +1341,7 @@ create_tb_level2(emp_m_info_lst, data, emp_lst)
 
 
 ```
-<br>
+<br><br>
 
 
 #### Access to jobs paying a living wage {.tabset}
@@ -1372,7 +1388,7 @@ create_tb_level2(m_info_lst, data, job_wage)
 <br><br>
 
 ## Additional Notes
-| The following metrics require orginal data collection: 
+| Metrics requiring original data collection: 
 |    Overall health: Share of adults who rate their own and their children’s health as good or excellent
 |    Belonginess: Inclusion of other in the self scale
 |    Social Capital: Social capital community benchmark scale
