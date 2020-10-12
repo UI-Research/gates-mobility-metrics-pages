@@ -8,9 +8,11 @@ app_list <- read_csv('data/rfi-applicants.csv')
 # format app list 
 app_list <- app_list %>% 
   mutate(fips = str_pad(fips, width = 5, side = 'left', pad = '0')) %>% 
-  mutate(full_list = str_c(fips, comparisons, sep = ';')) %>% 
+  mutate(full_list = case_when(!is.na(comparisons) ~ str_c(fips, comparisons, sep = ';'),
+                               TRUE ~ str_c(fips, sep = ';'))) %>% 
   mutate(full_list = gsub('\\s+', '', full_list)) %>% 
-  mutate(full_list = strsplit(full_list, ';'))
+  mutate(full_list = strsplit(full_list, ';')) 
+
 
 # create an index
 index <- as.list(
