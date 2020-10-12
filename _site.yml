@@ -1,0 +1,13 @@
+name: Mobility Metrics
+navbar:
+  title: Mobility Metrics
+  left:
+  - text: Home
+    href: index.html
+  - text: Description
+    href: description.html
+output:
+  html_document:
+    output_dir: '.'
+    css: www/styles.css
+output_dir: '.'
