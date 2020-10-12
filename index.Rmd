@@ -776,9 +776,9 @@ desp_rep_varlist <- list(
     'Black, Non-Hispanic', 
     'Black, Non-Hispanic ci', 
     'Black, Non-Hispanic_quality', 
-    'hispanic ', 
-    'hispanic ci', 
-    'hispanic_quality',
+    'Hispanic ', 
+    'Hispanic ci', 
+    'Hispanic_quality',
     'Asian',
     'Asian ci',
     'Asian_quality'
@@ -825,8 +825,6 @@ econ_inc_varlist <- list(
 ei_m_info_lst <- get_vars_info('Economic inclusion')$info_lst
 
 create_tb(ei_m_info_lst, data, econ_inc_varlist) 
-
-
 
 
 ```
@@ -1374,7 +1372,7 @@ create_tb_level2(m_info_lst, data, job_wage)
 <br><br>
 
 ## Additional Notes
-| Metrics requiring original data collection: 
+| The following metrics require orginal data collection: 
 |    Overall health: Share of adults who rate their own and their children’s health as good or excellent
 |    Belonginess: Inclusion of other in the self scale
 |    Social Capital: Social capital community benchmark scale
