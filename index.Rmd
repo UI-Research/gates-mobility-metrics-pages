@@ -558,12 +558,12 @@ famstruc_varlist <- list(
     'famstruc_0par_other'
   ), 
   c(
-    'Two married biological/adoptive parents', 
-    'One biological/adoptive parent and that parents current spouse/partner', 
-    'One biological/adoptive parent and at least one other adult', 
-    'One biological/adoptive parent',
-    'Zero biological/adoptive parents, but at least two adults',
-    'Other'
+    '% 2 married parents', 
+    "% 1 parent and that parent's partner", 
+    '% 1 parent and 1 other adult', 
+    '% 1  parent',
+    '% 2 adults, no parent',
+    '% Other'
   ), 
   c(
     'famstruc_2par_married', 
@@ -580,18 +580,18 @@ famstruc_varlist <- list(
     'famstruc_0par_other_ci'
   ), 
   c(
-    'Two married biological/adoptive parents', 
-    'Two married biological/adoptive parents ci', 
-    'One biological/adoptive parent and that parents current spouse/partner', 
-    'One biological/adoptive parent and that parents current spouse/partner ci', 
-    'One biological/adoptive parent and at least one other adult', 
-    'One biological/adoptive parent and at least one other adult ci', 
-    'One biological/adoptive parent',
-    'One biological/adoptive parent ci',
-    'Zero biological/adoptive parents, but at least two adults',
-    'Zero biological/adoptive parents, but at least two adults ci',
-    'Other', 
-    'Other ci'
+    '% 2 married parents', 
+    '% 2 married parents ci', 
+    "% 1 parent and that parent's partner", 
+    "% 1 parent and that parent's partner ci",  
+    '% 1 parent and 1 other adult', 
+    '% 1 parent and 1 other adult ci', 
+    '% 1  parent',
+    '% 1  parent ci',
+    '% 2 adults, no parent',
+    '% 2 adults, no parent ci',
+    '% Other', 
+    '% Other ci'
   ) 
 )
 
@@ -621,15 +621,15 @@ accuils_varlist <- list(
     'hpsa_yn'
   ), 
   c(
-    'Ranking (0-25, higher = greater shortage)'
+    'HPSA'
   ), 
   c(
     'hpsa_yn',
     'hpsa_yn_ci'
   ), 
   c(
-    'Ranking (0-25, higher = greater shortage)',
-    'Ranking (0-25, higher = greater shortage) ci'
+    'HPSA',
+    'HPSA ci'
   )
 )
 
@@ -641,13 +641,13 @@ create_tb(m_info_lst, data, accuils_varlist)
 
 neonatal_varlist <- list(
   c('lbw'),
-  c('% low-weight birth'),
+  c('% Low-weight birth'),
   c(
     'lbw', 
     'lbw_ci'
   ),
   c(
-    '% low-weight birth', 
+    '% Low-weight birth', 
     note_ul_bound)
 )
 
@@ -793,12 +793,12 @@ race_div <- list(
     'black_nh_exposure_quality', 
     'hispanic_exposure',
     'hispanic_exposure_quality'),
-  c('Non-Black, Non-Hispanic to all other', 
-    'Non-Black, Non-Hispanic to all other_quality', 
-    'Black, Non-Hispanic to all other', 
-    'Black, Non-Hispanic to all other_quality', 
-    'Hispanic to all other', 
-    'Hispanic to all other_quality'
+  c('% Non-Black, Non-Hispanic', 
+    '% Non-Black, Non-Hispanic_quality', 
+    '% Black, Non-Hispanic', 
+    '% Black, Non-Hispanic_quality', 
+    '% Hispanic', 
+    '% Hispanic_quality'
   ),
   c('white_nh_exposure',
     'white_nh_exposure_ci',
@@ -809,15 +809,15 @@ race_div <- list(
     'hispanic_exposure',
     'hispanic_exposure_ci',
     'hispanic_exposure_quality'),
-  c('Non-Black, Non-Hispanic to all other', 
-    'Non-Black, Non-Hispanic to all other_ci', 
-    'Non-Black, Non-Hispanic to all other_quality',
-    'Black, Non-Hispanic to all other', 
-    'Black, Non-Hispanic to all other_ci',
-    'Black, Non-Hispanic to all other_quality', 
-    'Hispanic to all other', 
-    'Hispanic to all other_ci', 
-    'Hispanic to all other_quality'
+  c('% Non-Black, Non-Hispanic', 
+    '% Non-Black, Non-Hispanic_ci', 
+    '% Non-Black, Non-Hispanic_quality',
+    '% Black, Non-Hispanic', 
+    '% Black, Non-Hispanic_ci',
+    '% Black, Non-Hispanic_quality', 
+    '% Hispanic', 
+    '% Hispanic_ci', 
+    '% Hispanic_quality'
   )
 )
 
@@ -864,14 +864,14 @@ create_tb(tr_cost_m_info_lst, data, trans_cost_varlist)
 
 env_varlist <- list(
   c('haz_idx'),
-  c('AQI'),
+  c('Air quality index'),
   c(
     'haz_idx', 
     'haz_idx_ci'
   ),
   c(
-    'AQI', 
-    'AQI ci')
+    'Air quality index', 
+    'Air quality index ci')
 )
 
 env_m_info_lst <- get_vars_info('Environmental quality')$info_lst
@@ -931,11 +931,11 @@ exp_crime_varlist <- list(
 ec_m_info_lst <- get_vars_info('Exposure to crime')$info_lst
 mb_vars <- get_vars_info('Exposure to crime')$mb_vars
   
-data_sub <- data %>% 
+data_sub_exp_crime <- data %>% 
   mutate_at(vars(matches(mb_vars), -ends_with('_quality')), 
             function(x) gsub("\\..*","", x))
 
-create_tb(ec_m_info_lst, data_sub, exp_crime_varlist) 
+create_tb(ec_m_info_lst, data_sub_exp_crime, exp_crime_varlist) 
 
 
 
@@ -954,11 +954,11 @@ punative_policing <- list(
 m_info_lst <- get_vars_info('Overly punitive policing')$info_lst
 mb_vars <- get_vars_info('Overly punitive policing')$mb_vars
   
-data_sub <- data %>% 
+data_sub_punitive <- data %>% 
   mutate_at(vars(matches(mb_vars), -ends_with('_quality')), 
             function(x) gsub("\\..*","", x))
 
-create_tb(m_info_lst, data_sub, punative_policing) 
+create_tb(m_info_lst, data_sub_punitive, punative_policing) 
 
 
 ```
@@ -968,9 +968,9 @@ create_tb(m_info_lst, data_sub, punative_policing)
 
 ```{r exp_crime_varlist d}
 
-create_tb_level2(ec_m_info_lst, data, exp_crime_varlist) 
+create_tb_level2(ec_m_info_lst, data_sub_exp_crime, exp_crime_varlist) 
 
-create_tb_level2(m_info_lst, data, punative_policing) 
+create_tb_level2(m_info_lst, data_sub_punitive, punative_policing) 
 
 ```
 
@@ -984,14 +984,14 @@ create_tb_level2(m_info_lst, data, punative_policing)
 
 share_in_presch_varlist <- list(
   c('share_in_preschool'),
-  c('% in pre-k'),
+  c('% Pre-kindergarden'),
   c(
     'share_in_preschool', 
     'share_in_preschool_ci'
   ),
   c(
-    '% in pre-k', 
-    '% in pre-k ci')
+    '% Pre-kindergarden', 
+    '% Pre-kindergarden ci')
 )
 
 ap_m_info_lst <- get_vars_info('Access to preschool')$info_lst
@@ -1001,13 +1001,13 @@ create_tb(ap_m_info_lst, data, share_in_presch_varlist)
 
 eff_pub_ed <- list(
   c('learning_rate'),
-  c('change in ELA achievement'),
+  c('Annual ELA achievement'),
   c(
     'learning_rate', 
     'learning_rate_ci'
   ),
   c(
-    'Change in ELA achievement', 
+    'Annual ELA achievement', 
     note_ul_bound)
 )
 
@@ -1025,12 +1025,12 @@ stu_poverty <- list(
     'frpl40_hispanic_quality'
     ),
   c(
-    'White, non-Hispanic', 
-    'White, non-Hispanic_quality',
-    'Black, non-Hispanic', 
-    'Black, non-Hispanic_quality', 
-    'Hispanic', 
-    'Hispanic_quality'
+    '% White, non-Hispanic', 
+    '% White, non-Hispanic_quality',
+    '% Black, non-Hispanic', 
+    '% Black, non-Hispanic_quality', 
+    '% Hispanic', 
+    '% Hispanic_quality'
     ),
   c('frpl40_white', 
     'frpl40_white_ci', 
@@ -1043,15 +1043,15 @@ stu_poverty <- list(
     'frpl40_hispanic_quality'
     ),
   c(
-    'White, non-Hispanic', 
-    'White, non-Hispanic_ci', 
-    'White, non-Hispanic_quality',
-    'Black, non-Hispanic', 
-    'Black, non-Hispanic_ci',
-    'Black, non-Hispanic_quality', 
-    'Hispanic', 
-    'Hispanic_ci',
-    'Hispanic_quality'
+    '% White, non-Hispanic', 
+    '% White, non-Hispanic_ci', 
+    '% White, non-Hispanic_quality',
+    '% Black, non-Hispanic', 
+    '% Black, non-Hispanic_ci',
+    '% Black, non-Hispanic_quality', 
+    '% Hispanic', 
+    '% Hispanic_ci',
+    '% Hispanic_quality'
     )
 )
 
@@ -1064,14 +1064,14 @@ create_tb(spoverty_m_info_lst, data, stu_poverty)
 
 college_readiness <- list(
   c('share_hs_degree'),
-  c('% with HS degree'),
+  c('% HS degree'),
   c(
     'share_hs_degree', 
     'share_hs_degree_ci'
   ),
   c(
-    '% with HS degree', 
-    '% with HS degree ci')
+    '% HS degree', 
+    '% HS degree ci')
 )
 
 m_info_lst <- get_vars_info('College readiness')$info_lst
@@ -1156,9 +1156,9 @@ create_tb_level2(m_info_lst, data, job_wage)
 
 
 ## Notes on Data Quality
-| 'Good' indicates that the metric is measured with adequate accuracy at sample size.
-| 'Marginal' indicates that there are known shortcomings of the data for this metric for this county, and the metric should be used with caution.
-| 'Poor' indicates that although the metric could be computed for this county, we have serious concerns about how accurately it is measured for this county and do not recommend its use.
+| "Good" indicates that the metric is measured with adequate accuracy at sample size.
+| "Marginal" indicates that there are known shortcomings of the data for this metric for this county, and the metric should be used with caution.
+| "Poor" indicates that although the metric could be computed for this county, we have serious concerns about how accurately it is measured for this county and do not recommend its use.
 
 
 ## Additional Notes
@@ -1168,6 +1168,6 @@ create_tb_level2(m_info_lst, data, job_wage)
 |    Social Capital: Social capital community benchmark scale
 |    Exposure to Trauma: Adverse childhood experiences scale
 |
-| *Confidence Interval: Confidence interval not available at this time
-| +Confidence Interval: Confidence interval not applicable
+| * This confidence interval not available at this time.
+| + A confidence interval not applicable.
 | Lower/Upper bound:  The data used to construct this metric do not lend themselves to conventional confidence intervals. The value of the metric shown represents are best estimate; the lower and upper bounds represent alternative estimates of the metric under different assumptions about missing data.
