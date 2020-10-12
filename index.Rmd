@@ -127,14 +127,13 @@ data <- data %>%
   filter(full_fips %in% (params$state_county)) %>% 
   arrange(factor(full_fips, levels = params$state_county)) %>% 
   mutate(state_county = gsub('County', '', state_county)) %>% 
-  mutate(state_county = rm_white_comma(state_county))
+  mutate(state_county = rm_white_comma(state_county)) 
 
 #get the upward county - the first element in the parameter 
 upward_county <- data %>% 
   filter(full_fips == params$state_county[1]) %>% 
   select(state_county) %>% 
   pull()
-
 
 
 #convert to percentage 
@@ -163,26 +162,14 @@ perc_vars <- c(
 
 data <- data %>% 
   mutate_at(perc_vars, 
-            function (x) scales::percent(x))
-
-
-data <- data %>% 
-  mutate_if(is.numeric, function(x) {format(round(x, 2), big.mark=",",scientific=FALSE)})
-
-
-data <- data %>% 
-  mutate(na_quality = 'NA')  #to be used for metrics where there is no quality variable
-
-
-data <- data %>% 
+            function (x) scales::percent(x)) %>% 
+  mutate_if(is.numeric, function(x) {format(round(x, 2), big.mark=",",scientific=FALSE)}) %>% 
+  mutate(na_quality = 'NA')  %>%  #to be used for metrics where there is no quality variable %>% 
   mutate_at(vars(-one_of('state_county')), function(x) gsub('\\s+', '', x)) %>% 
+  rename(hispanic_representation = hispanic,
+         hispanic_representation_quality = hispanic_quality) %>% 
   mutate_at(vars(ends_with('_quality')), 
             function(x) recode(x, `1` = 'Good', `2` = 'Marginal', `3` = 'Poor'))
-
-
-data <- data %>% 
-  rename(hispanic_representation = hispanic,
-         hispanic_representation_quality = hispanic_quality) 
 
 note_ul_bound <- 'Lower/Upper bound'
 
@@ -191,18 +178,6 @@ note_ul_bound <- 'Lower/Upper bound'
 # `r upward_county`
 
 ```{r functions}
-
-
-quality_value_mapping <- function(input){
-  if (input == '1.00') {
-    return ('Good')
-  } else if (input == '2.00'){
-    return ('Marginal')
-  } else if (input == '3.00'){
-    return ('Poor')
-  } else 
-    stop("Wrong input for Quality")
-}
 
 
 create_tb <- function(metrics_info_df, dataset, varname_maps){
@@ -236,7 +211,7 @@ create_tb <- function(metrics_info_df, dataset, varname_maps){
     select(metrics, everything()) %>% 
     gt(rowname_col = 'metrics') %>% 
     tab_header(
-      title = html(glue('<p style="font-weight: bold;">{mb_metrics}</p>')), 
+      title = '', 
       subtitle = metrics_desp
     ) %>% 
     tab_source_note(str_c('Source:', data_source, sep=' ')) %>% 
@@ -347,7 +322,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     select(metrics, everything()) %>% 
     gt(rowname_col = 'metrics') %>% 
     tab_header(
-      title = html(glue('<p style="font-weight: bold;">{mb_metrics}</p>')), 
+      title = '', 
       subtitle = metrics_desp
     ) %>% 
     tab_source_note(str_c('Source:', data_source, sep=' ')) %>% 
@@ -385,14 +360,19 @@ get_vars_info <- function(varname, data_summary_file=m_info){
   return(list(info_lst=info_lst, mb_vars=mb_vars))
 }
 
+
 ```
+<br>
 
 ## Driver:  Strong and Healthy Families
 
-### Predictor: Financial well-being {.tabset}
+### Predictor: Financial well-being 
 
-#### Summary
-```{r income}
+#### Income {.tabset}
+
+##### Summary
+```{r}
+
 
 income_varlist <- list(
   c(
@@ -434,6 +414,25 @@ data_sub <- data %>%
 create_tb(income_m_info_lst, data_sub, income_varlist) 
 
 
+
+
+```
+<br><br>
+
+##### Detail
+```{r}
+
+create_tb_level2(income_m_info_lst, data_sub, income_varlist)
+
+```
+<br><br>
+
+
+#### Financial security {.tabset}
+
+##### Summary
+```{r}
+
 debt_varlist <- list(
   c('share_debt_coll'),
   c('% with debt'), 
@@ -449,25 +448,30 @@ debt_varlist <- list(
 m_info_lst <- get_vars_info('Financial security')$info_lst
 mb_vars <- get_vars_info('Financial security')$mb_vars
 
-create_tb(m_info_lst, data, debt_varlist) 
+create_tb(m_info_lst, data, debt_varlist)  
+
+
 
 ```
+<br><br>
 
-#### Detail
-
-```{r income detailed}
-
-create_tb_level2(income_m_info_lst, data_sub, income_varlist)
+##### Detail
+```{r}
 
 create_tb_level2(m_info_lst, data, debt_varlist)
 
+
 ```
+<br><br>
 
 
-### Predictor: Housing {.tabset}
+### Predictor: Housing
 
-#### Summary
-```{r housing summary}
+#### Affordable housing {.tabset}
+
+##### Summary
+```{r}
+
 
 housing_varlist <- list(
   c(
@@ -495,10 +499,23 @@ af_m_info_lst <- get_vars_info('Affordable housing')$info_lst
 
 create_tb(af_m_info_lst, data, housing_varlist) 
 
+
 ```
+<br><br>
+
+##### Detail
+```{r}
+
+create_tb_level2(af_m_info_lst, data, housing_varlist)
 
 
+```
+<br><br>
 
+
+#### Housing instability and homelessness {.tabset}
+
+##### Summary
 ```{r}
 
 housing_insta_varlist <- list(
@@ -530,24 +547,25 @@ create_tb(m_info_lst, data, housing_insta_varlist)
 
 
 ```
+<br><br>
 
-
-#### Detail
-
-```{r housing detailed}
-
-create_tb_level2(af_m_info_lst, data, housing_varlist)
+##### Detail
+```{r}
 
 create_tb_level2(m_info_lst, data, housing_insta_varlist) 
 
+
 ```
+<br><br>
 
 
-### Predictor: Family {.tabset}
+### Predictor: Family 
 
-#### Summary
+#### Family structure and stability {.tabset}
 
-```{r family summary}
+##### Summary
+```{r}
+
 
 famstruc_varlist <- list(
   c(
@@ -600,23 +618,27 @@ fss_m_info_lst <- get_vars_info('Family structure and stability')$info_lst
 
 create_tb(fss_m_info_lst, data, famstruc_varlist) 
 
+
 ```
+<br><br>
 
-#### Detail
-
-```{r family detailed}
+##### Detail
+```{r}
 
 create_tb_level2(fss_m_info_lst, data, famstruc_varlist)
 
+
 ```
+<br><br>
 
 
-### Predictor: Health {.tabset}
+### Predictor: Health 
 
-#### Summary 
+#### Access to and utilization of health services {.tabset}
 
-```{r Access to and utilization of health services}
+##### Summary
 
+```{r}
 accuils_varlist <- list(
   c(
     'hpsa_yn'
@@ -637,8 +659,23 @@ accuils_varlist <- list(
 m_info_lst <- get_vars_info('Access to and utilization of health services')$info_lst
 
 create_tb(m_info_lst, data, accuils_varlist) 
+```
+<br><br>
+
+##### Detail
+
+```{r}
+
+create_tb_level2(m_info_lst, data, accuils_varlist) 
+
+```
+<br><br>
 
 
+#### Neonatal health {.tabset}
+
+##### Summary
+```{r}
 
 neonatal_varlist <- list(
   c('lbw'),
@@ -656,28 +693,26 @@ nh_m_info_lst <- get_vars_info('Neonatal health')$info_lst
 
 create_tb(nh_m_info_lst, data, neonatal_varlist) 
 
-
 ```
+<br><br>
 
-
-#### Detail
-
+##### Detail
 ```{r}
-
-create_tb_level2(m_info_lst, data, accuils_varlist) 
 
 create_tb_level2(nh_m_info_lst, data, neonatal_varlist) 
 
 ```
+<br><br>
 
 
 ## Driver: Supportive Communities
 
-### Predictor: Local Governance {.tabset}
+### Predictor: Local Governance 
 
-#### Summary 
+#### Political participation {.tabset}
 
-```{r election_turnout}
+##### Summary
+```{r}
 
 election_turnout_varlist <- list(
   c('election_turnout'),
@@ -695,6 +730,26 @@ et_m_info_lst <- get_vars_info('Political participation')$info_lst
 
 create_tb(et_m_info_lst, data, election_turnout_varlist) 
 
+
+
+```
+<br><br>
+
+
+##### Detail
+```{r}
+
+create_tb_level2(et_m_info_lst, data, election_turnout_varlist) 
+
+```
+<br><br>
+
+
+#### Descriptive representation among local officials {.tabset}
+
+##### Summary 
+
+```{r}
 
 
 desp_rep_varlist <- list(
@@ -751,23 +806,22 @@ create_tb(m_info_lst, data, desp_rep_varlist)
 
 ```
 
-#### Detail
+##### Detail 
 
-```{r ele detailed}
-
-create_tb_level2(et_m_info_lst, data, election_turnout_varlist) 
+```{r}
 
 create_tb_level2(m_info_lst, data, desp_rep_varlist) 
+
 
 ```
 
 
+### Predictor: Neighborhoods 
 
-### Predictor: Neighborhoods {.tabset}
+#### Economic inclusion {.tabset}
 
-#### Summary 
-
-```{r Economic Inclusion}
+##### Summary
+```{r}
 
 econ_inc_varlist <- list(
   c('poverty_exposure'),
@@ -785,6 +839,27 @@ ei_m_info_lst <- get_vars_info('Economic inclusion')$info_lst
 
 create_tb(ei_m_info_lst, data, econ_inc_varlist) 
 
+
+
+
+```
+<br><br>
+
+
+##### Detail
+```{r}
+
+create_tb_level2(ei_m_info_lst, data, econ_inc_varlist) 
+
+
+```
+<br><br>
+
+
+#### Racial diversity {.tabset}
+
+##### Summary
+```{r}
 
 
 race_div <- list(
@@ -826,6 +901,27 @@ rd_m_info_lst <- get_vars_info('Racial diversity')$info_lst
 create_tb(rd_m_info_lst, data, race_div) 
 
 
+
+
+
+```
+<br><br>
+
+
+##### Detail
+```{r}
+
+create_tb_level2(rd_m_info_lst, data, race_div) 
+
+```
+<br><br>
+
+
+#### Transportation access {.tabset}
+
+##### Summary
+```{r}
+
 trans_access <- list(
   c('transit_trips'),
   c('Transit trips'),
@@ -843,6 +939,23 @@ trans_info_lst <- get_vars_info('Transportation access')$info_lst
 
 create_tb(trans_info_lst, data, trans_access) 
 
+
+```
+<br><br>
+
+
+##### Detail
+```{r}
+
+create_tb_level2(trans_info_lst, data, trans_access) 
+
+
+```
+<br><br>
+
+
+##### Summary
+```{r}
 
 
 trans_cost_varlist <- list(
@@ -862,6 +975,27 @@ tr_cost_m_info_lst <- get_vars_info('Transportation access-cost')$info_lst
 create_tb(tr_cost_m_info_lst, data, trans_cost_varlist) 
 
 
+
+```
+<br><br>
+
+
+##### Detail
+```{r}
+
+create_tb_level2(tr_cost_m_info_lst, data, trans_cost_varlist) 
+
+
+```
+<br><br>
+
+
+#### Environmental quality {.tabset}
+
+##### Summary
+```{r}
+
+
 env_varlist <- list(
   c('haz_idx'),
   c('Air quality index'),
@@ -879,31 +1013,29 @@ env_m_info_lst <- get_vars_info('Environmental quality')$info_lst
 create_tb(env_m_info_lst, data, env_varlist)
 
 
+
+
 ```
+<br><br>
 
-#### Detail
 
-```{r Economic Inclusion detailed}
-
-create_tb_level2(ei_m_info_lst, data, econ_inc_varlist) 
-
-create_tb_level2(rd_m_info_lst, data, race_div) 
-
-create_tb_level2(trans_info_lst, data, trans_access) 
-
-create_tb_level2(tr_cost_m_info_lst, data, trans_cost_varlist) 
+##### Detail
+```{r}
 
 create_tb_level2(env_m_info_lst, data, env_varlist) 
 
 ```
+<br><br>
 
 
-### Predictor: Safety {.tabset}
 
+### Predictor: Safety
 
-#### Summary 
+#### Exposure to crime {.tabset}
 
-```{r Exposure to crime}
+##### Summary
+```{r}
+
 
 exp_crime_varlist <- list(
   c(
@@ -938,6 +1070,26 @@ data_sub_exp_crime <- data %>%
 create_tb(ec_m_info_lst, data_sub_exp_crime, exp_crime_varlist) 
 
 
+```
+<br><br>
+
+
+##### Detail
+```{r}
+
+create_tb_level2(ec_m_info_lst, data_sub_exp_crime, exp_crime_varlist) 
+
+
+```
+<br><br>
+
+
+
+#### Overly punitive policing {.tabset}
+
+##### Summary
+```{r}
+
 
 punative_policing <- list(
   c('juvenile_arrest_rate'),
@@ -961,26 +1113,30 @@ data_sub_punitive <- data %>%
 create_tb(m_info_lst, data_sub_punitive, punative_policing) 
 
 
+
 ```
+<br><br>
 
 
-#### Detail
-
-```{r exp_crime_varlist d}
-
-create_tb_level2(ec_m_info_lst, data_sub_exp_crime, exp_crime_varlist) 
+##### Detail
+```{r}
 
 create_tb_level2(m_info_lst, data_sub_punitive, punative_policing) 
 
+
 ```
+<br><br>
+
+
 
 ## Driver: Earn and learn
 
-### Predictor: Education	{.tabset}
+### Predictor: Education
 
-#### Summary 
+#### Access to preschool {.tabset}
 
-```{r share_in_preschool}
+##### Summary
+```{r}
 
 share_in_presch_varlist <- list(
   c('share_in_preschool'),
@@ -999,6 +1155,25 @@ ap_m_info_lst <- get_vars_info('Access to preschool')$info_lst
 create_tb(ap_m_info_lst, data, share_in_presch_varlist) 
 
 
+
+```
+<br><br>
+
+
+##### Detail
+```{r}
+
+create_tb_level2(ap_m_info_lst, data, share_in_presch_varlist) 
+
+
+```
+<br><br>
+
+#### Effective public education {.tabset}
+
+##### Summary
+```{r}
+
 eff_pub_ed <- list(
   c('learning_rate'),
   c('Annual ELA achievement'),
@@ -1015,6 +1190,24 @@ eff_pub_ed <- list(
 epd_m_info_lst <- get_vars_info('Effective public education')$info_lst
 create_tb(epd_m_info_lst, data, eff_pub_ed) 
 
+```
+<br><br>
+
+
+##### Detail
+```{r}
+
+
+create_tb_level2(epd_m_info_lst, data, eff_pub_ed) 
+
+```
+<br><br>
+
+
+#### Student poverty concentration {.tabset}
+
+##### Summary
+```{r}
 
 stu_poverty <- list(
   c('frpl40_white', 
@@ -1062,6 +1255,26 @@ create_tb(spoverty_m_info_lst, data, stu_poverty)
 
 
 
+```
+<br><br>
+
+
+##### Detail
+```{r}
+
+
+create_tb_level2(spoverty_m_info_lst, data, stu_poverty) 
+
+```
+<br><br>
+
+
+#### College readiness {.tabset}
+
+##### Summary
+```{r}
+
+
 college_readiness <- list(
   c('share_hs_degree'),
   c('% HS degree'),
@@ -1077,31 +1290,27 @@ college_readiness <- list(
 m_info_lst <- get_vars_info('College readiness')$info_lst
 create_tb(m_info_lst, data, college_readiness) 
 
-
-
-
 ```
+<br><br>
 
-#### Detail
 
-```{r share_in_presch_varlist d}
-
-create_tb_level2(ap_m_info_lst, data, share_in_presch_varlist) 
-
-create_tb_level2(epd_m_info_lst, data, eff_pub_ed) 
-
-create_tb_level2(spoverty_m_info_lst, data, stu_poverty) 
+##### Detail
+```{r}
 
 create_tb_level2(m_info_lst, data, college_readiness) 
 
+
 ```
+<br><br>
 
 
-### Predictor: Work {.tabset}
+### Predictor: Work
 
-#### Summary 
+#### Employment {.tabset}
 
+##### Summary
 ```{r}
+
 
 emp_lst <- list(
   c('share_employed'),
@@ -1121,6 +1330,24 @@ emp_m_info_lst <- get_vars_info('Employment')$info_lst
 create_tb(emp_m_info_lst, data, emp_lst) 
 
 
+```
+<br><br>
+
+
+##### Detail
+```{r}
+
+create_tb_level2(emp_m_info_lst, data, emp_lst) 
+
+
+```
+<br><br>
+
+
+#### Access to jobs paying a living wage {.tabset}
+
+##### Summary
+```{r}
 
 job_wage <- list(
   c('average_to_living_wage_ratio'),
@@ -1141,18 +1368,16 @@ create_tb(m_info_lst, data, job_wage)
 
 
 ```
+<br><br>
 
 
-#### Detail
-
+##### Detail
 ```{r}
-
-create_tb_level2(emp_m_info_lst, data, emp_lst) 
 
 create_tb_level2(m_info_lst, data, job_wage) 
 
 ```
-
+<br><br>
 
 
 ## Notes on Data Quality
@@ -1160,6 +1385,7 @@ create_tb_level2(m_info_lst, data, job_wage)
 | "Marginal" indicates that there are known shortcomings of the data for this metric for this county, and the metric should be used with caution.
 | "Poor" indicates that although the metric could be computed for this county, we have serious concerns about how accurately it is measured for this county and do not recommend its use.
 
+<br><br>
 
 ## Additional Notes
 | Metrics requiring original data collection: 
@@ -1167,7 +1393,12 @@ create_tb_level2(m_info_lst, data, job_wage)
 |    Belonginess: Inclusion of other in the self scale
 |    Social Capital: Social capital community benchmark scale
 |    Exposure to Trauma: Adverse childhood experiences scale
-|
+<br>
+
 | * This confidence interval not available at this time.
 | + A confidence interval not applicable.
 | Lower/Upper bound:  The data used to construct this metric do not lend themselves to conventional confidence intervals. The value of the metric shown represents are best estimate; the lower and upper bounds represent alternative estimates of the metric under different assumptions about missing data.
+
+
+
+
