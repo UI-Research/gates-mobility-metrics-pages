@@ -789,79 +789,6 @@ create_tb_level2(et_m_info_lst, data, election_turnout_varlist)
 ```
 <br>
 
-
-#### Descriptive representation among local officials {.tabset}
-
-##### Summary 
-
-```{r}
-
-
-desp_rep_varlist <- list(
-  c('white_nonhispanic',
-    'white_nonhispanic_quality',
-    'black_nonhispanic',
-    'black_nonhispanic_quality', 
-    'hispanic_representation',
-    'hispanic_representation_quality',
-    'asian_other',
-    'asian_other_quality'),
-  c('Non-Black, Non-Hispanic', 
-    'Non-Black, Non-Hispanic_quality', 
-    'Black, Non-Hispanic', 
-    'Black, Non-Hispanic_quality', 
-    'Hispanic', 
-    'hispanic_quality',
-    'Asian',
-    'Asian_quality'
-  ),
-  c(
-    'white_nonhispanic', 
-    'white_nonhispanic_ci',
-    'white_nonhispanic_quality',
-    'black_nonhispanic',
-    'black_nonhispanic_ci',
-    'black_nonhispanic_quality', 
-    'hispanic_representation', 
-    'hispanic_representation_ci',
-    'hispanic_representation_quality',
-    'asian_other', 
-    'asian_other_ci',
-    'asian_other_quality'
-  ),
-  c('Non-Black, Non-Hispanic', 
-    'Non-Black, Non-Hispanic ci', 
-    'Non-Black, Non-Hispanic_quality',
-    'Black, Non-Hispanic', 
-    'Black, Non-Hispanic ci', 
-    'Black, Non-Hispanic_quality', 
-    'Hispanic ', 
-    'Hispanic ci', 
-    'Hispanic_quality',
-    'Asian',
-    'Asian ci',
-    'Asian_quality'
-  )
-)
-
-m_info_lst <- get_vars_info('Descriptive representation among local officials')$info_lst
-
-create_tb(m_info_lst, data, desp_rep_varlist) 
-
-
-```
-<br><br>
-
-##### Detail 
-
-```{r}
-
-create_tb_level2(m_info_lst, data, desp_rep_varlist) 
-
-
-```
-<br><br>
-
 ### Domain: Neighborhoods 
 
 *Visit [here](description.html#domain-neighborhoods) for a thorough description of this domain.*
@@ -1188,14 +1115,14 @@ create_tb_level2(m_info_lst, data_sub_punitive, punative_policing)
 
 share_in_presch_varlist <- list(
   c('share_in_preschool'),
-  c('% Pre-kindergarden'),
+  c('% Pre-kindergarten'),
   c(
     'share_in_preschool', 
     'share_in_preschool_ci'
   ),
   c(
-    '% Pre-kindergarden', 
-    '% Pre-kindergarden ci')
+    '% Pre-kindergarten', 
+    '% Pre-kindergarten ci')
 )
 
 ap_m_info_lst <- get_vars_info('Access to preschool')$info_lst
@@ -1438,11 +1365,15 @@ create_tb_level2(m_info_lst, data, job_wage)
 <br><br>
 
 ## Additional Notes
-| The following metrics require orginal data collection: 
-|    Overall health: Share of adults who rate their own and their children’s health as good or excellent
-|    Belonginess: Inclusion of other in the self scale
-|    Social Capital: Social capital community benchmark scale
-|    Exposure to Trauma: Adverse childhood experiences scale
+
+ The following metrics require original data collection: 
+
+* **Overall health:** Share of adults who rate their own and their children’s health as good or excellent
+* **Belongingness:** Inclusion of other in the self scale
+* **Social Capital:** Social capital community benchmark scale
+* **Exposure to Trauma:** Adverse childhood experiences scale
+* **Descriptive representation among local officials:** The ratio of the share of the city council or county board from specific racial and ethnic groups and the share of city or county residents from those racial or ethnic groups
+
 <br>
 
 | * This confidence interval not available at this time.
