@@ -384,7 +384,7 @@ get_vars_info <- function(varname, data_summary_file=m_info){
 *Visit [here](description.html#domain-financial-well-being) for a thorough description of the metrics in this domain.*
 
 
-#### Income {.tabset}
+#### Predictor: Income {.tabset}
 
 ##### Summary
 ```{r}
@@ -443,7 +443,7 @@ create_tb_level2(income_m_info_lst, data_sub, income_varlist)
 ```
 <br>
 
-#### Financial security {.tabset}
+#### Predictor: Financial security {.tabset}
 
 ##### Summary
 ```{r}
@@ -488,7 +488,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 *Visit [here](description.html#domain-housing) for a thorough description of the metrics in this domain.*
 
-#### Affordable housing {.tabset}
+#### Predictor: Affordable housing {.tabset}
 
 ##### Summary
 ```{r}
@@ -540,7 +540,7 @@ create_tb_level2(metrics_info_df = af_m_info_lst,
 <br>
 
 
-#### Housing instability and homelessness {.tabset}
+#### Predictor: Housing instability and homelessness {.tabset}
 
 ##### Summary
 ```{r}
@@ -597,7 +597,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 *Visit [here](description.html#domain-family-stability) for a thorough description of the metrics in this domain.*
 
-#### Family structure and stability {.tabset}
+#### Predictor: Family structure and stability {.tabset}
 
 ##### Summary
 ```{r}
@@ -676,7 +676,7 @@ create_tb_level2(metrics_info_df = fss_m_info_lst,
 
 *Visit [here](description.html#domain-health) for a thorough description of the metrics in this domain.*
 
-#### Access to and utilization of health services {.tabset}
+#### Predictor: Access to and utilization of health services {.tabset}
 
 ##### Summary
 
@@ -722,7 +722,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 <br>
 
 
-#### Neonatal health {.tabset}
+#### Predictor: Neonatal health {.tabset}
 
 ##### Summary
 ```{r}
@@ -766,7 +766,7 @@ create_tb_level2(metrics_info_df = nh_m_info_lst,
 
 *Visit [here](description.html#domain-local-governance) for a thorough description of the metrics in this domain.*
 
-#### Political participation {.tabset}
+#### Predictor: Political participation {.tabset}
 
 ##### Summary
 ```{r}
@@ -810,7 +810,7 @@ create_tb_level2(metrics_info_df = et_m_info_lst,
 
 *Visit [here](description.html#domain-neighborhoods) for a thorough description of the metrics in this domain.*
 
-#### Economic inclusion {.tabset}
+#### Predictor: Economic inclusion {.tabset}
 
 ##### Summary
 ```{r}
@@ -851,7 +851,7 @@ create_tb_level2(metrics_info_df = ei_m_info_lst,
 <br>
 
 
-#### Racial diversity {.tabset}
+#### Predictor: Racial diversity {.tabset}
 
 ##### Summary
 ```{r}
@@ -915,7 +915,7 @@ create_tb_level2(metrics_info_df = rd_m_info_lst,
 <br>
 
 
-#### Transportation access {.tabset}
+#### Predictor: Transportation access {.tabset}
 
 ##### Summary
 ```{r}
@@ -998,7 +998,7 @@ create_tb_level2(metrics_info_df = tr_cost_m_info_lst,
 <br>
 
 
-#### Environmental quality {.tabset}
+#### Predictor: Environmental quality {.tabset}
 
 ##### Summary
 ```{r}
@@ -1045,7 +1045,7 @@ create_tb_level2(metrics_info_df = env_m_info_lst,
 
 *Visit [here](description.html#domain-safety) for a thorough description of the metrics in this domain.*
 
-#### Exposure to crime {.tabset}
+#### Predictor: Exposure to crime {.tabset}
 
 ##### Summary
 ```{r}
@@ -1104,7 +1104,7 @@ create_tb_level2(metrics_info_df = ec_m_info_lst,
 ```
 <br>
 
-#### Overly punitive policing {.tabset}
+#### Predictor: Overly punitive policing {.tabset}
 
 ##### Summary
 ```{r}
@@ -1160,7 +1160,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 *Visit [here](description.html#domain-education) for a thorough description of the metrics in this domain.*
 
-#### Access to preschool {.tabset}
+#### Predictor: Access to preschool {.tabset}
 
 ##### Summary
 ```{r}
@@ -1200,7 +1200,7 @@ create_tb_level2(metrics_info_df = ap_m_info_lst,
 ```
 <br>
 
-#### Effective public education {.tabset}
+#### Predictor: Effective public education {.tabset}
 
 ##### Summary
 ```{r}
@@ -1240,7 +1240,7 @@ create_tb_level2(metrics_info_df = epd_m_info_lst,
 <br>
 
 
-#### Student poverty concentration {.tabset}
+#### Predictor: Student poverty concentration {.tabset}
 
 ##### Summary
 ```{r}
@@ -1307,7 +1307,7 @@ create_tb_level2(metrics_info_df = spoverty_m_info_lst,
 <br>
 
 
-#### College readiness {.tabset}
+#### Predictor: College readiness {.tabset}
 
 ##### Summary
 ```{r}
@@ -1353,7 +1353,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 *Visit [here](description.html#domain-work) for a thorough description of the metrics in this domain.*
 
-#### Employment {.tabset}
+#### Predictor: Employment {.tabset}
 
 ##### Summary
 ```{r}
@@ -1396,7 +1396,7 @@ create_tb_level2(metrics_info_df = emp_m_info_lst,
 <br>
 
 
-#### Access to jobs paying a living wage {.tabset}
+#### Predictor: Access to jobs paying a living wage {.tabset}
 
 ##### Summary
 ```{r}
