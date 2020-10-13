@@ -71,7 +71,7 @@ The measure accounts for the share of households in an area with debt that has p
 
 <br>
 
-### Domain: Housing {#domain-housing}
+### Domain: Secure and Stable Housing {#domain-housing}
 
 ##### PREDICTOR: AFFORDABLE HOUSING 
 
