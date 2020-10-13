@@ -381,7 +381,7 @@ get_vars_info <- function(varname, data_summary_file=m_info){
 
 ### Domain: Financial well-being 
 
-*Visit [here](description.html#domain-financial-well-being) for a thorough description of this domain.*
+*Visit [here](description.html#domain-financial-well-being) for a thorough description of the metrics in this domain.*
 
 
 #### Income {.tabset}
@@ -486,7 +486,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 ### Domain: Housing
 
-*Visit [here](description.html#domain-housing) for a thorough description of this domain.*
+*Visit [here](description.html#domain-housing) for a thorough description of the metrics in this domain.*
 
 #### Affordable housing {.tabset}
 
@@ -595,7 +595,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 ### Domain: Family 
 
-*Visit [here](description.html#domain-family-stability) for a thorough description of this domain.*
+*Visit [here](description.html#domain-family-stability) for a thorough description of the metrics in this domain.*
 
 #### Family structure and stability {.tabset}
 
@@ -674,7 +674,7 @@ create_tb_level2(metrics_info_df = fss_m_info_lst,
 
 ### Domain: Health 
 
-*Visit [here](description.html#domain-health) for a thorough description of this domain.*
+*Visit [here](description.html#domain-health) for a thorough description of the metrics in this domain.*
 
 #### Access to and utilization of health services {.tabset}
 
@@ -764,7 +764,7 @@ create_tb_level2(metrics_info_df = nh_m_info_lst,
 
 ### Domain: Local Governance 
 
-*Visit [here](description.html#domain-local-governance) for a thorough description of this domain.*
+*Visit [here](description.html#domain-local-governance) for a thorough description of the metrics in this domain.*
 
 #### Political participation {.tabset}
 
@@ -808,7 +808,7 @@ create_tb_level2(metrics_info_df = et_m_info_lst,
 
 ### Domain: Neighborhoods 
 
-*Visit [here](description.html#domain-neighborhoods) for a thorough description of this domain.*
+*Visit [here](description.html#domain-neighborhoods) for a thorough description of the metrics in this domain.*
 
 #### Economic inclusion {.tabset}
 
@@ -1043,7 +1043,7 @@ create_tb_level2(metrics_info_df = env_m_info_lst,
 
 ### Domain: Safety
 
-*Visit [here](description.html#domain-safety) for a thorough description of this domain.*
+*Visit [here](description.html#domain-safety) for a thorough description of the metrics in this domain.*
 
 #### Exposure to crime {.tabset}
 
@@ -1158,7 +1158,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 ### Domain: Education
 
-*Visit [here](description.html#domain-education) for a thorough description of this domain.*
+*Visit [here](description.html#domain-education) for a thorough description of the metrics in this domain.*
 
 #### Access to preschool {.tabset}
 
@@ -1351,7 +1351,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 ### Domain: Work
 
-*Visit [here](description.html#domain-work) for a thorough description of this domain.*
+*Visit [here](description.html#domain-work) for a thorough description of the metrics in this domain.*
 
 #### Employment {.tabset}
 
