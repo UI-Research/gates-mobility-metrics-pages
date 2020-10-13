@@ -178,11 +178,11 @@ note_ul_bound <- 'Lower/Upper bound'
 
 create_tb <- function(metrics_info_df, dataset, varname_maps){
   
-  mb_metrics <- metrics_info_df[3]
-  mb_vars  <- metrics_info_df[4][[1]]
-  quality_var  <- metrics_info_df[5][[1]]
-  metrics_desp  <- metrics_info_df[7]
-  data_source <- metrics_info_df[8]
+  mb_metrics <- metrics_info_df$metric_name
+  mb_vars  <- metrics_info_df$metric_vars_prefix[[1]]
+  quality_var  <- metrics_info_df$quality_variable[[1]]
+  metrics_desp  <- metrics_info_df$metrics_description
+  data_source <- metrics_info_df$source_data
   col_from <- varname_maps[1][[1]]
   col_to <- varname_maps[2][[1]]
   
@@ -257,13 +257,14 @@ unite_col_values <- function(df, colname_str){
 
 create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
   
-  mb_metrics <- metrics_info_df[3]
-  mb_vars  <- metrics_info_df[4][[1]]
-  quality_var  <- metrics_info_df[5][[1]]
-  metrics_desp  <- metrics_info_df[7]
-  data_source <- metrics_info_df[8]
-  ci_vars <- metrics_info_df[6]
-  notes <- metrics_info_df[9]
+  mb_metrics <- metrics_info_df$metric_name
+  mb_vars  <- metrics_info_df$metric_vars_prefix[[1]]
+  quality_var  <- metrics_info_df$quality_variable[[1]]
+  metrics_desp  <- metrics_info_df$metrics_description
+  data_source <- metrics_info_df$source_data
+  ci_vars <- metrics_info_df$ci_var
+  notes <- metrics_info_df$notes
+  
   col_from <- varname_maps[3][[1]]
   col_to <- varname_maps[4][[1]]
   
