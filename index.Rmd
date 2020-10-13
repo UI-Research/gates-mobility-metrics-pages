@@ -14,6 +14,7 @@ output:
       chunk_output_type: console
 params:
   state_county: !r c('51013', '06037', '53033', '36061')
+  fake_labels: TRUE
 ---
 
 <style>
@@ -80,7 +81,30 @@ income_decimal <- 0
 ```{r read-in-data}
 
 fpath <- 'data/mobility-metrics.csv'
-data <- read_csv(fpath, )
+data <- read_csv(fpath) %>%
+    mutate(state = str_pad(state, width = 2, side ='left', pad = '0'), #set max ub as 1 
+         county = str_pad(county, width = 3, side ='left', pad = '0'))
+
+if (params$fake_labels) {
+
+  data <- data %>%
+    mutate(state_county = paste0(state, county)) %>%
+    mutate(county_name =
+             case_when(
+               state_county == params$state_county[1] ~ "Upward County County",
+               state_county == params$state_county[2] ~ "Peer 1",
+               state_county == params$state_county[3] ~ "Peer 2",
+               state_county == params$state_county[4] ~ "Peer 3",
+             )
+    )
+
+  data <- data %>%
+    mutate(state_name = "MB")
+  
+    
+}
+
+
 
 metrics_summary <- 'metrics_summary.csv'
 m_info <- fread(metrics_summary)
@@ -99,8 +123,6 @@ m_info <- m_info %>%
 
 #create unique state-county identifier
 data <- data %>% 
-  mutate(state = str_pad(state, width = 2, side ='left', pad = '0'), #set max ub as 1 
-         county = str_pad(county, width = 3, side ='left', pad = '0')) %>% 
   mutate_at(vars(matches('share_affordable_')),  #for affordable housing variables, multiple the value by 100
             function(x) x*100) %>% 
   unite('state_county', county_name, state_name, sep = ', ', remove = FALSE) %>% 
