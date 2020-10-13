@@ -121,7 +121,8 @@ This metric identifies the number of children (age 3 through 12th grade) who are
 
 ##### PREDICTOR: FAMILY STRUCTURE AND STABILITY 
 
-Metric: Share of children in various family living arrangements
+**Metric: Share of children in various family living arrangements**
+
 The Working Group advised considering the share of children living in each of six different living arrangements (that sum to 100 percent): two married biological or adoptive parents; one biological or adoptive parent and that parent’s current spouse or partner; one biological or adoptive parent and at least one other adult; one biological or adoptive parent; at least two adults, but no parent; and all other.
 
 **Validity:** Children’s living arrangements are recorded in household rosters used in several federal datasets.
