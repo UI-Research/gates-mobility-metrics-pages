@@ -401,7 +401,7 @@ get_vars_info <- function(varname, data_summary_file=m_info){
 ## Driver:  Strong and Healthy Families
 <br>
 
-### Domain: Financial well-being 
+### Domain: Financial Well-Being 
 
 *Visit [here](description.html#domain-financial-well-being) for a thorough description of the metrics in this domain.*
 
@@ -506,7 +506,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 <br><br>
 
 
-### Domain: Housing
+### Domain: Secure and Stable Housing
 
 *Visit [here](description.html#domain-housing) for a thorough description of the metrics in this domain.*
 
@@ -615,7 +615,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 <br><br>
 
 
-### Domain: Family 
+### Domain: Family Stability
 
 *Visit [here](description.html#domain-family-stability) for a thorough description of the metrics in this domain.*
 
@@ -1175,7 +1175,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 
 
-## Driver: Learn and earn
+## Driver: Opportunities to Learn and Earn
 <br>
 
 ### Domain: Education
