@@ -13,7 +13,7 @@ output:
     editor_options:
       chunk_output_type: console
 params:
-  state_county: !r c('51013', '06037', '53033', '36061')
+  state_county: !r c('48303', '51760', '32003', '31055')
   fake_labels: TRUE
 ---
 
@@ -1460,7 +1460,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 
 ## Notes on Data Quality
-| "Good" indicates that the metric is measured with adequate accuracy at sample size.
+| "Good" indicates that the metric is measured with adequate accuracy and sample size.
 | "Marginal" indicates that there are known shortcomings of the data for this metric for this county, and the metric should be used with caution.
 | "Poor" indicates that although the metric could be computed for this county, we have serious concerns about how accurately it is measured for this county and do not recommend its use.
 
