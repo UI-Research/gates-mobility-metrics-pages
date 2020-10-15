@@ -107,7 +107,14 @@ li {
 }
 
 @media print{
+    /* remove elements */
     #TOC, #toc, #header-pinned{
+        display: none;
+    }
+    .nav-tabs{
+        display: none;
+    }
+    .exclude{
         display: none;
     }
     .contentBlock.title{
@@ -125,5 +132,12 @@ li {
     /* you can also specify margins here: */
     margin: 15mm;   
    /*margin-right: 45mm;  for compatibility with both A4 and Letter */
+  }
+  /* page breaks */
+  .printbreak { 
+    page-break-before: always;
+  }
+  .avoidpagebreak {
+    break-inside: avoid-page;
   }
 }
