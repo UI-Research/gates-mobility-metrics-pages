@@ -15,7 +15,7 @@ output:
       chunk_output_type: console
 params:
   state_county: !r c('48303', '51760', '32003', '31055')
-  fake_labels: FALSE
+  fake_labels: TRUE
 ---
 
 ```{r echo = FALSE}
@@ -401,6 +401,7 @@ get_vars_info <- function(varname, data_summary_file=m_info){
 <br>
 
 ## Driver:  Strong and Healthy Families
+
 <br>
 
 ### Domain: Financial Well-Being 
@@ -509,7 +510,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 ```
 <br><br>
 
-### Domain: Secure and Stable Housing
+### Domain: Secure and Stable Housing {.printbreak}
 
 <div class="exclude">*Visit [here](description.html#domain-housing) for a thorough description of the metrics in this domain.*</div>
 
@@ -691,7 +692,7 @@ create_tb_level2_homeless(metrics_info_df = m_info_lst,
 
 <br><br>
 
-### Domain: Family Stability
+### Domain: Family Stability {.printbreak}
 
 <div class="exclude">*Visit [here](description.html#domain-family-stability) for a thorough description of the metrics in this domain.*</div>
 
@@ -769,7 +770,7 @@ create_tb_level2(metrics_info_df = fss_m_info_lst,
 <br><br>
 
 
-### Domain: Health 
+### Domain: Health {.printbreak}
 
 <div class="exclude">*Visit [here](description.html#domain-health) for a thorough description of the metrics in this domain.*</div>
 
@@ -846,8 +847,8 @@ create_tb(metrics_info_df = nh_m_info_lst,
 <br><br>
 
 ##### Detail
-```{r}
 
+```{r}
 create_tb_level2(metrics_info_df = nh_m_info_lst, 
                  dataset = data, 
                  varname_maps = neonatal_varlist) 
@@ -859,7 +860,7 @@ create_tb_level2(metrics_info_df = nh_m_info_lst,
 
 <br>
 
-### Domain: Local Governance 
+### Domain: Local Governance
 
 <div class="exclude">*Visit [here](description.html#domain-local-governance) for a thorough description of the metrics in this domain.*</div>
 
@@ -904,7 +905,7 @@ create_tb_level2(metrics_info_df = et_m_info_lst,
 ```
 <br>
 
-### Domain: Neighborhoods 
+### Domain: Neighborhoods {.printbreak}
 
 <div class="exclude">*Visit [here](description.html#domain-neighborhoods) for a thorough description of the metrics in this domain.*</div>
 
@@ -1011,7 +1012,7 @@ create_tb_level2(metrics_info_df = rd_m_info_lst,
 
 <br>
 
-#### Predictor: Transportation access {.tabset}
+#### Predictor: Transportation access {.tabset .avoidpagebreak}
 
 ##### Summary {.avoidpagebreak}
 
@@ -1134,7 +1135,7 @@ create_tb_level2(metrics_info_df = env_m_info_lst,
 ```
 <br><br>
 
-### Domain: Safety
+### Domain: Safety {.printbreak}
 
 <div class="exclude">*Visit [here](description.html#domain-safety) for a thorough description of the metrics in this domain.*</div>
 
@@ -1438,7 +1439,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 <br><br>
 
-### Domain: Work
+### Domain: Work {.printbreak}
 
 <div class="exclude">*Visit [here](description.html#domain-work) for a thorough description of the metrics in this domain.*</div>
 
@@ -1531,7 +1532,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 <br><br>
 
-## Additional Notes
+## Additional Notes {.printbreak}
 
 The following metrics require original data collection: 
 
