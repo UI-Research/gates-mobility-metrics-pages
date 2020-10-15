@@ -8,6 +8,7 @@ output:
     self_contained: TRUE
     toc: TRUE
     toc_float: TRUE
+    mathjax: null
     css: www/web_report.css
     output_dir: "."
     editor_options:
@@ -21,7 +22,7 @@ params:
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 </style>
 
-<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Lato' />
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
 ```{r echo = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
