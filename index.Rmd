@@ -1478,6 +1478,7 @@ The following metrics require original data collection:
 
 <br>
 
+| Confidence intervals shown are 95 percent.
 | * This confidence interval is not available at this time.
 | + A confidence interval is not applicable.
 | Lower/Upper bound:  The data used to construct this metric do not lend themselves to conventional confidence intervals. The value of the metric shown represents are best estimate; the lower and upper bounds represent alternative estimates of the metric under different assumptions about missing data.
