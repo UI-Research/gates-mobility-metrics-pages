@@ -4,14 +4,14 @@ author: ''
 date: ''
 font: Lato
 output:
-html_document:
-  self_contained: TRUE
-  toc: TRUE
-  toc_float: TRUE
-  css: www/web_report.css
-  output_dir: "."
-  editor_options:
-    chunk_output_type: console
+  html_document:
+    self_contained: TRUE
+    toc: TRUE
+    toc_float: TRUE
+    css: www/web_report.css
+    output_dir: "."
+    editor_options:
+      chunk_output_type: console
 params:
   state_county: !r c('48303', '51760', '32003', '31055')
   fake_labels: TRUE
