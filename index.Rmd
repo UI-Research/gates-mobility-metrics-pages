@@ -18,12 +18,6 @@ params:
   fake_labels: TRUE
 ---
 
-<style>
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
-</style>
-
-<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
 ```{r echo = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 knitr::opts_chunk$set(warning = FALSE)

@@ -105,3 +105,25 @@ li {
     margin-bottom: 2em;
     margin-top: 2em;
 }
+
+@media print{
+    #TOC, #toc, #header-pinned{
+        display: none;
+    }
+    .contentBlock.title{
+        padding-top: 0px;
+    }
+    .expandContainer{
+        height: fit-content !important;
+        height: -moz-fit-content;
+    }
+    .expandFull{
+        display: block !important;
+    }
+  @page {
+    size: 210mm 297mm; /* portrait 
+    /* you can also specify margins here: */
+    margin: 15mm;   
+   /*margin-right: 45mm;  for compatibility with both A4 and Letter */
+  }
+}
