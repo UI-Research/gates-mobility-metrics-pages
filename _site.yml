@@ -8,6 +8,7 @@ navbar:
     href: description.html
 output:
   html_document:
+    mathjax: null
     output_dir: '.'
     css: www/styles.css
 output_dir: '.'

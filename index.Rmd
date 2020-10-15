@@ -8,6 +8,7 @@ output:
     self_contained: TRUE
     toc: TRUE
     toc_float: TRUE
+    mathjax: null
     css: www/web_report.css
     output_dir: "."
     editor_options:
@@ -16,12 +17,6 @@ params:
   state_county: !r c('48303', '51760', '32003', '31055')
   fake_labels: TRUE
 ---
-
-<style>
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
-</style>
-
-<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Lato' />
 
 ```{r echo = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -410,14 +405,13 @@ get_vars_info <- function(varname, data_summary_file=m_info){
 
 ### Domain: Financial Well-Being 
 
-*Visit [here](description.html#domain-financial-well-being) for a thorough description of the metrics in this domain.*
+<div class="exclude">*Visit [here](description.html#domain-financial-well-being) for a thorough description of the metrics in this domain.*</div>
 
-
-#### Predictor: Income {.tabset}
+#### Predictor: Income {.tabset .avoidpagebreak}
 
 ##### Summary
-```{r}
 
+```{r}
 income_varlist <- list(
   c(
     'pctl_20', 
@@ -472,9 +466,10 @@ create_tb_level2(income_m_info_lst, data_sub, income_varlist)
 ```
 <br>
 
-#### Predictor: Financial security {.tabset}
+#### Predictor: Financial security {.tabset .avoidpagebreak}
 
 ##### Summary
+
 ```{r}
 
 debt_varlist <- list(
@@ -499,9 +494,11 @@ create_tb(metrics_info_df = m_info_lst,
 
 
 ```
+
 <br><br>
 
 ##### Detail
+
 ```{r}
 
 create_tb_level2(metrics_info_df = m_info_lst, 
@@ -512,17 +509,15 @@ create_tb_level2(metrics_info_df = m_info_lst,
 ```
 <br><br>
 
-
 ### Domain: Secure and Stable Housing
 
-*Visit [here](description.html#domain-housing) for a thorough description of the metrics in this domain.*
+<div class="exclude">*Visit [here](description.html#domain-housing) for a thorough description of the metrics in this domain.*</div>
 
-#### Predictor: Affordable housing {.tabset}
+#### Predictor: Affordable housing {.tabset .avoidpagebreak}
 
 ##### Summary
+
 ```{r}
-
-
 housing_varlist <- list(
   c(
     'share_affordable_80_ami', 
@@ -552,28 +547,27 @@ create_tb(metrics_info_df = af_m_info_lst,
           dataset = data, 
           varname_maps = housing_varlist) 
 
-
-
 ```
+
 <br>
 
 ##### Detail
+
 ```{r}
 
 create_tb_level2(metrics_info_df = af_m_info_lst, 
                  dataset = data, 
                  varname_maps = housing_varlist) 
 
-
 ```
+
 <br>
 
-
-#### Predictor: Housing instability and homelessness {.tabset}
+#### Predictor: Housing instability and homelessness {.tabset .avoidpagebreak}
 
 ##### Summary
-```{r}
 
+```{r}
 housing_insta_varlist <- list(
   c(
     'homeless_count', 
@@ -602,9 +596,8 @@ create_tb(metrics_info_df = m_info_lst,
           dataset = data, 
           varname_maps = housing_insta_varlist) 
 
-
-
 ```
+
 <br><br>
 
 ##### Detail
@@ -694,21 +687,19 @@ create_tb_level2_homeless(metrics_info_df = m_info_lst,
                  dataset = data, 
                  varname_maps = housing_insta_varlist) 
 
-
 ```
-<br><br>
 
+<br><br>
 
 ### Domain: Family Stability
 
-*Visit [here](description.html#domain-family-stability) for a thorough description of the metrics in this domain.*
+<div class="exclude">*Visit [here](description.html#domain-family-stability) for a thorough description of the metrics in this domain.*</div>
 
-#### Predictor: Family structure and stability {.tabset}
+#### Predictor: Family structure and stability {.tabset .avoidpagebreak}
 
 ##### Summary
+
 ```{r}
-
-
 famstruc_varlist <- list(
   c(
     'famstruc_2par_married', 
@@ -780,9 +771,9 @@ create_tb_level2(metrics_info_df = fss_m_info_lst,
 
 ### Domain: Health 
 
-*Visit [here](description.html#domain-health) for a thorough description of the metrics in this domain.*
+<div class="exclude">*Visit [here](description.html#domain-health) for a thorough description of the metrics in this domain.*</div>
 
-#### Predictor: Access to and utilization of health services {.tabset}
+#### Predictor: Access to and utilization of health services {.tabset .avoidpagebreak}
 
 ##### Summary
 
@@ -827,10 +818,10 @@ create_tb_level2(metrics_info_df = m_info_lst,
 ```
 <br>
 
-
-#### Predictor: Neonatal health {.tabset}
+#### Predictor: Neonatal health {.tabset .avoidpagebreak}
 
 ##### Summary
+
 ```{r}
 
 neonatal_varlist <- list(
@@ -864,17 +855,18 @@ create_tb_level2(metrics_info_df = nh_m_info_lst,
 ```
 <br><br>
 
+## Driver: Supportive Communities {.printbreak}
 
-## Driver: Supportive Communities
 <br>
 
 ### Domain: Local Governance 
 
-*Visit [here](description.html#domain-local-governance) for a thorough description of the metrics in this domain.*
+<div class="exclude">*Visit [here](description.html#domain-local-governance) for a thorough description of the metrics in this domain.*</div>
 
-#### Predictor: Political participation {.tabset}
+#### Predictor: Political participation {.tabset .avoidpagebreak}
 
 ##### Summary
+
 ```{r}
 
 election_turnout_varlist <- list(
@@ -914,13 +906,13 @@ create_tb_level2(metrics_info_df = et_m_info_lst,
 
 ### Domain: Neighborhoods 
 
-*Visit [here](description.html#domain-neighborhoods) for a thorough description of the metrics in this domain.*
+<div class="exclude">*Visit [here](description.html#domain-neighborhoods) for a thorough description of the metrics in this domain.*</div>
 
-#### Predictor: Economic inclusion {.tabset}
+#### Predictor: Economic inclusion {.tabset .avoidpagebreak}
 
 ##### Summary
-```{r}
 
+```{r}
 econ_inc_varlist <- list(
   c('poverty_exposure'),
   c('% in high poverty neighborhoods'),
@@ -952,12 +944,11 @@ create_tb_level2(metrics_info_df = ei_m_info_lst,
                  dataset = data, 
                  varname_maps = econ_inc_varlist) 
 
-
 ```
+
 <br>
 
-
-#### Predictor: Racial diversity {.tabset}
+#### Predictor: Racial diversity {.tabset  .avoidpagebreak}
 
 ##### Summary
 ```{r}
@@ -1016,16 +1007,15 @@ create_tb_level2(metrics_info_df = rd_m_info_lst,
                  dataset = data, 
                  varname_maps = race_div) 
 
-
 ```
-<br>
 
+<br>
 
 #### Predictor: Transportation access {.tabset}
 
-##### Summary
-```{r}
+##### Summary {.avoidpagebreak}
 
+```{r}
 trans_access <- list(
   c('transit_trips'),
   c('Transit trips'),
@@ -1058,13 +1048,13 @@ create_tb_level2(metrics_info_df = trans_info_lst,
                  dataset = data, 
                  varname_maps = trans_access) 
 
-
 ```
+
 <br>
 
 ####  {.tabset}
 
-##### Summary
+##### Summary {.avoidpagebreak}
 ```{r}
 
 
@@ -1101,15 +1091,14 @@ create_tb_level2(metrics_info_df = tr_cost_m_info_lst,
 
 
 ```
+
 <br>
 
-
-#### Predictor: Environmental quality {.tabset}
+#### Predictor: Environmental quality {.tabset .avoidpagebreak}
 
 ##### Summary
+
 ```{r}
-
-
 env_varlist <- list(
   c('haz_idx'),
   c('Air quality index'),
@@ -1145,18 +1134,15 @@ create_tb_level2(metrics_info_df = env_m_info_lst,
 ```
 <br><br>
 
-
-
 ### Domain: Safety
 
-*Visit [here](description.html#domain-safety) for a thorough description of the metrics in this domain.*
+<div class="exclude">*Visit [here](description.html#domain-safety) for a thorough description of the metrics in this domain.*</div>
 
-#### Predictor: Exposure to crime {.tabset}
+#### Predictor: Exposure to crime {.tabset .avoidpagebreak}
 
 ##### Summary
+
 ```{r}
-
-
 exp_crime_varlist <- list(
   c(
     'violent_crime_rate',
@@ -1210,7 +1196,7 @@ create_tb_level2(metrics_info_df = ec_m_info_lst,
 ```
 <br>
 
-#### Predictor: Overly punitive policing {.tabset}
+#### Predictor: Overly punitive policing {.tabset .avoidpagebreak}
 
 ##### Summary
 ```{r}
@@ -1257,20 +1243,19 @@ create_tb_level2(metrics_info_df = m_info_lst,
 ```
 <br><br>
 
+## Driver: Opportunities to Learn and Earn {.printbreak}
 
-
-## Driver: Opportunities to Learn and Earn
 <br>
 
 ### Domain: Education
 
-*Visit [here](description.html#domain-education) for a thorough description of the metrics in this domain.*
+<div class="exclude">*Visit [here](description.html#domain-education) for a thorough description of the metrics in this domain.*</div>
 
-#### Predictor: Access to preschool {.tabset}
+#### Predictor: Access to preschool {.tabset .avoidpagebreak}
 
 ##### Summary
-```{r}
 
+```{r}
 share_in_presch_varlist <- list(
   c('share_in_preschool'),
   c('% Pre-kindergarten'),
@@ -1306,11 +1291,11 @@ create_tb_level2(metrics_info_df = ap_m_info_lst,
 ```
 <br>
 
-#### Predictor: Effective public education {.tabset}
+#### Predictor: Effective public education {.tabset .avoidpagebreak}
 
 ##### Summary
-```{r}
 
+```{r}
 eff_pub_ed <- list(
   c('learning_rate'),
   c('Annual ELA achievement'),
@@ -1343,12 +1328,13 @@ create_tb_level2(metrics_info_df = epd_m_info_lst,
                  varname_maps = eff_pub_ed) 
 
 ```
+
 <br>
 
-
-#### Predictor: Student poverty concentration {.tabset}
+#### Predictor: Student poverty concentration {.tabset  .avoidpagebreak}
 
 ##### Summary
+
 ```{r}
 
 stu_poverty <- list(
@@ -1412,13 +1398,11 @@ create_tb_level2(metrics_info_df = spoverty_m_info_lst,
 ```
 <br>
 
-
-#### Predictor: College readiness {.tabset}
+#### Predictor: College readiness {.tabset .avoidpagebreak}
 
 ##### Summary
+
 ```{r}
-
-
 college_readiness <- list(
   c('share_hs_degree'),
   c('% HS degree'),
@@ -1450,21 +1434,19 @@ create_tb_level2(metrics_info_df = m_info_lst,
                  dataset = data, 
                  varname_maps = college_readiness) 
 
-
 ```
-<br><br>
 
+<br><br>
 
 ### Domain: Work
 
-*Visit [here](description.html#domain-work) for a thorough description of the metrics in this domain.*
+<div class="exclude">*Visit [here](description.html#domain-work) for a thorough description of the metrics in this domain.*</div>
 
-#### Predictor: Employment {.tabset}
+#### Predictor: Employment {.tabset .avoidpagebreak}
 
 ##### Summary
+
 ```{r}
-
-
 emp_lst <- list(
   c('share_employed'),
   c('Employment to population ratio'),
@@ -1497,16 +1479,15 @@ create_tb_level2(metrics_info_df = emp_m_info_lst,
                  dataset = data, 
                  varname_maps = emp_lst) 
 
-
 ```
+
 <br>
 
-
-#### Predictor: Access to jobs paying a living wage {.tabset}
+#### Predictor: Access to jobs paying a living wage {.tabset .avoidpagebreak}
 
 ##### Summary
-```{r}
 
+```{r}
 job_wage <- list(
   c('average_to_living_wage_ratio'),
   c('Ratio of pay to living wage'),
