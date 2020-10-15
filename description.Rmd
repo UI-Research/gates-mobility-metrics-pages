@@ -15,12 +15,6 @@ params:
   state_county: !r c("51013", "06037", "53033", "36061")
 ---
 
-<style>
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
-</style>
-
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato" />
-
 # Key Predictors and Metrics
 
 ## Strong and Healthy Families
