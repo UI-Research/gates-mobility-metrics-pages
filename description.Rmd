@@ -63,6 +63,7 @@ The measure accounts for the share of households in an area with debt that has p
 **Subgroups:** Because the metric aggregates to a geography, the data cannot be broken down by demographic characteristics but can be used in combination with the ACS to identify the racial or ethnic composition of neighborhoods (zip codes) with more or less debt in collections (e.g., in Cook County, Illinois, neighborhoods with residents that are majority people of color have nearly three times the amount of debt in collections as do neighborhoods with majority white residents). 
 
 **Limitations:** Aside from the limitations related to geography and subgroup analysis, these data do not capture “credit invisible” households without a credit record. And as a measure of financial well-being, even if few households have debt in collections, many may still have too little wealth or savings to be primed for upward mobility. This measure is somewhat sensitive to resident turnover. If a large number of residents without overdue debt move into a county or zip code, or if a large number of residents with overdue debt move out, this measure could shift without any in-household change in debt management. 
+Housing
 
 <br>
 
@@ -116,7 +117,7 @@ This metric identifies the number of children (age 3 through 12th grade) who are
 
 ##### PREDICTOR: FAMILY STRUCTURE AND STABILITY 
 
-**Metric: Share of children in various family living arrangements**
+**Metric: Share of children in various family living arrangement**
 
 The Working Group advised considering the share of children living in each of six different living arrangements (that sum to 100 percent): two married biological or adoptive parents; one biological or adoptive parent and that parent’s current spouse or partner; one biological or adoptive parent and at least one other adult; one biological or adoptive parent; at least two adults, but no parent; and all other.
 
@@ -156,7 +157,7 @@ This metric is measured through one question that asks “How would you rate you
 
 **Subgroups:** Like geography, the range of subgroups represented and the ability to compare subgroups (e.g., age, race or ethnicity, and gender) would depend on the sampling frame, stratification, and the number of people surveyed.
 
-**Limitations:** A primary limitation is that these data will need to be collected directly by communities. Communities will need to identify through which vehicles data can be gathered. Further, this metric can be sensitive to residential mobility if the same people cannot be followed over time. A community transitioning out residents of poorer health in favor of those who are healthier may appear to be improving the overall health of the community. Therefore, it is important to collect these data along with demographic characteristics to ensure improved health is felt by people of all races and socioeconomic backgrounds.
+**Limitations:** A primary limitation is that these data will need to be collected directly by communities. Communities will need to identify through which vehicles data can be gathered. Further, this metric can be sensitive to residential mobility if the same people cannot be followed over time. A community transitioning out residents of poorer health in favor of those who are healthier may appear to be improving the overall health of the community. Therefore, it is important to collect these data along with demographic characteristics to ensure improved health is felt by people of all races and socioeconomic backgrounds. 
 
 <br>
 
@@ -164,21 +165,21 @@ This metric is measured through one question that asks “How would you rate you
 
 **Metric: Health professionals shortage area (HPSA) ranking for primary care providers**
 
-This metric denotes that an area has a shortage of primary care providers based on four elements: weighted population-to-provider ratio, share of individuals with incomes below 100 percent of the federal poverty level, infant health index, and travel time or distance to the nearest source of nondesignated accessible care. The Division of Policy and Shortage Designation through the US Department of Health and Human Services calculates a score between 0 to 25 for primary care HPSAs, where the higher the score, the greater the shortage. The facility can get up to 10 points for the population-to-provider ratio, up to 5 for the share of the population with incomes below 100 percent of the federal poverty level, up to 5 for the infant health index (based on infant mortality rate or low birth weight rate), and up to 5 for travel time to the nearest source of care.  
+This metric denotes that an area has a shortage of primary care providers based on four elements: weighted population-to-provider ratio, share of individuals with incomes below 100 percent of the federal poverty level, infant health index, and travel time or distance to the nearest source of nondesignated accessible care. The Division of Policy and Shortage Designation through the US Department of Health and Human Services calculates a score between 0 to 25 for primary care HPSAs, where the higher the score, the greater the shortage. The facility can get up to 10 points for the population-to-provider ratio, up to 5 for the share of the population with incomes below 100 percent of the federal poverty level, up to 5 for the infant health index (based on infant mortality rate or low birth weight rate), and up to 5 for travel time to the nearest source of care.  Identifying a geography as an HPSA, the data managers suggest identifying geographies that contain a designated HPSA of any score to be considered a shortage geography, and those geographies that do not contain a designated HPSA as not having a shortage.
 
-**Validity:** This metric is defined and established by the US Department of Health and Human Services.
+**Validity:** This metric is defined and established by the US Department of Health and Human Services and managed by the Health Resources and Services Administration (HRSA) .
 
 **Availability:** Data for this metric are nationally available by state and county through the US Department of Health and Human Services. 
 
-**Frequency:** Different data elements are updated at different intervals, but overall, this metric can be refreshed every two years. 
+**Frequency:** Data are updated daily, but geographies and facilities were evaluated at some time in the past four years. 
 
 **Geography:** HPSAs are available by state, county, or service area. Although data are not available at the neighborhood level, individual addresses can be assessed and therefore could be used to derive a value for the neighborhood. Data are available for urban and rural areas. 
 
-**Consistency:** HPSA status can be measured the same way over time and across geographies.
+**Consistency:** HPSA status can be measured the same way over time and across geographies. The scoring criteria is currently under review and may shift in upcoming years. 
 
-**Subgroups:** This metric can be calculated separately for low-income populations. 
+**Subgroups:** This metric can be calculated separately for low-income populations, including migrant farm/seasonal workers, Medicaid-eligible population, and Native American. 
 
-**Limitations:** Even though HPSA status is a characteristic of the local area, some elements used to determine the designation are based on the characteristics of the local population; as such, changing residential mobility patterns may influence this metric. 
+**Limitations:** Even though HPSA status is a characteristic of the local area, some elements used to determine the designation are based on the characteristics of the local population; as such, changing residential mobility patterns may influence this metric. While facilities do not opt-in to be evaluated as an HPSA, localities request to be evaluated as a geographic HPSA or a population-based HPSA. Localities may choose to withdraw as a geographic HPSA in favor of a population-based HPSA (and vice versa) if they believe they may become eligible for more desirable resources. 
 
 <br>
 
@@ -202,14 +203,17 @@ A child born weighing less than 5 pounds 8 ounces (<2,500 grams) is considered t
 
 **Limitations:** Data are not readily available at lower levels of geography, such as neighborhoods, where disparities by race and socioeconomic status within a city are most notable. Large movements of women with risky pregnancies moving in or out of a jurisdiction could influence this metric.
 
+<br>
+
 ## Supportive Communities
 
 ### Domain: Local Governance {#domain-local-governance}
 
 ##### PREDICTOR: POLITICAL PARTICIPATION
 
-**Metric: Share of the voting-eligible population who turn out to vote
-This metric measures the share of the voting-eligible population that voted in the most recent local elections.**
+**Metric: Share of the voting-eligible population who turn out to vote**
+
+This metric measures the share of the voting-eligible population that voted in the most recent local elections. 
 
 **Validity:** This metric is well established. Scholars of political science have used this metric in articles published in peer-reviewed journals.
 
@@ -343,7 +347,7 @@ This survey measures the resources provided by a person’s social networks, inc
 
 **Metric: Transit trips index**
 
-This metric reflects the number of public transit trips taken annually by a three-person single-parent family with income at 50 percent of the AMI for renters. This number is percentile ranked nationally into an index with values ranging from 0 to 100. Higher scores reflect better access to public transportation. 
+This metric reflects the number of public transit trips taken annually at the census tract by a three-person single-parent family with income at 50 percent of the Area Median Income (AMI) for renters. This number is percentile ranked nationally into an index with values ranging from 0 to 100 for each census tract. Higher scores reflect better access to public transportation. 
 
 **Validity:** This metric was designed in partnership with the US Department of Transportation and has been used by the US Department of Housing and Urban Development in community efforts to affirmatively further fair housing. Several scholars have also used this metric and data in published in peer-reviewed journals. Although other arrangements of family composition, income, and housing status are possible in constructing this index and are available in the data, these characteristics were intended to more closely characterize a lower-income household in the community and are the most validated of other household combinations.
 
@@ -351,7 +355,7 @@ This metric reflects the number of public transit trips taken annually by a thre
 
 **Frequency:** The location affordability index data are updated every three years.
 
-**Geography:** This can be measured at the census tract or neighborhood level.
+**Geography:** This can be measured at the census tract or neighborhood level. Values can be averaged at higher levels of geography. For example, one can calculate a population-weighted average value among all census tracts in a county to determine a county-level value.  
 
 **Consistency:** This metric can be calculated the same way over time. 
 
@@ -369,7 +373,7 @@ This index reflects local transportation costs as a share of renters’ incomes.
 
 **Frequency:** The location affordability index data are updated every three years.
 
-**Geography:** This can be measured at the census tract or neighborhood level.
+**Geography:** This can be measured at the census tract or neighborhood level. Values can be averaged at higher levels of geography. For example, one can calculate a population-weighted average value among all census tracts in a county to determine a county-level value.  
 
 **Consistency:** This metric can be calculated the same way over time. 
 
@@ -383,21 +387,21 @@ This index reflects local transportation costs as a share of renters’ incomes.
 
 **Metric: Air quality index**
 
-The air quality index, or AQI, is an index for reporting daily air quality. It tells how clean or polluted the air is and what associated health effects might be a concern in the community. The AQI includes five major air pollutants regulated by the Clean Air Act: ground-level ozone, particle pollution (also known as particulate matter), carbon monoxide, sulfur dioxide, and nitrogen dioxide. For each of these pollutants, the Environmental Protection Agency has established national air quality standards to protect public health. Ground-level ozone and airborne particles are the two pollutants that pose the greatest threat to human health in the US. Values range from 0 to 500 and are categorized into a six-point scale: good, moderate, unhealthy for sensitive groups, unhealthy, very unhealthy, and hazardous. 
+The air quality index  is an index that  summarizes potential exposure to harmful toxins at a neighborhood level. The index is a linear combination of standardized Environmental Protection Agency (EPA) estimates of air quality carcinogenic, respiratory, and neurological hazards at census tracts. Values are inverted and then percentile ranked nationally. Values per census tract range from 0 to 100. The higher the index value, the less exposure to toxins harmful to human health.
 
-**Validity:** Environmental Protection Agency scientists and researchers link levels of air pollutants to health effects that can manifest within a few hours or days after breathing polluted air. Levels of air pollution are measured from thousands of air quality monitors. 
+**Validity:** EPA scientists and researchers link air pollutants to health effects that can manifest within a few hours or days after breathing polluted air. 
 
-**Consistency:** Levels of air pollutants can be consistently measured over time and space. 
+**Consistency:** Air pollutants can be consistently measured over time and space. However, EPA standards may be in flux in the coming years and should be re-evaluated for consistency moving forward. 
 
 **Availability:** Air quality systems data are produced by the US Environmental Protection Agency and are publicly available. 
 
-**Frequency:** Air quality data are updated daily. 
+**Frequency:** Air quality data from the National Air Toxics Assessment (NATA) data were updated every three years since 1996, but the most recent update was in 2014.  
 
-**Geography:** AQI can be measured at the county level.
+**Geography:** This index is measured at the census tract level and can be rolled up to other levels of geography. 
 
-**Subgroups:** This metric is available for urban, rural, and suburban areas. 
+**Subgroups:** This metric can reflect subgroups by matching  it with demographic characteristics at the census tract, such as racial or ethnic composition or concentrated poverty..  
 
-**Limitations:** Data are not readily available at lower levels of geography, such as neighborhoods, where disparities by race and socioeconomic status within a county are most notable. The Working Group would prefer if these data were at lower levels of geography such that air quality indicators could be matched to neighborhoods by different characteristics, such as racial or ethnic composition or concentrated poverty.
+**Limitations:** Data are not updated with enough frequency. Other data sources can offer information annually, or even daily, but they are at higher levels of geography and would not be able to be disaggregated by subgroups. 
 
 <br>
 
@@ -467,14 +471,17 @@ The FBI’s UCR Program also provides statistics on the number of arrests of peo
 
 **Limitations:** Reporting to UCR is not mandatory, and although most jurisdictions provide data, UCR does not capture the universe of reported index crimes across the United States. These data also do not capture any punitive interactions with school resource officers that do not get elevated to the level of arrest (such as being temporarily detained or being removed or suspended from school). As a place-based measure, reported crime is affected by mobility in and out of the jurisdiction, and because the measure is a rate, large increases or declines in the number of juveniles in an area could also affect the metric.
 
+<br>
+
 ## Opportunities to Learn and Earn
 
 ### Domain: Education {#domain-education}
 
 ##### PREDICTOR: ACCESS TO PRESCHOOL
 
-Metric: Share of children enrolled in nursery school or preschool 
-This metric measures the share of a jurisdiction’s three- to four-year old children who are enrolled in nursery or preschool.
+**Metric: Share of children enrolled in nursery school or preschool**
+
+This metric measures the share of a jurisdiction’s three- to four-year old children who are enrolled in nursery school or preschool.
 
 **Validity:** Federal agencies such as the National Center for Education Statistics use household survey data to ascertain nursery and preschool enrollment. 
 
@@ -538,7 +545,8 @@ This set of metrics is constructed separately for each racial or ethnic group an
 
 ##### PREDICTOR: COLLEGE READINESS
 
-Metric: Share of 19- and 20-year-olds with a high school degree
+**Metric: Share of 19- and 20-year-olds with a high school degree**
+
 This metric is the ratio of the number 19- and 20-year olds with a high school degree in a given jurisdiction to the total number of 19- and 20-year olds in the jurisdiction. 
 
 **Validity:** Earning a high school degree is an important prerequisite for pursuing additional schooling, and although not all high school graduates are ready to enroll in college, high school completion is a well-understood and widely used measure of educational attainment. Data on educational attainment are collected in a variety of federal surveys. 
@@ -599,4 +607,4 @@ This metric shows what a “typical” job pays relative to the cost of living i
 
 **Subgroups:** The data cannot be broken down into subgroups because they describe jobs rather than the people in them.
 
-**Limitations:** The measure can only be computed for the 365 largest counties and cannot be broken down into subgroups. The measure relies on MIT’s computations of “living wages.”
+**Limitations:** The measure cannot be broken down into subgroups. The measure relies on MIT’s computations of “living wages.”
