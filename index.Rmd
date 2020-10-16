@@ -1356,12 +1356,12 @@ stu_poverty <- list(
     'frpl40_hispanic_quality'
   ),
   c(
-    '% White, non-Hispanic', 
-    '% White, non-Hispanic_quality',
-    '% Black, non-Hispanic', 
-    '% Black, non-Hispanic_quality', 
-    '% Hispanic', 
-    '% Hispanic_quality'
+    '% for White, non-Hispanic', 
+    '% for White, non-Hispanic_quality',
+    '% for Black, non-Hispanic', 
+    '% for Black, non-Hispanic_quality', 
+    '% for Hispanic', 
+    '% for Hispanic_quality'
   ),
   c('frpl40_white', 
     'frpl40_white_ci', 
@@ -1374,15 +1374,15 @@ stu_poverty <- list(
     'frpl40_hispanic_quality'
   ),
   c(
-    '% White, non-Hispanic', 
-    '% White, non-Hispanic_ci', 
-    '% White, non-Hispanic_quality',
-    '% Black, non-Hispanic', 
-    '% Black, non-Hispanic_ci',
-    '% Black, non-Hispanic_quality', 
-    '% Hispanic', 
-    '% Hispanic_ci',
-    '% Hispanic_quality'
+    '% for White, non-Hispanic', 
+    '% for White, non-Hispanic_ci', 
+    '% for White, non-Hispanic_quality',
+    '% for Black, non-Hispanic', 
+    '% for Black, non-Hispanic_ci',
+    '% for Black, non-Hispanic_quality', 
+    '% for Hispanic', 
+    '% for Hispanic_ci',
+    '% for Hispanic_quality'
   )
 )
 
