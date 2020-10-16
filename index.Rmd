@@ -169,13 +169,22 @@ all_perc_vars <- sort(lst %>% reduce(c))
 perc_vars_in_data <- all_perc_vars[(all_perc_vars %in% colnames(data))]
 
 
+numeric_vars_one_digit <- data %>% 
+  select(-average_to_living_wage_ratio) %>% 
+  select(-perc_vars_in_data) %>% 
+  select_if(is.numeric) %>% 
+  names()
+
 data <- data %>% 
   mutate_at(vars(matches('share_hs_degree_ub')),     #update ub for share_hs_degree to 1
             function(x) case_when(x > 1 ~ 1, 
                                   TRUE  ~ x)) %>% 
   mutate_at(perc_vars_in_data,             #convert to percentage 
             function (x) scales::percent(x, accuracy = 0.1)) %>% 
-  mutate_if(is.numeric, function(x) {format(round(x, 1), big.mark=",",scientific=FALSE)}) %>% 
+  mutate_at(numeric_vars_one_digit, 
+            function(x) {format(round(x, 1), big.mark=",",scientific=FALSE)}) %>% 
+  mutate_at(vars(matches('average_to_living_wage_ratio')), 
+            function(x) {format(round(x, 2), big.mark=",",scientific=FALSE)}) %>% 
   mutate(na_quality = 'NA')  %>%  #to be used for metrics where there is no quality variable %>% 
   mutate_at(vars(-one_of('state_county')), function(x) gsub('\\s+', '', x)) %>% 
   rename(hispanic_representation = hispanic,
