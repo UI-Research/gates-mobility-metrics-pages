@@ -15,7 +15,7 @@ output:
       chunk_output_type: console
 params:
   state_county: !r c('48303', '51760', '32003', '31055')
-  fake_labels: TRUE
+  fake_labels: FALSE
 ---
 
 ```{r echo = FALSE}
@@ -961,12 +961,12 @@ race_div <- list(
     'black_nh_exposure_quality', 
     'hispanic_exposure',
     'hispanic_exposure_quality'),
-  c('% Non-Black, Non-Hispanic', 
-    '% Non-Black, Non-Hispanic_quality', 
-    '% Black, Non-Hispanic', 
-    '% Black, Non-Hispanic_quality', 
-    '% Hispanic', 
-    '% Hispanic_quality'
+  c('% for Non-Black, Non-Hispanic', 
+    '% for Non-Black, Non-Hispanic_quality', 
+    '% for Black, Non-Hispanic', 
+    '% for Black, Non-Hispanic_quality', 
+    '% for Hispanic', 
+    '% for Hispanic_quality'
   ),
   c('white_nh_exposure',
     'white_nh_exposure_ci',
@@ -977,15 +977,15 @@ race_div <- list(
     'hispanic_exposure',
     'hispanic_exposure_ci',
     'hispanic_exposure_quality'),
-  c('% Non-Black, Non-Hispanic', 
-    '% Non-Black, Non-Hispanic_ci', 
-    '% Non-Black, Non-Hispanic_quality',
-    '% Black, Non-Hispanic', 
-    '% Black, Non-Hispanic_ci',
-    '% Black, Non-Hispanic_quality', 
-    '% Hispanic', 
-    '% Hispanic_ci', 
-    '% Hispanic_quality'
+  c('% for Non-Black, Non-Hispanic', 
+    '% for Non-Black, Non-Hispanic_ci', 
+    '% for Non-Black, Non-Hispanic_quality',
+    '% for Black, Non-Hispanic', 
+    '% for Black, Non-Hispanic_ci',
+    '% for Black, Non-Hispanic_quality', 
+    '% for Hispanic', 
+    '% for Hispanic_ci', 
+    '% for Hispanic_quality'
   )
 )
 

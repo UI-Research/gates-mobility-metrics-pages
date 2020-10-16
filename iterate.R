@@ -15,8 +15,8 @@ app_list <- app_list %>%
   mutate(full_list = strsplit(full_list, ';')) %>% 
   mutate(county = gsub(' County', '', county)) %>% 
   mutate(uni_id = str_c(fips, county, state, sep = "-")) %>% 
-  mutate(uni_id = gsub(' ', '-', uni_id)) %>% 
-  sample_n(5)
+  mutate(uni_id = gsub(' ', '-', uni_id)) %>%
+  mutate(uni_id = str_replace_all(string = uni_id, pattern = ";", replacement = ""))
 
 
 # create an index
