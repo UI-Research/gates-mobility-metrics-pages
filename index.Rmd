@@ -14,7 +14,7 @@ output:
     editor_options:
       chunk_output_type: console
 params:
-  state_county: !r c('48303', '51760', '32003', '31055')
+  state_county: !r c('42077', '42095', '42017', '48453', '09003')
   fake_labels: FALSE
 ---
 

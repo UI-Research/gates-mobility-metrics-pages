@@ -11,7 +11,7 @@ Colorado,Larimer,8069,53033; 39049; 49035
 Colorado,Adams County,8001,27123; 37081; 53063
 District of Columbia,District of Columbia,11001,06075; 24005; 13121
 Florida,Broward,12011,13121; 06037; 17031
-Florida,St. Lucie County,12111,12081; 12089; 12073
+Florida,St Lucie County,12111,12081; 12089; 12073
 Florida,Hillsborough County,12057,48201; 41051; 12097
 Florida,Leon,12073,12001; 12033; 12099
 Georgia,Clayton County,13063,13121; 13089; 13247
@@ -20,10 +20,10 @@ Georgia,DeKalb County,13089,13121; 24033; 37119
 Illinois,Cook County,17031,06037; 48201; 13121
 Illinois,Lake County,17097,17043; 25021; 36119
 Kentucky,Jefferson County,21111,47037; 18097; 39061
-Louisiana,New Orleans,22071,22033; 47157; 22051
-Maryland,Montgomery County Maryland,24031,51059; 53033; 34003
+Louisiana,New Orleans,22071,22033; 47157; 21111
+Maryland,Montgomery County,24031,51059; 53033; 34003
 Maryland,Howard County,24027,51107; 41051; 37119
-Maryland,"Baltimore City, an independent city in Maryland",24510,24005; 17031; 42101
+Maryland,Baltimore City,24510,24005; 17031; 42101
 Michigan,Wayne,26163,48201; 17031; 39035
 Michigan,Kent County,26081,39035; 13135; 53033
 Michigan,County of Newaygo,26123,12063; 26157; 23017
@@ -36,26 +36,26 @@ New Jersey,Hudson County,34017,22071; 39061; 36047
 New York,Albany,36001,36027; 36067; 36071
 New York,Suffolk County,36103,36059; 36119; 25013
 New York,Erie County,36029,42003; 39035; 55079
-North Carolina,Buncombe County,37021,37119; 47065; 13051
+North Carolina,Buncombe County,37021,37119; 47065; 13051; 37135
 North Carolina,Orange County,37135,37021; 20045; 08013
 North Carolina,Forsyth County,37067,37081; 45045; 47065
-Ohio,Montgomery County,39113,42003; 08031; 53033
+Ohio,Montgomery County,39113,47093; 39153; 42077; 42003; 08031; 53033
 Ohio,Franklin County,39049,39035; 39061; 37119
 Ohio,County of Summit Ohio,39153,42003; 39095; 26081
 Ohio,"Erie County, Huron County",39043; 39077,26055; 50007; 45045
 Ohio,Cuyahoga County,39035,42003; 39061; 26163
-OREGON,Umatilla County,41059,41049; 41061; 41023
+Oregon,Umatilla County,41059,41049; 41061; 41023
 Pennsylvania,Allegheny County,42003,27053; 53033; 25025
-Pennsylvania,Lehigh and Northampton,42077; 42095,42017; 48452; 09003
+Pennsylvania,Lehigh and Northampton,42077; 42095,42017; 48453; 09003
 Pennsylvania,Erie County,42049,27137; 55009; 18141
-Pennsylvania,Philadelphia,42101,24005; 17031; 17057
+Pennsylvania,Philadelphia,42101,24005; 17031; 13121
 Pennsylvania,"Lackawanna, Luzerne, Wayne, Wyoming",42069; 42079; 42127; 42131,42043; 41039; 42049
 Wisconsin,Racine County,55101,55079; 42049; 36055
 Tennessee,Davidson County,47037,37119; 39061; 48453
-Texas,Harris County,48201,17031; 12086; 42101
+Texas,Harris County,48201,17031; 12086; 53033
 Texas,Dallas County,48113,48201; 36047; 06037
-Texas,Harris Coutny,48201,06037; 53033; 12086
-Utah,Salt Lake County (SCLO),49035,06067; 08031; 32031
+Texas,Harris County,48201,06037; 53033; 12086
+Utah,Salt Lake County,49035,06067; 08031; 32031
 Vermont,Windham,50025,36083; 33005; 23013
 Vermont,Franklin County and Grand Isle County,50011; 50013,36031; 23017; 33011
 Virginia,Prince William County,51153,51059; 51107; 24031
@@ -64,4 +64,4 @@ Virginia,Fairfax County,51059,24031; 51013; 51107
 Virginia,Loudoun County,51107,22071; 37063; 24017
 Washington,King,53033,27053; 24031; 08031
 Washington State,Snohomish County,53061,45019; 53033; 01097
-Wisconsin,Milwaukee County,55079,27053; 39035; 53033
+Wisconsin,Milwaukee County,55079,27053; 27123; 39035; 53033
