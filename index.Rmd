@@ -217,7 +217,7 @@ create_tb <- function(metrics_info_df, dataset, varname_maps){
   
   temp <- dataset %>% 
     select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
-    select(-matches('_lb|_ub|*sub*')) %>% 
+    select(-matches('_lb|_ub|.*sub.*')) %>% 
     select(sort(tidyselect::peek_vars())) %>% 
     rename_at(vars(all_of(col_from)), function(x) col_to) 
   
@@ -330,7 +330,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     
     
     temp <- dataset %>% 
-      select(matches(glue('{mb_vars}|state_county')), -matches('_lb|ub'))
+      select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub'))
     
     col_from <- col_from[-grep("*_ci", col_from)]
     col_to <- col_to[-grep("*ci", col_to)]
@@ -350,7 +350,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
     
     temp <- dataset %>% 
-      select(matches(glue('{mb_vars}|state_county')), -matches('_lb|ub'))
+      select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub'))
     
     col_from <- col_from[-grep("*_ci", col_from)]
     col_to <- col_to[-grep("*ci", col_to)]
@@ -371,7 +371,6 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
       relocate(!!sym(quality_var), .after = last_col())  
     
   } 
-  
   
   temp %>% 
     pivot_longer(!state_county, names_to='metrics', values_to='value') %>%
@@ -473,7 +472,7 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
     colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
     
     temp <- dataset %>%   
-      select(matches(glue('{sub_varname_re}|state_county')))
+      select(matches(glue('{sub_varname_re}|{quality_var}|state_county')))
     
     #col_from <- col_from[-grep("*_ci", col_from)]
     #col_to <- col_to[-grep("*ci", col_to)]
@@ -493,7 +492,7 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
     colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
     
     temp <- dataset %>% 
-      select(matches(glue('{sub_varname_re}|state_county')), -matches('_lb|ub'))
+      select(matches(glue('{sub_varname_re}|{quality_var}|state_county')), -matches('_lb|ub'))
     
     #col_from <- col_from[-grep("*_ci", col_from)]
     #col_to <- col_to[-grep("*ci", col_to)]
@@ -519,7 +518,7 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
     pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
     #arrange(match(metrics, col_to)) %>% 
     #mutate(metrics = gsub('.*ci', ci_str, metrics)) %>% 
-    #mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
+    mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
     #select(metrics, everything()) %>% 
     gt(rowname_col = 'metrics') %>% 
     tab_header(
