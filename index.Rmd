@@ -81,6 +81,8 @@ data <- read_csv(fpath) %>%
   mutate(state = str_pad(state, width = 2, side ='left', pad = '0'), #set max ub as 1 
          county = str_pad(county, width = 3, side ='left', pad = '0'))
 
+data <- data %>%
+  mutate(juvenile_arrest_rate = if_else(state == "12", as.numeric(NA), juvenile_arrest_rate))
 
 if (params$fake_labels) {
   
