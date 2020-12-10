@@ -325,7 +325,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     
   
     temp <- dataset %>% 
-       select(matches(glue('{mb_vars}|state_county')), -matches('_lb|ub'))
+       select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub'))
     
     col_from <- col_from[-grep("*_ci", col_from)]
     col_to <- col_to[-grep("*ci", col_to)]
@@ -345,7 +345,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
     
     temp <- dataset %>% 
-       select(matches(glue('{mb_vars}|state_county')), -matches('_lb|ub'))
+       select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub'))
     
     col_from <- col_from[-grep("*_ci", col_from)]
     col_to <- col_to[-grep("*ci", col_to)]
