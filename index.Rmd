@@ -30,7 +30,7 @@ knitr::opts_chunk$set(results = 'asis')
 ```{r header-image, fig.width = 5.14, fig.height = 1.46, echo = FALSE}
 
 # All defaults
-knitr::include_graphics('www/images/urban-institute-logo.png')
+knitr::include_graphics(here::here('www', 'images', 'urban-institute-logo.png'))
 
 ```
 
@@ -81,8 +81,13 @@ data <- read_csv(fpath) %>%
   mutate(state = str_pad(state, width = 2, side ='left', pad = '0'), #set max ub as 1 
          county = str_pad(county, width = 3, side ='left', pad = '0'))
 
+# fix a few data issues
 data <- data %>%
-  mutate(juvenile_arrest_rate = if_else(state == "12", as.numeric(NA), juvenile_arrest_rate))
+  mutate(
+    juvenile_arrest_rate = if_else(state == "12", as.numeric(NA), juvenile_arrest_rate),
+    crime_rate_quality = if_else(crime_rate_quality == 2, 1, crime_rate_quality),
+    jjarrest_rate_quality = if_else(jjarrest_rate_quality == 2, 1, jjarrest_rate_quality)
+  )
 
 if (params$fake_labels) {
   
