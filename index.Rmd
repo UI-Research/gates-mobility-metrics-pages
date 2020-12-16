@@ -85,8 +85,11 @@ data <- read_csv(fpath) %>%
 data <- data %>%
   mutate(
     juvenile_arrest_rate = if_else(state == "12", as.numeric(NA), juvenile_arrest_rate),
-    crime_rate_quality = if_else(crime_rate_quality == 2, 1, crime_rate_quality),
-    jjarrest_rate_quality = if_else(jjarrest_rate_quality == 2, 1, jjarrest_rate_quality)
+    crime_rate_quality = case_when(
+      state == "36" & county %in% c("005", "047", "081", "085", "061") ~ 1,
+      crime_rate_quality == 1 ~ 2,
+      TRUE ~ crime_rate_quality
+    )
   )
 
 if (params$fake_labels) {
