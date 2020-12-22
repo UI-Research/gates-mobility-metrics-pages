@@ -1,0 +1,13 @@
+state,county,fips,comparisons
+New York,New York County,36061,36005; 36081; 36047
+Maryland,Baltimore City,24510,24005; 24027; 24033; 24031
+Washington,District of Columbia,11001,51013; 51510; 51059
+Georgia,DeKalb County,13089,13121; 47157
+Ohio,Cuyahoga County,39035,39113; 39049; 39061
+Michigan,Detroit County,26163,
+Illinois,Cook County,17031,
+Colorado,Denver County,08031,
+California,Los Angeles County,06037,
+California,San Francisco County,06075,06041; 06001
+Washington,King County,53033,53053
+Wisconsin,Racine County,55101,
