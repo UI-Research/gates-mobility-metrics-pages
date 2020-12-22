@@ -15,3 +15,9 @@ prepped02 <- prep_pages(url = "data/02_adams-county.csv",
 
 render_pages(prepped_object = prepped02)
 
+# Enterprise Counties request from Aaron 2020-12-21
+prepped03 <- prep_pages(url = "data/03_enterprise-counties.csv",
+                        output_directory = "factsheets/03_enterprise-counties")
+
+render_pages(prepped_object = prepped03)
+
