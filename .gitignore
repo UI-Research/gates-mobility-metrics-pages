@@ -2,7 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
+.DS_Store
 *Mock Mobility Report_CS.*
 metrics documentation packet level 3.*
 Mock Mobility Report_CS2 gpa_cs.xlsx
-factsheets/*
+rfi-applicants-brief.xlsx
+rfi-applicants.xlsx
