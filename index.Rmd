@@ -103,15 +103,21 @@ perc_vars <- c(
 
 ```{r read-in-data}
 
-fpath <- 'data/mobility-metrics_race-ethnicity.csv'
+subdir <- 'mobility-metrics'
+fpath_race_ethnicity <- glue('{subdir}/02_mobility-metrics_race-ethnicity.csv')
+fpath_race <- glue('{subdir}/03_mobility-metrics_race.csv')
+fpath_race_share <- glue('{subdir}/04_mobility-metrics_race-share.csv')
 
-data <- read_csv(fpath) %>%
+my_col_type <- cols(state=col_character(), county = col_character())
+
+data <- bind_rows(list(race_ethnicity=read_csv(fpath_race_ethnicity, col_types = my_col_type), 
+                       race=read_csv(fpath_race, col_types = my_col_type), 
+                       race_share=read_csv(fpath_race_share, col_types = my_col_type)), .id='subgroup_id') %>%
   mutate(state = str_pad(state, width = 2, side ='left', pad = '0'), #set max ub as 1 
          county = str_pad(county, width = 3, side ='left', pad = '0'))
 
 
 # fix a few data issues
-if (FALSE) {
   data <- data %>%
     mutate(
       juvenile_arrest_rate = if_else(state == "12", as.numeric(NA), juvenile_arrest_rate),
@@ -121,7 +127,6 @@ if (FALSE) {
         TRUE ~ crime_rate_quality
       )
     )
-}
 
 
 if (params$fake_labels) {
@@ -247,6 +252,7 @@ unite_col_values <- function(df, colname_str){
 
 ```{r}
 
+
 create_tb <- function(metrics_info_df, dataset, varname_maps){
   
   mb_metrics <- metrics_info_df$metric_name
@@ -254,11 +260,13 @@ create_tb <- function(metrics_info_df, dataset, varname_maps){
   quality_var  <- metrics_info_df$quality_variable[[1]]
   metrics_desp  <- metrics_info_df$metrics_description
   data_source <- metrics_info_df$source_data
+  subgroup_this_var <- metrics_info_df$subgroup_id
   col_from <- varname_maps[1][[1]]
   col_to <- varname_maps[2][[1]]
   
   temp <- dataset %>% 
     filter(subgroup_type == 'all') %>% 
+    filter(subgroup_id == subgroup_this_var) %>% 
     select(matches(glue('{mb_vars}|{quality_var}|state_county'))) %>% 
     select(-matches('_lb|_ub')) %>% 
     select(sort(tidyselect::peek_vars())) %>% 
@@ -310,6 +318,12 @@ create_tb <- function(metrics_info_df, dataset, varname_maps){
     )
 }
 
+```
+
+
+```{r}
+
+
 create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
   
   mb_metrics <- metrics_info_df$metric_name
@@ -317,11 +331,16 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
   quality_var  <- metrics_info_df$quality_variable[[1]]
   metrics_desp  <- metrics_info_df$metrics_description
   data_source <- metrics_info_df$source_data
+  subgroup_this_var <- metrics_info_df$subgroup_id
   ci_vars <- metrics_info_df$ci_var
   notes <- metrics_info_df$notes
   
   col_from <- varname_maps[3][[1]]
   col_to <- varname_maps[4][[1]]
+  
+  dataset <- dataset %>% 
+    filter(subgroup_id == subgroup_this_var) %>% 
+    filter(subgroup_type == 'all') 
   
   mb_vars_lst <- colnames(dataset %>% 
                             select(setdiff(matches(mb_vars),
@@ -335,10 +354,9 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
       ci_str <- 'Confidence Interval'
       
     } 
-  
-  temp <- dataset %>% 
-    filter(subgroup_type == 'all') %>% 
-    select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub'))
+    
+    temp <- dataset %>% 
+      select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub'))
     
   } else if (ci_vars == 2){
     
@@ -350,16 +368,15 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
     colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
     
-  
     temp <- dataset %>% 
-       select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub'))
+      select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub'))
     
     col_from <- col_from[-grep("*_ci", col_from)]
     col_to <- col_to[-grep("*ci", col_to)]
     
     notes <- paste(notes, 
-                       'The Confidence Interval for this metrics is not available at this time.',
-                        sep = '\n\n')
+                   'The Confidence Interval for this metrics is not available at this time.',
+                   sep = '\n\n')
     
   } else if (ci_vars == 3){
     
@@ -372,14 +389,14 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
     
     temp <- dataset %>% 
-       select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub'))
+      select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub'))
     
     col_from <- col_from[-grep("*_ci", col_from)]
     col_to <- col_to[-grep("*ci", col_to)]
     
     notes <- paste(notes, 
-                      'The Confidence Interval for this metrics is not applicable.',
-                       sep = '\n\n')
+                   'The Confidence Interval for this metrics is not applicable.',
+                   sep = '\n\n')
   }
   
   temp <- temp %>% 
@@ -452,6 +469,10 @@ gen_variable_name_map <- function(varname_maps){
   
   return(my_list)
 }
+```
+
+
+```{r}
 
 
 create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
@@ -461,22 +482,31 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
   quality_var  <- metrics_info_df$quality_variable[[1]]
   metrics_desp  <- metrics_info_df$metrics_description
   data_source <- metrics_info_df$source_data
+  subgroup_this_var <- metrics_info_df$subgroup_id
   ci_vars <- metrics_info_df$ci_var
   notes <- metrics_info_df$notes
   
   subgroup_varname <- 'subgroup'
-
+  
   col_from <- varname_maps[3][[1]]
   col_to <- varname_maps[4][[1]]
   
   var_rename_lst <- gen_variable_name_map(varname_maps)
   
-  dataset <- dataset %>% filter(subgroup_type != 'all')
+  dataset <- dataset %>% filter(subgroup_id == subgroup_this_var)
   
   mb_vars_lst <- colnames(dataset %>% 
-                             select(setdiff(matches(mb_vars), matches('_lb|_ub|_quality'))))
+                            select(setdiff(matches(mb_vars), matches('_lb|_ub|_quality'))))
   
-
+  subgroup_type_name <- 'Group'
+  
+  var_selection <- function(my_ds){
+    my_ds %>% 
+      select(matches(glue('{mb_vars}|{quality_var}|{subgroup_varname}|state_county')), -matches('_lb|_ub')) %>% 
+      select(-subgroup_type) %>% 
+      rename(!!subgroup_type_name := subgroup)
+  }
+  
   if (ci_vars == 1){
     
     for (val in mb_vars_lst){      # update this to purrr 
@@ -485,12 +515,10 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
       ci_str <- 'Confidence Interval'
     } 
     
-    temp <- dataset %>% 
-      select(matches(glue('{mb_vars}|{quality_var}|{subgroup_varname}|state_county')), -matches('_lb|_ub'))
+    temp <- var_selection(dataset) 
     
-    subgroup_type_name <- temp %>% select(subgroup_type) %>% pull() %>% first()
-
-    temp <- temp %>% select(-subgroup_type) %>% rename(!!subgroup_type_name := subgroup)
+    # display NA instead of (), if metrics and its CI for this subgroup is not avaiable 
+    temp <- temp %>% mutate_at(vars(contains('ci')), ~ifelse((. == '()')|(. == '(NA, NA)'), NA, .))
     
   } else if (ci_vars == 2){
     
@@ -522,8 +550,7 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
     empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
     colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
     
-    temp <- dataset %>% 
-      select(matches(glue('{sub_varname_re}|state_county')), -matches('_lb|ub'))
+    temp <- var_selection(dataset)
     
     col_from <- col_from[-grep("*_ci", col_from)]
     col_to <- col_to[-grep("*ci", col_to)]
@@ -535,17 +562,20 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
   
   temp <- temp %>% 
     mutate_all(as.character) 
-
+  
   if (str_detect(quality_var, '|') == FALSE){ #each variable has its own quality variable  
     
     temp <- temp %>% 
       relocate(!!sym(quality_var), .after = last_col())  
-    
   } 
-
+  
   temp %>% 
-    pivot_longer(!c('state_county',all_of(subgroup_type_name)), names_to='metrics', values_to='value') %>% 
-    pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
+    pivot_longer(!c('state_county', 'subgroup_id', all_of(subgroup_type_name)), 
+                 names_to='metrics', 
+                 values_to='value') %>% 
+    pivot_wider(names_from = 'state_county', 
+                values_from = 'value') %>% 
+    select(-subgroup_id) %>% 
     arrange(match(metrics, col_to)) %>% 
     #mutate(metrics = gsub('.*ci', ci_str, metrics)) %>% 
     mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
@@ -587,7 +617,7 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
 
 ```
 
-<br>
+<br><br>
 
 ## Driver:  Strong and Healthy Families
 
@@ -700,6 +730,19 @@ create_tb_level2(metrics_info_df = m_info_lst,
 ```
 <br><br>
 
+
+##### Subgroup
+```{r}
+
+create_tb_level3(metrics_info_df = m_info_lst, 
+                 dataset = data, 
+                 varname_maps = debt_varlist) 
+
+```
+
+
+<br><br>
+
 ### Domain: Secure and Stable Housing {.printbreak}
 
 <div class="exclude">*Visit [here](description.html#domain-housing) for a thorough description of the metrics in this domain.*</div>
@@ -772,7 +815,7 @@ housing_insta_varlist <- list(
     'homeless_count', 
     'homeless_count_ci', 
     'homeless_share'
-    ), 
+  ), 
   c(
     'Number homeless',
     note_ul_bound, 
@@ -811,18 +854,18 @@ create_tb_level2_homeless <- function(metrics_info_df, dataset, varname_maps){
   mb_vars_lst <- colnames(dataset %>% 
                             select(setdiff(matches(mb_vars),
                                            matches('_lb|_ub|_quality'))))
-
+  
   for (val in mb_vars_lst){      # update this to purrr 
-      
-      if ((glue('{val}_lb') %in% colnames(dataset)) & (glue('{val}_ub') %in% colnames(dataset)))
-        dataset <- unite_col_values(dataset, val)
-        ci_str <- 'Confidence Interval'
-      
+    
+    if ((glue('{val}_lb') %in% colnames(dataset)) & (glue('{val}_ub') %in% colnames(dataset)))
+      dataset <- unite_col_values(dataset, val)
+    ci_str <- 'Confidence Interval'
+    
   }
   
   notes <- paste(notes, 
-                    'The Confidence Interval for Number Homeless is not applicable.',
-                     sep = '\n\n')
+                 'The Confidence Interval for Number Homeless is not applicable.',
+                 sep = '\n\n')
   
   temp <- dataset %>% 
     select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub')) %>% 
@@ -871,8 +914,8 @@ create_tb_level2_homeless <- function(metrics_info_df, dataset, varname_maps){
 } 
 
 create_tb_level2_homeless(metrics_info_df = m_info_lst, 
-                         dataset = data, 
-                         varname_maps = housing_insta_varlist) 
+                          dataset = data, 
+                          varname_maps = housing_insta_varlist) 
 
 ```
 
@@ -1054,6 +1097,7 @@ create_tb_level3(metrics_info_df = nh_m_info_lst,
 ```
 
 
+<br><br>
 
 ## Driver: Supportive Communities {.printbreak}
 
@@ -1228,15 +1272,11 @@ trans_access <- list(
     'Transit trips ci')
 )
 
-
 trans_info_lst <- get_vars_info('Transportation access')$info_lst
 
 create_tb(metrics_info_df = trans_info_lst, 
           dataset = data, 
           varname_maps = trans_access) 
-
-
-
 
 ```
 <br>
@@ -1245,6 +1285,15 @@ create_tb(metrics_info_df = trans_info_lst,
 ```{r}
 
 create_tb_level2(metrics_info_df = trans_info_lst, 
+                 dataset = data, 
+                 varname_maps = trans_access) 
+
+```
+##### Subgroup
+
+```{r}
+
+create_tb_level3(metrics_info_df = trans_info_lst, 
                  dataset = data, 
                  varname_maps = trans_access) 
 
@@ -1291,6 +1340,17 @@ create_tb_level2(metrics_info_df = tr_cost_m_info_lst,
 
 
 ```
+
+##### Subgroup
+
+```{r}
+
+create_tb_level3(metrics_info_df = tr_cost_m_info_lst, 
+                 dataset = data, 
+                 varname_maps = trans_cost_varlist) 
+
+```
+
 
 <br>
 
@@ -1441,6 +1501,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 
 ```
+
 <br><br>
 
 ## Driver: Opportunities to Learn and Earn {.printbreak}
@@ -1496,6 +1557,7 @@ create_tb_level2(metrics_info_df = ap_m_info_lst,
 ##### Summary
 
 ```{r}
+
 eff_pub_ed <- list(
   c('learning_rate'),
   c('Annual ELA achievement'),
@@ -1524,6 +1586,17 @@ create_tb(metrics_info_df = epd_m_info_lst,
 
 
 create_tb_level2(metrics_info_df = epd_m_info_lst, 
+                 dataset = data, 
+                 varname_maps = eff_pub_ed) 
+
+```
+
+<br>
+
+##### Subgroup
+```{r}
+
+create_tb_level3(metrics_info_df = epd_m_info_lst, 
                  dataset = data, 
                  varname_maps = eff_pub_ed) 
 
@@ -1731,6 +1804,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 <br><br>
 
+
 ## Additional Notes {.printbreak}
 
 The following metrics require original data collection: 
@@ -1747,7 +1821,5 @@ The following metrics require original data collection:
 | * This confidence interval is not available at this time.
 | + A confidence interval is not applicable.
 | Lower/Upper bound:  The data used to construct this metric do not lend themselves to conventional confidence intervals. The value of the metric shown represents are best estimate; the lower and upper bounds represent alternative estimates of the metric under different assumptions about missing data.
-
-
 
 
