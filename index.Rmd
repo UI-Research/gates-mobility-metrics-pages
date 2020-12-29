@@ -323,7 +323,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
   } else if (ci_vars == 2){
     
     ci_str <- 'Confidence Interval*'   # *CI not available at this time.
-    metrics_desp <- glue('{metrics_desp}*')
+    metrics_desp <- md(glue('{metrics_desp}<sup>*</sup>'))
     
     # create an empty df      #take this part out as a sep func 
     col_names <- glue('{mb_vars_lst}_ci')
@@ -345,7 +345,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
   } else if (ci_vars == 3){
     
     ci_str <- 'Confidence Interval+'   # '+CI not applicable.
-    metrics_desp <- glue('{metrics_desp}+')
+    metrics_desp <- md(glue(('{metrics_desp}<sup>+</sup>')))
     
     # create an empty df 
     col_names <- glue('{mb_vars_lst}_ci')
@@ -653,7 +653,7 @@ create_tb_level2_homeless <- function(metrics_info_df, dataset, varname_maps){
   col_from <- varname_maps[3][[1]]
   col_to <- varname_maps[4][[1]]
   
-  metrics_desp <- glue('{metrics_desp}+')
+  metrics_desp <- md(glue('{metrics_desp}<sup>+</sup>'))
   mb_vars_lst <- colnames(dataset %>% 
                             select(setdiff(matches(mb_vars),
                                            matches('_lb|_ub|_quality'))))
