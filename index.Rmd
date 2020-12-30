@@ -110,6 +110,7 @@ fpath_race <- glue('{subdir}/03_mobility-metrics_race.csv')
 fpath_race_share <- glue('{subdir}/04_mobility-metrics_race-share.csv')
 fpath_multi_year <- glue('{subdir}/00_mobility-metrics_longitudinal.csv')
 
+test <- read_csv(fpath_multi_year, guess_max = 10000)
 
 my_col_type <- cols(state=col_character(), county = col_character())
 
