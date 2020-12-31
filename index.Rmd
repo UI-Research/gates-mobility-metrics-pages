@@ -102,6 +102,7 @@ perc_vars <- c(
 
 
 ```{r read-in-data}
+
 subdir <- 'mobility-metrics'
 fpath_no_subgroup <- glue('{subdir}/01_mobility-metrics.csv')
 fpath_race_ethnicity <- glue('{subdir}/02_mobility-metrics_race-ethnicity.csv')
@@ -278,6 +279,7 @@ unite_col_values <- function(df, colname_str){
 ```
 
 ```{r}
+
 create_tb <- function(metrics_info_df, dataset, varname_maps){
   
   mb_metrics <- metrics_info_df$metric_name
@@ -819,6 +821,8 @@ create_tb_multi_yr <- function(metrics_info_df, dataset, varname_maps){
 
 <div class="exclude">*Visit [here](description.html#domain-financial-well-being) for a thorough description of the metrics in this domain.*</div>
 
+<br>
+
 #### Predictor: Income {.tabset .avoidpagebreak}
 
 ##### Summary
@@ -945,8 +949,9 @@ create_tb_level2(metrics_info_df = m_info_lst,
 ##### Subgroup
 ```{r}
 
+
 create_tb_level3(metrics_info_df = m_info_lst, 
-                 dataset = data, 
+                 dataset = data %>% filter(subgroup != 'Mixed Race and Ethnicity'), 
                  varname_maps = debt_varlist) 
 
 ```
@@ -970,6 +975,8 @@ create_tb_multi_yr(metrics_info_df = m_info_lst,
 ### Domain: Secure and Stable Housing {.printbreak}
 
 <div class="exclude">*Visit [here](description.html#domain-housing) for a thorough description of the metrics in this domain.*</div>
+
+<br>
 
 #### Predictor: Affordable housing {.tabset .avoidpagebreak}
 
@@ -1280,7 +1287,7 @@ create_tb_multi_yr_homeless <- function(metrics_info_df, dataset, varname_maps){
 } 
 
 create_tb_multi_yr_homeless(metrics_info_df = m_info_lst, 
-                   dataset = data, 
+                   dataset = data %>% filter(year %in% c('2,018', '2,014')), 
                    varname_maps = housing_insta_varlist) 
 
 ```
@@ -1291,6 +1298,7 @@ create_tb_multi_yr_homeless(metrics_info_df = m_info_lst,
 ### Domain: Family Stability {.printbreak}
 
 <div class="exclude">*Visit [here](description.html#domain-family-stability) for a thorough description of the metrics in this domain.*</div>
+<br>
 
 #### Predictor: Family structure and stability {.tabset .avoidpagebreak}
 
@@ -1394,6 +1402,8 @@ create_tb_multi_yr(metrics_info_df = fss_m_info_lst,
 
 <div class="exclude">*Visit [here](description.html#domain-health) for a thorough description of the metrics in this domain.*</div>
 
+<br>
+
 #### Predictor: Access to and utilization of health services {.tabset .avoidpagebreak}
 
 ##### Summary
@@ -1438,7 +1448,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 
 ```
-
+<br>
 
 ##### More Years
 
@@ -1522,6 +1532,8 @@ create_tb_multi_yr(metrics_info_df = nh_m_info_lst,
 
 <div class="exclude">*Visit [here](description.html#domain-local-governance) for a thorough description of the metrics in this domain.*</div>
 
+<br>
+
 #### Predictor: Political participation {.tabset .avoidpagebreak}
 
 ##### Summary
@@ -1576,6 +1588,8 @@ create_tb_multi_yr(metrics_info_df = et_m_info_lst,
 
 <div class="exclude">*Visit [here](description.html#domain-neighborhoods) for a thorough description of the metrics in this domain.*</div>
 
+<br>
+
 #### Predictor: Economic inclusion {.tabset .avoidpagebreak}
 
 ##### Summary
@@ -1622,10 +1636,15 @@ create_tb_level2(metrics_info_df = ei_m_info_lst,
 ```{r}
 
 create_tb_level3(metrics_info_df = ei_m_info_lst, 
-                 dataset = data, 
+                 dataset = data %>% 
+                   mutate(subgroup = if_else(subgroup == "Black, Non-Hispanic", 
+                                             "Black", 
+                                             subgroup)), 
                  varname_maps = econ_inc_varlist) 
 
 ```
+
+<br>
 
 ##### More Years
 
@@ -1905,6 +1924,7 @@ create_tb_multi_yr(metrics_info_df = env_m_info_lst,
 ### Domain: Safety {.printbreak}
 
 <div class="exclude">*Visit [here](description.html#domain-safety) for a thorough description of the metrics in this domain.*</div>
+<br>
 
 #### Predictor: Exposure to crime {.tabset .avoidpagebreak}
 
@@ -1968,7 +1988,7 @@ create_tb_level2(metrics_info_df = ec_m_info_lst,
 ```{r}
 
 create_tb_multi_yr(metrics_info_df = ec_m_info_lst, 
-                 dataset = data_sub_exp_crime, 
+                 dataset = data_sub_exp_crime %>% filter(year %in% c('2,015', '2,017')),
                  varname_maps = exp_crime_varlist)
 
 ```
@@ -2059,6 +2079,7 @@ create_tb_multi_yr(metrics_info_df = m_info_lst,
 ### Domain: Education
 
 <div class="exclude">*Visit [here](description.html#domain-education) for a thorough description of the metrics in this domain.*</div>
+<br>
 
 #### Predictor: Access to preschool {.tabset .avoidpagebreak}
 
@@ -2167,7 +2188,7 @@ create_tb_level2(metrics_info_df = epd_m_info_lst,
 ```{r}
 
 create_tb_level3(metrics_info_df = epd_m_info_lst, 
-                 dataset = data, 
+                 dataset = data %>% filter(subgroup != 'Other Races and Ethnicities'), 
                  varname_maps = eff_pub_ed) 
 
 ```
@@ -2303,7 +2324,7 @@ create_tb_level2(metrics_info_df = m_info_lst,
                  varname_maps = college_readiness) 
 
 ```
-
+<br><br>
 
 ##### Subgroup
 ```{r}
@@ -2313,7 +2334,7 @@ create_tb_level3(metrics_info_df = m_info_lst,
                  varname_maps = college_readiness) 
 
 ```
-
+<br><br>
 
 ##### More Years
 ```{r}
@@ -2329,6 +2350,8 @@ create_tb_multi_yr(metrics_info_df = m_info_lst,
 ### Domain: Work {.printbreak}
 
 <div class="exclude">*Visit [here](description.html#domain-work) for a thorough description of the metrics in this domain.*</div>
+<br>
+
 
 #### Predictor: Employment {.tabset .avoidpagebreak}
 
