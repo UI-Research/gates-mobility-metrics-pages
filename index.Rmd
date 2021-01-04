@@ -14,7 +14,7 @@ output:
     editor_options:
       chunk_output_type: console
 params:
-  state_county: !r c('39035', '42095', '42017', '48453', '09003')
+  state_county: !r c('42051', '42095', '42017', '48453', '09003')
   fake_labels: FALSE
 ---
 
@@ -108,9 +108,12 @@ fpath_no_subgroup <- glue('{subdir}/01_mobility-metrics.csv')
 fpath_race_ethnicity <- glue('{subdir}/02_mobility-metrics_race-ethnicity.csv')
 fpath_race <- glue('{subdir}/03_mobility-metrics_race.csv')
 fpath_race_share <- glue('{subdir}/04_mobility-metrics_race-share.csv')
+env_quality_poverty <- glue('{subdir}/enviromental-exposure_poverty.csv')
+env_quality_race <- glue('{subdir}/enviromental-exposure_rae-ethnicity.csv')
+poverty_race <- glue('{subdir}/poverty-exposure_race.csv')
+
 fpath_multi_year <- glue('{subdir}/00_mobility-metrics_longitudinal.csv')
 
-test <- read_csv(fpath_multi_year, guess_max = 10000)
 
 my_col_type <- cols(state=col_character(), county = col_character())
 
@@ -119,8 +122,11 @@ identifying_vars <- c('subgroup_id', 'state', 'county', 'state_name',
 
 #read in metrics with subgroups 
 data_w_subgroups <- bind_rows(list(race_ethnicity=read_csv(fpath_race_ethnicity, col_types = my_col_type), 
+                                   race_ethnicity=read_csv(env_quality_race, col_types = my_col_type),
                                    race = read_csv(fpath_race, col_types = my_col_type), 
-                                   race_share = read_csv(fpath_race_share, col_types = my_col_type)), 
+                                   race = read_csv(poverty_race, col_types = my_col_type), 
+                                   race_share = read_csv(fpath_race_share, col_types = my_col_type),
+                                   poverty = read_csv(env_quality_poverty, col_types = my_col_type)), 
                               .id='subgroup_id')
 
 #read in metrics without subgroups
@@ -217,7 +223,7 @@ perc_vars_in_data <- all_perc_vars[(all_perc_vars %in% colnames(data))]
 
 
 numeric_vars_one_digit <- data %>% 
-  #select(-average_to_living_wage_ratio) %>% 
+  select(-average_to_living_wage_ratio) %>% 
   select(-all_of(perc_vars_in_data)) %>% 
   select_if(is.numeric) %>% 
   names()
@@ -306,6 +312,8 @@ create_tb <- function(metrics_info_df, dataset, varname_maps){
       relocate(!!sym(quality_var), .after = last_col())  
     
   } 
+  
+  print(temp)
   
   temp %>% 
     pivot_longer(!state_county, names_to='metrics', values_to='value') %>%   
@@ -593,6 +601,8 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
                    sep = '\n\n')
   }
   
+  print(temp)
+  
   temp <- temp %>% 
     mutate_all(as.character) %>% 
     rename_at(vars(col_from), function(x) col_to)
@@ -682,9 +692,11 @@ create_tb_multi_yr <- function(metrics_info_df, dataset, varname_maps){
   
   var_rename_lst <- gen_variable_name_map(varname_maps)
   
-  dataset <- dataset %>% filter(is_year == 1)
+  dataset <- dataset %>% 
+    filter(is_year == 1) 
   
-  mb_vars_lst <- colnames(dataset %>% select(setdiff(matches(mb_vars), matches('_lb|_ub|_quality'))))
+  mb_vars_lst <- colnames(dataset %>% 
+                            select(setdiff(matches(mb_vars), matches('_lb|_ub|_quality'))))
   
   var_selection <- function(my_ds){
     my_ds %>% 
@@ -692,6 +704,7 @@ create_tb_multi_yr <- function(metrics_info_df, dataset, varname_maps){
       select(-is_year)
   }
   
+
   if (ci_vars == 1){
     
     for (val in mb_vars_lst){      # update this to purrr 
@@ -748,8 +761,10 @@ create_tb_multi_yr <- function(metrics_info_df, dataset, varname_maps){
   
   temp <- temp %>% 
     mutate_all(as.character) %>% 
-    rename_at(vars(col_from), function(x) col_to)
+    rename_at(vars(col_from), function(x) col_to) %>% 
+    filter_at(vars(-c(subgroup_varname, 'state_county')), any_vars(!str_detect(., pattern = "NA|$NA")))
   
+
   if (str_detect(quality_var, '|') == FALSE){ #each variable has its own quality variable  
     
     temp <- temp %>% 
@@ -760,11 +775,12 @@ create_tb_multi_yr <- function(metrics_info_df, dataset, varname_maps){
     pivot_longer(!c('state_county', 'year', all_of(subgroup_type_name)), 
                  names_to='metrics', 
                  values_to='value') %>% 
+    arrange(desc(year)) %>%   
     pivot_wider(names_from = 'state_county', 
-                values_from = 'value') 
+                values_from = 'value')
+  
   
   county_colnames <- colnames(temp)[c(3:length(colnames(temp)))]
-  
   
   temp %>% 
     #arrange(match(metrics, col_to)) %>% 
@@ -809,7 +825,6 @@ create_tb_multi_yr <- function(metrics_info_df, dataset, varname_maps){
 } 
 
 ```
-
 
 <br><br>
 
@@ -1287,7 +1302,7 @@ create_tb_multi_yr_homeless <- function(metrics_info_df, dataset, varname_maps){
 } 
 
 create_tb_multi_yr_homeless(metrics_info_df = m_info_lst, 
-                   dataset = data %>% filter(year %in% c('2,018', '2,014')), 
+                   dataset, 
                    varname_maps = housing_insta_varlist) 
 
 ```
@@ -1888,11 +1903,9 @@ env_varlist <- list(
 
 env_m_info_lst <- get_vars_info('Environmental quality')$info_lst
 
-
 create_tb(metrics_info_df = env_m_info_lst, 
           dataset = data, 
           varname_maps = env_varlist) 
-
 
 ```
 <br><br>
@@ -1902,6 +1915,19 @@ create_tb(metrics_info_df = env_m_info_lst,
 ```{r}
 
 create_tb_level2(metrics_info_df = env_m_info_lst, 
+                 dataset = data, 
+                 varname_maps = env_varlist) 
+
+
+```
+<br><br>
+
+##### Subgroup
+```{r}
+
+
+
+create_tb_level3(metrics_info_df = env_m_info_lst, 
                  dataset = data, 
                  varname_maps = env_varlist) 
 
@@ -1988,7 +2014,7 @@ create_tb_level2(metrics_info_df = ec_m_info_lst,
 ```{r}
 
 create_tb_multi_yr(metrics_info_df = ec_m_info_lst, 
-                 dataset = data_sub_exp_crime %>% filter(year %in% c('2,015', '2,017')),
+                 dataset, 
                  varname_maps = exp_crime_varlist)
 
 ```
@@ -2131,17 +2157,7 @@ create_tb_level3(metrics_info_df = ap_m_info_lst,
 
 ```
 
-<br>
 
-##### More Years
-```{r}
-
-create_tb_multi_yr(metrics_info_df = ap_m_info_lst, 
-                 dataset = data, 
-                 varname_maps = share_in_presch_varlist) 
-
-
-```
 <br>
 
 #### Predictor: Effective public education {.tabset .avoidpagebreak}
