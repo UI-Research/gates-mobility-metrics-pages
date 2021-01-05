@@ -943,16 +943,6 @@ create_tb_level3(income_m_info_lst, data_sub, income_varlist)
 
 <br>
 
-##### More Years
-```{r}
-
-create_tb_multi_yr(income_m_info_lst, data_sub, income_varlist)
-
-```
-
-
-
-<br>
 
 #### Predictor: Financial security {.tabset .avoidpagebreak}
 
@@ -1009,19 +999,6 @@ create_tb_level3(metrics_info_df = m_info_lst,
 
 <br><br>
 
-
-##### More Years
-```{r}
-
-create_tb_multi_yr(metrics_info_df = m_info_lst, 
-                   dataset = data, 
-                   varname_maps = debt_varlist) 
-
-```
-
-
-
-<br><br>
 
 ### Domain: Secure and Stable Housing {.printbreak}
 
@@ -1440,18 +1417,6 @@ create_tb_level3(metrics_info_df = fss_m_info_lst,
 
 <br><br>
 
-##### More Years
-```{r}
-
-create_tb_multi_yr(metrics_info_df = fss_m_info_lst, 
-                   dataset = data, 
-                   varname_maps = famstruc_varlist) 
-
-```
-
-
-<br><br>
-
 
 ### Domain: Health {.printbreak}
 
@@ -1501,17 +1466,6 @@ create_tb_level2(metrics_info_df = m_info_lst,
                  dataset = data, 
                  varname_maps = accuils_varlist) 
 
-
-```
-<br>
-
-##### More Years
-
-```{r}
-
-create_tb_multi_yr(metrics_info_df = m_info_lst, 
-                   dataset = data, 
-                   varname_maps = accuils_varlist) 
 
 ```
 <br>
@@ -1566,19 +1520,6 @@ create_tb_level3(metrics_info_df = nh_m_info_lst,
 
 <br><br>
 
-##### More Years
-
-```{r}
-
-create_tb_multi_yr(metrics_info_df = nh_m_info_lst, 
-                   dataset = data, 
-                   varname_maps = neonatal_varlist) 
-
-```
-
-
-<br><br>
-
 ## Driver: Supportive Communities {.printbreak}
 
 <br>
@@ -1629,15 +1570,6 @@ create_tb_level2(metrics_info_df = et_m_info_lst,
 
 <br>
 
-##### More Years
-```{r}
-
-create_tb_multi_yr(metrics_info_df = et_m_info_lst, 
-                   dataset = data, 
-                   varname_maps = election_turnout_varlist) 
-
-```
-<br>
 
 ### Domain: Neighborhoods {.printbreak}
 
@@ -1701,18 +1633,6 @@ create_tb_level3(metrics_info_df = ei_m_info_lst,
 
 <br>
 
-##### More Years
-
-```{r}
-
-create_tb_multi_yr(metrics_info_df = ei_m_info_lst, 
-                   dataset = data, 
-                   varname_maps = econ_inc_varlist) 
-
-```
-
-
-<br>
 
 #### Predictor: Racial diversity {.tabset  .avoidpagebreak}
 
@@ -1786,16 +1706,6 @@ create_tb_level2(metrics_info_df = rd_m_info_lst,
 <br>
 
 
-##### More Years
-```{r}
-
-create_tb_multi_yr(metrics_info_df = rd_m_info_lst, 
-                   dataset = data, 
-                   varname_maps = race_div) 
-
-```
-
-<br>
 
 #### Predictor: Transportation access {.tabset .avoidpagebreak}
 
@@ -1846,17 +1756,6 @@ create_tb_level3(metrics_info_df = trans_info_lst,
 
 <br>
 
-##### More Years
-
-```{r}
-
-create_tb_multi_yr(metrics_info_df = trans_info_lst, 
-                   dataset = data, 
-                   varname_maps = trans_access) 
-
-```
-
-<br>
 
 ####  {.tabset}
 
@@ -1911,17 +1810,6 @@ create_tb_level3(metrics_info_df = tr_cost_m_info_lst,
 ```
 <br>
 
-##### More Years
-```{r}
-
-create_tb_multi_yr(metrics_info_df = tr_cost_m_info_lst, 
-                   dataset = data, 
-                   varname_maps = trans_cost_varlist) 
-
-```
-
-
-<br>
 
 #### Predictor: Environmental quality {.tabset .avoidpagebreak}
 
@@ -1970,17 +1858,7 @@ create_tb_level3(metrics_info_df = env_m_info_lst,
                  varname_maps = env_varlist) 
 
 ```
-<br><br>
 
-
-##### More Years
-```{r}
-
-create_tb_multi_yr(metrics_info_df = env_m_info_lst, 
-                   dataset = data, 
-                   varname_maps = env_varlist) 
-
-```
 <br><br>
 
 ### Domain: Safety {.printbreak}
@@ -2120,20 +1998,6 @@ create_tb_level3(metrics_info_df = m_info_lst,
 
 <br><br>
 
-
-##### More Years
-
-```{r}
-
-create_tb_multi_yr(metrics_info_df = m_info_lst, 
-                   dataset = data_sub_punitive, 
-                   varname_maps = punative_policing) 
-
-
-```
-
-<br><br>
-
 ## Driver: Opportunities to Learn and Earn {.printbreak}
 
 <br>
@@ -2246,17 +2110,6 @@ create_tb_level3(metrics_info_df = epd_m_info_lst,
 ```
 <br>
 
-##### More Years 
-```{r}
-
-create_tb_multi_yr(metrics_info_df = epd_m_info_lst, 
-                   dataset = data, 
-                   varname_maps = eff_pub_ed) 
-
-```
-
-
-<br>
 
 #### Predictor: Student poverty concentration {.tabset  .avoidpagebreak}
 
@@ -2327,17 +2180,6 @@ create_tb_level2(metrics_info_df = spoverty_m_info_lst,
 <br>
 
 
-##### More Years
-```{r}
-
-
-create_tb_multi_yr(metrics_info_df = spoverty_m_info_lst, 
-                   dataset = data, 
-                   varname_maps = stu_poverty) 
-
-```
-<br>
-
 #### Predictor: College readiness {.tabset .avoidpagebreak}
 
 ##### Summary
@@ -2388,16 +2230,6 @@ create_tb_level3(metrics_info_df = m_info_lst,
 ```
 <br><br>
 
-##### More Years
-```{r}
-
-create_tb_multi_yr(metrics_info_df = m_info_lst, 
-                   dataset = data, 
-                   varname_maps = college_readiness) 
-
-```
-
-<br><br>
 
 ### Domain: Work {.printbreak}
 
@@ -2457,21 +2289,6 @@ create_tb_level3(metrics_info_df = emp_m_info_lst,
 
 <br>
 
-##### More Years
-
-```{r}
-
-create_tb_multi_yr(metrics_info_df = emp_m_info_lst, 
-                   dataset = data, 
-                   varname_maps = emp_lst) 
-
-```
-
-
-
-
-<br>
-
 #### Predictor: Access to jobs paying a living wage {.tabset .avoidpagebreak}
 
 ##### Summary
@@ -2517,11 +2334,12 @@ create_tb_level2(metrics_info_df = m_info_lst,
 ```{r}
 
 create_tb_multi_yr(metrics_info_df = m_info_lst, 
-                   dataset = data, 
-                   varname_maps = job_wage) 
+                 dataset = data, 
+                 varname_maps = job_wage) 
 
 
 ```
+
 <br><br>
 
 
