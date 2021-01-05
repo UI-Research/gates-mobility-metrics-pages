@@ -686,16 +686,16 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
       )
   }
   
+  
   # get multiple subgroup types if exists 
   if (str_detect(subgroup_this_var, fixed('|'))){
     
     sg_lst <- strsplit(subgroup_this_var, "|", fixed=TRUE)[[1]]
     
-    for (sg_type in sg_lst) {
-      create_tb_by_subgroup(sg_type)
-    }
+    sg_lst %>% map(create_tb_by_subgroup)
     
   } else{
+    
     create_tb_by_subgroup(subgroup_this_var)
   }
   
