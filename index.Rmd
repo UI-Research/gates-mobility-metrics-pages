@@ -145,7 +145,6 @@ data <- bind_rows(list(`0` = data_not_multi_year,
                        `1` = read_csv(fpath_multi_year, col_types = my_col_type, guess_max = 10000)), 
                   .id = 'is_year')
 
-
 ```
 
 
@@ -191,8 +190,10 @@ m_info <- m_info %>%
   mutate_at(vars(c('notes', 'metrics_description', 'source_data')), 
             function(x) gsub("&#700;", "'", x)) %>% 
   mutate_at(vars(c('notes', 'metrics_description', 'source_data')), 
-            function(x) gsub("\"\"", "\"", x)) 
-
+            function(x) gsub("\"\"", "\"", x)) %>% 
+  mutate_if(is.character, list(~na_if(.,""))) %>% 
+  mutate(source_data2 = ifelse(is.na(source_data2), source_data, source_data2)) %>% 
+  mutate(notes2 =  ifelse(!is.na(notes2), paste(notes, notes2), notes))
 
 #create unique state-county identifier
 data <- data %>% 
@@ -541,10 +542,10 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
   mb_vars  <- metrics_info_df$metric_vars_prefix[[1]]
   quality_var  <- metrics_info_df$quality_variable[[1]]
   metrics_desp  <- metrics_info_df$metrics_description
-  data_source <- metrics_info_df$source_data
+  data_source2 <- metrics_info_df$source_data2
   subgroup_this_var <- metrics_info_df$subgroup_id
   ci_vars <- metrics_info_df$ci_var
-  notes <- metrics_info_df$notes
+  notes2 <- metrics_info_df$notes2
   
   subgroup_varname <- 'subgroup'
   
@@ -597,7 +598,7 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
       
       temp <- var_selection(dataset) 
       
-      notes <- paste(notes, 
+      notes2 <- paste(notes2, 
                      'The Confidence Interval for this metric is not available at this time.',
                      sep = '\n\n')
       
@@ -618,7 +619,7 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
       col_from <- col_from[-grep("*_ci", col_from)]
       col_to <- col_to[-grep("*_ci", col_to)]
       
-      notes <- paste(notes, 
+      notes2 <- paste(notes2, 
                      'The Confidence Interval for this metric is not applicable.',
                      sep = '\n\n')
     }
@@ -657,8 +658,8 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
         title = '', 
         subtitle = metrics_desp
       ) %>% 
-      tab_source_note(str_c('Source:', data_source, sep=' ')) %>% 
-      tab_source_note(str_c('Notes:', notes, sep=' ')) %>% 
+      tab_source_note(str_c('Source:', data_source2, sep=' ')) %>% 
+      tab_source_note(str_c('Notes:', notes2, sep=' ')) %>% 
       cols_align(
         align = 'left',
         columns = TRUE
@@ -716,10 +717,10 @@ create_tb_multi_yr <- function(metrics_info_df, dataset, varname_maps){
   mb_vars  <- metrics_info_df$metric_vars_prefix[[1]]
   quality_var  <- metrics_info_df$quality_variable[[1]]
   metrics_desp  <- metrics_info_df$metrics_description
-  data_source <- metrics_info_df$source_data
   subgroup_this_var <- metrics_info_df$subgroup_id
   ci_vars <- metrics_info_df$ci_var
   notes <- metrics_info_df$notes
+  data_source2 <- metrics_info_df$source_data2
   
   subgroup_varname = subgroup_type_name <- 'year'
   
@@ -831,7 +832,7 @@ create_tb_multi_yr <- function(metrics_info_df, dataset, varname_maps){
       title = '', 
       subtitle = metrics_desp
     ) %>% 
-    tab_source_note(str_c('Source:', data_source, sep=' ')) %>% 
+    tab_source_note(str_c('Source:', data_source2, sep=' ')) %>% 
     tab_source_note(str_c('Notes:', notes, sep=' ')) %>% 
     cols_align(
       align = 'left',
@@ -1230,7 +1231,7 @@ create_tb_multi_yr_homeless <- function(metrics_info_df, dataset, varname_maps){
   mb_vars  <- metrics_info_df$metric_vars_prefix[[1]]
   quality_var  <- metrics_info_df$quality_variable[[1]]
   metrics_desp  <- metrics_info_df$metrics_description
-  data_source <- metrics_info_df$source_data
+  data_source2 <- metrics_info_df$source_data2
   subgroup_this_var <- metrics_info_df$subgroup_id
   ci_vars <- metrics_info_df$ci_var
   notes <- metrics_info_df$notes
@@ -1309,7 +1310,7 @@ create_tb_multi_yr_homeless <- function(metrics_info_df, dataset, varname_maps){
       title = '', 
       subtitle = metrics_desp
     ) %>% 
-    tab_source_note(str_c('Source:', data_source, sep=' ')) %>% 
+    tab_source_note(str_c('Source:', data_source2, sep=' ')) %>% 
     tab_source_note(str_c('Notes:', notes, sep=' ')) %>% 
     cols_align(
       align = 'left',
@@ -2243,7 +2244,7 @@ create_tb_level3(metrics_info_df = epd_m_info_lst,
                  varname_maps = eff_pub_ed) 
 
 ```
-
+<br>
 
 ##### More Years 
 ```{r}
