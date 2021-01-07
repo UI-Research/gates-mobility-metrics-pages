@@ -110,7 +110,6 @@ fpath_race_ethnicity <- glue('{subdir}/02_mobility-metrics_race-ethnicity.csv')
 fpath_race <- glue('{subdir}/03_mobility-metrics_race.csv')
 fpath_race_share <- glue('{subdir}/04_mobility-metrics_race-share.csv')
 env_quality_poverty <- glue('{subdir}/environmental-exposure_poverty.csv')
-env_quality_race <- glue('{subdir}/environmental-exposure_race-ethnicity.csv')
 poverty_race <- glue('{subdir}/poverty-exposure_race.csv')
 
 fpath_multi_year <- glue('{subdir}/00_mobility-metrics_longitudinal.csv')
@@ -122,7 +121,6 @@ identifying_vars <- c('subgroup_id', 'state', 'county', 'state_name',
 
 #read in metrics with subgroups 
 data_w_subgroups <- bind_rows(list(race_ethnicity=read_csv(fpath_race_ethnicity, col_types = my_col_type), 
-                                   race_share_env=read_csv(env_quality_race, col_types = my_col_type),
                                    race = read_csv(fpath_race, col_types = my_col_type), 
                                    race_poverty = read_csv(poverty_race, col_types = my_col_type), 
                                    race_share = read_csv(fpath_race_share, col_types = my_col_type),
@@ -645,13 +643,11 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
     
     county_colnames <- colnames(temp)[c(3:length(colnames(temp)))]
     
-    temp <- temp %>% 
+    temp %>% 
       #arrange(match(metrics, col_to)) %>% 
       mutate(metrics = gsub('.*_ci', ci_str, metrics)) %>% 
       mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
-      mutate(metrics = recode(metrics, !!!var_rename_lst))
-    
-    temp %>% 
+      mutate(metrics = recode(metrics, !!!var_rename_lst)) %>% 
       select(metrics, everything()) %>% 
       gt(rowname_col = 'metrics') %>% 
       tab_header(
@@ -693,13 +689,14 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
     
     sg_lst <- strsplit(subgroup_this_var, "|", fixed=TRUE)[[1]]
     
-    sg_lst %>% map(create_tb_by_subgroup)
+    for (i in sg_lst){
+      print(create_tb_by_subgroup(i))
+    }
     
   } else{
     
     create_tb_by_subgroup(subgroup_this_var)
   }
-  
   
 } 
 
@@ -720,9 +717,14 @@ create_tb_multi_yr <- function(metrics_info_df, dataset, varname_maps){
   subgroup_this_var <- metrics_info_df$subgroup_id
   ci_vars <- metrics_info_df$ci_var
   notes <- metrics_info_df$notes
+  notes2 <- metrics_info_df$notes2
   data_source2 <- metrics_info_df$source_data2
   
   subgroup_varname = subgroup_type_name <- 'year'
+  
+  if (mb_vars == 'average_to_living_wage_ratio'){
+    notes <- notes2
+  }
   
   col_from <- varname_maps[3][[1]]
   col_to <- varname_maps[4][[1]]
@@ -794,6 +796,7 @@ create_tb_multi_yr <- function(metrics_info_df, dataset, varname_maps){
     notes <- paste(notes, 
                    'The Confidence Interval for this metric is not applicable.',
                    sep = '\n\n')
+    
   }
   
   temp <- temp %>% 
