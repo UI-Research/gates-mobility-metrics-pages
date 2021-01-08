@@ -140,7 +140,7 @@ data_no_subgroups_clean <- data_no_subgroups %>% select(all_of(metrics_no_subgro
 data_not_multi_year <- bind_rows(data_w_subgroups, data_no_subgroups_clean)
 
 data <- bind_rows(list(`0` = data_not_multi_year, 
-                       `1` = read_csv(fpath_multi_year, col_types = my_col_type, guess_max = 10000)), 
+                       `1` = read_csv(fpath_multi_year, col_types = my_col_type, guess_max = 20000)), 
                   .id = 'is_year')
 
 ```
