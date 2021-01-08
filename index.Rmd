@@ -114,6 +114,7 @@ fpath_race_ethnicity <- glue('{subdir}/02_mobility-metrics_race-ethnicity.csv')
 fpath_race <- glue('{subdir}/03_mobility-metrics_race.csv')
 fpath_race_share <- glue('{subdir}/04_mobility-metrics_race-share.csv')
 env_quality_poverty <- glue('{subdir}/environmental-exposure_poverty.csv')
+education_income <- glue('{subdir}/SEDA_income.csv')
 poverty_race <- glue('{subdir}/poverty-exposure_race.csv')
 
 fpath_multi_year <- glue('{subdir}/00_mobility-metrics_longitudinal.csv')
@@ -128,7 +129,8 @@ data_w_subgroups <- bind_rows(list(race_ethnicity=read_csv(fpath_race_ethnicity,
                                    race = read_csv(fpath_race, col_types = my_col_type), 
                                    race_poverty = read_csv(poverty_race, col_types = my_col_type), 
                                    race_share = read_csv(fpath_race_share, col_types = my_col_type),
-                                   poverty = read_csv(env_quality_poverty, col_types = my_col_type)), 
+                                   poverty = read_csv(env_quality_poverty, col_types = my_col_type),
+                                   income = read_csv(education_income, col_type = my_col_type)), 
                               .id='subgroup_id')
 
 #read in metrics without subgroups
