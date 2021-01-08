@@ -33,7 +33,7 @@ h4 {
 
 /* paragraph styles */ 
 p {
-  font-size: 16px;
+  font-size: 11px;
   margin: 0 0 8px 0;
 }
 
@@ -140,4 +140,9 @@ li {
   .avoidpagebreak {
     break-inside: avoid-page;
   }
+}
+
+.p2 {
+  font-size: 14px;
+  margin: 0 0 8px 0;
 }
