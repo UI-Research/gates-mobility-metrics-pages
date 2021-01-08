@@ -27,4 +27,8 @@ prepped04 <- prep_pages(url = "data/04_district-of-columbia.csv",
 
 render_pages(prepped_object = prepped04)
 
+# RFI finalists 2021-01-08
+prepped05 <- prep_pages(url = "data/05_rfi-finalists.csv",
+                        output_directory = "factsheets/05_rfi-finalists")
 
+render_pages(prepped_object = prepped05)
