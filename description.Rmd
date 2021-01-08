@@ -479,7 +479,7 @@ The FBI’s UCR Program also provides statistics on the number of arrests of peo
 
 ##### PREDICTOR: ACCESS TO PRESCHOOL
 
-**Metric: Share of children enrolled in nursery school or preschool**
+**Metric: Share of 3- to 4-year-olds enrolled in nursery school or preschool**
 
 This metric measures the share of a jurisdiction’s three- to four-year old children who are enrolled in nursery school or preschool.
 
