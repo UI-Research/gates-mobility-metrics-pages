@@ -1981,4 +1981,6 @@ create_tb_multi_yr(metrics_info_df = m_info_lst,
 | + A confidence interval is not applicable.
 | Lower/Upper bound:  The data used to construct this metric do not lend themselves to conventional confidence intervals. The value of the metric shown represents are best estimate; the lower and upper bounds represent alternative estimates of the metric under different assumptions about missing data.
 
+<br>
 
+Version: `r Sys.time()`
