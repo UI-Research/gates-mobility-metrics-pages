@@ -1,31 +1,38 @@
-create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
+create_tb_multi_yr <- function(metrics_info_df, dataset, varname_maps){
   
   mb_metrics <- metrics_info_df$metric_name
   mb_vars  <- metrics_info_df$metric_vars_prefix[[1]]
   quality_var  <- metrics_info_df$quality_variable[[1]]
   metrics_desp  <- metrics_info_df$metrics_description
-  data_source <- metrics_info_df$source_data
   subgroup_this_var <- metrics_info_df$subgroup_id
   ci_vars <- metrics_info_df$ci_var
   notes <- metrics_info_df$notes
+  notes2 <- metrics_info_df$notes2
+  data_source2 <- metrics_info_df$source_data2
+  
+  subgroup_varname = subgroup_type_name <- 'year'
+  
+  if (mb_vars == 'average_to_living_wage_ratio'){
+    notes <- notes2
+  }
   
   col_from <- varname_maps[3][[1]]
   col_to <- varname_maps[4][[1]]
   
-  
-  if (str_detect(subgroup_this_var, fixed('|')) == TRUE) {
-    
-    subgroup_this_var <- strsplit(subgroup_this_var, "|", fixed=TRUE)[[1]][1]
-    
-  } 
+  var_rename_lst <- gen_variable_name_map(varname_maps)
   
   dataset <- dataset %>% 
-    filter(subgroup_id == subgroup_this_var) %>% 
-    filter(subgroup_type == 'all') 
+    filter(is_year == 1) 
   
   mb_vars_lst <- colnames(dataset %>% 
-                            select(setdiff(matches(mb_vars),
-                                           matches('_lb|_ub|_quality'))))
+                            select(setdiff(matches(mb_vars), matches('_lb|_ub|_quality'))))
+  
+  var_selection <- function(my_ds){
+    my_ds %>% 
+      select(matches(glue('{mb_vars}|{quality_var}|{subgroup_varname}|state_county')), -matches('_lb|_ub')) %>% 
+      select(-is_year)
+  }
+  
   
   if (ci_vars == 1){
     
@@ -33,11 +40,12 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
       
       dataset <- unite_col_values(dataset, val)
       ci_str <- 'Confidence Interval'
-      
     } 
     
-    temp <- dataset %>% 
-      select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub'))
+    temp <- var_selection(dataset) 
+    
+    # display NA instead of (), if metrics and its CI for this subgroup is not avaiable 
+    temp <- temp %>% mutate_at(vars(contains('ci')), ~ifelse((. == '()')|(. == '(NA, NA)'), NA, .))
     
   } else if (ci_vars == 2){
     
@@ -50,11 +58,10 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
     colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
     
-    temp <- dataset %>% 
-      select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub'))
-    
     col_from <- col_from[-grep("*_ci", col_from)]
     col_to <- col_to[-grep("*_ci", col_to)]
+    
+    temp <- var_selection(dataset) 
     
     notes <- paste0(notes, 
                     '<br><br>',
@@ -63,9 +70,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
   } else if (ci_vars == 3){
     
     ci_str <- 'Confidence Interval+'   # '+CI not applicable.
-    
     metrics_desp <- md(glue('{metrics_desp}<sup>+</sup>'))
-    
     
     # create an empty df 
     col_names <- glue('{mb_vars_lst}_ci')
@@ -73,11 +78,10 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
     empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
     colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
     
-    temp <- dataset %>% 
-      select(matches(glue('{mb_vars}|{quality_var}|state_county')), -matches('_lb|ub'))
-    
     col_from <- col_from[-grep("*_ci", col_from)]
     col_to <- col_to[-grep("*_ci", col_to)]
+    
+    temp <- var_selection(dataset)
     
     notes <- paste0(notes, 
                     '<br><br>',
@@ -87,29 +91,41 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
   
   temp <- temp %>% 
     mutate_all(as.character) %>% 
-    rename_at(vars(col_from), function(x) col_to)
+    rename_at(vars(col_from), function(x) col_to) %>% 
+    filter_at(vars(-c(subgroup_varname, 'state_county')), any_vars(!str_detect(., pattern = "NA|$NA")))
   
   
   if (str_detect(quality_var, '|') == FALSE){ #each variable has its own quality variable  
     
     temp <- temp %>% 
       relocate(!!sym(quality_var), .after = last_col())  
-    
   } 
   
+  temp <- temp %>% 
+    pivot_longer(!c('state_county', 'year', all_of(subgroup_type_name)), 
+                 names_to='metrics', 
+                 values_to='value') %>% 
+    arrange(desc(year)) %>%   
+    pivot_wider(names_from = 'state_county', 
+                values_from = 'value')
+  
+  
+  county_colnames <- colnames(temp)[c(3:length(colnames(temp)))]
+  
   temp %>% 
-    pivot_longer(!state_county, names_to='metrics', values_to='value') %>%
-    pivot_wider(names_from = 'state_county', values_from = 'value') %>% 
-    arrange(match(metrics, col_to)) %>% 
+    #arrange(match(metrics, col_to)) %>% 
+    rename(Year = year) %>% 
+    mutate(Year = as.numeric(gsub(',', '', Year))) %>% 
     mutate(metrics = gsub('.*_ci', ci_str, metrics)) %>% 
     mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
+    mutate(metrics = recode(metrics, !!!var_rename_lst)) %>% 
     select(metrics, everything()) %>% 
     gt(rowname_col = 'metrics') %>% 
     tab_header(
       title = '', 
       subtitle = metrics_desp
     ) %>% 
-    tab_source_note(html(str_c('Source:', data_source, sep=' '))) %>% 
+    tab_source_note(html(str_c('Source:', data_source2, sep=' '))) %>% 
     tab_source_note(html(str_c('Notes:', notes, sep=' '))) %>% 
     cols_align(
       align = 'left',
@@ -133,7 +149,7 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
         cell_text(style = "italic")
       ),
       locations = cells_body(
-        columns = TRUE,
+        columns = county_colnames, 
         rows = metrics == 'Quality')
     )
 } 
