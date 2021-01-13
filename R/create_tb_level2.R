@@ -130,7 +130,8 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
       table.align = tb_align) %>% 
     tab_style(
       style = list(
-        cell_text(style = "italic")
+        cell_text(style = "italic"),
+        cell_fill(color = "#ececec")
       ),
       locations = cells_body(
         columns = TRUE,

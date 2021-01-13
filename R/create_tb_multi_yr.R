@@ -151,5 +151,13 @@ create_tb_multi_yr <- function(metrics_info_df, dataset, varname_maps){
       locations = cells_body(
         columns = county_colnames, 
         rows = metrics == 'Quality')
+    ) %>%
+    tab_style(
+      style = list(
+        cell_fill(color = "#ececec")
+      ),
+      locations = cells_body(
+        columns = c('Year', county_colnames), 
+        rows = metrics == 'Quality')
     )
 } 
