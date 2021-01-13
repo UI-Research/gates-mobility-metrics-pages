@@ -45,7 +45,7 @@ create_tb <- function(metrics_info_df, dataset, varname_maps){
       title = '', 
       subtitle = metrics_desp
     ) %>% 
-    tab_source_note(str_c('Source:', data_source, sep=' ')) %>% 
+    tab_source_note(html(str_c('Source:', data_source, sep=' '))) %>% 
     cols_align(
       align = 'left',
       columns = TRUE
