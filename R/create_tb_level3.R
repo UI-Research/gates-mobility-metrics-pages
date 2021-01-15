@@ -128,8 +128,8 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
         title = '', 
         subtitle = metrics_desp
       ) %>% 
-      tab_source_note(html(str_c('Source:', data_source2, sep=' '))) %>% 
-      tab_source_note(html(str_c('Notes:', notes2, sep=' '))) %>% 
+      tab_source_note(html(str_c('<b>Source:</b>', data_source2, sep=' '))) %>% 
+      tab_source_note(html(str_c('<b>Notes:</b>', notes2, sep=' '))) %>% 
       cols_align(
         align = 'left',
         columns = TRUE
@@ -160,7 +160,7 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
           cell_fill(color = "#ececec")
         ),
         locations = cells_body(
-          columns = c('Group', county_colnames), 
+          columns = county_colnames, 
           rows = metrics == 'Quality')
       )
   }

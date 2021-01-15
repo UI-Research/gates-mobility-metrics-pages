@@ -109,8 +109,8 @@ create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
       title = '', 
       subtitle = metrics_desp
     ) %>% 
-    tab_source_note(html(str_c('Source:', data_source, sep=' '))) %>% 
-    tab_source_note(html(str_c('Notes:', notes, sep=' '))) %>% 
+    tab_source_note(html(str_c('<b>Source:</b>', data_source, sep=' '))) %>% 
+    tab_source_note(html(str_c('<b>Notes:</b>', notes, sep=' '))) %>% 
     cols_align(
       align = 'left',
       columns = TRUE
