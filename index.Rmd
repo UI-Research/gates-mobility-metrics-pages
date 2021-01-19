@@ -198,7 +198,8 @@ m_info <- m_info %>%
             function(x) gsub("\"\"", "\"", x)) %>% 
   mutate_if(is.character, list(~na_if(.,""))) %>% 
   mutate(source_data2 = ifelse(is.na(source_data2), source_data, source_data2)) %>% 
-  mutate(notes2 =  ifelse(!is.na(notes2), paste(notes, notes2), notes))
+  mutate(notes2 =  ifelse(!is.na(notes2), paste(notes, notes2), notes)) %>%
+  mutate(notes3 =  ifelse(!is.na(notes3), paste(notes, notes3), notes))
 
 #create unique state-county identifier
 data <- data %>% 
@@ -615,8 +616,8 @@ create_tb_level2_homeless <- function(metrics_info_df, dataset, varname_maps){
       title = '', 
       subtitle = metrics_desp
     ) %>% 
-    tab_source_note(str_c('Source:', data_source, sep=' ')) %>% 
-    tab_source_note(str_c('Notes:', notes, sep=' ')) %>% 
+    tab_source_note(html(str_c('<b>Source:</b>', data_source, sep=' '))) %>% 
+    tab_source_note(html(str_c('<b>Notes:</b>', notes, sep=' '))) %>% 
     cols_align(
       align = 'left',
       columns = TRUE
@@ -741,8 +742,8 @@ create_tb_multi_yr_homeless <- function(metrics_info_df, dataset, varname_maps){
       title = '', 
       subtitle = metrics_desp
     ) %>% 
-    tab_source_note(str_c('Source:', data_source2, sep=' ')) %>% 
-    tab_source_note(str_c('Notes:', notes, sep=' ')) %>% 
+    tab_source_note(html(str_c('<b>Source:</b>', data_source2, sep=' '))) %>% 
+    tab_source_note(html(str_c('<b>Notes:</b>', notes, sep=' '))) %>% 
     cols_align(
       align = 'left',
       columns = TRUE
@@ -774,7 +775,7 @@ create_tb_multi_yr_homeless <- function(metrics_info_df, dataset, varname_maps){
         cell_fill(color = "#ececec")
       ),
       locations = cells_body(
-        columns = c('Year', county_colnames), 
+        columns = c(county_colnames), 
         rows = metrics == 'Quality')
     )
 } 
@@ -1829,6 +1830,10 @@ create_tb_multi_yr(metrics_info_df = m_info_lst,
 | * This confidence interval is not available at this time.
 | + A confidence interval is not applicable.
 | Lower/Upper bound:  The data used to construct this metric do not lend themselves to conventional confidence intervals. The value of the metric shown represents are best estimate; the lower and upper bounds represent alternative estimates of the metric under different assumptions about missing data.
+
+<br>
+
+<div class="p2">"NA" in fields for metric values and data quality values indicates that the data are suppressed due to sample sizes or because that element is not applicable to that community (e.g. no zip code in the county is majority non-white).</div> 
 
 <br>
 

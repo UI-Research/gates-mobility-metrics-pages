@@ -18,7 +18,9 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
   subgroup_this_var <- metrics_info_df$subgroup_id
   ci_vars <- metrics_info_df$ci_var
   notes2 <- metrics_info_df$notes2
-  
+  notes3 <- metrics_info_df$notes3
+    
+
   subgroup_varname <- 'subgroup'
   
   col_from <- varname_maps[3][[1]]
@@ -26,9 +28,10 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
   
   var_rename_lst <- gen_variable_name_map(varname_maps)
   
-  create_tb_by_subgroup <- function(subgroup_category){
+  create_tb_by_subgroup <- function(subgroup_category, note) {
     
-    dataset <- dataset %>% filter(subgroup_id == subgroup_category)
+    dataset <- dataset %>% 
+      filter(subgroup_id == subgroup_category)
     
     mb_vars_lst <- colnames(dataset %>% select(setdiff(matches(mb_vars), matches('_lb|_ub|_quality'))))
     
@@ -70,9 +73,9 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
       
       temp <- var_selection(dataset) 
       
-      notes2 <- paste(notes2, 
-                      'The Confidence Interval for this metric is not available at this time.',
-                      sep = '<br><br>')
+      note <- paste(note, 
+                    'The Confidence Interval for this metric is not available at this time.',
+                    sep = '<br><br>')
       
     } else if (ci_vars == 3){
       
@@ -91,9 +94,9 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
       col_from <- col_from[-grep("*_ci", col_from)]
       col_to <- col_to[-grep("*_ci", col_to)]
       
-      notes2 <- paste(notes2, 
-                      'The Confidence Interval for this metric is not applicable.',
-                      sep = '<br><br>')
+      note <- paste(note, 
+                    'The Confidence Interval for this metric is not applicable.',
+                    sep = '<br><br>')
     }
     
     temp <- temp %>% 
@@ -128,8 +131,8 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
         title = '', 
         subtitle = metrics_desp
       ) %>% 
-      tab_source_note(html(str_c('Source:', data_source2, sep=' '))) %>% 
-      tab_source_note(html(str_c('Notes:', notes2, sep=' '))) %>% 
+      tab_source_note(html(str_c('<b>Source:</b>', data_source2, sep=' '))) %>% 
+      tab_source_note(html(str_c('<b>Notes:</b>', note, sep=' '))) %>% 
       cols_align(
         align = 'left',
         columns = TRUE
@@ -160,10 +163,10 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
           cell_fill(color = "#ececec")
         ),
         locations = cells_body(
-          columns = c('Group', county_colnames), 
+          columns = county_colnames, 
           rows = metrics == 'Quality')
       )
-  }
+  } # end of create_tb_by_subgroup
   
   
   # get multiple subgroup types if exists 
@@ -171,13 +174,16 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
     
     sg_lst <- strsplit(subgroup_this_var, "|", fixed=TRUE)[[1]]
     
-    for (i in sg_lst){
-      print(create_tb_by_subgroup(i))
-    }
+    print(create_tb_by_subgroup(sg_lst[1], note = notes2))
+    print(create_tb_by_subgroup(sg_lst[2], note = notes3))
+    
+    # for (i in sg_lst){
+    #   print(create_tb_by_subgroup(i))
+    # }
     
   } else{
     
-    create_tb_by_subgroup(subgroup_this_var)
+    create_tb_by_subgroup(subgroup_this_var, note = notes2)
   }
   
 } 
