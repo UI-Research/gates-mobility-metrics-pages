@@ -198,7 +198,8 @@ m_info <- m_info %>%
             function(x) gsub("\"\"", "\"", x)) %>% 
   mutate_if(is.character, list(~na_if(.,""))) %>% 
   mutate(source_data2 = ifelse(is.na(source_data2), source_data, source_data2)) %>% 
-  mutate(notes2 =  ifelse(!is.na(notes2), paste(notes, notes2), notes))
+  mutate(notes2 =  ifelse(!is.na(notes2), paste(notes, notes2), notes)) %>%
+  mutate(notes3 =  ifelse(!is.na(notes3), paste(notes, notes3), notes))
 
 #create unique state-county identifier
 data <- data %>% 
