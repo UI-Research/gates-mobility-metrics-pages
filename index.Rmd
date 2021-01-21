@@ -14,8 +14,8 @@ output:
     editor_options:
       chunk_output_type: console
 params:
-  state_county: !r c('42051', '42095', '42017', '48453', '09003')
-  fake_labels: FALSE
+  state_county: !r c('42095', '42017', '48453', '09003')
+  fake_labels: TRUE
 ---
 
 ```{r echo = FALSE}
@@ -291,7 +291,8 @@ unite_col_values <- function(df, colname_str){
           sep = ', ', 
           remove=TRUE,
           na.rm = TRUE) %>% 
-    mutate_at(vars(matches(glue('{colname_str}_ci'))), function(x) glue('({x})'))
+    mutate_at(vars(matches(glue('{colname_str}_ci'))), function(x) as.character(glue('({x})'))) %>%
+    mutate_at(vars(matches(glue('{colname_str}_ci'))), function(x) if_else(x %in% c('(0.0%, 0.0%)', '(100.0%, 100.0%)'), 'NC', x))
   
   return(df)
 }
@@ -1834,6 +1835,8 @@ create_tb_multi_yr(metrics_info_df = m_info_lst,
 <br>
 
 <div class="p2">"NA" in fields for metric values and data quality values indicates that the data are suppressed due to sample sizes or because that element is not applicable to that community (e.g. no zip code in the county is majority non-white).</div> 
+
+<div class="p2">"NC" in fields for confidence intervals or lower/upper bounds means that we are not able to calculate this because the underlying data lack variation.</div>
 
 <br>
 
