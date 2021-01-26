@@ -49,10 +49,13 @@ library(purrr)
 
 options(scipen = 999)
 
-source("R/create_tb.R")
-source("R/create_tb_level2.R")
-source("R/create_tb_level3.R")
-source("R/create_tb_multi_yr.R")
+source(here::here("R", "get_vars_info.R"))
+source(here::here("R", "unite_col_values.R"))
+source(here::here("R", "gen_variable_name_map.R"))
+source(here::here("R", "create_tb.R"))
+source(here::here("R", "create_tb_level2.R"))
+source(here::here("R", "create_tb_level3.R"))
+source(here::here("R", "create_tb_multi_yr.R"))
 
 ```
 
@@ -269,18 +272,7 @@ note_ul_bound <- 'Lower/Upper bound'
 
 ```{r}
 
-get_vars_info <- function(varname, data_summary_file=m_info){
-  
-  info_lst <- data_summary_file %>% 
-    filter(metric_name == varname) %>%
-    purrr::transpose() %>% 
-    simplify() %>%
-    first()
-  
-  mb_vars <- info_lst[4][[1]]
-  
-  return(list(info_lst=info_lst, mb_vars=mb_vars))
-}
+
 
 unite_col_values <- function(df, colname_str){
   
@@ -297,25 +289,6 @@ unite_col_values <- function(df, colname_str){
   return(df)
 }
 
-```
-
-```{r}
-
-gen_variable_name_map <- function(varname_maps){
-  
-  col_from <- varname_maps[3][[1]]
-  col_to <- varname_maps[4][[1]]
-  
-  test <- map2(col_from, col_to, list)
-  
-  my_list <- list()
-  
-  for (i in list(1, length(test))){
-    my_list[[ test[[i]][[1]] ]] <- test[[i]][[2]]
-  }
-  
-  return(my_list)
-}
 ```
 
 <br><br>
@@ -365,8 +338,8 @@ income_varlist <- list(
   ) 
 )
 
-income_m_info_lst <- get_vars_info('Income')$info_lst
-mb_vars <- get_vars_info('Income')$mb_vars
+income_m_info_lst <- get_vars_info('Income', data_summary_file = m_info)$info_lst
+mb_vars <- get_vars_info('Income', data_summary_file = m_info)$mb_vars
 
 data_sub <- data %>% 
   mutate_at(vars(matches(mb_vars), -ends_with('_quality')), 
@@ -417,8 +390,8 @@ debt_varlist <- list(
     '% with debt_ci')
 )
 
-m_info_lst <- get_vars_info('Financial security')$info_lst
-mb_vars <- get_vars_info('Financial security')$mb_vars
+m_info_lst <- get_vars_info('Financial security', data_summary_file = m_info)$info_lst
+mb_vars <- get_vars_info('Financial security', data_summary_file = m_info)$mb_vars
 
 
 create_tb(metrics_info_df = m_info_lst, 
@@ -489,7 +462,7 @@ housing_varlist <- list(
   )
 )
 
-af_m_info_lst <- get_vars_info('Affordable housing')$info_lst
+af_m_info_lst <- get_vars_info('Affordable housing', data_summary_file = m_info)$info_lst
 
 
 create_tb(metrics_info_df = af_m_info_lst, 
@@ -551,7 +524,7 @@ housing_insta_varlist <- list(
   )
 )
 
-m_info_lst <- get_vars_info('Housing instability and homelessness')$info_lst
+m_info_lst <- get_vars_info('Housing instability and homelessness', data_summary_file = m_info)$info_lst
 
 create_tb(metrics_info_df = m_info_lst, 
           dataset = data, 
@@ -848,7 +821,7 @@ famstruc_varlist <- list(
   ) 
 )
 
-fss_m_info_lst <- get_vars_info('Family structure and stability')$info_lst
+fss_m_info_lst <- get_vars_info('Family structure and stability', data_summary_file = m_info)$info_lst
 
 
 create_tb(metrics_info_df = fss_m_info_lst, 
@@ -911,7 +884,7 @@ accuils_varlist <- list(
   )
 )
 
-m_info_lst <- get_vars_info('Access to and utilization of health services')$info_lst
+m_info_lst <- get_vars_info('Access to and utilization of health services', data_summary_file = m_info)$info_lst
 
 
 create_tb(metrics_info_df = m_info_lst, 
@@ -952,7 +925,7 @@ neonatal_varlist <- list(
     note_ul_bound)
 )
 
-nh_m_info_lst <- get_vars_info('Neonatal health')$info_lst
+nh_m_info_lst <- get_vars_info('Neonatal health', data_summary_file = m_info)$info_lst
 
 create_tb(metrics_info_df = nh_m_info_lst, 
           dataset = data, 
@@ -1012,7 +985,7 @@ election_turnout_varlist <- list(
     '% voting_ci')
 )
 
-et_m_info_lst <- get_vars_info('Political participation')$info_lst
+et_m_info_lst <- get_vars_info('Political participation', data_summary_file = m_info)$info_lst
 
 create_tb(metrics_info_df = et_m_info_lst, 
           dataset = data, 
@@ -1059,7 +1032,7 @@ econ_inc_varlist <- list(
     '% in high poverty neighborhoods_ci')
 )
 
-ei_m_info_lst <- get_vars_info('Economic inclusion')$info_lst
+ei_m_info_lst <- get_vars_info('Economic inclusion', data_summary_file = m_info)$info_lst
 
 
 create_tb(metrics_info_df = ei_m_info_lst, 
@@ -1148,7 +1121,7 @@ race_div <- list(
   )
 )
 
-rd_m_info_lst <- get_vars_info('Racial diversity')$info_lst
+rd_m_info_lst <- get_vars_info('Racial diversity', data_summary_file = m_info)$info_lst
 
 create_tb(metrics_info_df = rd_m_info_lst, 
           dataset = data, 
@@ -1189,7 +1162,7 @@ trans_access <- list(
     'Transit trips_ci')
 )
 
-trans_info_lst <- get_vars_info('Transportation access')$info_lst
+trans_info_lst <- get_vars_info('Transportation access', data_summary_file = m_info)$info_lst
 
 create_tb(metrics_info_df = trans_info_lst, 
           dataset = data, 
@@ -1239,7 +1212,7 @@ trans_cost_varlist <- list(
     'Transit cost_ci')
 )
 
-tr_cost_m_info_lst <- get_vars_info('Transportation access-cost')$info_lst
+tr_cost_m_info_lst <- get_vars_info('Transportation access-cost', data_summary_file = m_info)$info_lst
 
 
 create_tb(metrics_info_df = tr_cost_m_info_lst, 
@@ -1293,33 +1266,38 @@ env_varlist <- list(
     'Air quality index_ci')
 )
 
-env_m_info_lst <- get_vars_info('Environmental quality')$info_lst
+env_m_info_lst <- get_vars_info('Environmental quality', data_summary_file = m_info)$info_lst
 
 create_tb(metrics_info_df = env_m_info_lst, 
           dataset = data, 
           varname_maps = env_varlist) 
 
 ```
+
 <br><br>
 
-
 ##### Detail
-```{r}
 
+```{r}
 create_tb_level2(metrics_info_df = env_m_info_lst, 
                  dataset = data, 
                  varname_maps = env_varlist) 
 
 
 ```
+
 <br><br>
 
 ##### Subgroup
-```{r}
 
-create_tb_level3(metrics_info_df = env_m_info_lst, 
-                 dataset = data, 
-                 varname_maps = env_varlist) 
+```{r}
+env_table <- create_tb_level3(metrics_info_df = env_m_info_lst, 
+                              dataset = data, 
+                              varname_maps = env_varlist) 
+
+env_table$table1
+
+env_table$table2
 
 ```
 
@@ -1358,8 +1336,8 @@ exp_crime_varlist <- list(
   )
 )
 
-ec_m_info_lst <- get_vars_info('Exposure to crime')$info_lst
-mb_vars <- get_vars_info('Exposure to crime')$mb_vars
+ec_m_info_lst <- get_vars_info('Exposure to crime', data_summary_file = m_info)$info_lst
+mb_vars <- get_vars_info('Exposure to crime', data_summary_file = m_info)$mb_vars
 
 data_sub_exp_crime <- data %>% 
   mutate_at(vars(matches(mb_vars), -ends_with('_quality')), 
@@ -1419,8 +1397,8 @@ punative_policing <- list(
     'Juvenile arrests_ci')
 )
 
-m_info_lst <- get_vars_info('Overly punitive policing')$info_lst
-mb_vars <- get_vars_info('Overly punitive policing')$mb_vars
+m_info_lst <- get_vars_info('Overly punitive policing', data_summary_file = m_info)$info_lst
+mb_vars <- get_vars_info('Overly punitive policing', data_summary_file = m_info)$mb_vars
 
 data_sub_punitive <- data %>% 
   mutate_at(vars(matches(mb_vars), -ends_with('_quality')), 
@@ -1488,7 +1466,7 @@ share_in_presch_varlist <- list(
     '% Pre-kindergarten_ci')
 )
 
-ap_m_info_lst <- get_vars_info('Access to preschool')$info_lst
+ap_m_info_lst <- get_vars_info('Access to preschool', data_summary_file = m_info)$info_lst
 
 
 create_tb(metrics_info_df = ap_m_info_lst, 
@@ -1543,19 +1521,19 @@ eff_pub_ed <- list(
 )
 
 
-epd_m_info_lst <- get_vars_info('Effective public education')$info_lst
+epd_m_info_lst <- get_vars_info('Effective public education', data_summary_file = m_info)$info_lst
 
 create_tb(metrics_info_df = epd_m_info_lst, 
           dataset = data, 
           varname_maps = eff_pub_ed) 
 
 ```
+
 <br>
 
-
 ##### Detail
-```{r}
 
+```{r}
 create_tb_level2(metrics_info_df = epd_m_info_lst, 
                  dataset = data, 
                  varname_maps = eff_pub_ed) 
@@ -1565,15 +1543,19 @@ create_tb_level2(metrics_info_df = epd_m_info_lst,
 <br>
 
 ##### Subgroup
-```{r}
 
-create_tb_level3(metrics_info_df = epd_m_info_lst, 
-                 dataset = data %>% filter(subgroup != 'Other Races and Ethnicities'), 
-                 varname_maps = eff_pub_ed) 
+```{r}
+ed_table <- create_tb_level3(metrics_info_df = epd_m_info_lst, 
+                             dataset = data %>% filter(subgroup != 'Other Races and Ethnicities'), 
+                             varname_maps = eff_pub_ed) 
+
+ed_table$table1
+
+ed_table$table2
 
 ```
-<br>
 
+<br>
 
 #### Predictor: Student poverty concentration {.tabset  .avoidpagebreak}
 
@@ -1621,7 +1603,7 @@ stu_poverty <- list(
 )
 
 
-spoverty_m_info_lst <- get_vars_info('Student poverty concentration')$info_lst
+spoverty_m_info_lst <- get_vars_info('Student poverty concentration', data_summary_file = m_info)$info_lst
 
 create_tb(metrics_info_df = spoverty_m_info_lst, 
           dataset = data, 
@@ -1662,7 +1644,7 @@ college_readiness <- list(
     '% HS degree_ci')
 )
 
-m_info_lst <- get_vars_info('College readiness')$info_lst
+m_info_lst <- get_vars_info('College readiness', data_summary_file = m_info)$info_lst
 
 
 create_tb(metrics_info_df = m_info_lst, 
@@ -1719,7 +1701,7 @@ emp_lst <- list(
 )
 
 
-emp_m_info_lst <- get_vars_info('Employment')$info_lst
+emp_m_info_lst <- get_vars_info('Employment', data_summary_file = m_info)$info_lst
 
 
 create_tb(metrics_info_df = emp_m_info_lst, 
@@ -1771,7 +1753,7 @@ job_wage <- list(
 )
 
 
-m_info_lst <- get_vars_info('Access to jobs paying a living wage')$info_lst
+m_info_lst <- get_vars_info('Access to jobs paying a living wage', data_summary_file = m_info)$info_lst
 
 create_tb(metrics_info_df = m_info_lst, 
           dataset = data, 
