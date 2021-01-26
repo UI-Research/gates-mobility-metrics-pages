@@ -8,7 +8,17 @@
 #' @export
 #'
 #' @examples
-create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
+create_tb_level3 <- function(metrics_info_df, 
+                             dataset, 
+                             varname_maps, 
+                             subgroup_type_name = 'Group',
+                             tb_title_size = 18,
+                             tb_subtitle_size = 14,
+                             tb_font_size = 12,
+                             source_note_size = 11,
+                             tb_width_perc = 80,
+                             tb_align = 'left'
+                             ){
   
   mb_metrics <- metrics_info_df$metric_name
   mb_vars  <- metrics_info_df$metric_vars_prefix[[1]]
@@ -26,6 +36,22 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
   col_from <- varname_maps[3][[1]]
   col_to <- varname_maps[4][[1]]
   
+  gen_variable_name_map <- function(varname_maps){
+    
+    col_from <- varname_maps[3][[1]]
+    col_to <- varname_maps[4][[1]]
+    
+    test <- map2(col_from, col_to, list)
+    
+    my_list <- list()
+    
+    for (i in list(1, length(test))){
+      my_list[[ test[[i]][[1]] ]] <- test[[i]][[2]]
+    }
+    
+    return(my_list)
+  }
+  
   var_rename_lst <- gen_variable_name_map(varname_maps)
   
   create_tb_by_subgroup <- function(subgroup_category, note) {
@@ -34,8 +60,6 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
       filter(subgroup_id == subgroup_category)
     
     mb_vars_lst <- colnames(dataset %>% select(setdiff(matches(mb_vars), matches('_lb|_ub|_quality'))))
-    
-    subgroup_type_name <- 'Group'
     
     var_selection <- function(my_ds){
       my_ds %>% 
@@ -174,8 +198,10 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
     
     sg_lst <- strsplit(subgroup_this_var, "|", fixed=TRUE)[[1]]
     
-    print(create_tb_by_subgroup(sg_lst[1], note = notes2))
-    print(create_tb_by_subgroup(sg_lst[2], note = notes3))
+    list(
+      table1 = create_tb_by_subgroup(sg_lst[1], note = notes2),
+      table2 = create_tb_by_subgroup(sg_lst[2], note = notes3)
+    )
     
     # for (i in sg_lst){
     #   print(create_tb_by_subgroup(i))
@@ -184,6 +210,7 @@ create_tb_level3 <- function(metrics_info_df, dataset, varname_maps){
   } else{
     
     create_tb_by_subgroup(subgroup_this_var, note = notes2)
+    
   }
   
 } 

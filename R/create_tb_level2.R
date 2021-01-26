@@ -1,4 +1,13 @@
-create_tb_level2 <- function(metrics_info_df, dataset, varname_maps){
+create_tb_level2 <- function(metrics_info_df, 
+                             dataset, 
+                             varname_maps,
+                             tb_title_size = 18,
+                             tb_subtitle_size = 14,
+                             tb_font_size = 12, 
+                             source_note_size = 11,
+                             tb_width_perc = 80,
+                             tb_align = 'left'
+                             ){
   
   mb_metrics <- metrics_info_df$metric_name
   mb_vars  <- metrics_info_df$metric_vars_prefix[[1]]
