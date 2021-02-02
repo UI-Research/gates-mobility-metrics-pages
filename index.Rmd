@@ -36,7 +36,6 @@ knitr::include_graphics(here::here('www', 'images', 'urban-institute-logo.png'))
 ```
 
 ```{r setup}
-
 library(here)
 library(data.table)
 library(gt)
@@ -271,9 +270,6 @@ note_ul_bound <- 'Lower/Upper bound'
 # `r upward_county`
 
 ```{r}
-
-
-
 unite_col_values <- function(df, colname_str){
   
   df <- df %>% 
@@ -308,7 +304,6 @@ unite_col_values <- function(df, colname_str){
 ##### Summary
 
 ```{r}
-
 income_varlist <- list(
   c(
     'pctl_20', 
@@ -343,19 +338,19 @@ mb_vars <- get_vars_info('Income', data_summary_file = m_info)$mb_vars
 
 data_sub <- data %>% 
   mutate_at(vars(matches(mb_vars), -ends_with('_quality')), 
-            function(x) gsub("\\..*","", glue('${x}')))
+            function(x) gsub("\\..*","", glue('${x}'))) 
 
 create_tb(metrics_info_df = income_m_info_lst, 
           dataset = data_sub, 
           varname_maps = income_varlist) 
 
-
 ```
+
 <br>
 
 ##### Detail
-```{r}
 
+```{r}
 create_tb_level2(income_m_info_lst, data_sub, income_varlist)
 
 ```
@@ -363,21 +358,19 @@ create_tb_level2(income_m_info_lst, data_sub, income_varlist)
 <br>
 
 ##### Subgroup 
-```{r}
 
+```{r}
 create_tb_level3(income_m_info_lst, data_sub, income_varlist)
 
 ```
 
 <br>
 
-
 #### Predictor: Financial security {.tabset .avoidpagebreak}
 
 ##### Summary
 
 ```{r}
-
 debt_varlist <- list(
   c('share_debt_coll'),
   c('% with debt'), 
@@ -398,7 +391,6 @@ create_tb(metrics_info_df = m_info_lst,
           dataset = data, 
           varname_maps = debt_varlist) 
 
-
 ```
 
 <br><br>
@@ -406,22 +398,31 @@ create_tb(metrics_info_df = m_info_lst,
 ##### Detail
 
 ```{r}
-
 create_tb_level2(metrics_info_df = m_info_lst, 
                  dataset = data, 
                  varname_maps = debt_varlist) 
 
-
 ```
+
 <br><br>
 
+##### Sub-Area 
 
-##### Subgroup
 ```{r}
+data_sub <- data %>%
+  filter(subgroup != 'Mixed Race and Ethnicity') %>%
+  mutate(
+    subgroup = recode(
+      subgroup,
+      `Majority Non-White` = 'Majority Non-White ZIPs',
+      `Majority White, Non-Hispanic` = 'Majority White, Non-Hispanic ZIPs'
+    )
+  )
 
 create_tb_level3(metrics_info_df = m_info_lst, 
-                 dataset = data %>% filter(subgroup != 'Mixed Race and Ethnicity'), 
-                 varname_maps = debt_varlist) 
+                 dataset = data_sub, 
+                 varname_maps = debt_varlist,
+                 subgroup_type_name = "Area") 
 
 ```
 
@@ -1142,14 +1143,11 @@ create_tb_level2(metrics_info_df = rd_m_info_lst,
 
 <br>
 
-
-
 #### Predictor: Transportation access {.tabset .avoidpagebreak}
 
 ##### Summary {.avoidpagebreak}
 
 ```{r}
-
 trans_access <- list(
   c('transit_trips'),
   c('Transit trips'),
@@ -1172,34 +1170,43 @@ create_tb(metrics_info_df = trans_info_lst,
 <br>
 
 ##### Detail
-```{r}
 
+```{r}
 create_tb_level2(metrics_info_df = trans_info_lst, 
                  dataset = data, 
                  varname_maps = trans_access) 
 
 ```
+
 <br>
 
-##### Subgroup
+##### Sub-Area
 
 ```{r}
+data_sub <- data %>%
+  mutate(
+    subgroup = recode(
+      subgroup,
+      `Majority Non-White` = 'Majority Non-White Tracts',
+      `Majority White, Non-Hispanic` = 'Majority White, Non-Hispanic Tracts',
+      `Mixed Race and Ethnicity` = 'No Majority Race/Ethnicity Tracts'
+    )
+  )
 
 create_tb_level3(metrics_info_df = trans_info_lst, 
-                 dataset = data, 
-                 varname_maps = trans_access) 
+                 dataset = data_sub, 
+                 varname_maps = trans_access,
+                 subgroup_type_name = 'Area') 
 
 ```
 
 <br>
 
-
 ####  {.tabset}
 
 ##### Summary {.avoidpagebreak}
+
 ```{r}
-
-
 trans_cost_varlist <- list(
   c('transit_cost'),
   c('Transit cost'),
@@ -1214,39 +1221,46 @@ trans_cost_varlist <- list(
 
 tr_cost_m_info_lst <- get_vars_info('Transportation access-cost', data_summary_file = m_info)$info_lst
 
-
 create_tb(metrics_info_df = tr_cost_m_info_lst, 
           dataset = data, 
           varname_maps = trans_cost_varlist) 
 
-
 ```
+
 <br>
 
-
 ##### Detail
-```{r}
 
+```{r}
 create_tb_level2(metrics_info_df = tr_cost_m_info_lst, 
                  dataset = data, 
                  varname_maps = trans_cost_varlist) 
 
-
 ```
 
 <br>
 
-##### Subgroup
+##### Sub-Area
 
 ```{r}
+data_sub <- data %>%
+  mutate(
+    subgroup = recode(
+      subgroup,
+      `Majority Non-White` = 'Majority Non-White Tracts',
+      `Majority White, Non-Hispanic` = 'Majority White, Non-Hispanic Tracts',
+      `Mixed Race and Ethnicity` = 'No Majority Race/Ethnicity Tracts'
+    )
+  )
 
 create_tb_level3(metrics_info_df = tr_cost_m_info_lst, 
                  dataset = data, 
-                 varname_maps = trans_cost_varlist) 
+                 varname_maps = trans_cost_varlist,
+                 subgroup_type_name = 'Area') 
 
 ```
-<br>
 
+<br>
 
 #### Predictor: Environmental quality {.tabset .avoidpagebreak}
 
@@ -1288,12 +1302,23 @@ create_tb_level2(metrics_info_df = env_m_info_lst,
 
 <br><br>
 
-##### Subgroup
+##### Sub-Area
 
 ```{r}
+data_sub <- data %>%
+  mutate(
+    subgroup = recode(
+      subgroup,
+      `Majority Non-White` = 'Majority Non-White Tracts',
+      `Majority White, Non-Hispanic` = 'Majority White, Non-Hispanic Tracts',
+      `Mixed Race and Ethnicity` = 'No Majority Race/Ethnicity Tracts'
+    )
+  )
+
 env_table <- create_tb_level3(metrics_info_df = env_m_info_lst, 
-                              dataset = data, 
-                              varname_maps = env_varlist) 
+                              dataset = data_sub, 
+                              varname_maps = env_varlist,
+                              subgroup_type_name = 'Area') 
 
 env_table$table1
 
