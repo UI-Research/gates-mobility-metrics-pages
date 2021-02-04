@@ -1254,7 +1254,7 @@ data_sub <- data %>%
   )
 
 create_tb_level3(metrics_info_df = tr_cost_m_info_lst, 
-                 dataset = data, 
+                 dataset = data_sub, 
                  varname_maps = trans_cost_varlist,
                  subgroup_type_name = 'Area') 
 
