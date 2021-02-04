@@ -237,6 +237,7 @@ perc_vars_in_data <- all_perc_vars[(all_perc_vars %in% colnames(data))]
 numeric_vars_one_digit <- data %>% 
   select(-average_to_living_wage_ratio) %>% 
   select(-full_fips) %>% 
+  select(-learning_rate, -learning_rate_lb, -learning_rate_ub) %>%
   select(-all_of(perc_vars_in_data)) %>% 
   select_if(is.numeric) %>% 
   names()
@@ -250,7 +251,7 @@ data <- data %>%
   mutate_at(perc_vars_in_data,             #convert to percentage 
             function (x) scales::percent(x, accuracy = 0.1)) %>% 
   mutate_at(numeric_vars_one_digit, 
-            function(x) {format(round(x, 1), big.mark=",",scientific=FALSE)}) %>% 
+            function(x) {format(round(x, 1), big.mark=",", scientific=FALSE)}) %>% 
   mutate_at(vars(matches('average_to_living_wage_ratio')), funs(as.numeric)) %>% 
   mutate_at(vars(matches('average_to_living_wage_ratio')), 
             function(x) {format(round(x, 2), big.mark=",",scientific=FALSE)}) %>% 
@@ -536,8 +537,8 @@ create_tb(metrics_info_df = m_info_lst,
 <br><br>
 
 ##### Detail
-```{r}
 
+```{r}
 create_tb_level2_homeless <- function(metrics_info_df, dataset, varname_maps){
   
   mb_metrics <- metrics_info_df$metric_name
@@ -1500,27 +1501,26 @@ create_tb(metrics_info_df = ap_m_info_lst,
 
 
 ```
+
 <br>
 
-
 ##### Detail
-```{r}
 
+```{r}
 create_tb_level2(metrics_info_df = ap_m_info_lst, 
                  dataset = data, 
                  varname_maps = share_in_presch_varlist) 
 
-
 ```
+
 <br>
 
 ##### Subgroup
-```{r}
 
+```{r}
 create_tb_level3(metrics_info_df = ap_m_info_lst, 
                  dataset = data, 
                  varname_maps = share_in_presch_varlist) 
-
 
 ```
 
@@ -1545,11 +1545,18 @@ eff_pub_ed <- list(
     note_ul_bound)
 )
 
+data_ed <- data %>%
+  mutate(
+    learning_rate = sprintf("%.2f", round(as.numeric(learning_rate) , 2)),
+    learning_rate_lb = sprintf("%.2f", round(as.numeric(learning_rate_lb) , 2)),
+    learning_rate_ub = sprintf("%.2f", round(as.numeric(learning_rate_ub) , 2))
+  )
+
 
 epd_m_info_lst <- get_vars_info('Effective public education', data_summary_file = m_info)$info_lst
 
 create_tb(metrics_info_df = epd_m_info_lst, 
-          dataset = data, 
+          dataset = data_ed, 
           varname_maps = eff_pub_ed) 
 
 ```
@@ -1560,7 +1567,7 @@ create_tb(metrics_info_df = epd_m_info_lst,
 
 ```{r}
 create_tb_level2(metrics_info_df = epd_m_info_lst, 
-                 dataset = data, 
+                 dataset = data_ed, 
                  varname_maps = eff_pub_ed) 
 
 ```
@@ -1571,7 +1578,7 @@ create_tb_level2(metrics_info_df = epd_m_info_lst,
 
 ```{r}
 ed_table <- create_tb_level3(metrics_info_df = epd_m_info_lst, 
-                             dataset = data %>% filter(subgroup != 'Other Races and Ethnicities'), 
+                             dataset = data_ed %>% filter(subgroup != 'Other Races and Ethnicities'), 
                              varname_maps = eff_pub_ed) 
 
 ed_table$table1
