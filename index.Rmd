@@ -15,7 +15,7 @@ output:
       chunk_output_type: console
 params:
   state_county: !r c('42095', '42017', '48453', '09003')
-  fake_labels: FALSE
+  fake_labels: TRUE
 ---
 
 ```{r echo = FALSE}
