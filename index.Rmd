@@ -924,7 +924,7 @@ neonatal_varlist <- list(
   ),
   c(
     '% Low-weight birth', 
-    note_ul_bound)
+    '% Low-weight birth_ci')
 )
 
 nh_m_info_lst <- get_vars_info('Neonatal health', data_summary_file = m_info)$info_lst
@@ -934,23 +934,23 @@ create_tb(metrics_info_df = nh_m_info_lst,
           varname_maps = neonatal_varlist) 
 
 ```
+
 <br><br>
 
 ##### Detail
 
 ```{r}
-
 create_tb_level2(metrics_info_df = nh_m_info_lst, 
                  dataset = data, 
                  varname_maps = neonatal_varlist) 
 
 ```
+
 <br><br>
 
 ##### Subgroup
 
 ```{r}
-
 create_tb_level3(metrics_info_df = nh_m_info_lst, 
                  dataset = data, 
                  varname_maps = neonatal_varlist) 

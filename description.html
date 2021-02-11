@@ -27,6 +27,15 @@
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
   pre:not([class]) {
@@ -71,6 +80,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 <link rel="stylesheet" href="www/web_report.css" type="text/css" />
 
@@ -392,14 +402,14 @@ div.tocify {
 </div>
 <div id="predictor-financial-security" class="section level5">
 <h5>PREDICTOR: FINANCIAL SECURITY</h5>
-<p><strong>Metric: Share of households with debt in collections</strong></p>
-<p>The measure accounts for the share of households in an area with debt that has progressed from being past due to being in collections.</p>
+<p><strong>Metric: Share with debt in collections</strong></p>
+<p>The measure accounts for the share of people with a credit bureau record in an area with debt that has progressed from being past due to being in collections. Debt in collections includes past-due credit lines that have been closed and charged-off on the creditor’s books as well as unpaid bills reported to the credit bureaus that the creditor is attempting to collect. For example, credit card accounts enter collections once they are 180 days past due. Retail installment loans are retail purchases with installment terms—for example, a loan from a furniture store to buy a couch.</p>
 <p><strong>Validity:</strong> Families without other accessible financial resources may need to take out debt not only to pay for housing or education but also to pay for daily necessities such as food or utilities. The inability to pay back debts can signal current or near-term financial insecurity, particularly for families with lower incomes. Those households likely have few assets and as such may have negative wealth. Though not a standard measure, this metric has been used by researchers to distinguish between “good” debts (e.g. mortgages paid on time every month) and “bad” debts (Braga et al. 2016; Ratcliffe et al. 2014).</p>
-<p><strong>Availability:</strong> Drawn directly from credit reports, the credit bureau data are national and uniform across the country. The data are restricted and are not accessible directly from credit bureaus but are made available publicly on the Urban Institute website.</p>
+<p><strong>Availability:</strong> Drawn directly from credit reports, the credit bureau data are national and uniform across the country. The data are restricted and are not accessible directly from credit bureaus but are made available publicly on the Urban Institute’s <a href="https://apps.urban.org/features/debt-interactive-map/?type=overall&amp;variable=pct_debt_collections">Debt in America website</a>.</p>
 <p><strong>Frequency:</strong> These data can be updated annually.</p>
 <p><strong>Geography:</strong> The share of households with debt in collections can be computed by zip code or county</p>
 <p><strong>Consistency:</strong> The share of households with debt in collections can be measured consistently for all geographies. The measure is likely to remain consistent over time, unless the credit bureaus change the way overdue debt is captured in credit reporting.</p>
-<p><strong>Subgroups:</strong> Because the metric aggregates to a geography, the data cannot be broken down by demographic characteristics but can be used in combination with the ACS to identify the racial or ethnic composition of neighborhoods (zip codes) with more or less debt in collections (e.g., in Cook County, Illinois, neighborhoods with residents that are majority people of color have nearly three times the amount of debt in collections as do neighborhoods with majority white residents).</p>
+<p><strong>Subgroups:</strong> The credit bureau data do not include information about race, so the white and people of color metrics are based on the racial makeup of zip codes within the geographic area (US, state, county). Specifically, the majority-white communities are based on credit records for people who live in zip codes where most residents are white (at least 60 percent of the population is white), and communities of color values are based on credit records for people who live in zip codes where most residents are people of color (at least 60 percent of the population is African American, Hispanic, Asian or Pacific Islander, American Indian or Alaska Native, another race other than white, or multiracial). The ACS data include information on people’s race, so the white and people of color values for ACS metrics are calculated directly for those populations.</p>
 <p><strong>Limitations:</strong> Aside from the limitations related to geography and subgroup analysis, these data do not capture “credit invisible” households without a credit record. And as a measure of financial well-being, even if few households have debt in collections, many may still have too little wealth or savings to be primed for upward mobility. This measure is somewhat sensitive to resident turnover. If a large number of residents without overdue debt move into a county or zip code, or if a large number of residents with overdue debt move out, this measure could shift without any in-household change in debt management. Housing</p>
 <p><br></p>
 </div>
@@ -480,11 +490,11 @@ div.tocify {
 <div id="predictor-neonatal-health" class="section level5">
 <h5>PREDICTOR: NEONATAL HEALTH</h5>
 <p><strong>Metric: Share of low-weight births</strong></p>
-<p>A child born weighing less than 5 pounds 8 ounces (&lt;2,500 grams) is considered to have a low birthweight. Children born below that threshold are at elevated risk for health conditions and infant mortality. This metric looks at the share of low-birthweight babies out of all births.</p>
+<p>A child born weighing less than 5 pounds 8 ounces (&lt;2,500 grams) is considered to have a low birthweight. Children born below that threshold are at elevated risk for health conditions and infant mortality. This metric looks at the share of low-birthweight babies out of all births with available birthweight information.</p>
 <p><strong>Validity:</strong> This metric is the standard currently used by the Centers for Disease Control and Prevention as part of their national assessment on health among infants.</p>
 <p><strong>Availability:</strong> Data on the share of children born with low birthweights are nationally available through the National Center for Health Statistics.</p>
 <p><strong>Frequency:</strong> Data are updated annually.</p>
-<p><strong>Geography:</strong> City-level estimates are available through public-use microdata files provided by the National Center for Health Statistics as well as through other data collection efforts, such as the Kids Count Data Center or the Wonder system.</p>
+<p><strong>Geography:</strong> County-level estimates are available through public-use microdata files provided by the National Center for Health Statistics as well as through other data collection efforts, such as the Kids Count Data Center or the CDC WONDER system.</p>
 <p><strong>Consistency:</strong> Medical advances have improved the outcomes for low-birthweight babies, implying this metric may change in the future. However, this has been consistently used over decades as metric for neonatal health.</p>
 <p><strong>Subgroups:</strong> The share of children born with low birthweights can be broken out by race or ethnicity and mother’s age.</p>
 <p><strong>Limitations:</strong> Data are not readily available at lower levels of geography, such as neighborhoods, where disparities by race and socioeconomic status within a city are most notable. Large movements of women with risky pregnancies moving in or out of a jurisdiction could influence this metric.</p>
@@ -662,7 +672,7 @@ div.tocify {
 <h3>Domain: Education</h3>
 <div id="predictor-access-to-preschool" class="section level5">
 <h5>PREDICTOR: ACCESS TO PRESCHOOL</h5>
-<p><strong>Metric: Share of children enrolled in nursery school or preschool</strong></p>
+<p><strong>Metric: Share of 3- to 4-year-olds enrolled in nursery school or preschool</strong></p>
 <p>This metric measures the share of a jurisdiction’s three- to four-year old children who are enrolled in nursery school or preschool.</p>
 <p><strong>Validity:</strong> Federal agencies such as the National Center for Education Statistics use household survey data to ascertain nursery and preschool enrollment.</p>
 <p><strong>Availability:</strong> Enrollment data are available annually from the ACS.</p>
@@ -755,7 +765,7 @@ div.tocify {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
