@@ -62,8 +62,7 @@ The measure accounts for the share of people with a credit bureau record in an a
 
 **Subgroups:** The credit bureau data do not include information about race, so the white and people of color metrics are based on the racial makeup of zip codes within the geographic area (US, state, county). Specifically, the majority-white communities are based on credit records for people who live in zip codes where most residents are white (at least 60 percent of the population is white), and communities of color values are based on credit records for people who live in zip codes where most residents are people of color (at least 60 percent of the population is African American, Hispanic, Asian or Pacific Islander, American Indian or Alaska Native, another race other than white, or multiracial). The ACS data include information on people’s race, so the white and people of color values for ACS metrics are calculated directly for those populations. 
 
-**Limitations:** Aside from the limitations related to geography and subgroup analysis, these data do not capture “credit invisible” households without a credit record. And as a measure of financial well-being, even if few households have debt in collections, many may still have too little wealth or savings to be primed for upward mobility. This measure is somewhat sensitive to resident turnover. If a large number of residents without overdue debt move into a county or zip code, or if a large number of residents with overdue debt move out, this measure could shift without any in-household change in debt management. 
-Housing
+**Limitations:** Aside from the limitations related to geography and subgroup analysis, these data do not capture “credit invisible” households without a credit record. And as a measure of financial well-being, even if few households have debt in collections, many may still have too little wealth or savings to be primed for upward mobility. This measure is somewhat sensitive to resident turnover. If a large number of residents without overdue debt move into a county or zip code, or if a large number of residents with overdue debt move out, this measure could shift without any in-household change in debt management.
 
 <br>
 
@@ -233,7 +232,7 @@ This metric measures the share of the voting-eligible population that voted in t
 
 ##### PREDICTOR: DESCRIPTIVE REPRESENTATION AMONG LOCAL OFFICIALS
 
-**Metric: Ratio of the share of local elected officials of a racial or ethnic group to the share of residents represented by those officials of the same racial or ethnic group**
+**Metric: The ratio of the share of the city council or county board from specific racial and ethnic groups and the share of city or county residents from those racial or ethnic groups**
 
 This metric measures the ratio of the share of the city council or county board from specific racial and ethnic groups and the share of city or county residents from those racial or ethnic groups. 
 
