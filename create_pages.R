@@ -32,3 +32,9 @@ prepped05 <- prep_pages(url = "data/05_rfi-finalists.csv",
                         output_directory = "factsheets/05_rfi-finalists")
 
 render_pages(prepped_object = prepped05)
+
+# NACO 2021-02-16
+prepped06 <- prep_pages(url = "data/06_naco.csv",
+                        output_directory = "factsheets/06_naco")
+
+render_pages(prepped_object = prepped06)
