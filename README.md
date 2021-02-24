@@ -45,6 +45,32 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 7. Add, commit, and push your local branch to GitHub with GitHub Bash (your command line tool). 
 8. Put in a pull request to the master branch (in the web browser).
 
+## Published Counties
+
+### Beta Cohort
+
+* [Alameda, California](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06001-Alameda-California_598)
+* [Riverside, California](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06065-Riverside-California_435)
+* [Washington, DC](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/11001-District-of-Columbia-District-of-Columbia_202)
+* [St. Lucie, Florida](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/12111-St-Lucie-Florida_499)
+* [Ramsey, Minnesota](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/27123-Ramsey-Minnesota_522)
+* [Boone, Missouri](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/29019-Boone-Missouri_159)
+* [Summit, Ohio](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/39153-County-of-Summit-Ohio-Ohio_279)
+* [Philadelphia](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/42101-Philadelphia-Pennsylvania_711)
+
+### NACO
+
+* [Mobile, Alabama](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/06_naco/01097-Mobile-Alabama_499/)
+* [Coconino, Arizona](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/06_naco/04005-Coconino-Arizona_598/)
+* [Santa Cruz, Arizona](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/06_naco/04023-Santa-Cruz-Arizona_711/)
+* [Palm Beach, Florida](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/06_naco/12099-Palm-Beach-Florida_159/)
+* [Pinellas, Florida](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/06_naco/12103-Pinellas-Florida_279/)
+* [Holmes, Mississippi](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/06_naco/28051-Holmes-Mississippi_435/)
+* [Nassau, New York](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/06_naco/36059-Nassau-New-York_522/)
+* [Tarrant, Texas](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/06_naco/48439-Tarrant-Texas_888/)
+* [Mercer, West Virginia](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/06_naco/54055-Mercer-West-Virginia_202/)
+* [Waukesha, Wisconsin](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/06_naco/55133-Waukesha-Wisconsin_356/)
+
 ## Contributors
 
 ### Authors
