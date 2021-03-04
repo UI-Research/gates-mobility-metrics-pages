@@ -1,0 +1,8 @@
+state,county,fips,comparisons,random_id
+Indiana,Marion,18097,18057,598
+Ohio,Cuyahoga,39035,39085;39055,435
+California,San Mateo,06081,06085,202
+Hawaii,Hawaii,15001,15009;15007;15003,499
+Nebraska,Lancaster,31109,,522
+Washington,King,53033,53053;53061;53035,159
+Connecticut,Hartford,09003,09009;09001;09013,279

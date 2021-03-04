@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="" />
+
+
+<title>description.utf8</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+<link rel="stylesheet" href="www/web_report.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Mobility Metrics</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="description.html">Description</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="key-predictors-and-metrics" class="section level1">
+<h1>Key Predictors and Metrics</h1>
+<div id="strong-and-healthy-families" class="section level2">
+<h2>Strong and Healthy Families</h2>
+<div id="domain-financial-well-being" class="section level3">
+<h3>Domain: Financial Well-Being</h3>
+<div id="predictor-income" class="section level5">
+<h5>PREDICTOR: INCOME</h5>
+<p><strong>Metric: Household income at the 20th, 50th, and 80th percentiles</strong></p>
+<p>Household income is a standard measure of financial well-being. The Working Group recommended the metrics at these three levels to track how and for whom incomes are changing in a given place as well as whether incomes are rising across the board or more so for those with higher incomes. To identify income percentiles, all households are ranked by income from lowest to highest. The income level at the threshold between the poorest 20 percent of households and the richest 80 percent is the 20th percentile. Similarly, the threshold between the poorest and richest halves is the 50th percentile (or median), and threshold between the poorest 80 percent and richest 20 percent is the 80th percentile.</p>
+<p><strong>Validity:</strong> These are well-established and frequently used measures to assess the financial well-being of families by several federal agencies and many scholars.</p>
+<p><strong>Availability:</strong> Data on household income are available annually from the Census Bureau’s ACS.</p>
+<p><strong>Frequency:</strong> The data are collected annually. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.</p>
+<p><strong>Geography:</strong> Data are available at the county and metro levels.</p>
+<p><strong>Consistency:</strong> Income data in the ACS are measured the same way across all geographies in the same year. The measure is fairly consistent over time but there could be changes in the phrasing and sequence of income source questions that may affect comparisons over time. When such changes have occurred in other federal surveys, such as the Current Population Survey, the Census Bureau provides bridge year data so users can assess the effects of survey changes.</p>
+<p><strong>Subgroups:</strong> The data can be broken down by race or ethnicity, gender, and other demographic factors. For less populous areas and for certain demographic groups, several years of data may need to be pooled to provide reliable estimates.</p>
+<p><strong>Limitations:</strong> The purchasing power of any particular level of income will vary based on the local cost of living. Also, because household sizes differ, the same income may be stretched across larger average households in some places relative to others. Like all metrics based on the characteristics of people living in an area, it can change because of residential mobility.</p>
+<p><br></p>
+</div>
+<div id="predictor-financial-security" class="section level5">
+<h5>PREDICTOR: FINANCIAL SECURITY</h5>
+<p><strong>Metric: Share with debt in collections</strong></p>
+<p>The measure accounts for the share of people with a credit bureau record in an area with debt that has progressed from being past due to being in collections. Debt in collections includes past-due credit lines that have been closed and charged-off on the creditor’s books as well as unpaid bills reported to the credit bureaus that the creditor is attempting to collect. For example, credit card accounts enter collections once they are 180 days past due. Retail installment loans are retail purchases with installment terms—for example, a loan from a furniture store to buy a couch.</p>
+<p><strong>Validity:</strong> Families without other accessible financial resources may need to take out debt not only to pay for housing or education but also to pay for daily necessities such as food or utilities. The inability to pay back debts can signal current or near-term financial insecurity, particularly for families with lower incomes. Those households likely have few assets and as such may have negative wealth. Though not a standard measure, this metric has been used by researchers to distinguish between “good” debts (e.g. mortgages paid on time every month) and “bad” debts (Braga et al. 2016; Ratcliffe et al. 2014).</p>
+<p><strong>Availability:</strong> Drawn directly from credit reports, the credit bureau data are national and uniform across the country. The data are restricted and are not accessible directly from credit bureaus but are made available publicly on the Urban Institute’s <a href="https://apps.urban.org/features/debt-interactive-map/?type=overall&amp;variable=pct_debt_collections">Debt in America website</a>.</p>
+<p><strong>Frequency:</strong> These data can be updated annually.</p>
+<p><strong>Geography:</strong> The share of households with debt in collections can be computed by zip code or county</p>
+<p><strong>Consistency:</strong> The share of households with debt in collections can be measured consistently for all geographies. The measure is likely to remain consistent over time, unless the credit bureaus change the way overdue debt is captured in credit reporting.</p>
+<p><strong>Subgroups:</strong> The credit bureau data do not include information about race, so the white and people of color metrics are based on the racial makeup of zip codes within the geographic area (US, state, county). Specifically, the majority-white communities are based on credit records for people who live in zip codes where most residents are white (at least 60 percent of the population is white), and communities of color values are based on credit records for people who live in zip codes where most residents are people of color (at least 60 percent of the population is African American, Hispanic, Asian or Pacific Islander, American Indian or Alaska Native, another race other than white, or multiracial). The ACS data include information on people’s race, so the white and people of color values for ACS metrics are calculated directly for those populations.</p>
+<p><strong>Limitations:</strong> Aside from the limitations related to geography and subgroup analysis, these data do not capture “credit invisible” households without a credit record. And as a measure of financial well-being, even if few households have debt in collections, many may still have too little wealth or savings to be primed for upward mobility. This measure is somewhat sensitive to resident turnover. If a large number of residents without overdue debt move into a county or zip code, or if a large number of residents with overdue debt move out, this measure could shift without any in-household change in debt management.</p>
+<p><br></p>
+</div>
+</div>
+<div id="domain-housing" class="section level3">
+<h3>Domain: Secure and Stable Housing</h3>
+<div id="predictor-affordable-housing" class="section level5">
+<h5>PREDICTOR: AFFORDABLE HOUSING</h5>
+<p><strong>Metric: Ratio of affordable and available housing units to households with low- and very low–income levels</strong></p>
+<p>This metric reports the number of available housing units affordable for households with low- (below 80 percent of area median income, or AMI) and very low incomes (below 50 percent of AMI) relative to the number of households with these income levels. Housing units are defined as affordable if the monthly costs do not exceed 30 percent of a household’s income. For this metric, the stock of available housing units includes both vacant and occupied units and both rental and homeowner units. A unit is considered available for households at a given level of income if its monthly cost is affordable at that income level—regardless of the income of the current occupant.</p>
+<p><strong>Validity:</strong> Affordable housing ratios of this type are widely applied in studies of local housing market conditions and trends (Getsinger et al. 2017; Turner et al. 2019). Both the income categories and the affordability standard are well established and accepted in both research and policy.</p>
+<p><strong>Availability:</strong> These ratios can be constructed using data from the ACS and income categories defined by the US Department of Housing and Urban Development, both of which are publicly available nationwide.</p>
+<p><strong>Frequency:</strong> These ratios can be updated annually.</p>
+<p><strong>Geography:</strong> Affordable housing ratios can be computed by city or county. For less populous areas, it may be necessary to pool multiple years of data and report moving averages.</p>
+<p><strong>Consistency:</strong> Affordable housing ratios can be computed consistently for all counties and cities over time. Because the income categories are calculated relative to AMI, the affordability metric appropriately reflects local economic conditions.</p>
+<p><strong>Subgroups:</strong> Because these ratios focus on the characteristics of the housing stock, stratifying by demographic subgroups is not relevant. However, housing units in each affordability category can be stratified by size (number of bedrooms) and tenure (owned or rented).</p>
+<p><strong>Limitations:</strong> These shares do not reflect the quality of the available and affordable housing units. Units counted as available and affordable for households with low or very low incomes may be poor quality or too small to meet household needs. This metric is somewhat sensitive to patterns of residential mobility. For example, if the number of households with very low incomes were to decline (because of out-migration), this metric would show improvement even if no additional affordable units were produced.</p>
+<p><br></p>
+</div>
+<div id="predictor-housing-instability-and-homelessness" class="section level5">
+<h5>PREDICTOR: HOUSING INSTABILITY AND HOMELESSNESS</h5>
+<p><strong>Metric: Number of public school children who are ever homeless during the school year</strong></p>
+<p>This metric identifies the number of children (age 3 through 12th grade) who are enrolled in public schools and whose primary nighttime residence at any time during a school year was a shelter, transitional housing, or awaiting foster care placement; unsheltered (e.g., a car, park, campground, temporary trailer, or abandoned building); a hotel or motel because of the lack of alternative adequate accommodations; or in housing of other people because of loss of housing, economic hardship, or a similar reason.</p>
+<p><strong>Validity:</strong> Data are reported by school administrators and generally verified by local liaisons and state coordinators. This is a direct and well-established measure of homelessness for children that results from and reflects housing instability among families and unaccompanied children. The definition of homelessness used for this measure extends beyond literal homelessness to effectively include the full range of circumstances in which a family does not have a stable home of their own.</p>
+<p><strong>Availability:</strong> The US Department of Education requires every local education agency to collect and report these data.</p>
+<p><strong>Frequency:</strong> This measure is produced annually.</p>
+<p><strong>Geography:</strong> The boundaries of local education agencies can be crosswalked to the city and county levels.</p>
+<p><strong>Consistency:</strong> This measure is consistently defined, collected, and reported for all local education agencies nationwide.</p>
+<p><strong>Subgroups:</strong> This metric can be disaggregated based on students’ disability status and whether they are enrolled in English-as–a-second-language courses.</p>
+<p><strong>Limitations:</strong> This measure does not include homeless adults who are childless, and it does not capture homelessness among children who do not enroll in public school. Further, it could show improvement if the families of homeless children move to a neighboring jurisdiction or if policies “push” them out. This metric is quite sensitive to patterns of residential mobility if large numbers of families with very low incomes flow into or out of a local education agency’s boundary.</p>
+<p><br></p>
+</div>
+</div>
+<div id="domain-family-stability" class="section level3">
+<h3>Domain: Family Stability</h3>
+<div id="predictor-family-structure-and-stability" class="section level5">
+<h5>PREDICTOR: FAMILY STRUCTURE AND STABILITY</h5>
+<p><strong>Metric: Share of children in various family living arrangement</strong></p>
+<p>The Working Group advised considering the share of children living in each of six different living arrangements (that sum to 100 percent): two married biological or adoptive parents; one biological or adoptive parent and that parent’s current spouse or partner; one biological or adoptive parent and at least one other adult; one biological or adoptive parent; at least two adults, but no parent; and all other.</p>
+<p><strong>Validity:</strong> Children’s living arrangements are recorded in household rosters used in several federal datasets.</p>
+<p><strong>Availability:</strong> Data on living arrangements are available annually from the Census Bureau’s American Community Survey.</p>
+<p><strong>Frequency:</strong> The data are collected annually. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.</p>
+<p><strong>Geography:</strong> Data are available at the county and metro levels.</p>
+<p><strong>Consistency:</strong> Data on children’s living arrangements in the ACS are measured the same way across all geographies in the same year. The measure is consistent over time.</p>
+<p><strong>Subgroups:</strong> The data can be broken down by race or ethnicity, gender, and other demographic factors. For less populous areas and for certain demographic groups, several years of data may need to be pooled to provide reliable estimates.</p>
+<p><strong>Limitations:</strong> A large body of evidence suggests that both the presence and relationship of parents directly relates to children’s mobility (Chetty et al. 2014; McLanahan and Percheski 2008; Osborne and McLanahan 2007). Ideally, the metric would directly reflect the continuous presence of loving adults in a child’s life. But data to construct such a measure are not consistently available at the city or county level. We recommended a metric detailing children’s living arrangements. Further, research shows that the influence of growing up in a single-parent household on later economic outcomes has been diminishing over the past few decades (Musick and Mare 2004), and some research suggests that the strength of the relationship between married parents and child outcomes is much stronger for white children than for children of color (Cross 2019). Like all metrics based on the characteristics of people living in an area, it can change because of residential mobility.</p>
+<p><br></p>
+</div>
+</div>
+<div id="domain-health" class="section level3">
+<h3>Domain: Health</h3>
+<div id="predictor-overall-health" class="section level5">
+<h5>PREDICTOR: OVERALL HEALTH</h5>
+<p><strong>Metric: Share of adults who rate their own and their children’s health as good or excellent</strong></p>
+<p>This metric is measured through one question that asks “How would you rate your health?” and has respondents answer along a five-point Likert scale of “very poor,” “poor,” “fair,” “good,” and “excellent” (Eriksson, Undén, and Elofsson 2001). The share of people who respond “good” or “excellent” constitutes this metric.</p>
+<p><strong>Validity:</strong> Asking people to rate their own health provides one of the most reliable measures of mortality and remains a significant predictor even after controlling for other demonstrated health-related issues and socioeconomic status (DeSalvo et al. 2006; Garbarski 2014; Herman et al. 2014; Idler and Benyamini 1997). Though the research focuses on mortality rather than mobility, we argue that good health is a condition that supports autonomy and promotes mobility.</p>
+<p><strong>Availability:</strong> This information is not widely enough available in existing data sources to provide coverage at the local level across many geographies.</p>
+<p><strong>Frequency:</strong> The frequency of how often the measure would be collected would depend upon local data collection efforts, but we recommend regular follow-up data collection at least every two years.</p>
+<p><strong>Geography:</strong> The level of geography that the measure would represent (e.g., county, city, or zip code) would depend on the sampling frame, stratification, and the number of people ultimately surveyed to obtain sufficient power for the survey.</p>
+<p><strong>Consistency:</strong> Self-rated health can be consistently defined and determined over time. The degree of consistency in this measure across different places will vary with the extensiveness of the survey design and number of people surveyed in each place. Ideally, the measure could be consistent across some base level of geography (such as the city or county), but some places would likely have more extensive coverage of self-rated health.</p>
+<p><strong>Subgroups:</strong> Like geography, the range of subgroups represented and the ability to compare subgroups (e.g., age, race or ethnicity, and gender) would depend on the sampling frame, stratification, and the number of people surveyed.</p>
+<p><strong>Limitations:</strong> A primary limitation is that these data will need to be collected directly by communities. Communities will need to identify through which vehicles data can be gathered. Further, this metric can be sensitive to residential mobility if the same people cannot be followed over time. A community transitioning out residents of poorer health in favor of those who are healthier may appear to be improving the overall health of the community. Therefore, it is important to collect these data along with demographic characteristics to ensure improved health is felt by people of all races and socioeconomic backgrounds.</p>
+<p><br></p>
+</div>
+<div id="predictor-access-to-and-utilization-of-health-services" class="section level5">
+<h5>PREDICTOR: ACCESS TO AND UTILIZATION OF HEALTH SERVICES</h5>
+<p><strong>Metric: Health professionals shortage area (HPSA) ranking for primary care providers</strong></p>
+<p>This metric denotes that an area has a shortage of primary care providers based on four elements: weighted population-to-provider ratio, share of individuals with incomes below 100 percent of the federal poverty level, infant health index, and travel time or distance to the nearest source of nondesignated accessible care. The Division of Policy and Shortage Designation through the US Department of Health and Human Services calculates a score between 0 to 25 for primary care HPSAs, where the higher the score, the greater the shortage. The facility can get up to 10 points for the population-to-provider ratio, up to 5 for the share of the population with incomes below 100 percent of the federal poverty level, up to 5 for the infant health index (based on infant mortality rate or low birth weight rate), and up to 5 for travel time to the nearest source of care. In identifying a geography as an HPSA, the data managers recommended identifying geographies that contain a designated HPSA of any score to be considered a shortage geography, and those geographies that do not contain a designated HPSA as not having a shortage.</p>
+<p><strong>Validity:</strong> This metric is defined and established by the US Department of Health and Human Services and managed by the Health Resources and Services Administration (HRSA) .</p>
+<p><strong>Availability:</strong> Data for this metric are nationally available by state and county through the US Department of Health and Human Services.</p>
+<p><strong>Frequency:</strong> Data are updated daily, but geographies and facilities were evaluated at some time in the past four years.</p>
+<p><strong>Geography:</strong> HPSAs are available by state, county, or service area. Although data are not available at the neighborhood level, individual addresses can be assessed and therefore could be used to derive a value for the neighborhood. Data are available for urban and rural areas.</p>
+<p><strong>Consistency:</strong> HPSA status can be measured the same way over time and across geographies. The scoring criteria is currently under review and may shift in upcoming years.</p>
+<p><strong>Subgroups:</strong> This metric can be calculated separately for low-income populations, including migrant farm/seasonal workers, Medicaid-eligible population, and Native American.</p>
+<p><strong>Limitations:</strong> Even though HPSA status is a characteristic of the local area, some elements used to determine the designation are based on the characteristics of the local population; as such, changing residential mobility patterns may influence this metric. While facilities do not opt-in to be evaluated as an HPSA, localities request to be evaluated as a geographic HPSA or a population-based HPSA. Localities may choose to withdraw as a geographic HPSA in favor of a population-based HPSA (and vice versa) if they believe they may become eligible for more desirable resources.</p>
+<p><br></p>
+</div>
+<div id="predictor-neonatal-health" class="section level5">
+<h5>PREDICTOR: NEONATAL HEALTH</h5>
+<p><strong>Metric: Share of low-weight births</strong></p>
+<p>A child born weighing less than 5 pounds 8 ounces (&lt;2,500 grams) is considered to have a low birthweight. Children born below that threshold are at elevated risk for health conditions and infant mortality. This metric looks at the share of low-birthweight babies out of all births with available birthweight information.</p>
+<p><strong>Validity:</strong> This metric is the standard currently used by the Centers for Disease Control and Prevention as part of their national assessment on health among infants.</p>
+<p><strong>Availability:</strong> Data on the share of children born with low birthweights are nationally available through the National Center for Health Statistics.</p>
+<p><strong>Frequency:</strong> Data are updated annually.</p>
+<p><strong>Geography:</strong> County-level estimates are available through public-use microdata files provided by the National Center for Health Statistics as well as through other data collection efforts, such as the Kids Count Data Center or the CDC WONDER system.</p>
+<p><strong>Consistency:</strong> Medical advances have improved the outcomes for low-birthweight babies, implying this metric may change in the future. However, this has been consistently used over decades as metric for neonatal health.</p>
+<p><strong>Subgroups:</strong> The share of children born with low birthweights can be broken out by race or ethnicity and mother’s age.</p>
+<p><strong>Limitations:</strong> Data are not readily available at lower levels of geography, such as neighborhoods, where disparities by race and socioeconomic status within a city are most notable. Large movements of women with risky pregnancies moving in or out of a jurisdiction could influence this metric.</p>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="supportive-communities" class="section level2">
+<h2>Supportive Communities</h2>
+<div id="domain-local-governance" class="section level3">
+<h3>Domain: Local Governance</h3>
+<div id="predictor-political-participation" class="section level5">
+<h5>PREDICTOR: POLITICAL PARTICIPATION</h5>
+<p><strong>Metric: Share of the voting-eligible population who turn out to vote</strong></p>
+<p>This metric measures the share of the voting-eligible population that voted in the most recent local elections.</p>
+<p><strong>Validity:</strong> This metric is well established. Scholars of political science have used this metric in articles published in peer-reviewed journals.</p>
+<p><strong>Availability:</strong> Data are reported out by local governments and are available to the public.</p>
+<p><strong>Frequency:</strong> Data are available at election cycles.</p>
+<p><strong>Geography:</strong> Data are broadly available even below the city and county levels, at the electoral district level.</p>
+<p><strong>Consistency:</strong> Voter turnout is measured consistently over time and geography, but the values can be volatile from year to year, with higher turnouts in years involving a presidential election, so comparison over time should account for that.</p>
+<p><strong>Subgroups:</strong> Voter turnout by race or ethnicity within a jurisdiction can be measured using different methods depending on the demographic balance of the jurisdiction. For diverse or integrated communities, ecological inference or rows by column inference is preferred (King, Rosen, and Tanner 2004; Barreto et al 2019). For less diverse or highly segregated communities, homogenous precinct analysis is preferred (Hajnal and Trounstine 2005). Each is based on the census-defined racial and ethnic characteristics of the jurisdiction.</p>
+<p><strong>Limitations:</strong> Residential mobility can impact this metric, so it is important to interpret changes in voter turnout in the context of demographic shifts in the jurisdiction. In local communities with higher rates of immigrants, voter turnout can inaccurately reflect a community’s political participation. Communities with a population of immigrants who are not registered to vote may consider additional local data to better assess political participation and civic engagement.</p>
+<p><br></p>
+</div>
+<div id="predictor-descriptive-representation-among-local-officials" class="section level5">
+<h5>PREDICTOR: DESCRIPTIVE REPRESENTATION AMONG LOCAL OFFICIALS</h5>
+<p><strong>Metric: The ratio of the share of the city council or county board from specific racial and ethnic groups and the share of city or county residents from those racial or ethnic groups</strong></p>
+<p>This metric measures the ratio of the share of the city council or county board from specific racial and ethnic groups and the share of city or county residents from those racial or ethnic groups.</p>
+<p><strong>Validity:</strong> Scholars of political science have used this metric in articles published in peer-reviewed journals.</p>
+<p><strong>Availability:</strong> The elements of this metric are available but will need to be combined. Data on the racial or ethnic characteristics of city council or county boards are released publicly by local governments. The racial and ethnic composition of residents in those districts can be calculated using data from the ACS.</p>
+<p><strong>Frequency:</strong> This metric can be updated as frequently as elections occur.</p>
+<p><strong>Geography:</strong> This can be calculated at the city or county level.</p>
+<p><strong>Consistency:</strong> This metric can be calculated the same way over time.</p>
+<p><strong>Subgroups:</strong> This metric accounts for race within its definition. This is also feasible to calculate for other subgroups.</p>
+<p><strong>Limitations:</strong> Although the movement of people in and out of the jurisdiction can influence this metric, it is likely to be far more sensitive to shifts in the composition of elected officials in the short term.</p>
+<p><br></p>
+</div>
+</div>
+<div id="domain-neighborhoods" class="section level3">
+<h3>Domain: Neighborhoods</h3>
+<div id="predictor-economic-inclusion" class="section level5">
+<h5>PREDICTOR: ECONOMIC INCLUSION</h5>
+<p><strong>Metric: Share of residents experiencing poverty living in high-poverty neighborhoods</strong></p>
+<p>This metric measures the share of a city’s or county’s residents experiencing poverty who live in high-poverty neighborhoods (measured by census tract). A high-poverty neighborhood is one in which over 40 percent of the residents are experiencing poverty.</p>
+<p><strong>Validity:</strong> Measures of poverty concentration have been widely used to measure the extent and severity of economic exclusion and isolation. The more concentrated and separate people in poverty are from better-resourced neighbors, the more isolated they are from the larger community and the social and economic resources and opportunities it can provide.</p>
+<p><strong>Availability:</strong> Data required to compute poverty concentration are available annually from the Census Bureau’s American Community Survey.</p>
+<p><strong>Frequency:</strong> This measure can be computed annually.</p>
+<p><strong>Geography:</strong> This measure can be computed for all cities and counties nationwide, although for less populous jurisdictions, it may be necessary to pool data from multiple years of the ACS and report moving averages. Because this metric reflects the structural conditions facing a city or county’s residents, changes in the metric possibly caused by people moving into or out of a jurisdiction do represent changes to those structural conditions.</p>
+<p><strong>Consistency:</strong> Poverty concentration can be consistently defined and calculated for all cities and counties over time.</p>
+<p><strong>Subgroups:</strong> This metric can be disaggregated separately by race or ethnicity and gender, although in some cases it may be necessary to pool data from multiple years of the ACS and report moving averages.</p>
+<p><strong>Limitations:</strong> This measure can be sensitive to the overall poverty rate of a city or county. Therefore, changes in poverty concentrations need to be assessed with reference to the city or county’s overall poverty rate.</p>
+<p><br></p>
+</div>
+<div id="predictor-racial-diversity" class="section level5">
+<h5>PREDICTOR: RACIAL DIVERSITY</h5>
+<p><strong>Metric: Neighborhood exposure index, or the share of a person’s neighbors who are people of other races and ethnicities</strong></p>
+<p>This metric is constructed separately for each racial or ethnic group and reports the average share of that group’s neighbors who are members of other racial or ethnic groups. For example, the exposure index would report the share of people who are Black and Latinx in the census tract of the average white person, the share of people who are white and Latinx in the census tract of the average Black person, and the share of people who are Black and white in the census tract of the average Latinx person. Higher values of the index indicate more neighborhood diversity and more day-to-day exposure of people to neighbors of different races and ethnicities.</p>
+<p><strong>Validity:</strong> The exposure index is one of several widely used measures of residential segregation or inclusion. It effectively captures the multiracial or multiethnic diversity of American communities today and reflects the experience of individuals of all races and ethnicities, and it provides a comprehensive picture of neighborhood racial and ethnic composition.</p>
+<p><strong>Availability:</strong> Data required to compute neighborhood exposure indexes are available annually from the ACS.</p>
+<p><strong>Frequency:</strong> Exposure indexes can be computed annually.</p>
+<p><strong>Geography:</strong> The data are collected annually. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates. Because this metric reflects the structural conditions facing a city or county’s residents, changes in the metric that may be caused by people moving into or out of a jurisdiction do represent changes to those structural conditions.</p>
+<p><strong>Consistency:</strong> Exposure indexes can be consistently defined and calculated for all cities and counties over time.</p>
+<p><strong>Subgroups:</strong> This metric is by definition disaggregated by race or ethnicity.</p>
+<p><strong>Limitations:</strong> This measure can be sensitive to the overall racial or ethnic composition of a city or county. Therefore, changes in exposure indexes need to be assessed with reference to the city or county’s overall racial or ethnic composition. Further, although this index can be constructed annually, it may take many years to observe appreciable changes.</p>
+<p><br></p>
+</div>
+<div id="predictor-belongingness" class="section level5">
+<h5>PREDICTOR: BELONGINGNESS</h5>
+<p><strong>Metric: Inclusion of Other in the Self scale</strong></p>
+<p>This metric is a single-item survey developed by Aron, Aron, and Smollan (1992) that measures how connected the respondent feels with another person or group (e.g., family, neighborhood, school, or community organization). Respondents see seven pairs of circles that range from just touching to almost completely overlapping (1 = no overlap; 2 = little overlap; 3 = some overlap; 4 = equal overlap; 5 = strong overlap; 6 = very strong overlap; 7 = most overlap). One circle in each pair is identified as “self” and the second circle in each pair is labeled “other.” Respondents choose one of the seven pairs to answer the question, “Which picture best describes your relationship with [this person/group]?” The researcher identifies what the person or group for the “other” is being represented. This survey is easily understood by respondents and takes less than one minute to administer (Gachter, Starmer, and Tufano 2015). This metric would require new data collection at the local level.</p>
+<p><strong>Validity:</strong> Researchers have used the scale to measure belonging with a host of different populations, including 5-year-olds (Cameron et al. 2006), teens, adults, people with low incomes, and formerly incarcerated individuals (Folk et al. 2016; Mashek, Cannaday, and Tangney 2007). In the example of formerly incarcerated individuals, those who felt more belonging in their communities experienced greater residential stability and community readjustment and lower rates of recidivism than less connected individuals (Folk et al 2016).</p>
+<p><strong>Availability:</strong> This information is not available widely enough in existing data sources to provide coverage at the local level across many geographies.</p>
+<p><strong>Frequency:</strong> The frequency of how often the measure would be collected would depend upon local data collection efforts, but we recommend regular follow-up data collection at least every two years.</p>
+<p><strong>Geography:</strong> The level of geography that the measure would represent (e.g., county, city, or zip code) would depend on the sampling frame, stratification, and the number of people ultimately surveyed to obtain sufficient power for the survey.</p>
+<p><strong>Consistency:</strong> The degree of consistency in this measure across different places will vary with the extensiveness of the survey design and number of people surveyed in each place. Ideally, the measure could be consistent across some base level of geography (such as the city or county), but some places would likely have more extensive coverage of residents who have taken the survey.</p>
+<p><strong>Subgroups:</strong> Like geography, the range of subgroups represented and the ability to compare subgroups (e.g., people of color and white people; married and single people; people with children and those without) would depend on the sampling frame, stratification, and the number of people surveyed.</p>
+<p><strong>Limitations:</strong> The key limitation is the need for local partners to collect representative data. Original data collection may also make benchmarking against other places challenging, depending on the scale and representativeness of data collection in other places. If there is considerable residential turnover in a jurisdiction, this metric might change even if there is no change among those who had been living there.</p>
+<p><br></p>
+</div>
+<div id="predictor-social-capital" class="section level5">
+<h5>PREDICTOR: SOCIAL CAPITAL</h5>
+<p><strong>Metric: Selected questions from the Social Capital Community Benchmark Survey</strong></p>
+<p>This survey measures the resources provided by a person’s social networks, including both close relations and extended relations, and our metric will use a few items from this survey. The development of the survey builds on the work of Robert D. Putnam (2000) and the strategies for civic revitalization outlined in a report by the Saguaro Seminar (Putnam and Feldstein 2004). The survey collects information on the relative strengths and areas for improvement in communities’ civic behavior (Helliwell and Putnam 2004). The metric for social capital is a selection of seven questions from the Social Capital Benchmark Survey covering participation in community organizations, religious attendance, number and racial diversity of friends, engagement with neighborhoods, and the ability to find information on new jobs. These questions provide indicators of generalized social capital, bonding social capital, and bridging social capital at the individual level. No widely available data on social capital exist at the local level, so this metric would require new data collection.</p>
+<p><strong>Validity:</strong> Measures of social capital have repeatedly been shown to be associated with individual and community well-being and upward mobility (Chetty et al. 2014; Kim, Subramanian, and Kawachi 2006; Putnam 2000; Sampson, Morenoff, and Earls 1999). However, no standard measure or set of measures exist to capture the relationship between social capital and mobility. To capture both bonding and bridging social capital, we use set of questions largely drawn from the Social Capital Community Benchmark Survey, developed by Putnam and the Saguaro Seminar at the Harvard Kennedy School. Though the survey and larger blocks of questions from the survey have been used in peer-reviewed studies before, the smaller subset of questions for this metric has not yet been validated. We anticipate using the initial round of data collection to validate this metric for widespread use and to refine and revise as necessary.</p>
+<p><strong>Availability:</strong> This information is not widely enough available in existing data sources to provide coverage at the local level across many geographies. To ease data collection, we have attempted to minimize the number of questions needed to measure each of the indicators of social capital (e.g., generalized social capital and bridging and bonding social capital).</p>
+<p><strong>Frequency:</strong> The frequency of how often the measure would be collected would depend upon local data collection efforts, but we recommend regular follow-up data collection at least every two years.</p>
+<p><strong>Geography:</strong> The level of geography that the measure would represent (e.g., county, city, or zip code) would depend on the sampling frame, stratification, and the number of people ultimately surveyed to obtain sufficient power for the survey.</p>
+<p><strong>Consistency:</strong> The degree of consistency in this measure across different places will vary with the extensiveness of the survey design and number of people surveyed in each place. Ideally, the measure could be consistent across some base level of geography (such as the city or county), but some places would likely have more extensive coverage of residents who have taken the survey.</p>
+<p><strong>Subgroups:</strong> Like geography, the range of subgroups represented and the ability to compare subgroups (people of color and white people; married and single people; people with children and those without) would depend on the sampling frame, stratification, and the number of people surveyed.</p>
+<p><strong>Limitations:</strong> The key limitation is the need for local partners to collect representative data. Additional limitations include the need to further validate this particular set of questions. Original data collection may also make benchmarking against other places challenging depending on the scale and representativeness of data collection in other places.</p>
+<p><br></p>
+</div>
+<div id="predictor-transportation-access" class="section level5">
+<h5>PREDICTOR: TRANSPORTATION ACCESS</h5>
+<p><strong>Metric: Transit trips index</strong></p>
+<p>This metric reflects the number of public transit trips taken annually at the census tract by a three-person single-parent family with income at 50 percent of the Area Median Income (AMI) for renters. This number is percentile ranked nationally into an index with values ranging from 0 to 100 for each census tract. Higher scores reflect better access to public transportation.</p>
+<p><strong>Validity:</strong> This metric was designed in partnership with the US Department of Transportation and has been used by the US Department of Housing and Urban Development in community efforts to affirmatively further fair housing. Several scholars have also used this metric and data in published in peer-reviewed journals. Although other arrangements of family composition, income, and housing status are possible in constructing this index and are available in the data, these characteristics were intended to more closely characterize a lower-income household in the community and are the most validated of other household combinations.</p>
+<p><strong>Availability:</strong> The estimates come from the location affordability index, which is publicly available.</p>
+<p><strong>Frequency:</strong> The location affordability index data are updated every three years.</p>
+<p><strong>Geography:</strong> This can be measured at the census tract or neighborhood level. Values can be averaged at higher levels of geography. For example, one can calculate a population-weighted average value among all census tracts in a county to determine a county-level value.</p>
+<p><strong>Consistency:</strong> This metric can be calculated the same way over time.</p>
+<p><strong>Subgroups:</strong> This metric is based on a lower-income population, notably single-parent families earning half the local AMI among renters.</p>
+<p><strong>Limitations:</strong> This metric cannot alone capture the concept of transportation access. This must be used in partnership with the low transportation cost index to cover geographies that may not have an extensive public transportation system, such as rural areas.</p>
+<p><strong>Metric: Low transportation cost index</strong></p>
+<p>This index reflects local transportation costs as a share of renters’ incomes. It accounts for both transit and cars. This index is based on estimates of transportation costs for a three-person, single-parent family with income at 50 percent of the median income for renters for the region (i.e., a core-based statistical area). Although other arrangements of family composition, income, and housing status are possible in constructing this index, these characteristics were intended to more closely characterize a lower-income household in the community. Values are inverted and percentile ranked nationally, with values ranging from 0 to 100. The higher the value, the lower the cost of transportation in that neighborhood.</p>
+<p><strong>Validity:</strong> This metric was designed in partnership with the US Department of Transportation and has been used by the US Department of Housing and Urban Development in community efforts to affirmatively further fair housing. Several scholars have also used this metric and data in articles in peer-reviewed journals.</p>
+<p><strong>Availability:</strong> The estimates come from the location affordability index, which are publicly available.</p>
+<p><strong>Frequency:</strong> The location affordability index data are updated every three years.</p>
+<p><strong>Geography:</strong> This can be measured at the census tract or neighborhood level. Values can be averaged at higher levels of geography. For example, one can calculate a population-weighted average value among all census tracts in a county to determine a county-level value.</p>
+<p><strong>Consistency:</strong> This metric can be calculated the same way over time.</p>
+<p><strong>Subgroups:</strong> This metric is based on a lower-income population, notably single-parent families earning half the local AMI among renters.</p>
+<p><strong>Limitations:</strong> Transportation costs may be low for a variety of reasons, including greater access to public transportation and the density of homes, services, and jobs in the neighborhood and surrounding community. It is important not to consider this metric alone but rather in combination with the transit trips index to more fully measure the concept of transportation access.</p>
+<p><br></p>
+</div>
+<div id="predictor-environmental-quality" class="section level5">
+<h5>PREDICTOR: ENVIRONMENTAL QUALITY</h5>
+<p><strong>Metric: Air quality index</strong></p>
+<p>The air quality index is an index that summarizes potential exposure to harmful toxins at a neighborhood level. The index is a linear combination of standardized Environmental Protection Agency (EPA) estimates of air quality carcinogenic, respiratory, and neurological hazards at census tracts. Values are inverted and then percentile ranked nationally. Values per census tract range from 0 to 100. The higher the index value, the less exposure to toxins harmful to human health.</p>
+<p><strong>Validity:</strong> EPA scientists and researchers link air pollutants to health effects that can manifest within a few hours or days after breathing polluted air.</p>
+<p><strong>Consistency:</strong> Air pollutants can be consistently measured over time and space. However, EPA standards may be in flux in the coming years and should be re-evaluated for consistency moving forward.</p>
+<p><strong>Availability:</strong> Air quality systems data are produced by the US Environmental Protection Agency and are publicly available.</p>
+<p><strong>Frequency:</strong> Air quality data from the National Air Toxics Assessment (NATA) data were updated every three years since 1996, but the most recent update was in 2014.</p>
+<p><strong>Geography:</strong> This index is measured at the census tract level and can be rolled up to other levels of geography.</p>
+<p><strong>Subgroups:</strong> This metric can reflect subgroups by matching it with demographic characteristics at the census tract, such as racial or ethnic composition or concentrated poverty..</p>
+<p><strong>Limitations:</strong> Data are not updated with enough frequency. Other data sources can offer information annually, or even daily, but they are at higher levels of geography and would not be able to be disaggregated by subgroups.</p>
+<p><br></p>
+</div>
+</div>
+<div id="domain-safety" class="section level3">
+<h3>Domain: Safety</h3>
+<div id="predictor-exposure-to-trauma" class="section level5">
+<h5>PREDICTOR: EXPOSURE TO TRAUMA</h5>
+<p><strong>Metric: Adverse Childhood Experiences scale</strong></p>
+<p>The Adverse Childhood Experiences (ACE) scale is a survey-based scale comprising 17 items that measure childhood exposure to trauma such as psychological, physical, or sexual abuse; neglect; mental illness; domestic violence; divorce; and having a parent in prison (Felitti et al. 1998). Each question relates to an experience growing up during the first 18 years of life and solicits a “yes” or “no” response. The number of “yes” answers for each question determines the score, with values from 0 to 17. Higher scores on this scale mean that the respondent has gone through more types of childhood trauma. To construct this metric, community leaders would need to collect data locally.</p>
+<p><strong>Validity:</strong> A significant body of research finds that that higher ACE scores, indicating more childhood trauma, correlate with several outcomes related to lower mobility. Higher ACE scores are associated with poor performance at work and financial problems as adults (Anda et al. 2004), as well as higher rates of chronic disease, depression, and lower health-related quality of life as adults (Anda et al. 2002; Corso et al. 2008; Felitti et al. 1998). The metric may be most useful as an indicator of need for trauma-informed care at the community level.</p>
+<p><strong>Availability:</strong> This information is not available widely enough in existing data sources to provide coverage at the local level across many geographies.</p>
+<p><strong>Frequency:</strong> The frequency of how often the measure would be collected would depend upon local data collection efforts, but we recommend regular follow-up data collection at least every two years.</p>
+<p><strong>Geography:</strong> The level of geography that the measure would represent (e.g., county, city, or zip code) would depend on the sampling frame, stratification, and the number of people ultimately surveyed to obtain sufficient power for the survey.</p>
+<p><strong>Consistency:</strong> The degree of consistency in this measure across different places will vary with the extensiveness of the survey design and number of people surveyed in each place. Ideally, the measure would be consistent across some base level of geography (such as the city or county), but some places would likely have more extensive coverage of residents who have completed the ACE scale.</p>
+<p><strong>Subgroups:</strong> Like geography, the range of subgroups represented and the ability to compare subgroups (people of color and white people; married and single people; people with children and those without) would depend on the sampling frame, stratification, and the number of people surveyed.</p>
+<p><strong>Limitations:</strong> The key limitation is the need for local partners to collect representative data. Original data collection may also make benchmarking against other places challenging, depending on the scale and representativeness of data collection in other places. This metric may be sensitive to residential mobility because those reporting experiences of trauma in the past may have lived in a different jurisdiction at the time.</p>
+<p><br></p>
+</div>
+<div id="predictor-exposure-to-crime" class="section level5">
+<h5>PREDICTOR: EXPOSURE TO CRIME</h5>
+<p><strong>Metric: Rates of reported violent crime and property crime</strong></p>
+<p>The FBI’s Uniform Crime Reporting (UCR) Program provides a standard, well-defined measure of crime. Reported crimes are captured for four “index” violent felonies (murder or nonnegligent manslaughter, rape, robbery, and aggravated assault) and four index property felonies (burglary, larceny-theft, motor vehicle theft, and arson).</p>
+<p><strong>Validity:</strong> The UCR statistics are the most widely used way to measure and compare reported crime across jurisdictions. The FBI provides definitions for each of the criminal offenses in the index, and most police departments in the United States report the data on those offenses to the FBI through a standardized reporting system. The purpose of the FBI’s UCR Program is to provide a common language transcending the varying local and state laws. Although there are potential issues with how different departments might classify offenses, UCR is considered the most standardized source.</p>
+<p><strong>Availability:</strong> The data are available for most jurisdictions across the United States. If a jurisdiction is not included in UCR, local officials may be able to obtain the relevant and comparable data directly from their law enforcement agencies. Data are publicly available for cities with population greater than 10,000 and counties with populations greater than 25,000. For smaller jurisdictions, the FBI collects the data, but access to the data is restricted.</p>
+<p><strong>Frequency:</strong> Data are, at minimum, reported annually, but they are not broken out by demographic group. Note that the data are reported by law enforcement agencies and would need to be aggregated up to the county level.</p>
+<p><strong>Geography:</strong> The UCR data are available at the city and county level, given the availability noted above.</p>
+<p><strong>Consistency:</strong> The data are consistent across the jurisdictions that provide data to the FBI, because the FBI establishes the definitions of the crimes included in the index. Data may be accumulated and compiled differently at the local level.</p>
+<p><strong>Subgroups:</strong> The data include demographic information—age, race, and gender—for those arrested, and for the victims and offenders of homicides only (not for the other crimes in the index).</p>
+<p><strong>Limitations:</strong> Reporting is not mandatory, and although most jurisdictions provide data, UCR does not capture the universe of reported index crimes across the United States. UCR measures crime reported to the police, so unreported crime is not captured in these data. An FBI analysis estimated that up to half of violent crime goes unreported to the local police (Langton and Berzofsky 2012), and research finds that some neighborhoods are less likely to report violent crime, especially where trust of police is low (Desmond, Papachristos, and Kirk 2016; Goudriaan, Wittebrood, and Nieuwbeerta 2006). As a place-based measure, reported crime is affected by mobility in and out of the jurisdiction. Crime rates are based on the number of incidents per 100,000 residents. If the number of residents increases, the crime rate could go down without any change in the number of reported incidents. Also, crime tends to be concentrated in certain areas. Similarly, if new residents are moving to places where crime rates were already low, the populations and areas experiencing the most crime may also not see any change even if city-wide rates decrease. Relatedly, UCR does not provide data on crime at the neighborhood level, so it cannot track changes in crime or compare different places within a jurisdiction. These data are missing crimes that occurred in counties outside of the jurisdiction of the county. This excludes any crimes that take place within a county but in the jurisdiction of a city, tribal, university, or other law enforcement agency within the county. These data also exclude any crimes that occurred in the county under the jurisdiction of the state law enforcement agency.</p>
+<p><br></p>
+</div>
+<div id="predictor-exposure-to-overly-punitive-policing" class="section level5">
+<h5>PREDICTOR: EXPOSURE TO OVERLY PUNITIVE POLICING</h5>
+<p><strong>Metric: Rate of juvenile justice arrests</strong></p>
+<p>The FBI’s UCR Program also provides statistics on the number of arrests of people under age 18. Because individuals can be arrested multiple times, the data reports the number of arrests and not individuals. The metric is for juvenile (defined as under 18 years of age) arrest for any crime, but the data can be broken down by offense type. Arrest rates can be calculated using population data from the ACS.</p>
+<p><strong>Validity:</strong> Although arrest behavior of the total population may be confounded by many factors, arrests among juvenile offenders can be more closely tied to overly punitive policing behavior. Research finds that juveniles are more likely to be arrested than adult suspects, after controlling for suspect race, gender, seriousness of offense, and amount of evidence (Brown, Novak, and Frank 2009). Research also finds large and disruptive impacts on adult outcomes; juvenile detention is associated with lower educational attainment, lower rates of employment, and higher rates of criminal offending and incarceration as an adult (Aizer and Doyle 2015).</p>
+<p><strong>Availability:</strong> Arrest data are available in jurisdictions that report to UCR and are available through the FBI’s Crime Data Explorer tool. The data are available for most jurisdictions across the United States (see the exposure to crime metric for more detail).</p>
+<p><strong>Frequency:</strong> Juvenile arrest data is available annually through FBI Crime Data Explorer. Arrest data before 2014 can be found on the Bureau of Justice Statistics Arrest Data tool.</p>
+<p><strong>Geography:</strong> The UCR data are available at the city and county level, for cities with population greater than 10,000 and for counties with population greater than 25,000.</p>
+<p><strong>Consistency:</strong> The data are consistent across the jurisdictions that provide data to the FBI, because the FBI establishes the definitions of the crimes included in the index. Data may be accumulated and compiled differently at the local level.</p>
+<p><strong>Subgroups:</strong> This metric necessarily measures people within a particular age group but also provides data on age subgroups (e.g. 10–12, 13–15, and 16–17) as well as by race or ethnicity and gender.</p>
+<p><strong>Limitations:</strong> Reporting to UCR is not mandatory, and although most jurisdictions provide data, UCR does not capture the universe of reported index crimes across the United States. These data also do not capture any punitive interactions with school resource officers that do not get elevated to the level of arrest (such as being temporarily detained or being removed or suspended from school). As a place-based measure, reported crime is affected by mobility in and out of the jurisdiction, and because the measure is a rate, large increases or declines in the number of juveniles in an area could also affect the metric.</p>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="opportunities-to-learn-and-earn" class="section level2">
+<h2>Opportunities to Learn and Earn</h2>
+<div id="domain-education" class="section level3">
+<h3>Domain: Education</h3>
+<div id="predictor-access-to-preschool" class="section level5">
+<h5>PREDICTOR: ACCESS TO PRESCHOOL</h5>
+<p><strong>Metric: Share of 3- to 4-year-olds enrolled in nursery school or preschool</strong></p>
+<p>This metric measures the share of a jurisdiction’s three- to four-year old children who are enrolled in nursery school or preschool.</p>
+<p><strong>Validity:</strong> Federal agencies such as the National Center for Education Statistics use household survey data to ascertain nursery and preschool enrollment.</p>
+<p><strong>Availability:</strong> Enrollment data are available annually from the ACS.</p>
+<p><strong>Frequency:</strong> The data are collected annually. For subgroup analyses for less populated areas, it may be necessary to pool multiple years of data to obtain reliable estimates.</p>
+<p><strong>Geography:</strong> Data are available at the county and metro levels.</p>
+<p><strong>Consistency:</strong> Information pertaining to nursery and preschool enrollment in the ACS is measured the same way across all geographies in the same year. Changes to the ACS in the future could influence comparisons over time.</p>
+<p><strong>Subgroups:</strong> The data can be broken down by race or ethnicity, gender, and other demographic factors. For less populous areas and for certain demographic groups, several years of data may need to be pooled to provide reliable estimates.</p>
+<p><strong>Limitations:</strong> This metric can change over time if fertility patterns change or if families with young children who move out of or into the jurisdiction have very different propensities for enrolling their children in preschools than parents with young children who remain in the jurisdiction. Because ACS data do not capture the quality of preschool, enrollment figures may overstate exposure to the kinds of programs most likely to improve short-term academic outcomes and long-term outcomes such as mobility from poverty.</p>
+<p><br></p>
+</div>
+<div id="predictor-effective-public-education" class="section level5">
+<h5>PREDICTOR: EFFECTIVE PUBLIC EDUCATION</h5>
+<p><strong>Metric: Average per grade change in English Language Arts achievement between third and eighth grades</strong></p>
+<p>This metric reports the average annual improvement in English (reading comprehension, written expression) observed between the third and eighth grades for each jurisdiction.</p>
+<p><strong>Validity:</strong> The state assessments are well defined and validated but vary by state. The Stanford Education Data Archive has standardized these to be nationally comparable. Higher rates of improvement in English indicate more effective public education, which improves the upward mobility of children from less advantaged backgrounds.</p>
+<p><strong>Availability:</strong> Test data are available from the Stanford Education Data Archive and EDFacts.</p>
+<p><strong>Frequency:</strong> The data are collected annually.</p>
+<p><strong>Geography:</strong> Data are available at the school district and county levels.</p>
+<p><strong>Consistency:</strong> Tests of student progress vary from state to state and can change over time if states modify their tests. The Stanford Education Data Archive has standardized these to be nationally comparable.</p>
+<p><strong>Subgroups:</strong> The Stanford Education Data Archive has adjusted scores by race or ethnicity and gender, and EDFacts reports proficiency levels based on raw data by race or ethnicity, gender, disability status, limited English proficiency status, homeless status, migrant status, and economically disadvantaged status.</p>
+<p><strong>Limitations:</strong> Literacy performance reported in “levels” is sensitive to movement in and out of a community over time. States vary in the literacy components included in their state assessments, the rigor of their assessments, and their assessment exemptions.</p>
+<p><br></p>
+</div>
+<div id="predictor-student-poverty-concentration" class="section level5">
+<h5>PREDICTOR: STUDENT POVERTY CONCENTRATION</h5>
+<p><strong>Metric: Share of students attending high-poverty schools, by student race or ethnicity</strong></p>
+<p>This set of metrics is constructed separately for each racial or ethnic group and reports the share of students attending schools in which over 40 percent of the student body receives free or reduced-price meals.</p>
+<p><strong>Validity:</strong> This set of metrics captures the interaction of economic and racial segregation of schools and therefore reveals whether (and to what degree) students of color are more likely than white students to attend schools with large concentrations of classmates experiencing poverty. Higher concentrations of students experiencing poverty are associated with worse achievement for all the students in a school.</p>
+<p><strong>Availability:</strong> This set of metrics can be constructed using information from the National Center for Education Statistics Common Core of Data. Those data come from an annual census of schools reporting total enrollment by race across each grade including a measure of “economic disadvantage” for students based on their eligibility for free or reduced-price school meals, which is used as a proxy for poverty.</p>
+<p><strong>Frequency:</strong> These metrics can be computed annually.</p>
+<p><strong>Geography:</strong> These metrics can be computed at the school district, city, and county levels. Because this metric reflects the structural conditions facing a city or county’s students, changes in the metric that may result from people moving into or out of a jurisdiction may represent changes to those structural conditions.</p>
+<p><strong>Consistency:</strong> These metrics can be consistently defined and calculated for all cities and counties.</p>
+<p><strong>Subgroups:</strong> These metrics are by definition disaggregated by race or ethnicity.</p>
+<p><strong>Limitations:</strong> Some school districts convey eligibility to free and reduced-price school meals using community eligibility standards that can apply to clusters of schools as well as entire districts. For example, if a cluster of schools serve a set of low-income neighborhoods, and across the schools, 40 percent or more of the students qualify for free and reduced-price meals, the district can provide meals to all students at all schools in the cluster even if one of the schools wouldn’t meet the threshold on its own. Consequently, this metric may overstate student poverty exposure in those districts. Fortunately, the data sources for this metric allow us to identify the districts using this approach, and findings can be interpreted with this in mind. Further, this measure can be sensitive to the overall racial and ethnic composition of a district, city, or county and its overall poverty rate. Therefore, changes in this metric need to be assessed with reference to the area’s overall racial or ethnic composition. Further, although this metric can be constructed annually, it may take many years to observe appreciable changes.</p>
+<p><br></p>
+</div>
+<div id="predictor-college-readiness" class="section level5">
+<h5>PREDICTOR: COLLEGE READINESS</h5>
+<p><strong>Metric: Share of 19- and 20-year-olds with a high school degree</strong></p>
+<p>This metric is the ratio of the number 19- and 20-year olds with a high school degree in a given jurisdiction to the total number of 19- and 20-year olds in the jurisdiction.</p>
+<p><strong>Validity:</strong> Earning a high school degree is an important prerequisite for pursuing additional schooling, and although not all high school graduates are ready to enroll in college, high school completion is a well-understood and widely used measure of educational attainment. Data on educational attainment are collected in a variety of federal surveys.</p>
+<p><strong>Availability:</strong> Data on educational attainment are available annually from the ACS.</p>
+<p><strong>Frequency:</strong> The data are collected annually. For subgroup analyses for less populated areas, it may be necessary to pool multiple years of data to obtain reliable estimates.</p>
+<p><strong>Geography:</strong> Data are available at the county and metro levels.</p>
+<p><strong>Consistency:</strong> Information pertaining to educational attainment in general and on high school graduation, in particular, is measured the same way across all geographies in the same year in the ACS. Changes to the ACS in the future could influence comparisons over time.</p>
+<p><strong>Subgroups:</strong> The data can be broken down by race or ethnicity, gender, and other demographic factors. For less populous areas and for certain demographic groups, several years of data may need to be pooled to provide reliable estimates.</p>
+<p><strong>Limitations:</strong> Young adults moving in and out of an area can influence this measure.</p>
+<p><br></p>
+</div>
+</div>
+<div id="domain-work" class="section level3">
+<h3>Domain: Work</h3>
+<div id="predictor-employment" class="section level5">
+<h5>PREDICTOR: EMPLOYMENT</h5>
+<p><strong>Metric: Employment-to-population ratio for adults ages 25 to 54</strong></p>
+<p>This metric is the ratio of the number of employed adults ages 25 to 54 in a given jurisdiction to the total number of adults in that age range living there.</p>
+<p><strong>Validity:</strong> Employment captures what share of adults in a jurisdiction are engaging in work for pay. The employment-to-population ratio (EP) is a standard labor market metric reported monthly by the Bureau of Labor Statistics (BLS) and based on the Current Population Survey. The Working Group recommends applying the methodology used to compute the EP to similar data collected in the ACS.</p>
+<p><strong>Availability:</strong> Data on employment are available from the ACS.</p>
+<p><strong>Frequency:</strong> The data are collected annually. For subgroup analyses for less populated areas, it may be necessary to pool multiple years of data to obtain reliable estimates.</p>
+<p><strong>Geography:</strong> Data are available at the county and metro levels.</p>
+<p><strong>Consistency:</strong> Information on employment and age is measured the same way across all geographies in the same year in the ACS. It is highly unlikely that the ACS will change how it captures employment in the future.</p>
+<p><strong>Subgroups:</strong> The data can be broken down by race or ethnicity, gender, and other demographic factors. For less populous areas and for certain demographic groups, several years of data may need to be pooled to provide reliable estimates.</p>
+<p><strong>Limitations:</strong> The BLS reports the official EP monthly for those age 16 and up as well those age 20 and up. As such, the BLS-reported measure could be lower for jurisdictions that have many young adults attending college rather than working as well as for those that have many retirees. Consequently, for our purposes, we recommend computing the EP for adults ages 25 to 54 using data from the ACS rather than relying on BLS reports. Even when using ACS data, the EP can drop if unemployed people leave an area or if working people move in.</p>
+<p><br></p>
+</div>
+<div id="predictor-access-to-jobs-paying-a-living-wage" class="section level5">
+<h5>PREDICTOR: ACCESS TO JOBS PAYING A LIVING WAGE</h5>
+<p><strong>Metric: Ratio of pay on the average job to the cost of living</strong></p>
+<p>This metric shows what a “typical” job pays relative to the cost of living in a particular area. The metric is computed by dividing the average earnings from the median job in an area by the cost of meeting a family of four’s basic expenses in that area.</p>
+<p><strong>Validity:</strong> Jurisdictions in which typical jobs pay a greater share of the local cost of living provide more opportunities for their residents to move out of poverty. Employer reported data on wages paid are a reliable indicator of what jobs pay, and our metric is based on data collected and disseminated by the BLS. Data on what it costs to meet basic expenses requires detailed studies of the cost of food, clothing, shelter, health care, and work-related expenses for each jurisdiction. We rely on the work of well-regarded scholars at the Massachusetts Institute of Technology (MIT) to obtain estimates of the local cost of living.</p>
+<p><strong>Availability:</strong> Data on wages are available quarterly from the BLS’s Quarterly Census of Employment and Wages, and estimates of the cost of meeting a family’s basic needs, referred to a living wage, are available annually from MIT.</p>
+<p><strong>Frequency:</strong> The composite data can be computed annually.</p>
+<p><strong>Geography:</strong> Data on wages are available for the 365 largest counties in the US at the county and metro levels. About 75 percent of the US population lives in the 365 largest counties. Data on living wages are available by county.</p>
+<p><strong>Consistency:</strong> Information on weekly wages is collected in a consistent fashion by the BLS. MIT uses a consistent methodology to compute living wages by county.</p>
+<p><strong>Subgroups:</strong> The data cannot be broken down into subgroups because they describe jobs rather than the people in them.</p>
+<p><strong>Limitations:</strong> The measure cannot be broken down into subgroups. The measure relies on MIT’s computations of “living wages.”</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+
+</body>
+</html>

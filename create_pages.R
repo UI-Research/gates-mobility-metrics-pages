@@ -38,3 +38,9 @@ prepped06 <- prep_pages(url = "data/06_naco.csv",
                         output_directory = "factsheets/06_naco")
 
 render_pages(prepped_object = prepped06)
+
+# CFON 2021-03-04
+prepped07 <- prep_pages(url = "data/07_cfon.csv",
+                        output_directory = "factsheets/07_cfon")
+
+render_pages(prepped_object = prepped07)
