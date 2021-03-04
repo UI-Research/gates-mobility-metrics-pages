@@ -75,7 +75,7 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 * [California](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/07_cfon/06081-San-Mateo-California_202/)
 * [Connecticut](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/07_cfon/09003-Hartford-Connecticut_279/)
-* [Hawaii](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/07_cfon/09009-New-Haven-Connecticut_279/)
+* [Hawaii](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/07_cfon/15001-Hawaii-Hawaii_499/)
 * [Indiana](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/07_cfon/18097-Marion-Indiana_598/)
 * [Nebraska](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/07_cfon/31109-Lancaster-Nebraska_522/)
 * [Ohio](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/07_cfon/39035-Cuyahoga-Ohio_435/)
