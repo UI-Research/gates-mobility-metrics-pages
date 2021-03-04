@@ -16,7 +16,7 @@ output:
 params:
   state_county: !r c('42095', '42017', '48453', '09003')
   fake_labels: FALSE
-  state_title: FALSE
+  state_title: TRUE
 ---
 
 ```{r setup-rmarkdown, echo = FALSE}
@@ -232,6 +232,8 @@ if (!params$state_title) {
     select(state_name) %>% 
     pull() %>% 
     first()
+  
+  upward_county <- paste("Selected Counties in", upward_county)
   
 }
 
