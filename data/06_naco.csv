@@ -1,11 +1,14 @@
 state,county,fips,comparisons,random_id
-Arizona,Coconino County,04005,08067; 30031; 41017,598
+Arizona,Coconino County,4005,08067; 30031; 41017,598
 Mississippi,Holmes County,28051,28063; 22065; 48047,435
 West Virginia,Mercer County,54055,24023; 47073; 51191,202
-Alabama,Mobile County,01097,01089; 01073; 01101,499
+Alabama,Mobile County,1097,01089; 01073; 01101,499
 New York,Nassau County,36059,36103; 36119; 36081,522
 Florida,Palm Beach County,12099,12011; 12095; 12057,159
 Florida,Pinellas County,12103,12099; 12086; 12095,279
-Arizona,Santa Cruz,04023,35005; 35025; 08087,711
+Arizona,Santa Cruz,4023,35005; 35025; 08087,711
 Texas,Tarrant County,48439,48029; 48085; 48453,888
 Wisconsin,Waukesha,55133,08059; 20091; 27037,356
+Ohio,Franklin County,39049,39035; 39061; 37119,464
+Pennsylvania,Erie County,42049,27137; 55009; 18141,654
+Oregon,Multnomah County,41051,41067; 53011; 06001,379

@@ -16,7 +16,7 @@ output:
 params:
   state_county: !r c('42095', '42017', '48453', '09003')
   fake_labels: FALSE
-  state_title: TRUE
+  state_title: FALSE
 ---
 
 ```{r setup-rmarkdown, echo = FALSE}
