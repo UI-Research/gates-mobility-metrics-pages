@@ -49,7 +49,10 @@ create_tb <- function(metrics_info_df,
     arrange(match(metrics, col_to)) %>% 
     mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
     select(metrics, everything()) %>% 
-    gt(rowname_col = 'metrics') %>% 
+    gt(
+      rowname_col = 'metrics',
+      id = 'tb'
+    ) %>% 
     tab_header(
       title = '', 
       subtitle = metrics_desp
