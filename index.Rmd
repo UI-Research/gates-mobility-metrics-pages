@@ -725,7 +725,10 @@ create_tb_multi_yr_homeless <- function(metrics_info_df, dataset, varname_maps){
     mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
     mutate(metrics = recode(metrics, !!!var_rename_lst)) %>% 
     select(metrics, everything()) %>% 
-    gt(rowname_col = 'metrics') %>% 
+    gt(
+      rowname_col = 'metrics',
+      id = 'tb_multi_yr_homeless'
+    ) %>% 
     tab_header(
       title = '', 
       subtitle = metrics_desp
