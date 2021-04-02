@@ -150,7 +150,10 @@ create_tb_level3 <- function(metrics_info_df,
       mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
       mutate(metrics = recode(metrics, !!!var_rename_lst)) %>% 
       select(metrics, everything()) %>% 
-      gt(rowname_col = 'metrics') %>% 
+      gt(
+        rowname_col = 'metrics',
+        id = 'tb_level3'
+      ) %>% 
       tab_header(
         title = '', 
         subtitle = metrics_desp

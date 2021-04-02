@@ -129,7 +129,10 @@ create_tb_multi_yr <- function(metrics_info_df,
     mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
     mutate(metrics = recode(metrics, !!!var_rename_lst)) %>% 
     select(metrics, everything()) %>% 
-    gt(rowname_col = 'metrics') %>% 
+    gt(
+      rowname_col = 'metrics',
+      id = 'tb_multi_yr'
+    ) %>% 
     tab_header(
       title = '', 
       subtitle = metrics_desp
