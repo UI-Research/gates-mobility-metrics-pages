@@ -249,7 +249,7 @@ perc_vars_in_data <- all_perc_vars[(all_perc_vars %in% colnames(data))]
 
 numeric_vars_one_digit <- data %>% 
   select(-average_to_living_wage_ratio) %>% 
-  select(-full_fips) %>% 
+  select(-full_fips, -year) %>% 
   select(-learning_rate, -learning_rate_lb, -learning_rate_ub) %>%
   select(-all_of(perc_vars_in_data)) %>% 
   select_if(is.numeric) %>% 
@@ -258,23 +258,23 @@ numeric_vars_one_digit <- data %>%
 
 data <- data %>% 
   mutate_at(vars(matches('share_affordable_')),  #for affordable housing variables, multiple the value by 100
-            function(x) x*100) %>% 
+            function(x) x*100) %>%
   mutate_at(vars(matches('share_hs_degree_ub')),     #update ub for share_hs_degree to 1
-            function(x) case_when(x > 1 ~ 1, TRUE  ~ x)) %>% 
-  mutate_at(perc_vars_in_data,             #convert to percentage 
-            function (x) scales::percent(x, accuracy = 0.1)) %>% 
-  mutate_at(numeric_vars_one_digit, 
-            function(x) {format(round(x, 1), big.mark=",", scientific=FALSE)}) %>% 
-  mutate_at(vars(matches('average_to_living_wage_ratio')), funs(as.numeric)) %>% 
-  mutate_at(vars(matches('average_to_living_wage_ratio')), 
-            function(x) {format(round(x, 2), big.mark=",",scientific=FALSE)}) %>% 
-  mutate(na_quality = 'NA')  %>%  #to be used for metrics where there is no quality variable %>% 
-  mutate_at(vars(-one_of(c('state_county', 'subgroup'))), 
-            function(x) gsub('\\s+', '', x)) %>%   #remove whitespace in values 
+            function(x) case_when(x > 1 ~ 1, TRUE  ~ x)) %>%
+  mutate_at(perc_vars_in_data,             #convert to percentage
+            function (x) scales::percent(x, accuracy = 0.1)) %>%
+  mutate_at(numeric_vars_one_digit,
+            function(x) {format(round(x, 1), big.mark=",", scientific=FALSE)}) %>%
+  mutate_at(vars(matches('average_to_living_wage_ratio')), funs(as.numeric)) %>%
+  mutate_at(vars(matches('average_to_living_wage_ratio')),
+            function(x) {format(round(x, 2), big.mark=",",scientific=FALSE)}) %>%
+  mutate(na_quality = 'NA')  %>%  #to be used for metrics where there is no quality variable %>%
+  mutate_at(vars(-one_of(c('state_county', 'subgroup'))),
+            function(x) gsub('\\s+', '', x)) %>%   #remove whitespace in values
   rename(hispanic_representation = hispanic,
-         hispanic_representation_quality = hispanic_quality) %>% 
-  mutate_at(vars(ends_with('_quality')), 
-            function(x) recode(x, `1` = 'Good', `2` = 'Marginal', `3` = 'Poor')) 
+         hispanic_representation_quality = hispanic_quality) %>%
+  mutate_at(vars(ends_with('_quality')),
+            function(x) recode(x, `1` = 'Good', `2` = 'Marginal', `3` = 'Poor'))
 
 note_ul_bound <- 'Lower/Upper bound'
 
@@ -457,22 +457,28 @@ create_tb_level3(metrics_info_df = m_info_lst,
 housing_varlist <- list(
   c(
     'share_affordable_80_ami', 
-    'share_affordable_50_ami'
+    'share_affordable_50_ami',
+    'share_affordable_30_ami'
   ), 
   c(
     'Ratio for low-income households', 
-    'Ratio for very low-income households' 
+    'Ratio for very low-income households',
+    'Ratio for extremely low-income households'
   ), 
   c(
     'share_affordable_80_ami', 
     'share_affordable_80_ami_ci', 
     'share_affordable_50_ami',
-    'share_affordable_50_ami_ci'
+    'share_affordable_50_ami_ci',
+    'share_affordable_30_ami',
+    'share_affordable_30_ami_ci'
   ), 
   c('Ratio for low-income households', 
     'Ratio for low-income households_ci', 
     'Ratio for very low-income households', 
-    'Ratio for very low-income households_ci' 
+    'Ratio for very low-income households_ci',
+    'Ratio for extremely low-income households', 
+    'Ratio for extremely low-income households_ci' 
   )
 )
 
