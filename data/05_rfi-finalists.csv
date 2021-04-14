@@ -1,5 +1,7 @@
 state,county,fips,comparisons,random_id
 California,Alameda County,6001,48201; 53033; 24031,598
+California,Alameda County Neighbors 1,6001,06013; 06041; 06055; 06075,942
+California,Alameda County Neighbors 2,6001,06081; 06085; 06095; 06097,683
 California,Riverside County,6065,06071; 06025; 06055,435
 District of Columbia,District of Columbia,11001,06075; 24510; 13121,202
 Florida,St Lucie County,12111,12081; 12089; 12073,499

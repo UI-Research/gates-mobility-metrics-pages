@@ -50,6 +50,8 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 ### Beta Cohort
 
 * [Alameda, California](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06001-Alameda-California_598)
+* [Alameda, California Neighbors 1](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06001-Alameda-Neighbors-1-California_942)
+* [Alameda, California Neighbors 2](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06001-Alameda-Neighbors-2-California_683)
 * [Riverside, California](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06065-Riverside-California_435)
 * [Washington, DC](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/11001-District-of-Columbia-District-of-Columbia_202)
 * [St. Lucie, Florida](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/12111-St-Lucie-Florida_499)
