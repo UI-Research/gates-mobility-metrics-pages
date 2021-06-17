@@ -84,6 +84,9 @@ income_decimal <- 0
 # Get a list of all variables that should be presented as percentage 
 perc_vars <- c(
   'share_debt_coll', # % with debt
+  'share_burdened_80_ami', 
+  'share_burdened_50_ami',
+  'share_burdened_30_ami',
   'homeless_share', # share homeless
   'famstruc_2par_married', # Two married biological/adoptive parents
   'famstruc_1par_noadults', # One biological/adoptive parent and that parent's current spouse/partner
@@ -252,6 +255,7 @@ numeric_vars_one_digit <- data %>%
   select(-full_fips, -year) %>% 
   select(-learning_rate, -learning_rate_lb, -learning_rate_ub) %>%
   select(-all_of(perc_vars_in_data)) %>% 
+  select(-starts_with("share_burdened")) %>%
   select_if(is.numeric) %>% 
   names()
 
@@ -510,6 +514,72 @@ create_tb_level2(metrics_info_df = af_m_info_lst,
 create_tb_multi_yr(metrics_info_df = af_m_info_lst, 
                    dataset = data, 
                    varname_maps = housing_varlist) 
+
+```
+
+<br>
+
+#### Predictor: Affordable housing {.tabset .avoidpagebreak}
+
+##### Summary
+
+```{r rent-burden}
+rent_varlist <- list(
+  c(
+    'share_burdened_80_ami', 
+    'share_burdened_50_ami',
+    'share_burdened_30_ami'
+  ), 
+  c(
+    'Share burdened for low-income households', 
+    'Share burdened for very low-income households',
+    'Share burdened for extremely low-income households'
+  ), 
+  c(
+    'share_burdened_80_ami', 
+    'share_burdened_80_ami_ci', 
+    'share_burdened_50_ami',
+    'share_burdened_50_ami_ci',
+    'share_burdened_30_ami',
+    'share_burdened_30_ami_ci'
+  ), 
+  c('Share burdened for low-income households', 
+    'Share burdened for low-income households_ci', 
+    'Share burdened for very low-income households', 
+    'Share burdened for very low-income households_ci',
+    'Share burdened for extremely low-income households', 
+    'Share burdened for extremely low-income households_ci' 
+  )
+)
+
+rb_m_info_lst <- get_vars_info('Rent burden', data_summary_file = m_info)$info_lst
+
+
+create_tb(metrics_info_df = rb_m_info_lst, 
+          dataset = data, 
+          varname_maps = rent_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r rent-burden-table2}
+create_tb_level2(metrics_info_df = rb_m_info_lst, 
+                 dataset = data, 
+                 varname_maps = rent_varlist) 
+
+```
+
+<br>
+
+##### More Years
+
+```{r rent-burden-table3}
+create_tb_multi_yr(metrics_info_df = rb_m_info_lst, 
+                   dataset = data, 
+                   varname_maps = rent_varlist) 
 
 ```
 
