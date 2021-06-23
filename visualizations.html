@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>visualizations.knit</title>
+
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="www/web_report.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Mobility Metrics</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="description.html">Description</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<p><img src="www/images/urban-institute-logo.png" width="370" /></p>
+<div id="northampton-pennsylvania" class="section level1">
+<h1>Northampton, Pennsylvania</h1>
+<p><br><br></p>
+<div id="driver-strong-and-healthy-families" class="section level2">
+<h2>Driver: Strong and Healthy Families</h2>
+<p><br></p>
+<div id="domain-financial-well-being" class="section level3">
+<h3>Domain: Financial Well-Being</h3>
+<div class="exclude">
+<em>Visit <a href="description.html#domain-financial-well-being">here</a> for a thorough description of the metrics in this domain.</em>
+</div>
+<p><br></p>
+<div id="predictor-income" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Income</h4>
+<div id="summary" class="section level5">
+<h5>Summary</h5>
+<p><br></p>
+</div>
+<div id="detail" class="section level5">
+<h5>Detail</h5>
+<p><br></p>
+</div>
+<div id="subgroup" class="section level5">
+<h5>Subgroup</h5>
+<p><br></p>
+</div>
+</div>
+<div id="predictor-financial-security" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Financial security</h4>
+<div id="summary-1" class="section level5">
+<h5>Summary</h5>
+<p><br><br></p>
+</div>
+<div id="detail-1" class="section level5">
+<h5>Detail</h5>
+<p><br><br></p>
+</div>
+<div id="sub-area" class="section level5">
+<h5>Sub-Area</h5>
+<p><br><br></p>
+</div>
+</div>
+</div>
+<div id="domain-secure-and-stable-housing" class="section level3 printbreak">
+<h3 class="printbreak">Domain: Secure and Stable Housing</h3>
+<div class="exclude">
+<em>Visit <a href="description.html#domain-housing">here</a> for a thorough description of the metrics in this domain.</em>
+</div>
+<p><br></p>
+<div id="predictor-affordable-housing" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Affordable housing</h4>
+<div id="summary-2" class="section level5">
+<h5>Summary</h5>
+<p><br></p>
+</div>
+<div id="detail-2" class="section level5">
+<h5>Detail</h5>
+<p><br></p>
+</div>
+<div id="more-years" class="section level5">
+<h5>More Years</h5>
+<p><br></p>
+</div>
+</div>
+<div id="predictor-affordable-housing-1" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Affordable housing</h4>
+<div id="summary-3" class="section level5">
+<h5>Summary</h5>
+<p><br></p>
+</div>
+<div id="detail-3" class="section level5">
+<h5>Detail</h5>
+<p><br></p>
+</div>
+<div id="more-years-1" class="section level5">
+<h5>More Years</h5>
+<p><br></p>
+</div>
+</div>
+<div id="predictor-housing-instability-and-homelessness" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Housing instability and homelessness</h4>
+<div id="summary-4" class="section level5">
+<h5>Summary</h5>
+<p><br><br></p>
+</div>
+<div id="detail-4" class="section level5">
+<h5>Detail</h5>
+<p><br><br></p>
+</div>
+<div id="more-years-2" class="section level5">
+<h5>More Years</h5>
+<p><br><br></p>
+</div>
+</div>
+</div>
+<div id="domain-family-stability" class="section level3 printbreak">
+<h3 class="printbreak">Domain: Family Stability</h3>
+<div class="exclude">
+<em>Visit <a href="description.html#domain-family-stability">here</a> for a thorough description of the metrics in this domain.</em>
+</div>
+<p><br></p>
+<div id="predictor-family-structure-and-stability" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Family structure and stability</h4>
+<div id="summary-5" class="section level5">
+<h5>Summary</h5>
+<p><br><br></p>
+</div>
+<div id="detail-5" class="section level5">
+<h5>Detail</h5>
+<p><br><br></p>
+</div>
+<div id="subgroup-1" class="section level5">
+<h5>Subgroup</h5>
+<p><br><br></p>
+</div>
+</div>
+</div>
+<div id="domain-health" class="section level3 printbreak">
+<h3 class="printbreak">Domain: Health</h3>
+<div class="exclude">
+<em>Visit <a href="description.html#domain-health">here</a> for a thorough description of the metrics in this domain.</em>
+</div>
+<p><br></p>
+<div id="predictor-access-to-and-utilization-of-health-services" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Access to and utilization of health services</h4>
+<div id="summary-6" class="section level5">
+<h5>Summary</h5>
+<p><br></p>
+</div>
+<div id="detail-6" class="section level5">
+<h5>Detail</h5>
+<p><br></p>
+</div>
+</div>
+<div id="predictor-neonatal-health" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Neonatal health</h4>
+<div id="summary-7" class="section level5">
+<h5>Summary</h5>
+<p><br><br></p>
+</div>
+<div id="detail-7" class="section level5">
+<h5>Detail</h5>
+<p><br><br></p>
+</div>
+<div id="subgroup-2" class="section level5">
+<h5>Subgroup</h5>
+<p><br><br></p>
+</div>
+</div>
+</div>
+</div>
+<div id="driver-supportive-communities" class="section level2 printbreak">
+<h2 class="printbreak">Driver: Supportive Communities</h2>
+<p><br></p>
+<div id="domain-local-governance" class="section level3">
+<h3>Domain: Local Governance</h3>
+<div class="exclude">
+<em>Visit <a href="description.html#domain-local-governance">here</a> for a thorough description of the metrics in this domain.</em>
+</div>
+<p><br></p>
+<div id="predictor-political-participation" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Political participation</h4>
+<div id="summary-8" class="section level5">
+<h5>Summary</h5>
+<p><br></p>
+</div>
+<div id="detail-8" class="section level5">
+<h5>Detail</h5>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="domain-neighborhoods" class="section level3 printbreak">
+<h3 class="printbreak">Domain: Neighborhoods</h3>
+<div class="exclude">
+<em>Visit <a href="description.html#domain-neighborhoods">here</a> for a thorough description of the metrics in this domain.</em>
+</div>
+<p><br></p>
+<div id="predictor-economic-inclusion" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Economic inclusion</h4>
+<div id="summary-9" class="section level5">
+<h5>Summary</h5>
+<p><br></p>
+</div>
+<div id="detail-9" class="section level5">
+<h5>Detail</h5>
+<p><br></p>
+</div>
+<div id="subgroup-3" class="section level5">
+<h5>Subgroup</h5>
+<p><br></p>
+</div>
+</div>
+<div id="predictor-racial-diversity" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Racial diversity</h4>
+<div id="summary-10" class="section level5">
+<h5>Summary</h5>
+<p><br></p>
+</div>
+<div id="detail-10" class="section level5">
+<h5>Detail</h5>
+<p><br></p>
+</div>
+</div>
+<div id="predictor-transportation-access" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Transportation access</h4>
+<div id="summary-11" class="section level5 avoidpagebreak">
+<h5 class="avoidpagebreak">Summary</h5>
+<p><br></p>
+</div>
+<div id="detail-11" class="section level5">
+<h5>Detail</h5>
+<p><br></p>
+</div>
+<div id="sub-area-1" class="section level5">
+<h5>Sub-Area</h5>
+<p><br></p>
+</div>
+</div>
+<div id="section" class="section level4 tabset">
+<h4 class="tabset"></h4>
+<div id="summary-12" class="section level5 avoidpagebreak">
+<h5 class="avoidpagebreak">Summary</h5>
+<p><br></p>
+</div>
+<div id="detail-12" class="section level5">
+<h5>Detail</h5>
+<p><br></p>
+</div>
+<div id="sub-area-2" class="section level5">
+<h5>Sub-Area</h5>
+<p><br></p>
+</div>
+</div>
+<div id="predictor-environmental-quality" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Environmental quality</h4>
+<div id="summary-13" class="section level5">
+<h5>Summary</h5>
+<p><br><br></p>
+</div>
+<div id="detail-13" class="section level5">
+<h5>Detail</h5>
+<p><br><br></p>
+</div>
+<div id="sub-area-3" class="section level5">
+<h5>Sub-Area</h5>
+<p><br><br></p>
+</div>
+</div>
+</div>
+<div id="domain-safety" class="section level3 printbreak">
+<h3 class="printbreak">Domain: Safety</h3>
+<div class="exclude">
+<em>Visit <a href="description.html#domain-safety">here</a> for a thorough description of the metrics in this domain.</em>
+</div>
+<p><br></p>
+<div id="predictor-exposure-to-crime" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Exposure to crime</h4>
+<div id="summary-14" class="section level5">
+<h5>Summary</h5>
+<p><br></p>
+</div>
+<div id="detail-14" class="section level5">
+<h5>Detail</h5>
+<p><br></p>
+</div>
+<div id="more-years-3" class="section level5">
+<h5>More Years</h5>
+<p><br></p>
+</div>
+</div>
+<div id="predictor-overly-punitive-policing" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Overly punitive policing</h4>
+<div id="summary-15" class="section level5">
+<h5>Summary</h5>
+<p><br><br></p>
+</div>
+<div id="detail-15" class="section level5">
+<h5>Detail</h5>
+<p><br><br></p>
+</div>
+<div id="subgroup-4" class="section level5">
+<h5>Subgroup</h5>
+<p><br><br></p>
+</div>
+</div>
+</div>
+</div>
+<div id="driver-opportunities-to-learn-and-earn" class="section level2 printbreak">
+<h2 class="printbreak">Driver: Opportunities to Learn and Earn</h2>
+<p><br></p>
+<div id="domain-education" class="section level3">
+<h3>Domain: Education</h3>
+<div class="exclude">
+<em>Visit <a href="description.html#domain-education">here</a> for a thorough description of the metrics in this domain.</em>
+</div>
+<p><br></p>
+<div id="predictor-access-to-preschool" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Access to preschool</h4>
+<div id="summary-16" class="section level5">
+<h5>Summary</h5>
+<p><br></p>
+</div>
+<div id="detail-16" class="section level5">
+<h5>Detail</h5>
+<p><br></p>
+</div>
+<div id="subgroup-5" class="section level5">
+<h5>Subgroup</h5>
+<p><br></p>
+</div>
+</div>
+<div id="predictor-effective-public-education" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Effective public education</h4>
+<div id="summary-17" class="section level5">
+<h5>Summary</h5>
+<p><br></p>
+</div>
+<div id="detail-17" class="section level5">
+<h5>Detail</h5>
+<p><br></p>
+</div>
+<div id="subgroup-6" class="section level5">
+<h5>Subgroup</h5>
+<p><br></p>
+</div>
+</div>
+<div id="predictor-student-poverty-concentration" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Student poverty concentration</h4>
+<div id="summary-18" class="section level5">
+<h5>Summary</h5>
+<p><br></p>
+</div>
+<div id="detail-18" class="section level5">
+<h5>Detail</h5>
+<p><br></p>
+</div>
+</div>
+<div id="predictor-college-readiness" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: College readiness</h4>
+<div id="summary-19" class="section level5">
+<h5>Summary</h5>
+<p><br><br></p>
+</div>
+<div id="detail-19" class="section level5">
+<h5>Detail</h5>
+<p><br><br></p>
+</div>
+<div id="subgroup-7" class="section level5">
+<h5>Subgroup</h5>
+<p><br><br></p>
+</div>
+</div>
+</div>
+<div id="domain-work" class="section level3 printbreak">
+<h3 class="printbreak">Domain: Work</h3>
+<div class="exclude">
+<em>Visit <a href="description.html#domain-work">here</a> for a thorough description of the metrics in this domain.</em>
+</div>
+<p><br></p>
+<div id="predictor-employment" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Employment</h4>
+<div id="summary-20" class="section level5">
+<h5>Summary</h5>
+<p><br></p>
+</div>
+<div id="detail-20" class="section level5">
+<h5>Detail</h5>
+<p><br></p>
+</div>
+<div id="subgroup-8" class="section level5">
+<h5>Subgroup</h5>
+<p><br></p>
+</div>
+</div>
+<div id="predictor-access-to-jobs-paying-a-living-wage" class="section level4 tabset avoidpagebreak">
+<h4 class="tabset avoidpagebreak">Predictor: Access to jobs paying a living wage</h4>
+<div id="summary-21" class="section level5">
+<h5>Summary</h5>
+<p><br><br></p>
+</div>
+<div id="detail-21" class="section level5">
+<h5>Detail</h5>
+<p><br><br></p>
+</div>
+<div id="more-years-4" class="section level5">
+<h5>More Years</h5>
+<p><br><br></p>
+</div>
+</div>
+</div>
+</div>
+<div id="notes-on-data-quality" class="section level2">
+<h2>Notes on Data Quality</h2>
+<div class="line-block">“Good” indicates that the metric is measured with adequate accuracy and sample size.<br />
+“Marginal” indicates that there are known shortcomings of the data for this metric for this county, and the metric should be used with caution.<br />
+“Poor” indicates that although the metric could be computed for this county, we have serious concerns about how accurately it is measured for this county and do not recommend its use.</div>
+<p><br><br></p>
+</div>
+<div id="additional-notes" class="section level2 printbreak">
+<h2 class="printbreak">Additional Notes</h2>
+<div class="p2">
+The following metrics require original data collection:
+</div>
+<ul>
+<li><strong>Overall health:</strong> Share of adults who rate their own and their children’s health as good or excellent</li>
+<li><strong>Belongingness:</strong> Inclusion of other in the self scale</li>
+<li><strong>Social Capital:</strong> Social capital community benchmark scale</li>
+<li><strong>Exposure to Trauma:</strong> Adverse childhood experiences scale</li>
+<li><strong>Descriptive representation among local officials:</strong> The ratio of the share of the city council or county board from specific racial and ethnic groups and the share of city or county residents from those racial or ethnic groups</li>
+</ul>
+<p><br></p>
+<div class="line-block">Confidence intervals shown are 95 percent.<br />
+* This confidence interval is not available at this time.<br />
++ A confidence interval is not applicable.<br />
+Lower/Upper bound: The data used to construct this metric do not lend themselves to conventional confidence intervals. The value of the metric shown represents are best estimate; the lower and upper bounds represent alternative estimates of the metric under different assumptions about missing data.</div>
+<p><br></p>
+<div class="p2">
+“NA” in fields for metric values and data quality values indicates that the data are suppressed due to sample sizes or because that element is not applicable to that community (e.g. no zip code in the county is majority non-white).
+</div>
+<div class="p2">
+“NC” in fields for confidence intervals or lower/upper bounds means that we are not able to calculate this because the underlying data lack variation.
+</div>
+<p><br></p>
+<p>Version: 2021-06-23 08:23:12</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+
+</body>
+</html>
