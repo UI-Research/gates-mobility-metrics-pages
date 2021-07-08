@@ -14,7 +14,7 @@ output:
     editor_options:
       chunk_output_type: console
 params:
-  state_county: !r c("42095", "42017", "48453", "09003")
+  state_county: !r c("11001", "42101", "06001", "09003")
   fake_labels: FALSE
   state_title: FALSE
 ---
@@ -43,6 +43,8 @@ library(tidyverse)
 library(glue)
 library(scales)
 library(qdapRegex)
+library(urbnthemes)
+set_urbn_defaults(style = "print")
 
 options(scipen = 999)
 
@@ -82,11 +84,11 @@ data_no_subgroups <- read_csv(fpath_no_subgroup, col_types = my_col_type, guess_
 metrics_no_subgroup <- c(identifying_vars,
                          colnames(data_no_subgroups)[!(colnames(data_no_subgroups) %in% colnames(data_w_subgroups))])
 
-data_no_subgroups_clean <- data_no_subgroups %>% 
-  select(all_of(metrics_no_subgroup))
+#data_no_subgroups_clean <- data_no_subgroups %>% 
+#  select(all_of(metrics_no_subgroup))
 
 #combine metrics with and without subgroups together 
-data_not_multi_year <- bind_rows(data_w_subgroups, data_no_subgroups_clean)
+data_not_multi_year <- bind_rows(data_w_subgroups, data_no_subgroups)
 
 data <- bind_rows(list(`0` = data_not_multi_year, 
                        `1` = read_csv(fpath_multi_year, col_types = my_col_type, guess_max = 20000)), 
@@ -191,6 +193,19 @@ note_ul_bound <- "Lower/Upper bound"
 ```
 
 ```{r}
+state_county_order <- data %>%
+  mutate(full_fips = factor(full_fips, levels = params$state_county)) %>%
+  arrange(full_fips) %>%
+  pull(state_county) %>%
+  unique()
+
+data <- data %>%
+  mutate(state_county = factor(state_county, levels = state_county_order)) %>%
+  mutate(state_county_rev = factor(state_county, levels = rev(state_county_order)))
+
+```
+
+```{r}
 # split into list
 data <- data %>%
   split(.$subgroup_id)
@@ -215,7 +230,7 @@ data <- data %>%
 
 ##### Summary
 
-```{r income, eval = FALSE}
+```{r income}
 income_varlist <- list(
   c(
     "pctl_20", 
@@ -252,27 +267,42 @@ data_sub <- data %>%
   mutate_at(vars(matches(mb_vars), -ends_with("_quality")), 
             function(x) gsub("\\..*","", glue("${x}"))) 
 
-create_tb(metrics_info_df = income_m_info_lst, 
-          dataset = data_sub, 
-          varname_maps = income_varlist) 
-
-```
-
-<br>
-
-##### Detail
-
-```{r income-table1, eval = FALSE}
-create_tb_level2(income_m_info_lst, data_sub, income_varlist)
-
+data$all %>%
+  select(state_county_rev, pctl_20, pctl_50, pctl_80) %>%
+  pivot_longer(-state_county_rev, names_to = "Percentile", values_to = "Income") %>%
+  mutate(Percentile = recode(Percentile, "pctl_20"="20th Percentile", "pctl_50"= "50th Percentile", "pctl_80"= "80th Percentile")) %>%
+  ggplot(mapping = aes(x= state_county_rev, y = Income, fill = Percentile)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.1)),
+                     labels = scales::dollar) +
+  labs(x = NULL, y = NULL, title ="Metric: Household income at the 20th, 50th, and 80th percentiles") +  
+  remove_ticks() +
+  coord_flip() +
+  theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
+        panel.grid.major.y = ggplot2::element_blank())
 ```
 
 <br>
 
 ##### Subgroup 
 
-```{r income-table2, eval = FALSE}
-create_tb_level3(income_m_info_lst, data_sub, income_varlist)
+```{r income-table2}
+
+data$race_ethnicity %>%
+  select(state_county, subgroup, pctl_20, pctl_50, pctl_80) %>%
+  pivot_longer(-c(state_county, subgroup), names_to = "Percentile", values_to = "Income") %>%
+  filter(subgroup != "All") %>%
+  mutate(Percentile = recode(Percentile, "pctl_20"="20th Percentile", "pctl_50"= "50th Percentile", "pctl_80"= "80th Percentile")) %>%
+  ggplot(mapping = aes(x= Percentile, y = Income, fill = subgroup)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.1)),
+                     labels = scales::dollar) +
+  facet_wrap(~state_county) +
+  labs(x = NULL, y = NULL, title ="Metric: Household income at the 20th, 50th, and 80th percentiles") +  
+  remove_ticks() +
+  coord_flip() +
+  theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
+        panel.grid.major.y = ggplot2::element_blank())
 
 ```
 
