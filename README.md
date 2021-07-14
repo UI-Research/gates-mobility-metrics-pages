@@ -49,16 +49,18 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 ### Beta Cohort
 
-* [Alameda, California](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06001-Alameda-California_598)
-* [Alameda, California Neighbors 1](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06001-Alameda-Neighbors-1-California_942)
-* [Alameda, California Neighbors 2](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06001-Alameda-Neighbors-2-California_683)
-* [Riverside, California](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06065-Riverside-California_435)
-* [Washington, DC](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/11001-District-of-Columbia-District-of-Columbia_202)
-* [St. Lucie, Florida](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/12111-St-Lucie-Florida_499)
-* [Ramsey, Minnesota](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/27123-Ramsey-Minnesota_522)
-* [Boone, Missouri](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/29019-Boone-Missouri_159)
-* [Summit, Ohio](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/39153-County-of-Summit-Ohio-Ohio_279)
-* [Philadelphia](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/42101-Philadelphia-Pennsylvania_711)
+
+
+* Alameda, California [Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06001-Alameda-California_598) [Viz Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/09_rfi-finalists/06001-Alameda-California_598)
+* Alameda, California Neighbors 1 [Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06001-Alameda-Neighbors-1-California_942) [Viz Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/09_rfi-finalists/06001-Alameda-Neighbors-1-California_942)
+* Alameda, California Neighbors 2 [Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06001-Alameda-Neighbors-2-California_683) [Viz Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/09_rfi-finalists/06001-Alameda-Neighbors-2-California_683)
+* Riverside, California [Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06065-Riverside-California_435) [Viz Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/09_rfi-finalists/06065-Riverside-California_435)
+* Washington, DC [Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/11001-District-of-Columbia-District-of-Columbia_202) [Viz Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/09_rfi-finalists/11001-District-of-Columbia-District-of-Columbia_202)
+* St. Lucie, Florida [Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/12111-St-Lucie-Florida_499) [Viz Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/09_rfi-finalists/12111-St-Lucie-Florida_499)
+* Ramsey, Minnesota [Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/27123-Ramsey-Minnesota_522) [Viz Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/09_rfi-finalists/27123-Ramsey-Minnesota_522)
+* Boone, Missouri [Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/29019-Boone-Missouri_159) [Viz Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/09_rfi-finalists/29019-Boone-Missouri_159)
+* Summit, Ohio [Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/39153-County-of-Summit-Ohio-Ohio_279) [Viz Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/09_rfi-finalists/39153-County-of-Summit-Ohio-Ohio_279)
+* Philadelphia, Pennsylvania [Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/42101-Philadelphia-Pennsylvania_711) [Viz Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/09_rfi-finalists/42101-Philadelphia-Pennsylvania_711)
 
 ### NACO
 

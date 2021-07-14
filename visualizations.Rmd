@@ -244,7 +244,11 @@ data$all %>%
   scale_y_continuous(expand = expansion(mult = c(0, 0.2)),
                      labels = scales::dollar,
                      limits = c(0, NA)) +
-  labs(x = NULL, y = NULL, title ="Metric: Household income at the 20th, 50th, and 80th percentiles") +  
+  labs(
+    x = NULL, 
+    y = "Household income", 
+    title ="Metric: Household income at the 20th, 50th, and 80th percentiles"
+  ) +  
   remove_ticks() +
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
@@ -268,7 +272,11 @@ data$race_ethnicity %>%
                      labels = scales::dollar,
                      limits = c(0, NA))+
   facet_wrap(~state_county) +
-  labs(x = NULL, y = NULL, title ="Metric: Household income at the 20th, 50th, and 80th percentiles") +  
+  labs(
+    x = NULL, 
+    y = "Household income", 
+    title ="Metric: Household income at the 20th, 50th, and 80th percentiles"
+  ) +  
   remove_ticks() +
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
@@ -293,7 +301,11 @@ data$all %>%
   scale_y_continuous(expand = expand_scale(mult = c(0, 0.15)),
                      labels = scales::percent_format(accuracy = 1),
                      limits = c(0, NA)) +
-  labs(x = NULL, y = NULL, title ="Metric: Share with debt in collections") +  
+  labs(
+    x = NULL,
+    y = "Share with debt in collections", 
+    title = "Metric: Share with debt in collections"
+  ) +  
   remove_ticks() +
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
@@ -310,14 +322,18 @@ data$all %>%
 data$race_share %>%
   select(state_county, subgroup, share_debt_coll, share_debt_coll_lb, share_debt_coll_ub) %>%
   filter(subgroup != c("All", "Mixed Race and Ethnicity")) %>%
-  ggplot(mapping = aes(x= subgroup, y = share_debt_coll)) +
-  geom_col() +
-  geom_text(aes(label = percent(share_debt_coll, accuracy = 1)), hjust = -0.25) +
-  scale_y_continuous(expand = expand_scale(mult = c(0, 0.2)),
+  ggplot(mapping = aes(x = subgroup, y = share_debt_coll, ymin = share_debt_coll_lb, ymax = share_debt_coll_ub)) +
+  geom_pointrange() +
+  geom_text(aes(label = percent(share_debt_coll, accuracy = 1)), vjust = -1) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.2)),
                      labels = scales::percent_format(accuracy = 1),
                      limits = c(0, NA)) +
   facet_wrap(~state_county) +
-  labs(x = NULL, y = NULL, title = "Metric: Share with debt in collections") +  
+  labs(
+    x = NULL, 
+    y = "Share with debt in collections", 
+    title = "Metric: Share with debt in collections"
+  ) +  
   remove_ticks() +
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
@@ -354,11 +370,14 @@ data$all %>%
   scale_y_continuous(expand = expand_scale(mult = c(0, 0.1)),
                      limits = c(0, NA)) +
   labs(x = NULL, y = NULL, 
-       title ="Metric: Ratio of affordable housing units per 100 households with low-, very low-, and extremely low-income levels") +  
+       title ="Metric: Ratio of affordable housing units per 100 households with low-, very low-, and\nextremely low-income levels") +  
   remove_ticks() +
   coord_flip() +
-  theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
-        panel.grid.major.y = ggplot2::element_blank())
+  theme(
+    panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
+    panel.grid.major.y = ggplot2::element_blank(),
+    legend.text = ggplot2::element_text(size = 8, vjust = 0.5)
+  )
 
 ```
 
@@ -407,7 +426,7 @@ data$longitudinal %>%
                      limits = c(0, NA)) +
   labs(x = "Year",
        y = NULL,
-       title ="Metric: Ratio of affordable housing units per 100 households with low-, very low-, and extremely low-income levels")
+       title ="Metric: Ratio of affordable housing units per 100 households with low-, very low-, and\nextremely low-income levels")
   
 ```
 
@@ -432,7 +451,7 @@ data$all %>%
                      labels = scales::percent_format(accuracy = 1),
                      limits = c(0, NA)) +
   labs(x = NULL, y = NULL, 
-       title ="Metric: Share of households experiencing severe rent burden, or paying more than half of their income towards rent") +  
+       title ="Metric: Share of households experiencing severe rent burden, or paying more than half of\ntheir income towards rent") +  
   remove_ticks() +
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
@@ -773,7 +792,7 @@ data$race_poverty %>%
 
 ##### Summary
 
-```{r racial-dviersity}
+```{r racial-diversity}
 
 data$all %>%
   select(state_county_rev, black_nh_exposure, hispanic_exposure,  other_nh_exposure, white_nh_exposure) %>%
