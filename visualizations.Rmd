@@ -241,8 +241,9 @@ data$all %>%
                              "pctl_80"= "80th Percentile")) %>%
   ggplot(mapping = aes(x= state_county_rev, y = Income, fill = Percentile)) +
   geom_col(position = "dodge") +
-  scale_y_continuous(expand = expand_scale(mult = c(0, 0.1)),
-                     labels = scales::dollar) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.2)),
+                     labels = scales::dollar,
+                     limits = c(0, NA)) +
   labs(x = NULL, y = NULL, title ="Metric: Household income at the 20th, 50th, and 80th percentiles") +  
   remove_ticks() +
   coord_flip() +
@@ -263,14 +264,16 @@ data$race_ethnicity %>%
   mutate(Percentile = recode(Percentile, "pctl_20"="20th Percentile", "pctl_50"= "50th Percentile", "pctl_80"= "80th Percentile")) %>%
   ggplot(mapping = aes(x= Percentile, y = Income, fill = subgroup)) +
   geom_col(position = "dodge") +
-  scale_y_continuous(expand = expand_scale(mult = c(0, 0.1)),
-                     labels = scales::dollar) +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.2)),
+                     labels = scales::dollar,
+                     limits = c(0, NA))+
   facet_wrap(~state_county) +
   labs(x = NULL, y = NULL, title ="Metric: Household income at the 20th, 50th, and 80th percentiles") +  
   remove_ticks() +
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
-        panel.grid.major.y = ggplot2::element_blank())
+        panel.grid.major.y = ggplot2::element_blank(),
+        panel.spacing = unit(17, "pt"))
 
 ```
 
@@ -285,11 +288,11 @@ data$race_ethnicity %>%
 data$all %>%
   select(state_county_rev, share_debt_coll, share_debt_coll_lb, share_debt_coll_ub) %>%
   ggplot(mapping = aes(x = state_county_rev, y = share_debt_coll)) +
-  #geom_pointrange(mapping = aes (x = state_county_rev, y = share_debt_coll, ymin = share_debt_coll_lb, ymax = share_debt_coll_ub)) +
-  geom_col() +
-  geom_text(aes(label = percent(round(share_debt_coll, digits = 2))), hjust = -0.25) +
-  scale_y_continuous(expand = expand_scale(mult = c(0, 0.1)),
-                     labels = scales::percent_format(accuracy = 1)) +
+  geom_pointrange(mapping = aes (x = state_county_rev, y = share_debt_coll, ymin = share_debt_coll_lb, ymax = share_debt_coll_ub)) +
+  geom_text(aes(label = percent(share_debt_coll, accuracy = 1)), vjust = -1) +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.15)),
+                     labels = scales::percent_format(accuracy = 1),
+                     limits = c(0, NA)) +
   labs(x = NULL, y = NULL, title ="Metric: Share with debt in collections") +  
   remove_ticks() +
   coord_flip() +
@@ -309,15 +312,17 @@ data$race_share %>%
   filter(subgroup != c("All", "Mixed Race and Ethnicity")) %>%
   ggplot(mapping = aes(x= subgroup, y = share_debt_coll)) +
   geom_col() +
-  geom_text(aes(label = percent(round(share_debt_coll, digits = 2))), hjust = -0.25) +
-  scale_y_continuous(expand = expand_scale(mult = c(0, 0.1)),
-                     labels = scales::percent_format(accuracy = 1)) +
+  geom_text(aes(label = percent(share_debt_coll, accuracy = 1)), hjust = -0.25) +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.2)),
+                     labels = scales::percent_format(accuracy = 1),
+                     limits = c(0, NA)) +
   facet_wrap(~state_county) +
   labs(x = NULL, y = NULL, title = "Metric: Share with debt in collections") +  
   remove_ticks() +
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
-        panel.grid.major.y = ggplot2::element_blank())
+        panel.grid.major.y = ggplot2::element_blank(),
+        panel.spacing = unit(14, "pt"))
 
 ```
 
@@ -346,7 +351,8 @@ data$all %>%
   mutate(Ratio = Ratio*100) %>%
   ggplot(mapping = aes(x= state_county_rev, y = Ratio, fill = Households)) +
   geom_col(position = "dodge") +
-  scale_y_continuous(expand = expand_scale(mult = c(0, 0.1))) +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.1)),
+                     limits = c(0, NA)) +
   labs(x = NULL, y = NULL, 
        title ="Metric: Ratio of affordable housing units per 100 households with low-, very low-, and extremely low-income levels") +  
   remove_ticks() +
@@ -397,9 +403,10 @@ data$longitudinal %>%
   geom_point() +
   facet_wrap(~state_county) +
   scale_x_continuous(breaks = c(2014 + 0:1 * 4)) +
-  scale_y_continuous(limits = c(0, NA)) +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.1)),
+                     limits = c(0, NA)) +
   labs(x = "Year",
-       y = "Ratio",
+       y = NULL,
        title ="Metric: Ratio of affordable housing units per 100 households with low-, very low-, and extremely low-income levels")
   
 ```
@@ -422,7 +429,8 @@ data$all %>%
   ggplot(mapping = aes(x= state_county_rev, y = Share, fill = Households)) +
   geom_col(position = "dodge") +
   scale_y_continuous(expand = expand_scale(mult = c(0, 0.1)),
-                     labels = scales::percent_format(accuracy = 1)) +
+                     labels = scales::percent_format(accuracy = 1),
+                     limits = c(0, NA)) +
   labs(x = NULL, y = NULL, 
        title ="Metric: Share of households experiencing severe rent burden, or paying more than half of their income towards rent") +  
   remove_ticks() +
@@ -451,10 +459,11 @@ data$longitudinal %>%
   geom_point() +
   facet_wrap(~state_county) +
   scale_x_continuous(breaks = c(2014 + 0:1 * 4)) +
-  scale_y_continuous(limits = c(0, .8),
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.2)),
+                     limits = c(0, NA),
                      labels = scales::percent_format(accuracy = 1)) +
   labs(x = "Year",
-       y = "Share",
+       y = NULL,
        title ="Metric: Share of households experiencing severe rent burden, or paying more than half of their income towards rent")
 
 ```
@@ -471,10 +480,11 @@ data$all %>%
   select(state_county_rev, homeless_share, homeless_count) %>%
   ggplot(mapping = aes(x = state_county_rev, y = homeless_share)) +
   geom_col() +
-  scale_y_continuous(expand = expand_scale(mult = c(0, 0.1)),
-                     labels = scales::percent_format(accuracy = 1)) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1)),
+                     labels = scales::percent_format(accuracy = 1),
+                     limits = c(0, NA)) +
   labs(x = NULL, y = NULL, title ="Metric: Number and share of public-school children who are homeless during the school year") +  
-  geom_text(aes(label = comma(homeless_count), hjust = -0.25)) +
+  geom_text(aes(label = comma(homeless_count, accuracy = 1), hjust = -0.25)) +
   remove_ticks() +
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
@@ -493,15 +503,16 @@ data$longitudinal %>%
   filter(year %in% c(2014, 2018)) %>%
   ggplot(aes(year, homeless_share)) +
   geom_line() +
-  geom_text(aes(label = comma(homeless_count))) +
+  geom_text(aes(label = comma(homeless_count)), nudge_y = 0.01) +
   #geom_text_repel() +
   geom_point() +
   facet_wrap(~state_county) +
   scale_x_continuous(breaks = c(2014 + 0:1 * 4)) +
-  scale_y_continuous(limits = c(0, .1),
-                     labels = scales::percent_format(accuracy = 1)) +
+  scale_y_continuous(limits = c(0, NA),
+                     labels = scales::percent_format(accuracy = 1), 
+                     expand = expansion(mult = c(0, 0.1))) +
   labs(x = "Year",
-       y = "Share",
+       y = NULL,
        title ="Metric: Number and share of public-school children who are homeless during the school year")
 
 ```
@@ -586,17 +597,41 @@ data$race_ethnicity %>%
 
 ```{r health-access}
 
-data$all %>%
-  select(state_county_rev, hpsa_yn) %>%
-  ggplot(mapping = aes(x = state_county_rev, y = hpsa_yn)) +
-  geom_col() +
-  labs(x = NULL, y = NULL, title ="Metric: Health Professional Shortage Area (1=yes/0=no) for primary care providers") +  
-  remove_ticks() +
-  scale_y_continuous(breaks = c(0 + 0:1 * 1)) +
-  coord_flip() +
-  theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
-        panel.grid.major.y = ggplot2::element_blank())
+# data$all %>%
+#   select(state_county_rev, hpsa_yn) %>%
+#   ggplot(mapping = aes(x = state_county_rev, y = hpsa_yn)) +
+#   geom_col() +
+#   labs(x = NULL, y = NULL, title ="Metric: Health Professional Shortage Area (1=yes/0=no) for primary care providers") +  
+#   remove_ticks() +
+#   scale_y_continuous(breaks = c(0 + 0:1 * 1)) +
+#   coord_flip() +
+#   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
+#         panel.grid.major.y = ggplot2::element_blank())
 
+# 
+# accuils_varlist <- list(
+#   c(
+#     'hpsa_yn'
+#   ), 
+#   c(
+#     'HPSA'
+#   ), 
+#   c(
+#     'hpsa_yn',
+#     'hpsa_yn_ci'
+#   ), 
+#   c(
+#     'HPSA',
+#     'HPSA_ci'
+#   )
+# )
+# 
+# m_info_lst <- get_vars_info('Access to and utilization of health services', data_summary_file = m_info)$info_lst
+# 
+# 
+# create_tb(metrics_info_df = m_info_lst, 
+#           dataset = data, 
+#           varname_maps = accuils_varlist) 
 ```
 
 <br>
@@ -608,14 +643,15 @@ data$all %>%
 ```{r neonatal-health}
 
 data$all %>%
-  select(state_county_rev, lbw) %>%
+  select(state_county_rev, lbw, lbw_ub, lbw_lb) %>%
   ggplot(mapping = aes(x = state_county_rev, y = lbw)) +
-  geom_col() +
-  geom_text(aes(label = percent(lbw), hjust = -0.25)) +
+  geom_pointrange(mapping = aes (x = state_county_rev, y = lbw, ymin = lbw_lb, ymax = lbw_ub)) +
+  geom_text(aes(label = percent(lbw, accuracy = 1)), vjust = -1) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.15)),
+                     labels = scales::percent_format(accuracy = 1),
+                     limits = c(0, NA)) +
   labs(x = NULL, y = NULL, title ="Metric: Share of low-weight births") +  
   remove_ticks() +
-  scale_y_continuous(labels = scales::percent_format(accuracy = 1),
-                     limits = c(0, .2)) +
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
@@ -629,11 +665,14 @@ data$all %>%
 ```{r neonatal-health-table3}
 
 data$race_ethnicity %>%
-  select(state_county_rev, subgroup, lbw) %>%
+  select(state_county_rev, subgroup, lbw, lbw_ub, lbw_lb) %>%
   filter(subgroup != "All") %>%
   ggplot(mapping = aes(x = state_county_rev, y = lbw, fill = subgroup)) +
+  #geom_pointrange(mapping = aes (x = state_county_rev, y = lbw, ymin = lbw_lb, ymax = lbw_ub, fill = subgroup)) +
+  #geom_text(aes(label = percent(lbw, accuracy = 1)), vjust = -1) +
   geom_col(position = "dodge") +
-  scale_y_continuous(limits = c(0, .2),
+  scale_y_continuous(limits = c(0, NA),
+                     expand = expansion(mult = c(0, 0.15)),
                      labels = scales::percent_format(accuracy = 1)) +
   #facet_wrap(~state_county) +
   labs(x = NULL, y = NULL, title ="Metric: Share of low-weight births") +  
@@ -769,7 +808,7 @@ data$all %>%
   select(state_county_rev, transit_trips) %>%
   ggplot(mapping = aes(x = state_county_rev, y = transit_trips)) +
   geom_col() +
-  geom_text(aes(label = round(transit_trips)), hjust = -0.25) +
+  geom_text(aes(label = round(transit_trips)), hjust = -0.5) +
   labs(x = NULL, y = NULL, title ="Metric: Transit trips index") +  
   remove_ticks() +
   scale_y_continuous(limits = c(0, 100)) +
@@ -922,7 +961,9 @@ data$all %>%
                              "property_crime_rate"= "Property Crime")) %>%
   ggplot(mapping = aes(x = state_county_rev, y = Rate, fill = Crime_type)) +
   geom_col(position = "dodge") +
-  geom_text(aes(label = comma(Rate)), hjust = -0.25) +
+  geom_text(aes(label = comma(Rate)), position = position_dodge(width = 0.65), hjust = -0.25) +
+  scale_y_continuous(limits = c(0, NA), 
+                     expand = expansion(mult = 0.2)) +
   labs(x = NULL, y = NULL, 
        title ="Metric: Rates of reported crime (per 100,000 people)") +  
   remove_ticks() +
@@ -950,9 +991,10 @@ data$longitudinal %>%
   geom_point() +
   facet_wrap(~state_county) +
   scale_x_continuous(breaks = c(2015 + 0:1 * 2)) +
-  scale_y_continuous(limits = c(0, NA)) +
+  scale_y_continuous(limits = c(0, NA),
+                     expand = expansion(mult = 0.15)) +
   labs(x = "Year",
-       y = "Rate",
+       y = NULL,
        title ="Metric: Rates of reported crime (per 100,000 people)")
 
 ```
@@ -970,7 +1012,9 @@ data$all %>%
   ggplot(mapping = aes(x = state_county_rev, y = juvenile_arrest_rate)) +
   geom_col() +
   geom_text(aes(label = comma(juvenile_arrest_rate)), hjust = -0.25) +
-  labs(x = NULL, y = NULL, title ="Metric: Rate of juvenile justice arrests (per 100,000 juveniles)") +  
+  labs(x = NULL, y = NULL, title ="Metric: Rate of juvenile justice arrests (per 100,000 juveniles)") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.2)),
+                     limits = c(0, NA)) +
   remove_ticks() +
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
@@ -989,9 +1033,11 @@ data$race %>%
   filter(subgroup != "All") %>%
   ggplot(mapping = aes(x= subgroup, y = juvenile_arrest_rate)) +
   geom_col() +
-  geom_text(aes(label = comma(round(juvenile_arrest_rate))), hjust = -0.25) +
+  geom_text(aes(label = comma(juvenile_arrest_rate, accuracy = 1)), hjust = -0.25) +
   facet_wrap(~state_county) +
-  labs(x = NULL, y = NULL, title = "Metric: Rate of juvenile justice arrests (per 100,000 juveniles)") +  
+  labs(x = NULL, y = NULL, title = "Metric: Rate of juvenile justice arrests (per 100,000 juveniles)") + 
+  scale_y_continuous(expand = expansion(mult = c(0, 0.2)),
+                     limits = c(0, NA)) +
   remove_ticks() +
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
@@ -1017,12 +1063,13 @@ data$race %>%
 ```{r education}
 
 data$all %>%
-  select(state_county_rev, share_in_preschool) %>%
+  select(state_county_rev, share_in_preschool, share_in_preschool_lb, share_in_preschool_ub) %>%
   ggplot(mapping = aes(x = state_county_rev, y = share_in_preschool)) +
-  geom_col() +
-  geom_text(aes(label = percent(round(share_in_preschool, digits = 2))), hjust = -0.25) +
-  scale_y_continuous(limits = c(0, 1),
-                     labels = scales::percent_format(accuracy = 1)) +
+  geom_pointrange(mapping = aes (x = state_county_rev, y = share_in_preschool, ymin = share_in_preschool_lb, ymax = share_in_preschool_ub)) +
+  geom_text(aes(label = percent(share_in_preschool, accuracy = 1)), vjust = -1) +
+  scale_y_continuous(expand = expand_scale(mult = c(0, 0.1)),
+                     labels = scales::percent_format(accuracy = 1),
+                     limits = c(0, NA)) +
   labs(x = NULL, y = NULL, title ="Metric: Share of 3- to 4-year-olds enrolled in nursery school or preschool") +  
   remove_ticks() +
   coord_flip() +
@@ -1061,12 +1108,13 @@ data$race_ethnicity %>%
 ```{r learning}
 
 data$all %>%
-  select(state_county_rev, learning_rate) %>%
+  select(state_county_rev, learning_rate, learning_rate_lb, learning_rate_ub) %>%
   ggplot(mapping = aes(x = state_county_rev, y = learning_rate)) +
-  geom_col() +
-  geom_text(aes(label = round(learning_rate, digits = 2)), hjust = -0.25) +
+  geom_pointrange(mapping = aes (x = state_county_rev, y = learning_rate, ymin = learning_rate_lb, ymax = learning_rate_ub)) +
+  geom_text(aes(label = round(learning_rate, digits = 2)), vjust = -1) +
   labs(x = NULL, y = NULL, title ="Metric: Average per grade change in English Language Arts achievement between third and eighth grades") +  
-  scale_y_continuous(limits = c(0, 3)) + 
+  scale_y_continuous(limits = c(0, NA),
+                     expand = expand_scale(mult = c(0, 0.1))) + 
   remove_ticks() +
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
@@ -1133,10 +1181,10 @@ data$all %>%
 ```{r college-readiness}
 
 data$all %>%
-  select(state_county_rev, share_hs_degree) %>%
+  select(state_county_rev, share_hs_degree, share_hs_degree_lb, share_hs_degree_ub) %>%
   ggplot(mapping = aes(x = state_county_rev, y = share_hs_degree)) +
-  geom_col() +
-  geom_text(aes(label = percent(share_hs_degree)), hjust = -0.25) +
+  geom_pointrange(mapping = aes (x = state_county_rev, y = share_hs_degree, ymin = share_hs_degree_lb, ymax = share_hs_degree_ub)) +
+  geom_text(aes(label = percent(share_hs_degree), accuracy = 0.1), vjust = -1) +
   scale_y_continuous(limits = c(0, 1),
                      labels = scales::percent_format(accuracy = 1)) +
   labs(x = NULL, y = NULL, title ="Metric: Share of 19- and 20-year-olds with a high school degree") +  
@@ -1181,10 +1229,10 @@ data$race_ethnicity %>%
 ```{r employment}
 
 data$all %>%
-  select(state_county_rev, share_employed) %>%
+  select(state_county_rev, share_employed, share_employed_lb, share_employed_ub) %>%
   ggplot(mapping = aes(x = state_county_rev, y = share_employed)) +
-  geom_col() +
-  geom_text(aes(label = percent(round(share_employed, digits = 2))), hjust = -0.25) +
+  geom_pointrange(mapping = aes (x = state_county_rev, y = share_employed, ymin = share_employed_lb, ymax = share_employed_ub)) +
+  geom_text(aes(label = percent(share_employed, accuracy = 0.1)), vjust = -1) +
   scale_y_continuous(limits = c(0, 1),
                      labels = scales::percent_format(accuracy = 1)) +
   labs(x = NULL, y = NULL, title ="Metric: Employment-to-population ratio for adults ages 25 to 54") +  
@@ -1192,6 +1240,7 @@ data$all %>%
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
+
 ```
 
 <br>
@@ -1229,7 +1278,8 @@ data$all %>%
   geom_col() +
   geom_text(aes(label = round(average_to_living_wage_ratio, digits = 2)), hjust = -0.25) +
   labs(x = NULL, y = NULL, title ="Metric: Ratio of pay on the average job to the cost of living") +  
-  scale_y_continuous(limits = c(0, 2)) + 
+  scale_y_continuous(limits = c(0, NA),
+                     expand = expansion(mult = c(0, 0.1))) + 
   remove_ticks() +
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
@@ -1247,12 +1297,13 @@ data$longitudinal %>%
   select(state_county, year, average_to_living_wage_ratio) %>%
   filter(year %in% c(2014, 2018)) %>%
   ggplot(aes(year, average_to_living_wage_ratio)) +
-  geom_text(aes(label = round(average_to_living_wage_ratio, digits = 2))) +
+  geom_text(aes(label = round(average_to_living_wage_ratio, digits = 2)), vjust = -1) +
   geom_line() +
   geom_point() +
   facet_wrap(~state_county) +
   scale_x_continuous(breaks = c(2014 + 0:1 * 4)) +
-  scale_y_continuous(limits = c(0, 3)) +
+  scale_y_continuous(limits = c(0, NA),
+                     expand = expansion(mult = c(0, 0.2))) +
   labs(x = "Year",
        y = NULL,
        title ="Metric: Ratio of pay on the average job to the cost of living")
