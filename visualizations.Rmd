@@ -26,6 +26,7 @@ knitr::opts_chunk$set(warning = FALSE)
 knitr::opts_chunk$set(message = FALSE)
 knitr::opts_chunk$set(error = TRUE)
 knitr::opts_chunk$set(results = "asis")
+knitr::opts_chunk$set(fig.height = 6)
 
 ```
 
@@ -239,7 +240,7 @@ data <- data %>%
 
 ```{r income}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, pctl_20, pctl_50, pctl_80) %>%
   pivot_longer(-state_county_rev, names_to = "Percentile", values_to = "Income") %>%
   mutate(Percentile = recode(Percentile, 
@@ -253,13 +254,25 @@ data$all %>%
                      limits = c(0, NA)) +
   labs(
     x = NULL, 
-    y = "Household income", 
+    y = NULL, 
     title ="Metric: Household income at the 20th, 50th, and 80th percentiles"
   ) +  
   remove_ticks() +
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
+
+info <- m_info %>%
+  filter(metric_name == "Income")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(pull(info, notes2),
+    plural = TRUE),
+  heights = c(25, 1, 3)
+)
+
 ```
 
 <br>
@@ -566,7 +579,7 @@ data$all %>%
   labs(
     x = NULL,
     y = "Share of children", 
-    title ="Metric: Share of children by living arrangements"
+    title = "Metric: Share of children by living arrangements"
   ) +  
   remove_ticks() +
   coord_flip() +
@@ -769,10 +782,15 @@ data$all %>%
   ggplot(mapping = aes(x = state_county_rev, y = poverty_exposure)) +
   geom_col() +
   geom_text(aes(label = scales::percent(poverty_exposure, accuracy = 0.1), hjust = -0.25)) +
-  labs(x = NULL, y = NULL, title ="Metric: Share of residents experiencing poverty living in high-poverty neighborhoods") +  
+  labs(
+    x = NULL, 
+    y = NULL, 
+    title ="Metric: Share of residents experiencing poverty living in high-poverty neighborhoods"
+  ) +  
   remove_ticks() +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1),
-                     limits = c(0, NA)) +
+                     limits = c(0, NA),
+                     expand = expand_scale(mult = c(0, 0.15))) +
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
