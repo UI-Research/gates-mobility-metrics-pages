@@ -268,7 +268,7 @@ info <- m_info %>%
 urbn_plot(
   plot,
   urbn_source(pull(info, source_data)),
-  urbn_note(pull(info, notes2),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
     plural = TRUE),
   heights = c(25, 1, 3)
 )
@@ -281,7 +281,7 @@ urbn_plot(
 
 ```{r income-table2}
 
-data$race_ethnicity %>%
+plot <- data$race_ethnicity %>%
   select(state_county, subgroup, pctl_20, pctl_50, pctl_80) %>%
   pivot_longer(-c(state_county, subgroup), names_to = "Percentile", values_to = "Income") %>%
   filter(subgroup != "All") %>%
@@ -303,6 +303,17 @@ data$race_ethnicity %>%
         panel.grid.major.y = ggplot2::element_blank(),
         panel.spacing = unit(17, "pt"))
 
+info <- m_info %>%
+  filter(metric_name == "Income")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1, 3)
+)
+
 ```
 
 <br>
@@ -313,7 +324,7 @@ data$race_ethnicity %>%
 
 ```{r financial-security}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, share_debt_coll, share_debt_coll_lb, share_debt_coll_ub) %>%
   ggplot(mapping = aes(x = state_county_rev, y = share_debt_coll)) +
   geom_pointrange(mapping = aes (x = state_county_rev, y = share_debt_coll, ymin = share_debt_coll_lb, ymax = share_debt_coll_ub)) +
@@ -331,6 +342,18 @@ data$all %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Financial security") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note((pull(info, notes2)),
+    plural = TRUE),
+  heights = c(25, 1, 3)
+)
+
 ```
 
 <br>
@@ -339,7 +362,7 @@ data$all %>%
 
 ```{r financial-security-table3}
 
-data$race_share %>%
+plot <- data$race_share %>%
   select(state_county, subgroup, share_debt_coll, share_debt_coll_lb, share_debt_coll_ub) %>%
   filter(subgroup != c("All", "Mixed Race and Ethnicity")) %>%
   ggplot(mapping = aes(x = subgroup, y = share_debt_coll, ymin = share_debt_coll_lb, ymax = share_debt_coll_ub)) +
@@ -360,6 +383,18 @@ data$race_share %>%
         panel.grid.major.y = ggplot2::element_blank(),
         panel.spacing = unit(14, "pt"))
 
+info <- m_info %>%
+  filter(metric_name == "Financial security") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note((pull(info, notes2)),
+    plural = TRUE),
+  heights = c(25, 1, 3)
+)
+
 ```
 
 <br><br>
@@ -377,7 +412,7 @@ data$race_share %>%
 
 ```{r affordable-housing}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, share_affordable_80_ami, share_affordable_50_ami, share_affordable_30_ami) %>%
   pivot_longer(-state_county_rev, names_to = "Households", values_to = "Ratio") %>%
   mutate(Households = recode(Households, 
@@ -402,6 +437,17 @@ data$all %>%
     legend.text = ggplot2::element_text(size = 7, vjust = 0.5)
   )
 
+info <- m_info %>%
+  filter(metric_name == "Affordable housing")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1.5, 4)
+)
+
 ```
 
 <br>
@@ -409,7 +455,7 @@ data$all %>%
 ##### More Years
 
 ```{r affordable-housing-table3}
-data$longitudinal %>%
+plot <- data$longitudinal %>%
   select(state_county, year, share_affordable_80_ami, share_affordable_50_ami, share_affordable_30_ami) %>%
   pivot_longer(-c(state_county, year), names_to = "Households", values_to = "Ratio") %>%
   mutate(Households = recode(Households, 
@@ -431,7 +477,29 @@ data$longitudinal %>%
     title ="Metric: Ratio of affordable housing units per 100 households with low-, very low-, and\nextremely low-income levels"
   ) +
   theme(legend.text = ggplot2::element_text(size = 7, vjust = 0.5))
+
+info <- m_info %>%
+  filter(metric_name == "Affordable housing")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note((pull(info, notes2)),
+    plural = TRUE),
+  heights = c(25, 1.5, 4)
+)
   
+info <- m_info %>%
+  filter(metric_name == "Affordable housing")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1.5, 4)
+)
+
 ```
 
 <br>
@@ -442,7 +510,7 @@ data$longitudinal %>%
 
 ```{r rent-burden}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, share_burdened_80_ami, share_burdened_50_ami, share_burdened_30_ami) %>%
   pivot_longer(-state_county_rev, names_to = "Households", values_to = "Share") %>%
   mutate(Households = recode(Households, 
@@ -465,6 +533,18 @@ data$all %>%
         panel.grid.major.y = ggplot2::element_blank(),
         legend.text = ggplot2::element_text(size = 7, vjust = 0.5))
 
+info <- m_info %>%
+  filter(metric_name == "Rent burden")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1.5, 4)
+)
+
+
 ```
 
 <br>
@@ -473,7 +553,7 @@ data$all %>%
 
 ```{r rent-burden-table3}
 
-data$longitudinal %>%
+plot <- data$longitudinal %>%
   select(state_county, year, share_burdened_80_ami, share_burdened_50_ami, share_burdened_30_ami) %>%
   pivot_longer(-c(state_county, year), names_to = "Households", values_to = "Share") %>%
   mutate(Households = recode(Households, 
@@ -494,6 +574,17 @@ data$longitudinal %>%
        title ="Metric: Share of households experiencing severe rent burden, or paying more than half of\ntheir income towards rent") +
   theme(legend.text = ggplot2::element_text(size = 7, vjust = 0.5))
 
+info <- m_info %>%
+  filter(metric_name == "Rent burden")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1.5, 4)
+)
+
 ```
 
 <br>
@@ -504,7 +595,7 @@ data$longitudinal %>%
 
 ```{r housing-instability}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, homeless_share, homeless_count) %>%
   ggplot(mapping = aes(x = state_county_rev, y = homeless_share)) +
   geom_col() +
@@ -522,6 +613,17 @@ data$all %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Housing instability and homelessness")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1, 4)
+)
+
 ```
 
 <br><br>
@@ -530,7 +632,7 @@ data$all %>%
 
 ```{r create_tb_multi_yr_homeless}
 
-data$longitudinal %>%
+plot <- data$longitudinal %>%
   select(state_county, year, homeless_count, homeless_share) %>%
   filter(year %in% c(2014, 2018)) %>%
   ggplot(aes(year, homeless_share)) +
@@ -547,6 +649,17 @@ data$longitudinal %>%
        y = NULL,
        title ="Metric: Number and share of public-school children who are homeless during the school year")
 
+info <- m_info %>%
+  filter(metric_name == "Housing instability and homelessness")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1, 4)
+)
+
 ```
 
 <br><br>
@@ -562,7 +675,7 @@ data$longitudinal %>%
 
 ```{r family}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, famstruc_2par_married, famstruc_2par_unmarried,  famstruc_1par_plusadults, famstruc_1par_noadults, famstruc_0par_2adults, famstruc_0par_other) %>%
   pivot_longer(-state_county_rev, names_to = "Arrangement", values_to = "Share") %>%
   mutate(Arrangement = recode(Arrangement, 
@@ -587,6 +700,17 @@ data$all %>%
         panel.grid.major.y = ggplot2::element_blank(),
         legend.direction = "vertical")
 
+info <- m_info %>%
+  filter(metric_name == "Family structure and stability")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1, 4)
+)
+
 ```
 
 <br><br>
@@ -595,7 +719,7 @@ data$all %>%
 
 ```{r family-table3}
 
-data$race_ethnicity %>%
+plot <- data$race_ethnicity %>%
   select(state_county, subgroup, famstruc_2par_married, famstruc_2par_unmarried,  famstruc_1par_plusadults, famstruc_1par_noadults, famstruc_0par_2adults, famstruc_0par_other ) %>%
   pivot_longer(-c(state_county, subgroup), names_to = "Arrangement", values_to = "Share") %>%
   mutate(Arrangement = recode(Arrangement, 
@@ -617,6 +741,17 @@ data$race_ethnicity %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank(),
         legend.text = element_text(size = 7, vjust = 0.5))
+
+info <- m_info %>%
+  filter(metric_name == "Family structure and stability")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2)),
+    plural = TRUE),
+  heights = c(25, 1, 4)
+)
 
 ```
 
@@ -673,6 +808,8 @@ create_tb(metrics_info_df = m_info_lst,
           dataset = select(data$all, -state_county_rev) %>%
             mutate(subgroup_id = "none"),
           varname_maps = accuils_varlist)
+
+
 ```
 
 <br>
@@ -683,7 +820,7 @@ create_tb(metrics_info_df = m_info_lst,
 
 ```{r neonatal-health}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, lbw, lbw_ub, lbw_lb) %>%
   ggplot(mapping = aes(x = state_county_rev, y = lbw)) +
   geom_pointrange(mapping = aes (x = state_county_rev, y = lbw, ymin = lbw_lb, ymax = lbw_ub)) +
@@ -701,6 +838,17 @@ data$all %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Neonatal health")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2)),
+    plural = TRUE),
+  heights = c(25, 1.5, 3)
+)
+
 ```
 
 <br><br>
@@ -709,7 +857,7 @@ data$all %>%
 
 ```{r neonatal-health-table3}
 
-data$race_ethnicity %>%
+plot <- data$race_ethnicity %>%
   select(state_county_rev, subgroup, lbw, lbw_ub, lbw_lb) %>%
   filter(subgroup != "All") %>%
   ggplot(mapping = aes(x = state_county_rev, y = lbw, fill = subgroup)) +
@@ -727,6 +875,17 @@ data$race_ethnicity %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank(),
         legend.text = ggplot2::element_text(size = 7, vjust = 0.5))
+
+info <- m_info %>%
+  filter(metric_name == "Neonatal health")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2)),
+    plural = TRUE),
+  heights = c(25, 1.5, 3)
+)
 
 ```
 
@@ -748,7 +907,7 @@ data$race_ethnicity %>%
 
 ```{r political-participation}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, election_turnout) %>%
   ggplot(mapping = aes(x = state_county_rev, y = election_turnout)) +
   geom_col() +
@@ -760,6 +919,17 @@ data$all %>%
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
+
+info <- m_info %>%
+  filter(metric_name == "Political participation")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1.5, 3)
+)
 
 ```
 
@@ -777,7 +947,7 @@ data$all %>%
 
 ```{r economic-inclusion}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, poverty_exposure) %>%
   ggplot(mapping = aes(x = state_county_rev, y = poverty_exposure)) +
   geom_col() +
@@ -795,6 +965,17 @@ data$all %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Economic inclusion")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1, 3)
+)
+
 ```
 
 <br>
@@ -803,7 +984,7 @@ data$all %>%
 
 ```{r economic-inclusion-table3}
 
-data$race_poverty %>%
+plot <- data$race_poverty %>%
   select(state_county_rev, subgroup, poverty_exposure) %>%
   filter(subgroup != "All") %>%
   ggplot(mapping = aes(x = state_county_rev, y = poverty_exposure, fill = subgroup)) +
@@ -817,6 +998,17 @@ data$race_poverty %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Economic inclusion")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1, 3)
+)
+
 ```
 
 <br>
@@ -827,7 +1019,7 @@ data$race_poverty %>%
 
 ```{r racial-diversity}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, black_nh_exposure, hispanic_exposure,  other_nh_exposure, white_nh_exposure) %>%
   pivot_longer(-state_county_rev, names_to = "Exposure", values_to = "Share") %>%
   mutate(Exposure = recode(Exposure, 
@@ -849,6 +1041,17 @@ data$all %>%
     legend.text = ggplot2::element_text(size = 7, vjust = 0.5)
   )
 
+info <- m_info %>%
+  filter(metric_name == "Racial diversity")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1, 3)
+)
+
 ```
 
 <br>
@@ -859,7 +1062,7 @@ data$all %>%
 
 ```{r transportation-access}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, transit_trips) %>%
   ggplot(mapping = aes(x = state_county_rev, y = transit_trips)) +
   geom_col() +
@@ -871,6 +1074,16 @@ data$all %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Transportation access")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1, 3)
+)
 ```
 
 <br>
@@ -879,7 +1092,7 @@ data$all %>%
 
 ```{r transportation-access-table3}
 
-data$race_share %>%
+plot <- data$race_share %>%
   select(state_county, subgroup, transit_trips) %>%
   filter(subgroup != "All") %>%
   mutate(subgroup = recode(subgroup,
@@ -897,6 +1110,17 @@ data$race_share %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Transportation access") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1, 3)
+)
+
 ```
 
 <br>
@@ -907,7 +1131,7 @@ data$race_share %>%
 
 ```{r transportation-cost}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, transit_cost) %>%
   ggplot(mapping = aes(x = state_county_rev, y = transit_cost)) +
   geom_col() +
@@ -919,6 +1143,18 @@ data$all %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Transportation access-cost") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1, 4)
+)
+
 ```
 
 <br>
@@ -927,7 +1163,7 @@ data$all %>%
 
 ```{r transportation-cost-table3}
 
-data$race_share %>%
+plot <- data$race_share %>%
   select(state_county, subgroup, transit_cost) %>%
   filter(subgroup != "All") %>%
   mutate(subgroup = recode(subgroup,
@@ -945,6 +1181,18 @@ data$race_share %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Transportation access-cost") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1, 4)
+)
+
 ```
 
 <br>
@@ -955,7 +1203,7 @@ data$race_share %>%
 
 ```{r environemtnal-quality}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, environmental) %>%
   ggplot(mapping = aes(x = state_county_rev, y = environmental)) +
   geom_col() +
@@ -971,6 +1219,17 @@ data$all %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Environmental quality")
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1, 3)
+)
+
 ```
 
 <br><br>
@@ -979,7 +1238,7 @@ data$all %>%
 
 ```{r environemtnal-quality-table3}
 
-data$race_share %>%
+plot <- data$race_share %>%
   select(state_county, subgroup, environmental) %>%
   filter(subgroup != "All") %>%
   mutate(subgroup = recode(subgroup,
@@ -1001,6 +1260,18 @@ data$race_share %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Environmental quality") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1, 3)
+)
+
 ```
 
 <br><br>
@@ -1016,7 +1287,7 @@ data$race_share %>%
 
 ```{r safety}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, violent_crime_rate, property_crime_rate) %>%
   pivot_longer(-state_county_rev, names_to = "Crime_type", values_to = "Rate") %>%
   mutate(Crime_type = recode(Crime_type, 
@@ -1038,6 +1309,17 @@ data$all %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Exposure to crime") 
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1.5, 4)
+)
+
 ```
 
 <br>
@@ -1046,7 +1328,7 @@ data$all %>%
 
 ```{r safety-table3}
 
-data$longitudinal %>%
+plot <- data$longitudinal %>%
   select(state_county, year, violent_crime_rate, property_crime_rate) %>%
   pivot_longer(-c(state_county, year),  names_to = "Crime_type", values_to = "Rate") %>%
   mutate(Crime_type = recode(Crime_type, 
@@ -1065,6 +1347,17 @@ data$longitudinal %>%
        y = "Rates of reported crime (per 100,000 people)",
        title ="Metric: Rates of reported crime (per 100,000 people)")
 
+info <- m_info %>%
+  filter(metric_name == "Exposure to crime") 
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1.5, 4)
+)
+
 ```
 
 <br>
@@ -1075,7 +1368,7 @@ data$longitudinal %>%
 
 ```{r policing}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, juvenile_arrest_rate) %>%
   ggplot(mapping = aes(x = state_county_rev, y = juvenile_arrest_rate)) +
   geom_col() +
@@ -1093,6 +1386,18 @@ data$all %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Overly punitive policing") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1.5, 4)
+)
+
 ```
 
 <br><br>
@@ -1101,7 +1406,7 @@ data$all %>%
 
 ```{r policing-table3}
 
-data$race %>%
+plot <- data$race %>%
   select(state_county, subgroup, juvenile_arrest_rate) %>%
   filter(subgroup != "All") %>%
   ggplot(mapping = aes(x= subgroup, y = juvenile_arrest_rate)) +
@@ -1120,6 +1425,18 @@ data$race %>%
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
+
+info <- m_info %>%
+  filter(metric_name == "Overly punitive policing") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1.5, 4)
+)
 
 ```
 
@@ -1140,7 +1457,7 @@ data$race %>%
 
 ```{r education}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, share_in_preschool, share_in_preschool_lb, share_in_preschool_ub) %>%
   ggplot(mapping = aes(x = state_county_rev, y = share_in_preschool)) +
   geom_pointrange(mapping = aes (x = state_county_rev, y = share_in_preschool, ymin = share_in_preschool_lb, ymax = share_in_preschool_ub)) +
@@ -1154,6 +1471,18 @@ data$all %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Access to preschool") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note((pull(info, notes2)),
+    plural = TRUE),
+  heights = c(25, 1, 2)
+)
+
 ```
 
 <br>
@@ -1162,7 +1491,7 @@ data$all %>%
 
 ```{r education-table3}
 
-data$race_ethnicity %>%
+plot <- data$race_ethnicity %>%
   select(state_county_rev, subgroup, starts_with("share_in_preschool")) %>%
   filter(subgroup != "All") %>%
   ggplot(mapping = aes(
@@ -1183,6 +1512,18 @@ data$race_ethnicity %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Access to preschool") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note((pull(info, notes2)),
+    plural = TRUE),
+  heights = c(25, 1, 2)
+)
+
 ```
 
 <br>
@@ -1193,7 +1534,7 @@ data$race_ethnicity %>%
 
 ```{r learning}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, learning_rate, learning_rate_lb, learning_rate_ub) %>%
   ggplot(mapping = aes(x = state_county_rev, y = learning_rate)) +
   geom_pointrange(mapping = aes (x = state_county_rev, y = learning_rate, ymin = learning_rate_lb, ymax = learning_rate_ub)) +
@@ -1210,6 +1551,17 @@ data$all %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Effective public education") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note((pull(info, notes2)),
+    plural = TRUE),
+  heights = c(25, 1.5, 4)
+)
 ```
 
 <br>
@@ -1218,7 +1570,7 @@ data$all %>%
 
 ```{r learning-table3}
 
-data$race_ethnicity %>%
+plot <- data$race_ethnicity %>%
   select(state_county_rev, subgroup, starts_with("learning_rate")) %>%
   filter(subgroup != "All") %>%
   filter(subgroup != "Other Races and Ethnicities") %>%
@@ -1232,6 +1584,18 @@ data$race_ethnicity %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Effective public education") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note((pull(info, notes2)),
+    plural = TRUE),
+  heights = c(25, 1.5, 4)
+)
+
 ```
 
 <br>
@@ -1242,7 +1606,7 @@ data$race_ethnicity %>%
 
 ```{r student-poverty}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, frpl40_white, frpl40_black,  frpl40_hispanic) %>%
   pivot_longer(-state_county_rev, names_to = "Student", values_to = "Share") %>%
   mutate(Student = recode(Student, 
@@ -1260,6 +1624,18 @@ data$all %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Student poverty concentration") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1.5, 3)
+)
+
 ```
 
 <br>
@@ -1270,7 +1646,7 @@ data$all %>%
 
 ```{r college-readiness}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, share_hs_degree, share_hs_degree_lb, share_hs_degree_ub) %>%
   ggplot(mapping = aes(x = state_county_rev, y = share_hs_degree)) +
   geom_pointrange(mapping = aes (x = state_county_rev, y = share_hs_degree, ymin = share_hs_degree_lb, ymax = share_hs_degree_ub)) +
@@ -1283,6 +1659,18 @@ data$all %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "College readiness") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note((pull(info, notes2)),
+    plural = TRUE),
+  heights = c(25, 1, 2)
+)
+
 ```
 
 <br><br>
@@ -1291,7 +1679,7 @@ data$all %>%
 
 ```{r college-readiness-table3}
 
-data$race_ethnicity %>%
+plot <- data$race_ethnicity %>%
   select(state_county_rev, subgroup, starts_with("share_hs_degree")) %>%
   filter(subgroup != "All") %>%
   ggplot(mapping = aes(
@@ -1308,6 +1696,19 @@ data$race_ethnicity %>%
   coord_flip() +
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
+
+info <- m_info %>%
+  filter(metric_name == "College readiness") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note((pull(info, notes2)),
+    plural = TRUE),
+  heights = c(25, 1, 2)
+)
+
 ```
 
 <br><br>
@@ -1323,7 +1724,7 @@ data$race_ethnicity %>%
 
 ```{r employment}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, share_employed, share_employed_lb, share_employed_ub) %>%
   ggplot(mapping = aes(x = state_county_rev, y = share_employed)) +
   geom_pointrange(mapping = aes (x = state_county_rev, y = share_employed, ymin = share_employed_lb, ymax = share_employed_ub)) +
@@ -1336,6 +1737,18 @@ data$all %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Employment") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note((pull(info, notes2)),
+    plural = TRUE),
+  heights = c(25, 1, 2)
+)
+
 ```
 
 <br>
@@ -1344,7 +1757,7 @@ data$all %>%
 
 ```{r employment-table3}
 
-data$race_ethnicity %>%
+plot <- data$race_ethnicity %>%
   select(state_county_rev, subgroup, starts_with("share_employed")) %>%
   filter(subgroup != "All") %>%
   ggplot(mapping = aes(
@@ -1363,6 +1776,18 @@ data$race_ethnicity %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Employment") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note((pull(info, notes2)),
+    plural = TRUE),
+  heights = c(25, 1, 2)
+)
+
 ```
 
 <br>
@@ -1373,7 +1798,7 @@ data$race_ethnicity %>%
 
 ```{r wages}
 
-data$all %>%
+plot <- data$all %>%
   select(state_county_rev, average_to_living_wage_ratio) %>%
   ggplot(mapping = aes(x = state_county_rev, y = average_to_living_wage_ratio)) +
   geom_col() +
@@ -1386,6 +1811,18 @@ data$all %>%
   theme(panel.grid.major.x = ggplot2::element_line(colour = "#dedddd"),
         panel.grid.major.y = ggplot2::element_blank())
 
+info <- m_info %>%
+  filter(metric_name == "Access to jobs paying a living wage") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1.5, 4)
+)
+
 ```
 
 <br><br>
@@ -1394,7 +1831,7 @@ data$all %>%
 
 ```{r wages-table3}
 
-data$longitudinal %>%
+plot <- data$longitudinal %>%
   select(state_county, year, average_to_living_wage_ratio) %>%
   filter(year %in% c(2014, 2018)) %>%
   ggplot(aes(year, average_to_living_wage_ratio)) +
@@ -1408,6 +1845,19 @@ data$longitudinal %>%
   labs(x = "Year",
        y = NULL,
        title ="Metric: Ratio of pay on the average job to the cost of living")
+
+info <- m_info %>%
+  filter(metric_name == "Access to jobs paying a living wage") %>%
+  mutate(notes2 = str_replace_all(notes2, "<br><br>", ""))
+
+urbn_plot(
+  plot,
+  urbn_source(pull(info, source_data)),
+  urbn_note(paste(pull(info, notes2), "The Confidence Interval for this metric is not available at this time."),
+    plural = TRUE),
+  heights = c(25, 1.5, 4)
+)
+
 ```
 
 <br><br>
