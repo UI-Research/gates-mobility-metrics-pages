@@ -45,7 +45,7 @@ prepped07 <- prep_pages(url = "data/07_cfon.csv",
 
 render_pages(prepped_object = prepped07)
 
-# RFI finalists 2021-01-08 (data viz)
+# RFI finalists 2021-07-17 (data viz)
 
 prepped09 <- prep_pages(url = "data/05_rfi-finalists.csv",
                         output_directory = "factsheets/09_rfi-finalists-viz")
