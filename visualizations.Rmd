@@ -480,14 +480,6 @@ plot <- data$longitudinal %>%
 
 info <- m_info %>%
   filter(metric_name == "Affordable housing")
-
-urbn_plot(
-  plot,
-  urbn_source(pull(info, source_data)),
-  urbn_note((pull(info, notes2)),
-    plural = TRUE),
-  heights = c(25, 1.5, 4)
-)
   
 info <- m_info %>%
   filter(metric_name == "Affordable housing")
@@ -1577,7 +1569,7 @@ plot <- data$race_ethnicity %>%
   ggplot(mapping = aes(x = state_county_rev, y = learning_rate, ymin = learning_rate_lb, ymax = learning_rate_ub, color = subgroup)) +
   geom_pointrange(position = position_dodge(width = 0.6)) +
   #facet_wrap(~state_county) +
-  labs(x = NULL, y = NULL, title ="Metric: Average per grade change in English Language Arts achievement between third and eighth grades") +  
+  labs(x = NULL, y = NULL, title ="Metric: Average per grade change in English Language Arts achievement between third and\neighth grades") +  
   scale_y_continuous(limits = c(0, NA)) + 
   remove_ticks() +
   coord_flip() +
