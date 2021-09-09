@@ -88,6 +88,12 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 * [Ohio](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/07_cfon/39035-Cuyahoga-Ohio_435/)
 * [Washington](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/07_cfon/53033-King-Washington_159/)
 
+### CFLeads
+
+* [Community Foundation for Greater Buffalo](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/11_cfleads/36029-Erie-Community-Foundation-for-Greater-Buffalo_102/)
+* [Greater Cincinnati Foundation](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/11_cfleads/39061-Hamilton-Greater-Cincinnati-Foundation_573/)
+* Southwest Initiative Foundation ([Page 1](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/11_cfleads/27011-Big-Stone-Southwest-Initiative-Foundation-1_821/), [Page 2](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/11_cfleads/27085-McLeod-Southwest-Initiative-Foundation-2_908/), [Page 3](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/11_cfleads/27151-Swift-Southwest-Initiative-Foundation-3_762/))
+
 ## Contributors
 
 ### Authors

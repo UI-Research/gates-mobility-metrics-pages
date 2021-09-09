@@ -52,6 +52,18 @@ prepped09 <- prep_pages(url = "data/05_rfi-finalists.csv",
 
 render_pages(prepped_object = prepped09, input = "visualizations.Rmd")
 
+# cfLeads 2021-09-09
+prepped11 <- prep_pages(url = "data/11_cfleads.csv",
+                        output_directory = "factsheets/11_cfleads",
+                        state_title = TRUE)
+
+render_pages(prepped_object = prepped11)
+
+
+
+
+
+
 
 
 
