@@ -66,7 +66,11 @@ prepped12 <- prep_pages(url = "data/12_hampton-virginia.csv",
 
 render_pages(prepped_object = prepped12)
 
+# Cook, Illinois 2021-11-05
+prepped13 <- prep_pages(url = "data/13_cook-illinois.csv",
+                        output_directory = "factsheets/13_cook-illinois")
 
+render_pages(prepped_object = prepped13)
 
 
 

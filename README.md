@@ -99,6 +99,10 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 * [Hampton, Virginia](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/12_hampton-virginia/51650-Hampton-Virginia_909/)
 
+## Cook County, Illinois
+
+* [Cook County, Illinois](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/13_cook-illinois/17031-Cook-Illinois_757/)
+
 ## Contributors
 
 ### Authors
