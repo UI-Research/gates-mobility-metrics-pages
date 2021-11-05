@@ -218,6 +218,9 @@ data <- data %>%
   mutate(state_county = gsub('County', '', state_county)) %>% 
   mutate(state_county = rm_white_comma(state_county)) 
 
+data <- data %>%
+  mutate(state_county = str_to_title(state_county))
+
 if (!params$state_title) {
   
   #get the upward county - the first element in the parameter 

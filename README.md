@@ -95,6 +95,10 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 * [Greater Cincinnati Foundation](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/11_cfleads/39061-Hamilton-Greater-Cincinnati-Foundation_573/)
 * Southwest Initiative Foundation ([Page 1](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/11_cfleads/27011-Big-Stone-Southwest-Initiative-Foundation-1_821/), [Page 2](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/11_cfleads/27085-McLeod-Southwest-Initiative-Foundation-2_908/), [Page 3](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/11_cfleads/27151-Swift-Southwest-Initiative-Foundation-3_762/))
 
+## Hampton, Virginia
+
+* [Hampton, Virginia](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/12_hampton-virginia/51650-Hampton-Virginia_909/)
+
 ## Contributors
 
 ### Authors

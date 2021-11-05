@@ -60,7 +60,11 @@ prepped11 <- prep_pages(url = "data/11_cfleads.csv",
 render_pages(prepped_object = prepped11)
 
 
+# Hampton City, Virginia 2021-11-05
+prepped12 <- prep_pages(url = "data/12_hampton-virginia.csv",
+                        output_directory = "factsheets/12_hampton-virginia")
 
+render_pages(prepped_object = prepped12)
 
 
 
