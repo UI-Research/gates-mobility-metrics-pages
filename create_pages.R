@@ -72,7 +72,11 @@ prepped13 <- prep_pages(url = "data/13_cook-illinois.csv",
 
 render_pages(prepped_object = prepped13)
 
+# RFI finalists slim 2021-11-18
+prepped14 <- prep_pages(url = "data/14_rfi-finalists-slim.csv",
+                        output_directory = "factsheets/14_rfi-finalists-slim")
 
+render_pages(prepped_object = prepped14)
 
 
 
