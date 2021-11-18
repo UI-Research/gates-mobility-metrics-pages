@@ -49,8 +49,6 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 ### Beta Cohort
 
-
-
 * Alameda, California ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06001-Alameda-California_598), [Viz Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/09_rfi-finalists-viz/06001-Alameda-California_598))
 * Alameda, California Neighbors 1 ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06001-Alameda-Neighbors-1-California_942), [Viz Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/09_rfi-finalists-viz/06001-Alameda-Neighbors-1-California_942))
 * Alameda, California Neighbors 2 ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/05_rfi-finalists/06001-Alameda-Neighbors-2-California_683), [Viz Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/09_rfi-finalists-viz/06001-Alameda-Neighbors-2-California_683))
@@ -102,6 +100,17 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 ## Cook County, Illinois
 
 * [Cook County, Illinois](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/13_cook-illinois/17031-Cook-Illinois_757/)
+
+### Beta Cohort (slim)
+
+* Alameda, California ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/14_rfi-finalists-slim/06001-Alameda-California_1), Viz Page)
+* Riverside, California ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/14_rfi-finalists-slim/06065-Riverside-California_1), Viz Page)
+* Washington, DC ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/14_rfi-finalists-slim/11001-District-of-Columbia-District-of-Columbia_1), Viz Page)
+* St. Lucie, Florida ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/14_rfi-finalists-slim/12111-St-Lucie-Florida_1), Viz Page)
+* Ramsey, Minnesota ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/14_rfi-finalists-slim/27123-Ramsey-Minnesota_1), Viz Page)
+* Boone, Missouri ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/14_rfi-finalists-slim/29019-Boone-Missouri_1), Viz Page)
+* Summit, Ohio ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/14_rfi-finalists-slim/39153-County-of-Summit-Ohio-Ohio_1), Viz Page)
+* Philadelphia, Pennsylvania ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/14_rfi-finalists-slim/42101-Philadelphia-Pennsylvania_1), Viz Page)
 
 ## Contributors
 
