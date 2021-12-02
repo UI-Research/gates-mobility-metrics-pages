@@ -32,7 +32,7 @@ Household income is a standard measure of financial well-being. The Working Grou
 
 **Availability:** Data on household income are available annually from the Census Bureau’s American Community Survey (ACS).
 
-**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates for all jurisdictions in the county. Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
+**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. Decennial Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
 
 **Geography:** Data are available at the county and metro levels.
 
@@ -54,7 +54,7 @@ The measure accounts for the share of people with a credit bureau record in an a
 
 **Availability:** Drawn directly from credit reports, the credit bureau data are national and uniform across the country. The data are restricted and are not accessible directly from credit bureaus but are made available publicly on the Urban Institute's [Debt in America website](https://apps.urban.org/features/debt-interactive-map/?type=overall&variable=pct_debt_collections). 
 
-**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates for all jurisdictions in the county. Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
+**Frequency:** These data can be updated annually. 
 
 **Geography:** The share of households with debt in collections can be computed by zip code or county 
 
@@ -76,7 +76,7 @@ This metric reports the number of available housing units affordable for househo
 
 **Validity:** Affordable housing ratios of this type are widely applied in studies of local housing market conditions and trends (Getsinger et al. 2017; Turner et al. 2019). Both the income categories and the affordability standard are well established and accepted in both research and policy.
 
-**Availability:** These ratios can be constructed using data from the Merican Community Survey (ACS) and income categories defined by the US Department of Housing and Urban Development, both of which are publicly available nationwide.
+**Availability:** These ratios can be constructed using data from the American Community Survey (ACS) and income categories defined by the US Department of Housing and Urban Development, both of which are publicly available nationwide.
 
 **Frequency:** These ratios can be updated annually.
 
@@ -122,9 +122,9 @@ The Working Group advised considering the share of children living in each of si
 
 **Validity:** Children’s living arrangements are recorded in household rosters used in several federal datasets.
 
-**Availability:** Data on living arrangements are available annually from the Census Bureau’s American Community Survey (ASC).
+**Availability:** Data on living arrangements are available annually from the Census Bureau’s American Community Survey (ACS).
 
-**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates for all jurisdictions in the county. Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
+**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. Decennial Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
 
 **Geography:** Data are available at the county and metro levels.
 
@@ -446,7 +446,7 @@ The FBI’s Uniform Crime Reporting (UCR) Program provides a standard, well-defi
 
 **Subgroups:** The data include demographic information—age, race, and gender—for those arrested, and for the victims and offenders of homicides only (not for the other crimes in the index). 
 
-**Limitations:** Reporting is not mandatory, and although most jurisdictions provide data, UCR does not capture the universe of reported index crimes across the United States. UCR measures crime reported to the police, so unreported crime is not captured in these data. An FBI analysis estimated that up to half of violent crime goes unreported to the local police (Langton and Berzofsky 2012), and research finds that some neighborhoods are less likely to report violent crime, especially where trust of police is low (Desmond, Papachristos, and Kirk 2016; Goudriaan, Wittebrood, and Nieuwbeerta 2006). As a place-based measure, reported crime is affected by mobility in and out of the jurisdiction. Crime rates are based on the number of incidents per 100,000 residents. If the number of residents increases, the crime rate could go down without any change in the number of reported incidents. Also, crime tends to be concentrated in certain areas. Similarly, if new residents are moving to places where crime rates were already low, the populations and areas experiencing the most crime may also not see any change even if city-wide rates decrease. Relatedly, UCR does not provide data on crime at the neighborhood level, so it cannot track changes in crime or compare different places within a jurisdiction. Multiple law enforcement jurisdiction (e.g., state, county, city, university, tribal) can fall within a single county. Because of this county level, crime counts may be under-estimated in counties where some agency data is missing.
+**Limitations:** Reporting is not mandatory, and although most jurisdictions provide data, UCR does not capture the universe of reported index crimes across the United States. UCR measures crime reported to the police, so unreported crime is not captured in these data. An FBI analysis estimated that up to half of violent crime goes unreported to the local police (Langton and Berzofsky 2012), and research finds that some neighborhoods are less likely to report violent crime, especially where trust of police is low (Desmond, Papachristos, and Kirk 2016; Goudriaan, Wittebrood, and Nieuwbeerta 2006). As a place-based measure, reported crime is affected by mobility in and out of the jurisdiction. Crime rates are based on the number of incidents per 100,000 residents. If the number of residents increases, the crime rate could go down without any change in the number of reported incidents. Also, crime tends to be concentrated in certain areas. Similarly, if new residents are moving to places where crime rates were already low, the populations and areas experiencing the most crime may also not see any change even if city-wide rates decrease. Relatedly, UCR does not provide data on crime at the neighborhood level, so it cannot track changes in crime or compare different places within a jurisdiction. Multiple law enforcement jurisdictions (e.g., state, county, city, university, tribal) can fall within a single county. Because of this county level, crime counts may be under-estimated in counties where some agency data is missing.
 
 <br>
 
@@ -486,7 +486,7 @@ This metric measures the share of a jurisdiction’s three- to four-year old chi
 
 **Availability:** Enrollment data are available annually from the ACS.
 
-**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates for all jurisdictions in the county. Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
+**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. Decennial Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
 
 **Geography:** Data are available at the county and metro levels.
 
@@ -552,7 +552,7 @@ This metric is the ratio of the number 19- and 20-year olds with a high school d
 
 **Availability:** Data on educational attainment are available annually from the ACS.
 
-**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates for all jurisdictions in the county. Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
+**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. Decennial Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
 
 **Geography:** Data are available at the county and metro levels.
 
@@ -576,7 +576,7 @@ This metric is the ratio of the number of employed adults ages 25 to 54 in a giv
 
 **Availability:** Data on employment are available from the American Community Survey (ACS).
 
-**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates for all jurisdictions in the county. Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
+**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. Decennial Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
 
 **Geography:** Data are available at the county and metro levels.
 
@@ -584,7 +584,7 @@ This metric is the ratio of the number of employed adults ages 25 to 54 in a giv
 
 **Subgroups:** The data can be broken down by race or ethnicity, gender, and other demographic factors. For less populous areas and for certain demographic groups, several years of data may need to be pooled to provide reliable estimates. 
 
-**Limitations:** The BLS reports the official EP monthly for those age 16 and up as well those age 20 and up. As such, the BLS-reported measure could be lower for jurisdictions that have many young adults attending college rather than working as well as for those that have many retirees. Consequently, for our purposes, we recommend computing the EP for adults ages 25 to 54 using data from the ACS rather than relying on BLS reports. Even when using ACS data, the EP can drop if unemployed people leave an area or if working people move in.he measure can only be computed for the 365 largest counties. 
+**Limitations:** The BLS reports the official EP monthly for those age 16 and up as well those age 20 and up. As such, the BLS-reported measure could be lower for jurisdictions that have many young adults attending college rather than working as well as for those that have many retirees. Consequently, for our purposes, we recommend computing the EP for adults ages 25 to 54 using data from the ACS rather than relying on BLS reports. Even when using ACS data, the EP can drop if unemployed people leave an area or if working people move in. The measure can only be computed for the 365 largest counties. 
 
 <br>
 
@@ -592,7 +592,7 @@ This metric is the ratio of the number of employed adults ages 25 to 54 in a giv
 
 **Metric: Ratio of pay on the average job to the cost of living**
 
-This metric shows what a “typical” job pays relative to the cost of living in a particular area. The metric is computed by dividing the average earnings from the median job in an area by the cost of meeting a family of three’s basic expenses in that area. 
+This metric shows what a “typical” job pays relative to the cost of living in a particular area. The metric is computed by dividing the average earnings for a job in an area by the cost of meeting a family of three’s basic expenses in that area. 
 
 **Validity:** Jurisdictions in which typical jobs pay a greater share of the local cost of living provide more opportunities for their residents to move out of poverty. Employer reported data on wages paid are a reliable indicator of what jobs pay, and our metric is based on data collected and disseminated by the BLS. Data on what it costs to meet basic expenses requires detailed studies of the cost of food, clothing, shelter, health care, and work-related expenses for each jurisdiction. We rely on the work of well-regarded scholars at the Massachusetts Institute of Technology (MIT) to obtain estimates of the local cost of living. 
 
