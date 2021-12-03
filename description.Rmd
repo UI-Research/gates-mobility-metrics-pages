@@ -32,7 +32,7 @@ Household income is a standard measure of financial well-being. The Working Grou
 
 **Availability:** Data on household income are available annually from the Census Bureau’s American Community Survey (ACS).
 
-**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. Decennial Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
+**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
 
 **Geography:** Data are available at the county and metro levels.
 
@@ -124,7 +124,7 @@ The Working Group advised considering the share of children living in each of si
 
 **Availability:** Data on living arrangements are available annually from the Census Bureau’s American Community Survey (ACS).
 
-**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. Decennial Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
+**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
 
 **Geography:** Data are available at the county and metro levels.
 
@@ -486,7 +486,7 @@ This metric measures the share of a jurisdiction’s three- to four-year old chi
 
 **Availability:** Enrollment data are available annually from the ACS.
 
-**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. Decennial Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
+**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
 
 **Geography:** Data are available at the county and metro levels.
 
@@ -552,7 +552,7 @@ This metric is the ratio of the number 19- and 20-year olds with a high school d
 
 **Availability:** Data on educational attainment are available annually from the ACS.
 
-**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. Decennial Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
+**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
 
 **Geography:** Data are available at the county and metro levels.
 
@@ -576,7 +576,7 @@ This metric is the ratio of the number of employed adults ages 25 to 54 in a giv
 
 **Availability:** Data on employment are available from the American Community Survey (ACS).
 
-**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. Decennial Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
+**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
 
 **Geography:** Data are available at the county and metro levels.
 
