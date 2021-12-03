@@ -30,9 +30,9 @@ Household income is a standard measure of financial well-being. The Working Grou
 
 **Validity:** These are well-established and frequently used measures to assess the financial well-being of families by several federal agencies and many scholars.
 
-**Availability:** Data on household income are available annually from the Census Bureau’s ACS.
+**Availability:** Data on household income are available annually from the Census Bureau’s American Community Survey (ACS).
 
-**Frequency:** The data are collected annually. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
+**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. Decennial Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
 
 **Geography:** Data are available at the county and metro levels.
 
@@ -54,7 +54,7 @@ The measure accounts for the share of people with a credit bureau record in an a
 
 **Availability:** Drawn directly from credit reports, the credit bureau data are national and uniform across the country. The data are restricted and are not accessible directly from credit bureaus but are made available publicly on the Urban Institute's [Debt in America website](https://apps.urban.org/features/debt-interactive-map/?type=overall&variable=pct_debt_collections). 
 
-**Frequency:** These data can be updated annually.
+**Frequency:** These data can be updated annually. 
 
 **Geography:** The share of households with debt in collections can be computed by zip code or county 
 
@@ -76,7 +76,7 @@ This metric reports the number of available housing units affordable for househo
 
 **Validity:** Affordable housing ratios of this type are widely applied in studies of local housing market conditions and trends (Getsinger et al. 2017; Turner et al. 2019). Both the income categories and the affordability standard are well established and accepted in both research and policy.
 
-**Availability:** These ratios can be constructed using data from the ACS and income categories defined by the US Department of Housing and Urban Development, both of which are publicly available nationwide.
+**Availability:** These ratios can be constructed using data from the American Community Survey (ACS) and income categories defined by the US Department of Housing and Urban Development, both of which are publicly available nationwide.
 
 **Frequency:** These ratios can be updated annually.
 
@@ -122,9 +122,9 @@ The Working Group advised considering the share of children living in each of si
 
 **Validity:** Children’s living arrangements are recorded in household rosters used in several federal datasets.
 
-**Availability:** Data on living arrangements are available annually from the Census Bureau’s American Community Survey.
+**Availability:** Data on living arrangements are available annually from the Census Bureau’s American Community Survey (ACS).
 
-**Frequency:** The data are collected annually. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
+**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. Decennial Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
 
 **Geography:** Data are available at the county and metro levels.
 
@@ -178,7 +178,7 @@ This metric denotes that an area has a shortage of primary care providers based 
 
 **Subgroups:** This metric can be calculated separately for low-income populations, including migrant farm/seasonal workers, Medicaid-eligible population, and Native American. 
 
-**Limitations:** Even though HPSA status is a characteristic of the local area, some elements used to determine the designation are based on the characteristics of the local population; as such, changing residential mobility patterns may influence this metric. While facilities do not opt-in to be evaluated as an HPSA, localities request to be evaluated as a geographic HPSA or a population-based HPSA. Localities may choose to withdraw as a geographic HPSA in favor of a population-based HPSA (and vice versa) if they believe they may become eligible for more desirable resources. 
+**Limitations:** Even though HPSA status is a characteristic of the local area, some elements used to determine the designation are based on the characteristics of the local population; as such, changing residential mobility patterns may influence this metric. While facilities do not opt-in to be evaluated as an HPSA, localities request to be evaluated as a geographic HPSA or a population-based HPSA. Localities may choose to withdraw as a geographic HPSA in favor of a population-based HPSA (and vice versa) if they believe they may become eligible for more desirable resources. Due to limitations of these data, a binary indicator without additional information on the magnitude of the shortage is being used. Any geography designated as an HPSA (i.e. score >0), we indicate as '1'. Otherwise, a geography is '0', which means it is not an area with a shortage of primary care health professionals.
 
 <br>
 
@@ -200,7 +200,7 @@ A child born weighing less than 5 pounds 8 ounces (<2,500 grams) is considered t
 
 **Subgroups:** The share of children born with low birthweights can be broken out by race or ethnicity and mother’s age. 
 
-**Limitations:** Data are not readily available at lower levels of geography, such as neighborhoods, where disparities by race and socioeconomic status within a city are most notable. Large movements of women with risky pregnancies moving in or out of a jurisdiction could influence this metric.
+**Limitations:** Data are not readily available at lower levels of geography, such as neighborhoods, where disparities by race and socioeconomic status within a county are most notable. Large movements of women with risky pregnancies moving in or out of a jurisdiction could influence this metric.
 
 <br>
 
@@ -262,7 +262,7 @@ This metric measures the share of a city’s or county’s residents experiencin
 
 **Validity:** Measures of poverty concentration have been widely used to measure the extent and severity of economic exclusion and isolation. The more concentrated and separate people in poverty are from better-resourced neighbors, the more isolated they are from the larger community and the social and economic resources and opportunities it can provide.
 
-**Availability:** Data required to compute poverty concentration are available annually from the Census Bureau’s American Community Survey.
+**Availability:** Data required to compute poverty concentration are available annually from the Census Bureau’s American Community Survey (ACS).
 
 **Frequency:** This measure can be computed annually.
 
@@ -326,7 +326,7 @@ This metric is a single-item survey developed by Aron, Aron, and Smollan (1992) 
 
 This survey measures the resources provided by a person’s social networks, including both close relations and extended relations, and our metric will use a few items from this survey. The development of the survey builds on the work of Robert D. Putnam (2000) and the strategies for civic revitalization outlined in a report by the Saguaro Seminar (Putnam and Feldstein 2004). The survey collects information on the relative strengths and areas for improvement in communities' civic behavior (Helliwell and Putnam 2004). The metric for social capital is a selection of seven questions from the Social Capital Benchmark Survey covering participation in community organizations, religious attendance, number and racial diversity of friends, engagement with neighborhoods, and the ability to find information on new jobs. These questions provide indicators of generalized social capital, bonding social capital, and bridging social capital at the individual level. No widely available data on social capital exist at the local level, so this metric would require new data collection. 
 
-**Validity:** Measures of social capital have repeatedly been shown to be associated with individual and community well-being and upward mobility (Chetty et al. 2014; Kim, Subramanian, and Kawachi 2006; Putnam 2000; Sampson, Morenoff, and Earls 1999).  However, no standard measure or set of measures exist to capture the relationship between social capital and mobility. To capture both bonding and bridging social capital, we use set of questions largely drawn from the Social Capital Community Benchmark Survey, developed by Putnam and the Saguaro Seminar at the Harvard Kennedy School.  Though the survey and larger blocks of questions from the survey have been used in peer-reviewed studies before, the smaller subset of questions for this metric has not yet been validated. We anticipate using the initial round of data collection to validate this metric for widespread use and to refine and revise as necessary. 
+**Validity:** Measures of social capital have repeatedly been shown to be associated with individual and community well-being and upward mobility (Chetty et al. 2014; Kim, Subramanian, and Kawachi 2006; Putnam 2000; Sampson, Morenoff, and Earls 1999).  However, no standard measure or set of measures exist to capture the relationship between social capital and mobility. To capture both bonding and bridging social capital, we use a set of questions largely drawn from the Social Capital Community Benchmark Survey, developed by Putnam and the Saguaro Seminar at the Harvard Kennedy School.  Though the survey and larger blocks of questions from the survey have been used in peer-reviewed studies before, the smaller subset of questions for this metric has not yet been validated. We anticipate using the initial round of data collection to validate this metric for widespread use and to refine and revise as necessary. 
 
 **Availability:** This information is not widely enough available in existing data sources to provide coverage at the local level across many geographies. To ease data collection, we have attempted to minimize the number of questions needed to measure each of the indicators of social capital (e.g., generalized social capital and bridging and bonding social capital). 
 
@@ -446,7 +446,7 @@ The FBI’s Uniform Crime Reporting (UCR) Program provides a standard, well-defi
 
 **Subgroups:** The data include demographic information—age, race, and gender—for those arrested, and for the victims and offenders of homicides only (not for the other crimes in the index). 
 
-**Limitations:** Reporting is not mandatory, and although most jurisdictions provide data, UCR does not capture the universe of reported index crimes across the United States. UCR measures crime reported to the police, so unreported crime is not captured in these data. An FBI analysis estimated that up to half of violent crime goes unreported to the local police (Langton and Berzofsky 2012), and research finds that some neighborhoods are less likely to report violent crime, especially where trust of police is low (Desmond, Papachristos, and Kirk 2016; Goudriaan, Wittebrood, and Nieuwbeerta 2006). As a place-based measure, reported crime is affected by mobility in and out of the jurisdiction. Crime rates are based on the number of incidents per 100,000 residents. If the number of residents increases, the crime rate could go down without any change in the number of reported incidents. Also, crime tends to be concentrated in certain areas. Similarly, if new residents are moving to places where crime rates were already low, the populations and areas experiencing the most crime may also not see any change even if city-wide rates decrease. Relatedly, UCR does not provide data on crime at the neighborhood level, so it cannot track changes in crime or compare different places within a jurisdiction. These data are missing crimes that occurred in counties outside of the jurisdiction of the county. This excludes any crimes that take place within a county but in the jurisdiction of a city, tribal, university, or other law enforcement agency within the county. These data also exclude any crimes that occurred in the county under the jurisdiction of the state law enforcement agency.
+**Limitations:** Reporting is not mandatory, and although most jurisdictions provide data, UCR does not capture the universe of reported index crimes across the United States. UCR measures crime reported to the police, so unreported crime is not captured in these data. An FBI analysis estimated that up to half of violent crime goes unreported to the local police (Langton and Berzofsky 2012), and research finds that some neighborhoods are less likely to report violent crime, especially where trust of police is low (Desmond, Papachristos, and Kirk 2016; Goudriaan, Wittebrood, and Nieuwbeerta 2006). As a place-based measure, reported crime is affected by mobility in and out of the jurisdiction. Crime rates are based on the number of incidents per 100,000 residents. If the number of residents increases, the crime rate could go down without any change in the number of reported incidents. Also, crime tends to be concentrated in certain areas. Similarly, if new residents are moving to places where crime rates were already low, the populations and areas experiencing the most crime may also not see any change even if city-wide rates decrease. Relatedly, UCR does not provide data on crime at the neighborhood level, so it cannot track changes in crime or compare different places within a jurisdiction. Multiple law enforcement jurisdictions (e.g., state, county, city, university, tribal) can fall within a single county. Because of this county level, crime counts may be under-estimated in counties where some agency data is missing.
 
 <br>
 
@@ -454,7 +454,7 @@ The FBI’s Uniform Crime Reporting (UCR) Program provides a standard, well-defi
 
 **Metric: Rate of juvenile justice arrests**
 
-The FBI’s UCR Program also provides statistics on the number of arrests of people under age 18. Because individuals can be arrested multiple times, the data reports the number of arrests and not individuals. The metric is for juvenile (defined as under 18 years of age) arrest for any crime, but the data can be broken down by offense type. Arrest rates can be calculated using population data from the ACS. 
+The FBI’s UCR Program also provides statistics on the number of arrests of people under age 18. Because individuals can be arrested multiple times, the data reports the number of arrests and not individuals. The metric is for juvenile (defined as under 18 years of age and over 9 years of age) arrest for any crime, but the data can be broken down by offense type. Arrest rates can be calculated using population data from the American Community Survey (ACS).
 
 **Validity:** Although arrest behavior of the total population may be confounded by many factors, arrests among juvenile offenders can be more closely tied to overly punitive policing behavior. Research finds that juveniles are more likely to be arrested than adult suspects, after controlling for suspect race, gender, seriousness of offense, and amount of evidence (Brown, Novak, and Frank 2009). Research also finds large and disruptive impacts on adult outcomes; juvenile detention is associated with lower educational attainment, lower rates of employment, and higher rates of criminal offending and incarceration as an adult (Aizer and Doyle 2015). 
 
@@ -464,7 +464,7 @@ The FBI’s UCR Program also provides statistics on the number of arrests of peo
 
 **Geography:** The UCR data are available at the city and county level, for cities with population greater than 10,000 and for counties with population greater than 25,000. 
 
-**Consistency:** The data are consistent across the jurisdictions that provide data to the FBI, because the FBI establishes the definitions of the crimes included in the index. Data may be accumulated and compiled differently at the local level.
+**Consistency:** The data are consistent across the jurisdictions that provide data to the FBI, because the FBI establishes the definitions of the crimes included in the index and of juvenile as under 18 years of age regardless of state definition. Data may be accumulated and compiled differently at the local level.
 
 **Subgroups:** This metric necessarily measures people within a particular age group but also provides data on age subgroups (e.g. 10–12, 13–15, and 16–17) as well as by race or ethnicity and gender.
 
@@ -486,7 +486,7 @@ This metric measures the share of a jurisdiction’s three- to four-year old chi
 
 **Availability:** Enrollment data are available annually from the ACS.
 
-**Frequency:** The data are collected annually. For subgroup analyses for less populated areas, it may be necessary to pool multiple years of data to obtain reliable estimates.
+**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. Decennial Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
 
 **Geography:** Data are available at the county and metro levels.
 
@@ -552,7 +552,7 @@ This metric is the ratio of the number 19- and 20-year olds with a high school d
 
 **Availability:** Data on educational attainment are available annually from the ACS.
 
-**Frequency:** The data are collected annually. For subgroup analyses for less populated areas, it may be necessary to pool multiple years of data to obtain reliable estimates.
+**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. Decennial Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
 
 **Geography:** Data are available at the county and metro levels.
 
@@ -574,9 +574,9 @@ This metric is the ratio of the number of employed adults ages 25 to 54 in a giv
 
 **Validity:** Employment captures what share of adults in a jurisdiction are engaging in work for pay. The employment-to-population ratio (EP) is a standard labor market metric reported monthly by the Bureau of Labor Statistics (BLS) and based on the Current Population Survey. The Working Group recommends applying the methodology used to compute the EP to similar data collected in the ACS. 
 
-**Availability:** Data on employment are available from the ACS.
+**Availability:** Data on employment are available from the American Community Survey (ACS).
 
-**Frequency:** The data are collected annually. For subgroup analyses for less populated areas, it may be necessary to pool multiple years of data to obtain reliable estimates.
+**Frequency:** Survey data are collected annually and used to create 1- and 5-year estimates. Decennial Census data is collected every 10 years through the US Census. For subgroup analyses for less populated areas, it may be necessary to pool several years of data to obtain reliable estimates.
 
 **Geography:** Data are available at the county and metro levels.
 
@@ -584,7 +584,7 @@ This metric is the ratio of the number of employed adults ages 25 to 54 in a giv
 
 **Subgroups:** The data can be broken down by race or ethnicity, gender, and other demographic factors. For less populous areas and for certain demographic groups, several years of data may need to be pooled to provide reliable estimates. 
 
-**Limitations:** The BLS reports the official EP monthly for those age 16 and up as well those age 20 and up. As such, the BLS-reported measure could be lower for jurisdictions that have many young adults attending college rather than working as well as for those that have many retirees. Consequently, for our purposes, we recommend computing the EP for adults ages 25 to 54 using data from the ACS rather than relying on BLS reports. Even when using ACS data, the EP can drop if unemployed people leave an area or if working people move in.
+**Limitations:** The BLS reports the official EP monthly for those age 16 and up as well those age 20 and up. As such, the BLS-reported measure could be lower for jurisdictions that have many young adults attending college rather than working as well as for those that have many retirees. Consequently, for our purposes, we recommend computing the EP for adults ages 25 to 54 using data from the ACS rather than relying on BLS reports. Even when using ACS data, the EP can drop if unemployed people leave an area or if working people move in. The measure can only be computed for the 365 largest counties. 
 
 <br>
 
@@ -592,7 +592,7 @@ This metric is the ratio of the number of employed adults ages 25 to 54 in a giv
 
 **Metric: Ratio of pay on the average job to the cost of living**
 
-This metric shows what a “typical” job pays relative to the cost of living in a particular area. The metric is computed by dividing the average earnings from the median job in an area by the cost of meeting a family of four’s basic expenses in that area. 
+This metric shows what a “typical” job pays relative to the cost of living in a particular area. The metric is computed by dividing the average earnings for a job in an area by the cost of meeting a family of three’s basic expenses in that area. 
 
 **Validity:** Jurisdictions in which typical jobs pay a greater share of the local cost of living provide more opportunities for their residents to move out of poverty. Employer reported data on wages paid are a reliable indicator of what jobs pay, and our metric is based on data collected and disseminated by the BLS. Data on what it costs to meet basic expenses requires detailed studies of the cost of food, clothing, shelter, health care, and work-related expenses for each jurisdiction. We rely on the work of well-regarded scholars at the Massachusetts Institute of Technology (MIT) to obtain estimates of the local cost of living. 
 
