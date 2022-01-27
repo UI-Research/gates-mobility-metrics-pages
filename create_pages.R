@@ -78,5 +78,15 @@ prepped14 <- prep_pages(url = "data/14_rfi-finalists-slim.csv",
 
 render_pages(prepped_object = prepped14)
 
+# Tennessee counties
+prepped15 <- prep_pages(url = "data/15_tennessee-counties.csv",
+                        output_directory = "factsheets/15_tennessee-counties",
+                        state_title = TRUE)
 
+render_pages(prepped_object = prepped15)
 
+prepped16 <- prep_pages(url = "data/15_tennessee-counties.csv",
+                        output_directory = "factsheets/16_tennessee-counties-viz",
+                        state_title = TRUE)
+
+render_pages(prepped_object = prepped16, input = "visualizations.Rmd")
