@@ -112,6 +112,10 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 * Summit, Ohio ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/14_rfi-finalists-slim/39153-County-of-Summit-Ohio-Ohio_1), Viz Page)
 * Philadelphia, Pennsylvania ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/14_rfi-finalists-slim/42101-Philadelphia-Pennsylvania_1), Viz Page)
 
+### Tennessee Counties 
+
+* Tennessee Counties ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/15_tennessee-counties/47157-Shelby-Tennessee_800), [Viz Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/16_tennessee-counties-viz/47157-Shelby-Tennessee_800))
+
 ## Contributors
 
 ### Authors
