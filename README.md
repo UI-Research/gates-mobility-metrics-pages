@@ -118,7 +118,7 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 ### Texas Example
 
-* Harris County, Texas ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/17_texas-example/17_texas-example_911), Viz Page)
+* Harris County, Texas ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/17_texas-example/48201-Harris-Texas_911), Viz Page)
 
 ## Contributors
 
