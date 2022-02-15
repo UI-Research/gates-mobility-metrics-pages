@@ -90,3 +90,13 @@ prepped16 <- prep_pages(url = "data/15_tennessee-counties.csv",
                         state_title = TRUE)
 
 render_pages(prepped_object = prepped16, input = "visualizations.Rmd")
+
+# Texas example 2022-02-15
+prepped17 <- prep_pages(url = "data/17_texas-example.csv",
+                        output_directory = "factsheets/17_texas-example",
+                        state_title = TRUE)
+
+render_pages(prepped_object = prepped17)
+
+
+

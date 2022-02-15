@@ -116,6 +116,10 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 * Tennessee Counties ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/15_tennessee-counties/47157-Shelby-Tennessee_800), [Viz Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/16_tennessee-counties-viz/47157-Shelby-Tennessee_800))
 
+### Texas Example
+
+* Harris County, Texas ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/17_texas-example/17_texas-example_911), Viz Page)
+
 ## Contributors
 
 ### Authors
