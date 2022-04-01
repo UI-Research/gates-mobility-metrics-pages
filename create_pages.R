@@ -98,5 +98,9 @@ prepped17 <- prep_pages(url = "data/17_texas-example.csv",
 
 render_pages(prepped_object = prepped17)
 
+# LATimes request 2022-04-01
+prepped18 <- prep_pages(url = "data/18_latimes.csv",
+                        output_directory = "factsheets/18_latimes")
 
+render_pages(prepped_object = prepped18)
 

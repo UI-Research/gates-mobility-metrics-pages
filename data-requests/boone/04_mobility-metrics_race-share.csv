@@ -1,0 +1,17 @@
+state,county,state_name,county_name,population,subgroup_type,subgroup,share_debt_coll,share_debt_coll_ub,share_debt_coll_lb,share_debt_coll_quality,transit_cost,transit_trips,transit_cost_quality,transit_trips_quality,environmental,environmental_quality
+19,103,Iowa,Johnson County,151260,all,All,0.1626564,0.1785282,0.1467846,1,63.301169271117914,69.00710304884711,1,1,79.73536936594495,1
+19,103,Iowa,Johnson County,151260,race-ethnicity,Majority Non-White,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+19,103,Iowa,Johnson County,151260,race-ethnicity,"Majority White, Non-Hispanic",0.1614154,0.1772957,0.1455352,1,63.017444910807974,70.45264952780693,1,1,79.8237126849914,1
+19,103,Iowa,Johnson County,151260,race-ethnicity,Mixed Race and Ethnicity,NA,NA,NA,NA,64.71774721676489,61.789783889980356,1,1,80.91949989032683,1
+20,045,Kansas,Douglas County,121436,all,All,0.2395415,0.2595729,0.2195102,1,46.229745325844426,62.154035546664616,1,1,68.4264355382004,1
+20,045,Kansas,Douglas County,121436,race-ethnicity,Majority Non-White,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+20,045,Kansas,Douglas County,121436,race-ethnicity,"Majority White, Non-Hispanic",0.2395415,0.2595729,0.2195102,1,43.91593463681874,61.63747992821385,2,2,68.88893677834993,1
+20,045,Kansas,Douglas County,121436,race-ethnicity,Mixed Race and Ethnicity,NA,NA,NA,NA,56.3941908713693,64.42323651452283,2,2,65,1
+29,019,Missouri,Boone County,180005,all,All,0.2590432,0.2759816,0.2421048,1,44.75854559227346,70.15509894896317,1,1,62.670097701286046,1
+29,019,Missouri,Boone County,180005,race-ethnicity,Majority Non-White,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+29,019,Missouri,Boone County,180005,race-ethnicity,"Majority White, Non-Hispanic",0.2573906,0.2744066,0.2403746,1,44.24805989725653,70.04361132364193,1,1,63.664385971478836,1
+29,019,Missouri,Boone County,180005,race-ethnicity,Mixed Race and Ethnicity,NA,NA,NA,NA,48.06621813031161,70.87747875354107,1,1,49,1
+47,093,Tennessee,Knox County,465289,all,All,0.3371754,0.3480953,0.3262555,1,35.11283875693209,42.40004185413833,1,1,20.117649728179483,1
+47,093,Tennessee,Knox County,465289,race-ethnicity,Majority Non-White,0.7431192,0.8255215,0.660717,1,47.234436221158035,66.21898127993035,1,1,14.990115524803855,1
+47,093,Tennessee,Knox County,465289,race-ethnicity,"Majority White, Non-Hispanic",0.3194256,0.3306625,0.3081886,1,32.744457774763966,37.65833811486099,1,1,21.096866872995456,1
+47,093,Tennessee,Knox County,465289,race-ethnicity,Mixed Race and Ethnicity,NA,NA,NA,NA,42.35594968034646,57.32728397607754,1,1,3.1543907851632675,1
