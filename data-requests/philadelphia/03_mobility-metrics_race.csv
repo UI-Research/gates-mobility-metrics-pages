@@ -1,0 +1,17 @@
+state,county,state_name,county_name,population,subgroup_type,subgroup,juvenile_arrest_rate,juvenile_arrest_rate_quality
+13,121,Georgia,Fulton County,1050114,all,All,3022.1445,2
+13,121,Georgia,Fulton County,1050114,race-ethnicity,Black,5927.0039,2
+13,121,Georgia,Fulton County,1050114,race-ethnicity,Other Races,133.7598,2
+13,121,Georgia,Fulton County,1050114,race-ethnicity,White,775.64142,2
+17,031,Illinois,Cook County,5180493,all,All,1845.2437,3
+17,031,Illinois,Cook County,5180493,race-ethnicity,Black,5720.6499,3
+17,031,Illinois,Cook County,5180493,race-ethnicity,Other Races,42.907146,3
+17,031,Illinois,Cook County,5180493,race-ethnicity,White,777.47144,3
+24,510,Maryland,Baltimore city,602495,all,All,5091.4819,2
+24,510,Maryland,Baltimore city,602495,race-ethnicity,Black,6674.1743,2
+24,510,Maryland,Baltimore city,602495,race-ethnicity,Other Races,71.394577,2
+24,510,Maryland,Baltimore city,602495,race-ethnicity,White,1063.3202000000001,2
+42,101,Pennsylvania,Philadelphia County,1584138,all,All,4.8367596,2
+42,101,Pennsylvania,Philadelphia County,1584138,race-ethnicity,Black,8.6075802,2
+42,101,Pennsylvania,Philadelphia County,1584138,race-ethnicity,Other Races,3.1110973,2
+42,101,Pennsylvania,Philadelphia County,1584138,race-ethnicity,White,NA,NA

@@ -1,0 +1,17 @@
+state,county,state_name,county_name,population,subgroup_type,subgroup,juvenile_arrest_rate,juvenile_arrest_rate_quality
+19,103,Iowa,Johnson County,151260,all,All,3270.8032,1
+19,103,Iowa,Johnson County,151260,race-ethnicity,Black,14115.011,1
+19,103,Iowa,Johnson County,151260,race-ethnicity,Other Races,138.88889,1
+19,103,Iowa,Johnson County,151260,race-ethnicity,White,2306.4067,1
+20,045,Kansas,Douglas County,121436,all,All,10.096931,2
+20,045,Kansas,Douglas County,121436,race-ethnicity,Black,NA,NA
+20,045,Kansas,Douglas County,121436,race-ethnicity,Other Races,NA,NA
+20,045,Kansas,Douglas County,121436,race-ethnicity,White,13.923698,2
+29,019,Missouri,Boone County,180005,all,All,6325.4072,1
+29,019,Missouri,Boone County,180005,race-ethnicity,Black,22951.563,1
+29,019,Missouri,Boone County,180005,race-ethnicity,Other Races,127.84454,1
+29,019,Missouri,Boone County,180005,race-ethnicity,White,5678.291,1
+47,093,Tennessee,Knox County,465289,all,All,3183.8049,2
+47,093,Tennessee,Knox County,465289,race-ethnicity,Black,8669.6641,2
+47,093,Tennessee,Knox County,465289,race-ethnicity,Other Races,452.00986,2
+47,093,Tennessee,Knox County,465289,race-ethnicity,White,2612.8555,2

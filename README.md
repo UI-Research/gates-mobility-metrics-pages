@@ -120,6 +120,10 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 * Harris County, Texas ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/17_texas-example/48201-Harris-Texas_911), Viz Page)
 
+### LATimes
+
+* Los Angeles, California ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/18_latimes/06037-Los-Angeles-California_401), Viz Page)
+
 ## Contributors
 
 ### Authors

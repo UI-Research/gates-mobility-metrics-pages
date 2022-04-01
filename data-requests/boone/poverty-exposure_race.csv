@@ -1,0 +1,21 @@
+year,state,county,subgroup_type,subgroup,poverty_exposure,poverty_exposure_quality
+2018,19,103,all,All,0.33625849239728245,1
+2018,19,103,race-ethnicity,Black,0.028470795421191665,2
+2018,19,103,race-ethnicity,Hispanic,0.09020044543429843,2
+2018,19,103,race-ethnicity,Other Races and Ethnicities,0.21141875939042712,1
+2018,19,103,race-ethnicity,"White, Non-Hispanic",0.45331037122081896,1
+2018,20,045,all,All,0.1589956142464697,1
+2018,20,045,race-ethnicity,Black,0,3
+2018,20,045,race-ethnicity,Hispanic,0.10910307898259705,2
+2018,20,045,race-ethnicity,Other Races and Ethnicities,0.06681222707423581,1
+2018,20,045,race-ethnicity,"White, Non-Hispanic",0.19961910136135996,1
+2018,29,019,all,All,0.3764825040023524,1
+2018,29,019,race-ethnicity,Black,0.2410952804986643,1
+2018,29,019,race-ethnicity,Hispanic,0.29475982532751094,2
+2018,29,019,race-ethnicity,Other Races and Ethnicities,0.4517104517104517,1
+2018,29,019,race-ethnicity,"White, Non-Hispanic",0.3817848652931854,1
+2018,47,093,all,All,0.2770034843205575,1
+2018,47,093,race-ethnicity,Black,0.48017978190391986,1
+2018,47,093,race-ethnicity,Hispanic,0.1908623417721519,2
+2018,47,093,race-ethnicity,Other Races and Ethnicities,0.30458650610943866,1
+2018,47,093,race-ethnicity,"White, Non-Hispanic",0.22498183499570645,1

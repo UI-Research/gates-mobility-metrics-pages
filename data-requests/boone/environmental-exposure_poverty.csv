@@ -1,0 +1,13 @@
+year,state,county,subgroup_type,subgroup,environmental,environmental_quality
+2014,19,103,all,All,79.73536936594495,1
+2014,19,103,poverty,High Poverty Tracts,74.26995218830453,1
+2014,19,103,poverty,Not High Poverty Tracts,80.92633670732424,1
+2014,20,045,all,All,68.4264355382004,1
+2014,20,045,poverty,High Poverty Tracts,61,1
+2014,20,045,poverty,Not High Poverty Tracts,69.66055045871559,1
+2014,29,019,all,All,62.670097701286046,1
+2014,29,019,poverty,High Poverty Tracts,55.92570639818123,1
+2014,29,019,poverty,Not High Poverty Tracts,64.88489762405706,1
+2014,47,093,all,All,20.117649728179483,1
+2014,47,093,poverty,High Poverty Tracts,8.944276483490427,1
+2014,47,093,poverty,Not High Poverty Tracts,21.1815540302155,1
