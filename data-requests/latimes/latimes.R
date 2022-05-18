@@ -39,5 +39,6 @@ read_csv(new_file) %>%
     share_burdened_30_ami_lb,     
     rent_quality
   ) %>%
-  filter(paste0(state, county) %in% fips) %>%
+  #filter(paste0(state, county) %in% fips) %>%
+  filter(year %in% c(2014, 2018)) %>%
   write_csv(new_file)

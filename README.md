@@ -124,6 +124,10 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 * Los Angeles, California ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/18_latimes/06037-Los-Angeles-California_401), Viz Page)
 
+### Rochester
+
+* Monroe, New York ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/19_rochester/36055-Monroe-New-York_899), Viz Page)
+
 ## Contributors
 
 ### Authors
