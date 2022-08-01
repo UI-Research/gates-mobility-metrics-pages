@@ -109,3 +109,11 @@ prepped19 <- prep_pages(url = "data/19_rochester.csv",
                         output_directory = "factsheets/19_rochester")
 
 render_pages(prepped_object = prepped19)
+
+# Dubuque request 2022-08-01
+prepped20 <- prep_pages(url = "data/20_dubuque.csv",
+                        output_directory = "factsheets/20_dubuque")
+
+render_pages(prepped_object = prepped20)
+
+
