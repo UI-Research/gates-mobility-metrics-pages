@@ -128,6 +128,10 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 * Monroe, New York ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/19_rochester/36055-Monroe-New-York_899), Viz Page)
 
+### Dubuque, Iowa
+
+* Dubuque, Iowa ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/12_dubuque/19061-Dubuque-Iowa_866), Viz Page)
+
 ## Contributors
 
 ### Authors
