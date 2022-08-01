@@ -130,7 +130,7 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 ### Dubuque, Iowa
 
-* Dubuque, Iowa ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/12_dubuque/19061-Dubuque-Iowa_866), Viz Page)
+* Dubuque, Iowa ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/20_dubuque/19061-Dubuque-Iowa_866), Viz Page)
 
 ## Contributors
 
