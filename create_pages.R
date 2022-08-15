@@ -116,4 +116,10 @@ prepped20 <- prep_pages(url = "data/20_dubuque.csv",
 
 render_pages(prepped_object = prepped20)
 
+# NACO part 2 request 2022-08-15
+prepped21 <- prep_pages(url = "data/21_naco.csv",
+                        output_directory = "factsheets/21_naco")
+
+render_pages(prepped_object = prepped21)
+
 
