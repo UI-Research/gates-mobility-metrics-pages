@@ -28,20 +28,15 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 1. Clone the repository on to your local machine with `git clone https://github.com/UI-Research/gates-mobility-metrics-pages.git`.
 2. Create a new branch called `<your-name>` with `git checkout -b <your-name>`.
-3. If you had previously completed steps 1 and 2, then confirm you are on the correct branch with `git branch` and run `git pull origin master` to update your local branches with remote changes. 
+3. If you had previously completed steps 1 and 2, then confirm you are on the correct branch with `git branch` and run `git pull origin master` to update your local branche with remote changes. 
 4. Create a .csv with the name `##_name.csv` (e.g. `01_rfi-applicants.csv`) in the data folder. The file should contain:
     * `state` The state name.
     * `county` The county name. 
     * `fips` [The 5-digit county FIPS code](https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/home/?cid=nrcs143_013697) for the base county. 
     * `comparisons` 5-digit county FIPS codes separated by semicolons for comparison counties. 
-5. Create a new directory in the `factsheets/` directory called `##_name/` (e.g. `01_rfi-applicants/`). Add a `.gitignore` in the new directory with 
-```
-# Ignore everything in this directory
-*
-# Except this file
-!.gitignore
-```
-6. Update `create_pages.R`. Add a comment that describes the task and then add `prep_pages()` and `render_pages()`. Run `library(tidyverse)`, `source("R/prep_pages.R")`, and `source("R/render_pages.R")` before running your new lines of code. Don't run other lines of code. 
+    * `random_id` A 3-digit random ID.  
+5. Update `create_pages.R`. Add a comment that describes the task and then add `prep_pages()` and `render_pages()`. Run `library(tidyverse)`, `source("R/prep_pages.R")`, and `source("R/render_pages.R")` before running your new lines of code. Don't run other lines of code. 
+6. Add the new URLs to the README under a section for the request. 
 7. Add, commit, and push your local branch to GitHub with GitHub Bash (your command line tool). 
 8. Put in a pull request to the master branch (in the web browser).
 
