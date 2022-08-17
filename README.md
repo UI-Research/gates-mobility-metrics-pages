@@ -131,6 +131,113 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 * Richmond City, Virginia ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/51760-Richmond-City-Virginia_476), Viz Page)
 
+* Cochise County, Arizona ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/04003-Cochise-Arizona_535), Viz Page)
+
+* Washington County, Arkansas ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/05143-Washington-Arkansas_904), Viz Page)
+
+* Butte County, California ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/06007-Butte-California_123), Viz Page)
+
+* Lake County, California ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/06033-Lake-California_NA), Viz Page)
+
+* Mariposa County, California ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/06043-Mariposa-California_239), Viz Page)
+
+* San Diego County, California ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/06073-San-Diego-California_902), Viz Page)
+
+* Yuba County, California ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/06115-Yuba-California_519), Viz Page)
+
+* Adams County, Colorado ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/08001-Adams-Colorado_512), Viz Page)
+
+* Broomfield County, Colorado ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/08014-Broomfield-Colorado_778), Viz Page)
+
+* Eagle County, Colorado ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/08037-Eagle-Colorado_439), Viz Page)
+
+* Jefferson County, Colorado ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/08059-Jefferson-Colorado_222), Viz Page)
+
+* Larimer County, Colorado ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/08069-Larimer-Colorado_770), Viz Page)
+
+* Summit County, Colorado ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/08117-Summit-Colorado_406), Viz Page)
+
+* Gadsden County, Florida ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/12039-Gadsden-Florida_829), Viz Page)
+
+* Miami-Dade County, Florida ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/12086-Miami-Dade-Florida_117), Viz Page)
+
+* Palm Beach County, Florida ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/12099-Palm-Beach-Florida_608), Viz Page)
+
+* Cobb County, Georgia ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/13067-Cobb-Georgia_285), Viz Page)
+
+* Newton County, Georgia ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/13217-Newton-Georgia_NA), Viz Page)
+
+* Rockdale County, Georgia ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/13247-Rockdale-Georgia_107), Viz Page)
+
+* Honolulu County, Hawaii ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/15003-Honolulu-Hawaii_NA), Viz Page)
+
+* Kauai County, Hawaii ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/15007-Kauai-Hawaii_503), Viz Page)
+
+* Maui County, Hawaii ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/15009-Maui-Hawaii_531), Viz Page)
+
+* Cook County, Illinois ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/17031-Cook-Illinois_791), Viz Page)
+
+* Johnson County, Iowa ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/19103-Johnson-Iowa_165), Viz Page)
+
+* Baltimore County, Maryland ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/24005-Baltimore-Maryland_398), Viz Page)
+
+* Gogebic County, Michigan ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/26053-Gogebic-Michigan_267), Viz Page)
+
+* Oakland County, Michigan ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/26125-Oakland-Michigan_994), Viz Page)
+
+* Rice County, Minnesota ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/27131-Rice-Minnesota_085), Viz Page)
+
+* Lowndes County, Mississippi ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/28087-Lowndes-Mississippi_NA), Viz Page)
+
+* Audrain County, Missouri ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/29007-Audrain-Missouri_NA), Viz Page)
+
+* Taos County, New Mexico ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/35055-Taos-New-Mexico_701), Viz Page)
+
+* Buncombe County, North Carolina ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/37021-Buncombe-North-Carolina_393), Viz Page)
+
+* Durham County, North Carolina ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/37063-Durham-North-Carolina_603), Viz Page)
+
+* Guilford County, North Carolina ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/37081-Guilford-North-Carolina_837), Viz Page)
+
+* Mecklenburg County, North Carolina ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/37119-Mecklenburg-North-Carolina_455), Viz Page)
+
+* Pitt County, North Carolina ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/37147-Pitt-North-Carolina_NA), Viz Page)
+
+* Warren County, North Carolina ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/37185-Warren-North-Carolina_738), Viz Page)
+
+* Wilkes County, North Carolina ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/37193-Wilkes-North-Carolina_445), Viz Page)
+
+* McKenzie County, North Dakota ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/38053-McKenzie-North-Dakota_441), Viz Page)
+
+* Franklin County, Ohio ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/39049-Franklin-Ohio_415), Viz Page)
+
+* Montgomery County, Ohio ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/39113-Montgomery-Ohio_NA), Viz Page)
+
+* Clackamas County, Ohio ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/41005-Clackamas-Oregon_NA), Viz Page)
+
+* Lane County, Oregon ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/41039-Lane-Oregon_707), Viz Page)
+
+* Wasco County, Oregon ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/41065-Wasco-Oregon_808), Viz Page)
+
+* Berks County, Pennsylvania ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/42011-Berks-Pennsylvania_311), Viz Page)
+
+* Erie County, Pennsylvania ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/42049-Erie-Pennsylvania_586), Viz Page)
+
+* Lackawanna County, Pennsylvania ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/42069-Lackawanna-Pennsylvania_892), Viz Page)
+
+* Mercer County, Pennsylvania ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/42085-Mercer-Pennsylvania_284), Viz Page)
+
+* Bamberg County, South Carolina ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/45009-Bamberg-South-Carolina_646), Viz Page)
+
+* Dallas County, Texas ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/48113-Dallas-Texas_789), Viz Page)
+
+* Harris County, Texas ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/48201-Harris-Texas_112), Viz Page)
+
+* Dane County, Wisconsin ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/55025-Dane-Wisconsin_623), Viz Page)
+
+* Sheboygan County, Wisconsin ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/55117-Sheboygan-Wisconsin_416), Viz Page)
+
+
 ## Contributors
 
 ### Authors

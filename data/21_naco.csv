@@ -1,2 +1,55 @@
 state,county,fips,comparisons,random_id
 Virginia, Richmond City,51760,51770;51775,476
+Georgia, Cobb County,13067,13135;13121;13089,285 
+California, Lake County,06033,935
+Oregon, Clackamas County,41005,641
+Missouri, Audrain County,29007,759
+California, Butte County,06007,06019;06099;06089,123
+Georgia, Newton County,13217,405
+Mississippi, Lowndes County,28087,974
+Ohio, Montgomery County,39113,246
+North Carolina, Guilford County,37081,37067;37119;37183,837
+California, Yuba County,06115,06101;06061;06113,519
+Texas, Dallas County,48113,48201;48453;48029,789
+Arkansas, Washington County,05143,05007;05119;27123,904
+Wisconsin, Dane County,55025,48453;44007;44003,623
+Florida, Palm Beach County,12099,12095;12086;12011,608
+Colorado, Eagle County,08037,08031;08101;29213,439
+North Carolina, Buncombe County,37021,37063;37183;37129,393
+Minnesota, Rice County,27131,27013;27037;27139,085
+Georgia, Rockdale County,13247,13217;13097;13113,107
+New Mexico, Taos County,35055,35049;35013;35061,701
+Pennsylvania, Lackawanna County,42069,42079;42089;42003,892
+Ohio, Franklin County,39049,39035;37119;27053,415
+Maryland, Baltimore County,24005,24031;24510;24027,398
+Oregon, Lane County,41039,41017;41047;41003,707
+Colorado, Summit County,08117,08037;08051;08107,406
+Colorado, Broomfield County,08014,08031;08013;08059,778
+South Carolina, Bamberg County,45009,45075;45079;45011,646
+Pennsylvania, Erie County,42049,42001;42003;42039,586
+Texas, Harris County,48201,48113;48097;06037,112
+Colorado, Jefferson County,08059,08005;08001;08035,222
+Arizona, Cochise County,04003,04005;04009;04021,535
+Michigan, Oakland County,26125,26099;26163;26081,994
+Hawaii, Honolulu County,15003,707
+Pennsylvania, Mercer County,42085,42121;42073;42039,284
+Wisconsin, Sheboygan County,55117,55063;55039;55073,416
+Colorado, Adams County,08001,08005;48453;51107,512
+North Carolina, Warren County,37185,37007;51053;51131,738
+California, San Diego County,06073,06037;48453;12086,902
+North Carolina, Pitt County,37147,611
+Pennsylvania, Berks County,42011,42071;42077;42091,311
+Florida, Miami-Dade County,12086,32003;17031;53033,117
+North Carolina, Wilkes County,37193,37171;37157;37009,445
+Colorado, Larimer County,08069,08123;08101;08013,770
+North Dakota, McKenzie County,38053,38105;38089;35025,441
+Iowa, Johnson County,19103,19113;19153;19163,165
+Michigan, Gogebic County,26053,26071;26003;26043,267
+Oregon, Wasco County,41065,41031;41059;41049,808
+Hawaii, Kauai County,15007,15009;15001;15003,503
+North Carolina, Durham County,37063,12086;48201;37183,603
+Hawaii, Maui County,15009,15003;15007;53067,531
+Florida, Gadsden County,12039,12073;12063;12129,829
+North Carolina, Mecklenburg County,37119,37183;48453;08031,455
+California, Mariposa County,06043,06009;06109;06039,239
+Illinois, Cook County,17031,17089;17043;17197,791
