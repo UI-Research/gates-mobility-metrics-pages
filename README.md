@@ -237,6 +237,11 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 * Sheboygan County, Wisconsin ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/55117-Sheboygan-Wisconsin_416), Viz Page)
 
+### Santa Clara County, CA
+
+* Santa Clara County, California ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/22_santa_clara/06085-Santa-Clara-California_119), Viz Page)
+
+
 
 ## Contributors
 
@@ -244,3 +249,4 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 * Vivian Zheng
 * Aaron R. Williams
+
