@@ -123,7 +123,7 @@ prepped21 <- prep_pages(url = "data/21_naco.csv",
 render_pages(prepped_object = prepped21)
 
 
-# Santa Clara request 2022-09-19
+# Santa Clara request 2022-09-19, updated 2022-09-21
 prepped22 <- prep_pages(url = "data/22_santa_clara.csv",
                         output_directory = "factsheets/22_santa_clara")
 

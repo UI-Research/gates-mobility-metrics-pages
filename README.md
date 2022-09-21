@@ -237,10 +237,15 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 * Sheboygan County, Wisconsin ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/21_naco/55117-Sheboygan-Wisconsin_416), Viz Page)
 
-### Santa Clara County, CA
+### CFON (Santa Clara County, CA & more)
 
-* Santa Clara County, California ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/22_santa_clara/06085-Santa-Clara-California_119), Viz Page)
+* Santa Clara County, California + Comparisons ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/22_santa_clara/06085-Santa-Clara-California_119), Viz Page)
 
+* Santa Clara County, California ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/22_santa_clara/06085-Santa-Clara-California_NA), Viz Page)
+
+* New Haven County, Connecticut ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/22_santa_clara/22_santa_clara/09009-New-Haven-Connecticut_NA), Viz Page)
+
+* Fairfield County, Connecticut ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/22_santa_clara/09001-Fairfield-Connecticut_NA), Viz Page)
 
 
 ## Contributors

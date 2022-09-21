@@ -1,2 +1,5 @@
 state,county,fips,comparisons,random_id
 California, Santa Clara County,06085,09001;09009,119
+California, Santa Clara County,06085,207
+Connecticut, New Haven County,09009,096
+Connecticut, Fairfield County,09001,004
