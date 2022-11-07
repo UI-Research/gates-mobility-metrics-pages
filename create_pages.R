@@ -129,4 +129,10 @@ prepped22 <- prep_pages(url = "data/22_santa_clara.csv",
 
 render_pages(prepped_object = prepped22)
 
+# Monroe County request 2022-11-06
+prepped23 <- prep_pages(url = "data/23_monroe.csv",
+                        output_directory = "factsheets/23_monroe")
+
+render_pages(prepped_object = prepped23)
+
 
