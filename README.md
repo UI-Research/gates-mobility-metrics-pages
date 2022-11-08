@@ -247,6 +247,11 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 * Fairfield County, Connecticut ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/22_santa_clara/09001-Fairfield-Connecticut_NA), Viz Page)
 
+### Monroe County, NY
+
+* Monroe County, NY ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/23_monroe/36055-Monroe-New-York_616), Viz Page)
+
+
 
 ## Contributors
 
