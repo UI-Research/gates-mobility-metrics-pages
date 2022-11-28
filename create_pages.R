@@ -136,7 +136,7 @@ prepped23 <- prep_pages(url = "data/23_monroe.csv",
 render_pages(prepped_object = prepped23)
 
 # Requests from Upward Mobility Website Data page
-prepped24 <- prep_pages(url = "data/24_website_requests",
+prepped24 <- prep_pages(url = "data/24_website_requests.csv",
                         output_directory = "factsheets/24_website_requests")
 
 render_pages(prepped_object = prepped24)
