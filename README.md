@@ -251,6 +251,11 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 
 * Monroe County, NY ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/23_monroe/36055-Monroe-New-York_616), Viz Page)
 
+### Upward Mobility Website Requests
+
+* Clayton County, GA ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/24_website_requests/13063-Clayton-Georgia_344), Viz Page)
+* Middlesex County, MA ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/24_website_requests/25017-Middlesex-Massachusetts_304), Viz Page)
+
 
 
 ## Contributors
