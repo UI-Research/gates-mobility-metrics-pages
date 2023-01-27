@@ -1,4 +1,4 @@
-#' Function to create the "Detail" table
+#' Function to create the "Detail" table for a metric
 #' 
 #'@param metrics_info_df (list) A list composed of 13 elements with information
 #'  about a metric. In practice, the first output from the get_vars_info function
