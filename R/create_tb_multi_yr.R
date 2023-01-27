@@ -1,3 +1,24 @@
+#' Function to create the "Mutli-Year" table for a metric
+#' 
+#'@param metrics_info_df (list) A list composed of 13 elements with information
+#'  about a metric. In practice, the first output from the get_vars_info function
+#'  for this argument
+#'@param dataset (data.frame) A dataframe. In practice either the data or data_sub
+#'  objects
+#'@param varname_maps (list of vectors containing strings) A list containing
+#'  four vectors. 
+#'    The first vector lists the metric name(s). 
+#'    The second contains "human-readible" names. 
+#'    The third lists the metric names and their relevant confidence interval columns. 
+#'    The four lists the metric name(s) followed by the metric name(s) concatenated with "_ci"
+#'@param tb_title_size (integer) Table title size. Default set to 18
+#'@param tb_subtitle_size (integer) Table sub-title size. Default set to 14.
+#'@param tb_font_size (integer) Table font size. Default set to 12.
+#'@param source_note_size (integer) Size of source note. Default set to 11.
+#'@param tb_width_perc (float) Table width percentage. Should be between 0 and 100.
+#'  Default to 80.
+#'@param tb_align (string) Table alignment. Default set to "left".
+#'@return (gt table object) Returns an unnamed gt table object.
 create_tb_multi_yr <- function(metrics_info_df, 
                                dataset, 
                                varname_maps,
@@ -34,7 +55,7 @@ create_tb_multi_yr <- function(metrics_info_df,
     filter(is_year == 1) 
   
   mb_vars_lst <- colnames(dataset %>% 
-                            select(setdiff(matches(mb_vars), matches('_lb|_ub|_quality'))))
+                            select(all_of(setdiff(matches(mb_vars), matches('_lb|_ub|_quality')))))
   
   var_selection <- function(my_ds){
     my_ds %>% 
@@ -141,12 +162,12 @@ create_tb_multi_yr <- function(metrics_info_df,
     tab_source_note(html(str_c('<b>Notes:</b>', notes, sep=' '))) %>% 
     cols_align(
       align = 'left',
-      columns = TRUE
+      columns = everything()
     ) %>% 
-    cols_align(
-      align = 'left',
-      columns = TRUE
-    ) %>% 
+    # cols_align(
+    #   align = 'left',
+    #   columns = TRUE
+    # ) %>% 
     opt_align_table_header('left') %>% 
     tab_options(
       heading.title.font.size = tb_title_size, 

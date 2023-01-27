@@ -17,7 +17,9 @@
 #'@param source_note_size (integer) Size of source note. Default set to 11.
 #'@param tb_width_perc (float) Table width percentage. Should be between 0 and 100.
 #'  Default to 80.
-#'@param tb_align (string) Table alignment. Default set to "left" 
+#'@param tb_align (string) Table alignment. Default set to "left".
+#'@return (gt table object) Returns an unnamed gt table object
+ 
 create_tb <- function(metrics_info_df, 
                       dataset, 
                       varname_maps,
