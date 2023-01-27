@@ -57,6 +57,7 @@ create_tb_level2 <- function(metrics_info_df,
   mb_vars_lst <- colnames(dataset %>% 
                             select(setdiff(matches(mb_vars),
                                            matches("_lb|_ub|_quality"))))
+  print(c("mb_vars_lst is: ", mb_vars_lst))
   
   if (ci_vars == 1){
     
