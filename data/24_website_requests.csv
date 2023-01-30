@@ -2,3 +2,6 @@ state,county,fips,comparisons,random_id
 Georgia, Clayton County,13063,13121;13067;13089,344
 Massachusetts, Middlesex County,25017,,304
 Connecticut, Hartford County,09003,,808
+Hawaii, Honolulu County,15003,15009;15007;15001,349
+Ohio, Cuyahoga County,39035,39055;39169;42003,108
+Ohio, Cuyahoga County,39035,39049;39061;39153,277
