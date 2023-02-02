@@ -20,7 +20,7 @@
 #'@param tb_align (string) Table alignment. Default set to "left". 
 #'@return (gt table object) Returns an unnamed gt table object.
 
-create_tb_level2 <- function(metrics_info_df, 
+create_tb_level2_no_tabs <- function(metrics_info_df, 
                              dataset, 
                              varname_maps,
                              tb_title_size = 18,
@@ -29,7 +29,7 @@ create_tb_level2 <- function(metrics_info_df,
                              source_note_size = 11,
                              tb_width_perc = 80,
                              tb_align = "left"
-                             ){
+){
   
   mb_metrics <- metrics_info_df$metric_name
   mb_vars  <- metrics_info_df$metric_vars_prefix[[1]]
@@ -142,38 +142,6 @@ create_tb_level2 <- function(metrics_info_df,
     gt(
       rowname_col = "metrics",
       id = "tb_level2"
-    ) %>% 
-    tab_header(
-      title = "",
-      subtitle = metrics_desp
-    ) %>%
-    tab_source_note(html(str_c("<b>Source:</b>", data_source, sep=" "))) %>%
-    tab_source_note(html(str_c("<b>Notes:</b>", notes, sep=" "))) %>%
-    cols_align(
-      align = "left",
-      columns = everything()
-    ) %>%
-    # cols_align(
-    #   align = "left",
-    #   columns = TRUE
-    # ) %>%
-    opt_align_table_header("left") %>%
-    tab_options(
-      heading.title.font.size = tb_title_size,
-      heading.subtitle.font.size = tb_subtitle_size,
-      column_labels.font.size = tb_font_size,
-      table.font.size = tb_font_size,
-      source_notes.font.size = source_note_size,
-      table.width = pct(tb_width_perc),
-      table.align = tb_align) %>%
-    tab_style(
-      style = list(
-        cell_text(style = "italic"),
-        cell_fill(color = "#ececec")
-      ),
-      locations = cells_body(
-        columns = everything(),
-        rows = metrics == "Quality")
-    ) 
+    )
   
 } 
