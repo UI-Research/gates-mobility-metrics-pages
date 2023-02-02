@@ -57,7 +57,7 @@ create_tb_level2 <- function(metrics_info_df,
   mb_vars_lst <- colnames(dataset %>% 
                             select(setdiff(matches(mb_vars),
                                            matches("_lb|_ub|_quality"))))
-  print(c("mb_vars_lst is: ", mb_vars_lst))
+  #print(c("mb_vars_lst is: ", mb_vars_lst))
   
   if (ci_vars == 1){
     
@@ -117,7 +117,7 @@ create_tb_level2 <- function(metrics_info_df,
     
   }
   
-  temp <- temp %>% 
+  temp %>% 
     mutate_all(as.character) %>% 
     rename_at(vars(col_from), function(x) col_to)
   
@@ -129,7 +129,10 @@ create_tb_level2 <- function(metrics_info_df,
     
   } 
   
-  temp %>% 
+  print("temp is:")
+  print(temp)
+  
+  temp <- temp %>% 
     pivot_longer(!state_county, names_to="metrics", values_to="value") %>%
     pivot_wider(names_from = "state_county", values_from = "value") %>% 
     arrange(match(metrics, col_to)) %>% 
@@ -171,5 +174,7 @@ create_tb_level2 <- function(metrics_info_df,
       locations = cells_body(
         columns = everything(),
         rows = metrics == "Quality")
-    )
+    ) #%>%
+    #as_raw_html()
+  
 } 

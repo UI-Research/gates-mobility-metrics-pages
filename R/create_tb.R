@@ -65,6 +65,10 @@ create_tb <- function(metrics_info_df,
     
   } 
   
+  
+  print("temp is:")
+  print(temp)
+  
   temp %>% 
     pivot_longer(!state_county, names_to="metrics", values_to="value") %>%   
     pivot_wider(names_from = "state_county", values_from = "value") %>% 
@@ -105,5 +109,6 @@ create_tb <- function(metrics_info_df,
       locations = cells_body(
         columns = everything(), 
         rows = metrics == "Quality")
-    )
+    ) #%>%
+    #as_raw_html()
 }
