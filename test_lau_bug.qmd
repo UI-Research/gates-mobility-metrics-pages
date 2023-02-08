@@ -344,21 +344,42 @@ create_tb(metrics_info_df = af_m_info_lst,
 
 ##### Detail
 
+
+<!-- ```{r} -->
+
+
+<!-- create_tb_level2_no_tabs(metrics_info_df = af_m_info_lst,  -->
+<!--           dataset = data,  -->
+<!--           varname_maps = housing_varlist)  -->
+<!-- ``` -->
+
 ```{r affordable-housing-table2}
-create_tb_level2_no_tabs(metrics_info_df = af_m_info_lst,
-                 dataset = data,
-                 varname_maps = housing_varlist)
+
+# metrics_info_df <- af_m_info_lst
+# dataset <- data
+# varname_maps <- housing_varlist
+```
+
+```{r}
+# #| output: asis
+# 
+# cat(
+#   knitr::knit_child("R/create_tb_level2_no_tabs.qmd",
+#                    envir = environment(),
+#                    quiet = TRUE),
+#   sep =  "\n"
+# )
 
 ```
 
 
-<!-- <br> -->
+<br>
 
-<!-- ##### More Years -->
+##### More Years
 
-<!-- ```{r affordable-housing-table3} -->
-<!-- create_tb_multi_yr(metrics_info_df = af_m_info_lst, -->
-<!--                    dataset = data, -->
-<!--                    varname_maps = housing_varlist) -->
+```{r affordable-housing-table3}
+create_tb_multi_yr(metrics_info_df = af_m_info_lst,
+                   dataset = data,
+                   varname_maps = housing_varlist)
 
-<!-- ``` -->
+```

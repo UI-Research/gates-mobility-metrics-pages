@@ -192,5 +192,6 @@ create_tb_multi_yr <- function(metrics_info_df,
       locations = cells_body(
         columns = county_colnames, 
         rows = metrics == 'Quality')
-    )
+    ) %>%
+    as_raw_html()
 } 

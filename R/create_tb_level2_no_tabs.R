@@ -128,9 +128,9 @@ create_tb_level2_no_tabs <- function(metrics_info_df,
       relocate(!!sym(quality_var), .after = last_col())  
     
   } 
-  
-  print("temp is:")
-  print(temp)
+  # 
+  # print("temp is:")
+  # print(temp)
   
   temp %>% 
     pivot_longer(!state_county, names_to="metrics", values_to="value") %>%
@@ -142,6 +142,7 @@ create_tb_level2_no_tabs <- function(metrics_info_df,
     gt(
       rowname_col = "metrics",
       id = "tb_level2"
-    )
+    ) #%>%
+    #as_raw_html()
   
 } 

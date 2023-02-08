@@ -64,10 +64,10 @@ create_tb <- function(metrics_info_df,
       relocate(!!sym(quality_var), .after = last_col())  
     
   } 
-  
-  
-  print("temp is:")
-  print(temp)
+  # 
+  # 
+  # print("temp is:")
+  # print(temp)
   
   temp %>% 
     pivot_longer(!state_county, names_to="metrics", values_to="value") %>%   

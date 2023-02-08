@@ -129,8 +129,8 @@ create_tb_level2 <- function(metrics_info_df,
     
   } 
   
-  print("temp is:")
-  print(temp)
+  # print("temp is:")
+  # print(temp)
   
   temp %>% 
     pivot_longer(!state_county, names_to="metrics", values_to="value") %>%
@@ -174,6 +174,7 @@ create_tb_level2 <- function(metrics_info_df,
       locations = cells_body(
         columns = everything(),
         rows = metrics == "Quality")
-    ) 
+    ) %>%
+    as_raw_html()
   
 } 
