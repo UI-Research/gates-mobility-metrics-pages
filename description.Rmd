@@ -22,7 +22,7 @@ params:
 
 ### Domain: Financial Well-Being {#domain-financial-well-being}
 
-##### PREDICTOR: INCOME
+##### PREDICTOR: [INCOME](https://upward-mobility.urban.org/opportunities-income)
 
 **Metric: Household income at the 20th, 50th, and 80th percentiles**
 
@@ -44,7 +44,7 @@ Household income is a standard measure of financial well-being. The Working Grou
 
 <br>
 
-##### PREDICTOR: FINANCIAL SECURITY
+##### [PREDICTOR: FINANCIAL SECURITY](https://upward-mobility.urban.org/financial-security-and-wealth-building-opportunities)
 
 **Metric: Share with debt in collections**
 
@@ -68,7 +68,7 @@ The measure accounts for the share of people with a credit bureau record in an a
 
 ### Domain: Secure and Stable Housing {#domain-housing}
 
-##### PREDICTOR: AFFORDABLE HOUSING 
+##### [PREDICTOR: AFFORDABLE HOUSING](https://upward-mobility.urban.org/housing-affordability) 
 
 **Metric: Ratio of affordable and available housing units to households with low- and very low–income levels**
 
@@ -90,7 +90,7 @@ This metric reports the number of available housing units affordable for househo
 
 <br>
 
-##### PREDICTOR: HOUSING INSTABILITY AND HOMELESSNESS 
+##### [PREDICTOR: HOUSING INSTABILITY AND HOMELESSNESS ](https://upward-mobility.urban.org/housing-stability)
 
 **Metric: Number of public school children who are ever homeless during the school year**
 
@@ -114,7 +114,7 @@ This metric identifies the number of children (age 3 through 12th grade) who are
 
 ### Domain: Family Stability {#domain-family-stability}
 
-##### PREDICTOR: FAMILY STRUCTURE AND STABILITY 
+##### [PREDICTOR: FAMILY STRUCTURE AND STABILITY](https://upward-mobility.urban.org/family-stability)
 
 **Metric: Share of children in various family living arrangement**
 
@@ -138,7 +138,7 @@ The Working Group advised considering the share of children living in each of si
 
 ### Domain: Health {#domain-health}
 
-##### PREDICTOR: OVERALL HEALTH 
+##### [PREDICTOR: OVERALL HEALTH](https://upward-mobility.urban.org/overall-health)
 
 **Metric: Share of adults who rate their own and their children’s health as good or excellent**
 
@@ -160,7 +160,7 @@ This metric is measured through one question that asks “How would you rate you
 
 <br>
 
-##### PREDICTOR: ACCESS TO AND UTILIZATION OF HEALTH SERVICES 
+##### [PREDICTOR: ACCESS TO AND UTILIZATION OF HEALTH SERVICES](https://upward-mobility.urban.org/access-health-services)
 
 **Metric: Health professionals shortage area (HPSA) ranking for primary care providers**
 
@@ -182,7 +182,7 @@ This metric denotes that an area has a shortage of primary care providers based 
 
 <br>
 
-##### PREDICTOR: NEONATAL HEALTH 
+##### [PREDICTOR: NEONATAL HEALTH](https://upward-mobility.urban.org/neonatal-health) 
 
 **Metric: Share of low-weight births**
 
@@ -208,7 +208,7 @@ A child born weighing less than 5 pounds 8 ounces (<2,500 grams) is considered t
 
 ### Domain: Local Governance {#domain-local-governance}
 
-##### PREDICTOR: POLITICAL PARTICIPATION
+##### [PREDICTOR: POLITICAL PARTICIPATION](https://upward-mobility.urban.org/political-participation)
 
 **Metric: Share of the voting-eligible population who turn out to vote**
 
@@ -230,7 +230,7 @@ This metric measures the share of the voting-eligible population that voted in t
 
 <br>
 
-##### PREDICTOR: DESCRIPTIVE REPRESENTATION AMONG LOCAL OFFICIALS
+##### [PREDICTOR: DESCRIPTIVE REPRESENTATION AMONG LOCAL OFFICIALS](https://upward-mobility.urban.org/descriptive-representation)
 
 **Metric: The ratio of the share of the city council or county board from specific racial and ethnic groups and the share of city or county residents from those racial or ethnic groups**
 
@@ -254,7 +254,7 @@ This metric measures the ratio of the share of the city council or county board 
 
 ### Domain: Neighborhoods {#domain-neighborhoods}
 
-##### PREDICTOR: ECONOMIC INCLUSION
+##### [PREDICTOR: ECONOMIC INCLUSION](https://upward-mobility.urban.org/economic-inclusion)
 
 **Metric: Share of residents experiencing poverty living in high-poverty neighborhoods**
 
@@ -276,7 +276,7 @@ This metric measures the share of a city’s or county’s residents experiencin
 
 <br>
 
-##### PREDICTOR: RACIAL DIVERSITY
+##### [PREDICTOR: RACIAL DIVERSITY](https://upward-mobility.urban.org/racial-diversity)
 
 **Metric: Neighborhood exposure index, or the share of a person’s neighbors who are people of other races and ethnicities**
 
@@ -298,7 +298,7 @@ This metric is constructed separately for each racial or ethnic group and report
 
 <br>
 
-##### PREDICTOR: BELONGINGNESS
+##### [PREDICTOR: BELONGINGNESS](https://upward-mobility.urban.org/belongingness)
 
 **Metric: Inclusion of Other in the Self scale**
 
@@ -320,7 +320,7 @@ This metric is a single-item survey developed by Aron, Aron, and Smollan (1992) 
 
 <br>
 
-##### PREDICTOR: SOCIAL CAPITAL
+##### [PREDICTOR: SOCIAL CAPITAL](https://upward-mobility.urban.org/social-capital)
 
 **Metric: Selected questions from the Social Capital Community Benchmark Survey**
 
@@ -342,7 +342,7 @@ This survey measures the resources provided by a person’s social networks, inc
 
 <br>
 
-##### PREDICTOR: TRANSPORTATION ACCESS
+##### [PREDICTOR: TRANSPORTATION ACCESS](https://upward-mobility.urban.org/transportation-access)
 
 **Metric: Transit trips index**
 
@@ -382,7 +382,7 @@ This index reflects local transportation costs as a share of renters’ incomes.
 
 <br>
 
-##### PREDICTOR: ENVIRONMENTAL QUALITY
+##### [PREDICTOR: ENVIRONMENTAL QUALITY](https://upward-mobility.urban.org/environmental-quality)
 
 **Metric: Air quality index**
 
@@ -406,7 +406,7 @@ The air quality index  is an index that  summarizes potential exposure to harmfu
 
 ### Domain: Safety {#domain-safety}
 
-##### PREDICTOR: EXPOSURE TO TRAUMA
+##### [PREDICTOR: EXPOSURE TO TRAUMA](https://upward-mobility.urban.org/safety-trauma)
 
 **Metric: Adverse Childhood Experiences scale**
 
@@ -428,7 +428,7 @@ The Adverse Childhood Experiences (ACE) scale is a survey-based scale comprising
 
 <br>
 
-##### PREDICTOR: EXPOSURE TO CRIME 
+##### [PREDICTOR: EXPOSURE TO CRIME](https://upward-mobility.urban.org/safety-crime)
 
 **Metric: Rates of reported violent crime and property crime**
 
@@ -450,7 +450,7 @@ The FBI’s Uniform Crime Reporting (UCR) Program provides a standard, well-defi
 
 <br>
 
-##### PREDICTOR: EXPOSURE TO OVERLY PUNITIVE POLICING 
+##### [PREDICTOR: EXPOSURE TO OVERLY PUNITIVE POLICING](https://upward-mobility.urban.org/just-policing)
 
 **Metric: Rate of juvenile justice arrests**
 
@@ -476,7 +476,7 @@ The FBI’s UCR Program also provides statistics on the number of arrests of peo
 
 ### Domain: Education {#domain-education}
 
-##### PREDICTOR: ACCESS TO PRESCHOOL
+##### [PREDICTOR: ACCESS TO PRESCHOOL](https://upward-mobility.urban.org/access-preschool)
 
 **Metric: Share of 3- to 4-year-olds enrolled in nursery school or preschool**
 
@@ -498,7 +498,7 @@ This metric measures the share of a jurisdiction’s three- to four-year old chi
 
 <br>
 
-##### PREDICTOR: EFFECTIVE PUBLIC EDUCATION 
+##### [PREDICTOR: EFFECTIVE PUBLIC EDUCATION](https://upward-mobility.urban.org/effective-public-education) 
 
 **Metric: Average per grade change in English Language Arts achievement between third and eighth grades**
 
@@ -520,7 +520,7 @@ This metric reports the average annual improvement in English (reading comprehen
 
 <br>
 
-##### PREDICTOR: STUDENT POVERTY CONCENTRATION
+##### [PREDICTOR: STUDENT POVERTY CONCENTRATION](https://upward-mobility.urban.org/school-economic-diversity)
 
 **Metric: Share of students attending high-poverty schools, by student race or ethnicity**
 
@@ -542,7 +542,7 @@ This set of metrics is constructed separately for each racial or ethnic group an
 
 <br>
 
-##### PREDICTOR: COLLEGE READINESS
+##### [PREDICTOR: COLLEGE READINESS](https://upward-mobility.urban.org/preparation-college)
 
 **Metric: Share of 19- and 20-year-olds with a high school degree**
 
@@ -588,7 +588,7 @@ This metric is the ratio of the number of employed adults ages 25 to 54 in a giv
 
 <br>
 
-##### PREDICTOR: ACCESS TO JOBS PAYING A LIVING WAGE 
+##### [PREDICTOR: ACCESS TO JOBS PAYING A LIVING WAGE](https://upward-mobility.urban.org/access-jobs-paying-living-wage)
 
 **Metric: Ratio of pay on the average job to the cost of living**
 
