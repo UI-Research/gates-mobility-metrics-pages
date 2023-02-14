@@ -109,6 +109,6 @@ create_tb <- function(metrics_info_df,
       locations = cells_body(
         columns = everything(), 
         rows = metrics == "Quality")
-    ) #%>%
-    #as_raw_html()
+    ) %>%
+    as_raw_html()
 }

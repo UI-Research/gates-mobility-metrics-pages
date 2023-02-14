@@ -142,7 +142,7 @@ create_tb_level2_no_tabs <- function(metrics_info_df,
     gt(
       rowname_col = "metrics",
       id = "tb_level2"
-    ) #%>%
-    #as_raw_html()
+    ) %>%
+    as_raw_html()
   
 } 
