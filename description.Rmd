@@ -566,7 +566,7 @@ This metric is the ratio of the number 19- and 20-year olds with a high school d
 
 ### Domain: Work {#domain-work}
 
-##### PREDICTOR: EMPLOYMENT
+##### [PREDICTOR: EMPLOYMENT](https://upward-mobility.urban.org/employment-opportunities)
 
 **Metric: Employment-to-population ratio for adults ages 25 to 54**
 
