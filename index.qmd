@@ -996,6 +996,7 @@ create_tb_level3(metrics_info_df = tr_cost_m_info_lst,
 
 
 ## Pillar: High-Quality Education
+
 #### Predictor: Access to preschool 
 
 ::: {.panel-tabset .avoidpagebreak}
@@ -1048,7 +1049,6 @@ create_tb_level3(metrics_info_df = ap_m_info_lst,
 
 :::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/access-preschool) for a thorough description of research surrounding this metric.*</div>
 
 <br>
 
@@ -1117,7 +1117,6 @@ ed_table$table2
 
 :::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/effective-public-education) for a thorough description of research surrounding this metric.*</div>
 <br>
 
 
@@ -1188,7 +1187,6 @@ create_tb_level2(metrics_info_df = spoverty_m_info_lst,
 
 :::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/school-economic-diversity) for a thorough description of research surrounding this metric.*</div>
 
 <br>
 
@@ -1244,7 +1242,6 @@ create_tb_level3(metrics_info_df = m_info_lst,
 
 :::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/preparation-college) for a thorough description of research surrounding this metric.*</div>
 
 <br>
 
@@ -1253,7 +1250,6 @@ create_tb_level3(metrics_info_df = m_info_lst,
 
 <!-- TO BE FILLED IN LATER -->
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/digital-access) for a thorough description of research surrounding this metric.*</div>
 
 <br>
 
@@ -1310,8 +1306,6 @@ create_tb_level3(metrics_info_df = emp_m_info_lst,
 
 :::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/employment-opportunities) for a thorough description of research surrounding this metric.*</div>
-
 <br>
 
 #### Predictor: Access to jobs paying a living wage 
@@ -1366,10 +1360,8 @@ create_tb_multi_yr(metrics_info_df = m_info_lst,
 
 :::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/access-jobs-paying-living-wage) for a thorough description of research surrounding this metric.*</div>
 
-
-<br><br>
+<br>
 
 
 #### Predictor: Opportunities for Income 
@@ -1441,8 +1433,6 @@ create_tb_level3(income_m_info_lst, data_sub, income_varlist)
 
 :::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/opportunities-income) for a thorough description of research surrounding this metric.*</div>
-
 
 <br>
 
@@ -1510,19 +1500,12 @@ create_tb_level3(metrics_info_df = m_info_lst,
 
 :::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/financial-security-and-wealth-building-opportunities) for a thorough description of research surrounding this metric.*</div>
-
-
 <br>
 
 
 #### Predictor: Wealth-Building Opportunities 
 
 <!-- TO BE FILLED IN LATER -->
-
-
-<!-- <div class="exclude">*Visit here (currently missing) for a thorough description of research surrounding this metric.*</div> -->
-
 
 <br>
 
@@ -1575,9 +1558,6 @@ create_tb_level2(metrics_info_df = m_info_lst,
 ```
 
 :::
-
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/access-health-services) for a thorough description of research surrounding this metric.*</div>
-
 <br>
 
 #### Predictor: Neonatal health 
@@ -1630,8 +1610,6 @@ create_tb_level3(metrics_info_df = nh_m_info_lst,
 ```
 
 :::
-
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/neonatal-health) for a thorough description of research surrounding this metric.*</div>
 
 <br>
 
@@ -1704,8 +1682,6 @@ env_table$table2
 
 :::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/environmental-quality) for a thorough description of research surrounding this metric.*</div>
-
 <br>
 
 
@@ -1713,8 +1689,6 @@ env_table$table2
 
 <!-- TO BE FILLED OUT LATER -->
 
-
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/safety-trauma) for a thorough description of research surrounding this metric.*</div>
 
 <br>
 
@@ -1761,8 +1735,6 @@ create_tb_level2(metrics_info_df = et_m_info_lst,
 
 :::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/political-participation) for a thorough description of research surrounding this metric.*</div>
-
 <br>
 
 
@@ -1770,9 +1742,6 @@ create_tb_level2(metrics_info_df = et_m_info_lst,
 
 <!-- TO BE FILLED OUT LATER -->
 
-
-
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/descriptive-representation) for a thorough description of research surrounding this metric.*</div>
 
 <br>
 
@@ -1847,19 +1816,11 @@ create_tb_multi_yr(metrics_info_df = ec_m_info_lst,
 
 <br>
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/safety-crime) for a thorough description of research surrounding this metric.*</div>
-
-<br>
-
 
 
 
 <!-- NEED TO INCLUDE METRIC ON RATE OR REPORTED VIOLENT CRIME PER 100K -->
 #### Predictor: Just policing {.tabset .avoidpagebreak}
-
-
-
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/just-policing) for a thorough description of research surrounding this metric.*</div>
 
 <br>
 
