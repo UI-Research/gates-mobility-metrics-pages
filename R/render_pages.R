@@ -14,7 +14,7 @@
 #' 
 #' @returns pwalk implicitly returns the list inputted to it. The return objects
 #' are not used for this function, however.
-render_pages <- function(prepped_object, input = "index.Rmd") {
+render_pages <- function(prepped_object, input = "index.qmd") {
   
   prepped_object %>%
     select(output_file = filename, 

@@ -595,7 +595,7 @@ This metric is the ratio of the number of employed adults ages 25 to 54 in a giv
 
 <br>
 
-##### PREDICTOR: ACCESS TO JOBS PAYING A LIVING WAGE {sec-job-living-wage}
+##### PREDICTOR: ACCESS TO JOBS PAYING A LIVING WAGE {#sec-job-living-wage}
 
 **Metric: Ratio of pay on the average job to the cost of living**
 

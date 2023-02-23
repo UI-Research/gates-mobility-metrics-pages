@@ -57,8 +57,7 @@ create_tb_level2_no_tabs <- function(metrics_info_df,
   mb_vars_lst <- colnames(dataset %>% 
                             select(setdiff(matches(mb_vars),
                                            matches("_lb|_ub|_quality"))))
-  #print(c("mb_vars_lst is: ", mb_vars_lst))
-  
+
   if (ci_vars == 1){
     
     for (val in mb_vars_lst){      # update this to purrr 
@@ -128,9 +127,6 @@ create_tb_level2_no_tabs <- function(metrics_info_df,
       relocate(!!sym(quality_var), .after = last_col())  
     
   } 
-  # 
-  # print("temp is:")
-  # print(temp)
   
   temp %>% 
     pivot_longer(!state_county, names_to="metrics", values_to="value") %>%

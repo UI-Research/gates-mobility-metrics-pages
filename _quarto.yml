@@ -1,0 +1,21 @@
+project:
+  type: website
+  output-dir: '.'
+
+
+website:
+  navbar:
+    background: primary
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "Description"
+        file: description.qmd
+
+output:
+  html_document:
+    output_dir: '.'
+    css: styles.css
+    lib_dir: site_libs
+    self_contained: no
+output_dir: '.'

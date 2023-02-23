@@ -303,6 +303,21 @@ note_ul_bound <- "Lower/Upper bound"
 ##### Summary
 
 ```{r affordable-housing}
+
+#### Description of how these "*_varlist" lists are organized. ### 
+
+# The *_varlist lists have four vectors in them. 
+
+# The first vector has the name  of a vector of variables as they are defined in R (i.e. in snake_case). These vectors are used in the create_tb function to make the "Summary" tab. 
+
+# The second of vectors is the "human-readable" analog of the variables in the first vector.The create_tb function uses the first vector for coding purposes but the second vector to name the rows in the table. 
+
+# Like the first vector, the third is a vector of of snake_case variables, but this time used for the more sophisticated functions (create_tb_level2, create_tb_level3, create_tb_multi_year). This vector is different from the first because it includes confidence interval variables (denoted *_ci). 
+
+#The fourth vector is the "human-readable" analog of the vectors listed # in the third vector and is used similarly to the second vector. 
+
+
+
 housing_varlist <- list(
   c(
     "share_affordable_80_ami", 
@@ -348,8 +363,8 @@ create_tb(metrics_info_df = af_m_info_lst,
 create_tb_level2(metrics_info_df = af_m_info_lst, 
                  dataset = data, 
                  varname_maps = housing_varlist) 
-
 ```
+
 
 <br>
 
@@ -991,11 +1006,11 @@ create_tb_level3(metrics_info_df = tr_cost_m_info_lst,
 
 ```
 
+:::
+
 <div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
 
 <br>
-:::
-
 
 
 ## Pillar: High-Quality Education
@@ -1052,7 +1067,7 @@ create_tb_level3(metrics_info_df = ap_m_info_lst,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-transportation-cost) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#sec-preschool) for more details about this predictor.*</div>
 
 <br>
 
@@ -1119,9 +1134,10 @@ ed_table$table2
 
 ```
 
-<div class="exclude">*Visit [here](description.html#sec-public-education) for more details about this predictor.*</div>
-
 :::
+
+
+<div class="exclude">*Visit [here](description.html#sec-public-education) for more details about this predictor.*</div>
 
 <br>
 
@@ -1317,7 +1333,7 @@ create_tb_level3(metrics_info_df = emp_m_info_lst,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#sec-employment) for more details about this predictor.*</div>
 
 <br>
 
@@ -1577,6 +1593,9 @@ create_tb_level2(metrics_info_df = m_info_lst,
 ```
 
 :::
+
+<div class="exclude">*Visit [here](description.html#sec-access-to-health) for more details about this predictor.*</div>
+
 <br>
 
 #### Predictor: Neonatal health 
@@ -1630,7 +1649,7 @@ create_tb_level3(metrics_info_df = nh_m_info_lst,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#sec-neonatal-health) for more details about this predictor.*</div>
 
 <br>
 
@@ -1703,7 +1722,7 @@ env_table$table2
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#sec-environmental-quality) for more details about this predictor.*</div>
 
 <br>
 
@@ -1758,7 +1777,7 @@ create_tb_level2(metrics_info_df = et_m_info_lst,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#sec-political-participation) for more details about this predictor.*</div>
 
 <br>
 
@@ -1767,7 +1786,7 @@ create_tb_level2(metrics_info_df = et_m_info_lst,
 
 <!-- TO BE FILLED OUT LATER -->
 
-<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
+<!-- <div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div> -->
 
 <br>
 
@@ -1840,7 +1859,7 @@ create_tb_multi_yr(metrics_info_df = ec_m_info_lst,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#sec-exposure-to-crime) for more details about this predictor.*</div>
 
 <br>
 
