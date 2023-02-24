@@ -1,4 +1,5 @@
 library(tidyverse)
+library(quarto)
 
 source("R/prep_pages.R")
 source("R/render_pages.R")

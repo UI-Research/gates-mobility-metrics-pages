@@ -282,12 +282,12 @@ data <- data %>%
 
 note_ul_bound <- "Lower/Upper bound"
 
-
+print("Upward County: ")
+print(upward_county)
 ```
 
 
-
-# `r upward_county`
+# Where upward county should be
 
 <br><br>
 
