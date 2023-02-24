@@ -281,13 +281,10 @@ data <- data %>%
             function(x) recode(x, `1` = "Good", `2` = "Marginal", `3` = "Poor"))
 
 note_ul_bound <- "Lower/Upper bound"
-
-print("Upward County: ")
-print(upward_county)
 ```
 
 
-# Where upward county should be
+# `r upward_county`
 
 <br><br>
 
