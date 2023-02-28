@@ -258,7 +258,9 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 * Hartford County, CT ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/24_website_requests/09003-Hartford-Connecticut_808), Viz Page)
 * Honolulu County, HI ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/24_website_requests/15003-Honolulu-Hawaii_349), Viz Page)
 * Cuyahoga County, OH - Community Solutions ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/24_website_requests/39035-Cuyahoga-Ohio_108), Viz Page)
-* Cuyahoga County, OH - United Way ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/24_website_requests/39035-Cuyahoga-Ohio_277), Viz Page)
+* Bexar County, TX - RFA ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/24_website_requests/48029-Bexar-Texas_707), Viz Page)
+* Henry County, IL ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/24_website_requests/17073-Henry-Illinois_771), Viz Page)
+* Fresno County, CA ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/24_website_requests/06019-Fresno-California_339), Viz Page)
 
 
 ## Contributors
