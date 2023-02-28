@@ -6,7 +6,7 @@ source("R/render_pages.R")
 
 # Mobility Metrics applicants
 prepped01 <- prep_pages(url = "data/01_rfi-applicants.csv",
-                        output_directory = "factsheets/01_rfi-applicants/")
+                        output_directory = "factsheets/01_rfi-applicants")
 
 render_pages(prepped_object = prepped01)
 
