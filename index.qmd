@@ -1,11 +1,12 @@
 ---
-title: 'Updward Mobility from Poverty Region Fact Sheet'
+title: 'Upward Mobility from Poverty Region Fact Sheet'
 font: Lato
 format:
   html:
     self-contained: true
     toc: true
-    mathjax: null
+    toc-depth: 4
+    html-math-method: plain
     css: www/web_report.css
     output_dir: "."
     editor_options:
