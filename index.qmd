@@ -1,13 +1,10 @@
 ---
 title: 'Updward Mobility from Poverty Region Fact Sheet'
-author: ''
-date: ''
 font: Lato
-output:
-  html_document:
-    self_contained: TRUE
-    toc: TRUE
-    toc_float: TRUE
+format:
+  html:
+    self-contained: true
+    toc: true
     mathjax: null
     css: www/web_report.css
     output_dir: "."
@@ -15,8 +12,8 @@ output:
       chunk_output_type: console
 params:
   state_county: !expr c("42095", "42017", "48453", "09003")
-  fake_labels: false
-  state_title: false
+  fake_labels: FALSE
+  state_title: FALSE
 execute:
   echo: false
   warning: false
@@ -34,7 +31,6 @@ knitr::include_graphics(here::here("www", "images", "urban-institute-logo.png"))
 
 ```{r setup}
 library(here)
-library(data.table)
 library(gt)
 library(tidyverse)
 library(glue)
@@ -155,6 +151,8 @@ data <- bind_rows(list(`0` = data_not_multi_year,
 ```
 
 
+
+
 ```{r clean-data}  
 # data cleaning 
 data <- data %>% 
@@ -169,6 +167,8 @@ data <- data %>%
       TRUE ~ crime_rate_quality
     )
   )
+
+
 
 if (params$fake_labels) {
   
@@ -189,7 +189,7 @@ if (params$fake_labels) {
 
 
 metrics_summary <- "metrics_summary.csv"
-m_info <- fread(metrics_summary)
+m_info <- read_csv(metrics_summary)
 
 m_info <- m_info %>% 
   mutate_at(vars(c("notes", "metrics_description", "source_data")), 
@@ -217,8 +217,21 @@ data <- data %>%
 data <- data %>%
   mutate(state_county = str_to_title(state_county))
 
-if (!params$state_title) {
+#unclear why but quarto converting state_title param from FALSE to "no"
+# so we take following conversion here:
+
+if (!is.logical(params$state_title)){ #Check if logical
+  if(params$state_title == "no"){ #if not logical, convert "no" to FALSE
+    st = FALSE
+  } else{
+    st = TRUE
+  }
+} else{ #If it is logical, set st as the value
+  st = params$state_title
+}
   
+
+if (!st) {
   #get the upward county - the first element in the parameter 
   upward_county <- data %>% 
     filter(full_fips == params$state_county[1]) %>% 
@@ -227,8 +240,7 @@ if (!params$state_title) {
     first()
   
 } else {
-  
-    #get the upward county - the first element in the parameter 
+  #get the upward county - the first element in the parameter 
   upward_county <- data %>% 
     filter(full_fips == params$state_county[1]) %>% 
     select(state_name) %>% 
@@ -250,11 +262,16 @@ perc_vars_in_data <- all_perc_vars[(all_perc_vars %in% colnames(data))]
 
 
 numeric_vars_one_digit <- data %>% 
-  select(-average_to_living_wage_ratio) %>% 
-  select(-full_fips, -year) %>% 
-  select(-learning_rate, -learning_rate_lb, -learning_rate_ub) %>%
-  select(-all_of(perc_vars_in_data)) %>% 
-  select(-starts_with("share_burdened")) %>%
+  select(
+    -average_to_living_wage_ratio,
+    -full_fips, 
+    -year,
+    -learning_rate, 
+    -learning_rate_lb, 
+    -learning_rate_ub,
+    -all_of(perc_vars_in_data),
+    -starts_with("share_burdened")
+  ) %>%
   select_if(is.numeric) %>% 
   names()
 
@@ -280,10 +297,7 @@ data <- data %>%
             function(x) recode(x, `1` = "Good", `2` = "Marginal", `3` = "Poor"))
 
 note_ul_bound <- "Lower/Upper bound"
-
-
 ```
-
 # `r upward_county`
 
 <br><br>
@@ -292,12 +306,29 @@ note_ul_bound <- "Lower/Upper bound"
 
 <br> 
 
-#### Predictor: Housing Affordability {.tabset .avoidpagebreak}
+#### Predictor: Housing Affordability 
+
+::: {.panel-tabset .avoidpagebreak}
 
 
 ##### Summary
 
 ```{r affordable-housing}
+
+#### Description of how these "*_varlist" lists are organized. ### 
+
+# The *_varlist lists have four vectors in them. 
+
+# The first vector has the name  of a vector of variables as they are defined in R (i.e. in snake_case). These vectors are used in the create_tb function to make the "Summary" tab. 
+
+# The second of vectors is the "human-readable" analog of the variables in the first vector.The create_tb function uses the first vector for coding purposes but the second vector to name the rows in the table. 
+
+# Like the first vector, the third is a vector of of snake_case variables, but this time used for the more sophisticated functions (create_tb_level2, create_tb_level3, create_tb_multi_year). This vector is different from the first because it includes confidence interval variables (denoted *_ci). 
+
+#The fourth vector is the "human-readable" analog of the vectors listed # in the third vector and is used similarly to the second vector. 
+
+
+
 housing_varlist <- list(
   c(
     "share_affordable_80_ami", 
@@ -343,8 +374,8 @@ create_tb(metrics_info_df = af_m_info_lst,
 create_tb_level2(metrics_info_df = af_m_info_lst, 
                  dataset = data, 
                  varname_maps = housing_varlist) 
-
 ```
+
 
 <br>
 
@@ -420,15 +451,18 @@ create_tb_multi_yr(metrics_info_df = rb_m_info_lst,
 
 ```
 
+:::
 
 
-
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/housing-affordability) for a thorough description of research surrounding this metric.*</div>
+<div class="exclude">*Visit [here](description.html#sec-affordable-housing) for more details about this predictor.*</div>
 
 <br>
 
 
-#### Predictor: Housing stability {.tabset .avoidpagebreak}
+#### Predictor: Housing stability 
+
+::: {.panel-tabset .avoidpagebreak}
+
 
 ##### Summary
 
@@ -697,14 +731,18 @@ create_tb_multi_yr_homeless(metrics_info_df = m_info_lst,
 
 ```
 
+:::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/housing-stability) for a thorough description of research surrounding this metric.*</div>
+<div class="exclude">*Visit [here](description.html#sec-homelessness) for more details about this predictor.*</div>
 
 
 <br>
 
 
-#### Predictor: Economic inclusion {.tabset .avoidpagebreak}
+#### Predictor: Economic inclusion 
+
+::: {.panel-tabset .avoidpagebreak}
+
 
 ##### Summary
 
@@ -754,16 +792,20 @@ create_tb_level3(metrics_info_df = ei_m_info_lst,
 
 ```
 
+:::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/economic-inclusion) for a thorough description of research surrounding this metric.*</div>
+
+<div class="exclude">*Visit [here](description.html#sec-economic-inclusion) for more details about this predictor.*</div>
 
 <br>
 
-#### Predictor: Racial diversity {.tabset  .avoidpagebreak}
+#### Predictor: Racial diversity 
+
+::: {.panel-tabset .avoidpagebreak}
 
 ##### Summary
 
-```{r racial-dviersity}
+```{r racial-diversity}
 race_div <- list(
   c("black_nh_exposure",
     "black_nh_exposure_quality", 
@@ -829,8 +871,9 @@ create_tb_level2(metrics_info_df = rd_m_info_lst,
 ```
 
 
+:::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/racial-diversity) for a thorough description of research surrounding this metric.*</div>
+<div class="exclude">*Visit [here](description.html#sec-racial-diversity) for more details about this predictor.*</div>
 
 <br>
 
@@ -839,14 +882,17 @@ create_tb_level2(metrics_info_df = rd_m_info_lst,
 
 <!-- TO BE FILLED IN LATER -->
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/social-capital) for a thorough description of research surrounding this metric.*</div>
+<div class="exclude">*Visit [here](description.html#sec-social-capital) for more details about this predictor.*</div>
 
 <br>
 
 
-#### Predictor: Transportation access {.tabset .avoidpagebreak}
+#### Predictor: Transportation access 
 
-##### Summary {.avoidpagebreak}
+::: {.panel-tabset .avoidpagebreak}
+
+
+##### Summary 
 
 ```{r transportation-access}
 trans_access <- list(
@@ -902,18 +948,22 @@ create_tb_level3(metrics_info_df = trans_info_lst,
 
 ```
 
+:::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/transportation-access) for a thorough description of research surrounding this metric.*</div>
+
+<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
 
 <br>
 
 
 ####  {.tabset}
 
-#### Predictor: Transportation cost {.tabset .avoidpagebreak}
+#### Predictor: Transportation cost 
+
+::: {.panel-tabset .avoidpagebreak}
 
 
-##### Summary {.avoidpagebreak}
+##### Summary 
 
 ```{r transportation-cost}
 trans_cost_varlist <- list(
@@ -969,13 +1019,18 @@ create_tb_level3(metrics_info_df = tr_cost_m_info_lst,
 
 ```
 
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
+
 <br>
 
 
+## Pillar: High-Quality Education
 
+#### Predictor: Access to preschool 
 
-## Pillar: High-Quality Education:
-#### Predictor: Access to preschool {.tabset .avoidpagebreak}
+::: {.panel-tabset .avoidpagebreak}
 
 ##### Summary
 
@@ -1023,12 +1078,17 @@ create_tb_level3(metrics_info_df = ap_m_info_lst,
 
 ```
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/access-preschool) for a thorough description of research surrounding this metric.*</div>
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-preschool) for more details about this predictor.*</div>
 
 <br>
 
 
-#### Predictor: Effective public education {.tabset .avoidpagebreak}
+#### Predictor: Effective public education 
+
+::: {.panel-tabset .avoidpagebreak}
+
 
 ##### Summary
 
@@ -1087,11 +1147,17 @@ ed_table$table2
 
 ```
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/effective-public-education) for a thorough description of research surrounding this metric.*</div>
+:::
+
+
+<div class="exclude">*Visit [here](description.html#sec-public-education) for more details about this predictor.*</div>
+
 <br>
 
 
-#### Predictor: School economic diversity {.tabset .avoidpagebreak}
+#### Predictor: School economic diversity 
+
+::: {.panel-tabset .avoidpagebreak}
 
 ##### Summary
 
@@ -1154,11 +1220,15 @@ create_tb_level2(metrics_info_df = spoverty_m_info_lst,
 
 ```
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/school-economic-diversity) for a thorough description of research surrounding this metric.*</div>
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-poverty-concentration) for more details about this predictor.*</div>
 
 <br>
 
-#### Predictor: Preparation for college {.tabset .avoidpagebreak}
+#### Predictor: Preparation for college 
+
+::: {.panel-tabset .avoidpagebreak}
 
 ##### Summary
 
@@ -1206,22 +1276,26 @@ create_tb_level3(metrics_info_df = m_info_lst,
 
 ```
 
+:::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/preparation-college) for a thorough description of research surrounding this metric.*</div>
+<div class="exclude">*Visit [here](description.html#sec-college-readiness) for more details about this predictor.*</div>
 
 <br>
 
 
-#### Predictor: Digital access {.tabset .avoidpagebreak}
+#### Predictor: Digital access 
 
 <!-- TO BE FILLED IN LATER -->
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/digital-access) for a thorough description of research surrounding this metric.*</div>
+
+<!-- <div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div> -->
 
 <br>
 
 ## Pillar: Rewarding Work
-#### Predictor: Employment Opportunities {.tabset .avoidpagebreak}
+#### Predictor: Employment Opportunities 
+
+::: {.panel-tabset .avoidpagebreak}
 
 
 ##### Summary
@@ -1270,12 +1344,15 @@ create_tb_level3(metrics_info_df = emp_m_info_lst,
 
 ```
 
+:::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/employment-opportunities) for a thorough description of research surrounding this metric.*</div>
+<div class="exclude">*Visit [here](description.html#sec-employment) for more details about this predictor.*</div>
 
 <br>
 
-#### Predictor: Access to jobs paying a living wage {.tabset .avoidpagebreak}
+#### Predictor: Access to jobs paying a living wage 
+
+::: {.panel-tabset .avoidpagebreak}
 
 ##### Summary
 
@@ -1323,13 +1400,17 @@ create_tb_multi_yr(metrics_info_df = m_info_lst,
 
 ```
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/access-jobs-paying-living-wage) for a thorough description of research surrounding this metric.*</div>
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-job-living-wage) for more details about this predictor.*</div>
+
+<br>
 
 
-<br><br>
+#### Predictor: Opportunities for Income 
 
+::: {.panel-tabset .avoidpagebreak}
 
-#### Predictor: Opportunities for Income {.tabset .avoidpagebreak}
 ##### Summary
 
 ```{r income}
@@ -1393,13 +1474,15 @@ create_tb_level3(income_m_info_lst, data_sub, income_varlist)
 
 ```
 
+:::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/opportunities-income) for a thorough description of research surrounding this metric.*</div>
-
+<div class="exclude">*Visit [here](description.html#sec-income) for more details about this predictor.*</div>
 
 <br>
 
-#### Predictor: Financial security {.tabset .avoidpagebreak}
+#### Predictor: Financial security 
+
+::: {.panel-tabset .avoidpagebreak}
 
 ##### Summary
 
@@ -1459,27 +1542,27 @@ create_tb_level3(metrics_info_df = m_info_lst,
 
 ```
 
+:::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/financial-security-and-wealth-building-opportunities) for a thorough description of research surrounding this metric.*</div>
-
+<div class="exclude">*Visit [here](description.html#sec-financial-security) for more details about this predictor.*</div>
 
 <br>
 
 
-#### Predictor: Wealth-Building Opportunities {.tabset .avoidpagebreak}
+#### Predictor: Wealth-Building Opportunities 
 
 <!-- TO BE FILLED IN LATER -->
 
-
-<!-- <div class="exclude">*Visit here (currently missing) for a thorough description of research surrounding this metric.*</div> -->
-
+<!-- <div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div> -->
 
 <br>
 
 
 ## Pillar: Healthy Environment and Good Access to Healthcare
 
-#### Predictor: Access to health services {.tabset .avoidpagebreak}
+#### Predictor: Access to health services 
+
+::: {.panel-tabset .avoidpagebreak}
 
 ##### Summary
 
@@ -1522,12 +1605,15 @@ create_tb_level2(metrics_info_df = m_info_lst,
 
 ```
 
+:::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/access-health-services) for a thorough description of research surrounding this metric.*</div>
+<div class="exclude">*Visit [here](description.html#sec-access-to-health) for more details about this predictor.*</div>
 
 <br>
 
-#### Predictor: Neonatal health {.tabset .avoidpagebreak}
+#### Predictor: Neonatal health 
+
+::: {.panel-tabset .avoidpagebreak}
 
 ##### Summary
 
@@ -1574,18 +1660,21 @@ create_tb_level3(metrics_info_df = nh_m_info_lst,
 
 ```
 
+:::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/neonatal-health) for a thorough description of research surrounding this metric.*</div>
+<div class="exclude">*Visit [here](description.html#sec-neonatal-health) for more details about this predictor.*</div>
 
 <br>
 
 
 
-#### Predictor: Environmental quality {.tabset .avoidpagebreak}
+#### Predictor: Environmental quality 
+
+::: {.panel-tabset .avoidpagebreak}
 
 ##### Summary
 
-```{r environemtnal-quality}
+```{r environmental-quality}
 env_varlist <- list(
   c("environmental"),
   c("Air quality index"),
@@ -1610,7 +1699,7 @@ create_tb(metrics_info_df = env_m_info_lst,
 
 ##### Detail
 
-```{r environemtnal-quality-table2}
+```{r environmental-quality-table2}
 create_tb_level2(metrics_info_df = env_m_info_lst, 
                  dataset = data, 
                  varname_maps = env_varlist) 
@@ -1622,7 +1711,7 @@ create_tb_level2(metrics_info_df = env_m_info_lst,
 
 ##### Sub-Area
 
-```{r environemtnal-quality-table3}
+```{r environmental-quality-table3}
 data_sub <- data %>%
   mutate(
     subgroup = recode(
@@ -1644,24 +1733,26 @@ env_table$table2
 
 ```
 
+:::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/environmental-quality) for a thorough description of research surrounding this metric.*</div>
+<div class="exclude">*Visit [here](description.html#sec-environmental-quality) for more details about this predictor.*</div>
 
 <br>
 
 
-#### Predictor: Safety from Trauma {.tabset .avoidpagebreak}
+#### Predictor: Safety from Trauma 
 
 <!-- TO BE FILLED OUT LATER -->
 
-
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/safety-trauma) for a thorough description of research surrounding this metric.*</div>
 
 <br>
 
 ## Pillar: Responsible and Just Governance
 
-#### Predictor: Political participation {.tabset .avoidpagebreak}
+#### Predictor: Political participation 
+
+::: {.panel-tabset .avoidpagebreak}
+
 
 ##### Summary
 
@@ -1697,8 +1788,9 @@ create_tb_level2(metrics_info_df = et_m_info_lst,
 
 ```
 
+:::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/political-participation) for a thorough description of research surrounding this metric.*</div>
+<div class="exclude">*Visit [here](description.html#sec-political-participation) for more details about this predictor.*</div>
 
 <br>
 
@@ -1707,14 +1799,14 @@ create_tb_level2(metrics_info_df = et_m_info_lst,
 
 <!-- TO BE FILLED OUT LATER -->
 
-
-
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/descriptive-representation) for a thorough description of research surrounding this metric.*</div>
+<!-- <div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div> -->
 
 <br>
 
 
-#### Predictor: Safety from Crime {.tabset .avoidpagebreak}
+#### Predictor: Safety from Crime 
+
+::: {.panel-tabset .avoidpagebreak}
 
 ##### Summary
 
@@ -1778,9 +1870,9 @@ create_tb_multi_yr(metrics_info_df = ec_m_info_lst,
 
 ```
 
-<br>
+:::
 
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/safety-crime) for a thorough description of research surrounding this metric.*</div>
+<div class="exclude">*Visit [here](description.html#sec-exposure-to-crime) for more details about this predictor.*</div>
 
 <br>
 
@@ -1789,10 +1881,6 @@ create_tb_multi_yr(metrics_info_df = ec_m_info_lst,
 
 <!-- NEED TO INCLUDE METRIC ON RATE OR REPORTED VIOLENT CRIME PER 100K -->
 #### Predictor: Just policing {.tabset .avoidpagebreak}
-
-
-
-<div class="exclude">*Visit [here](https://upward-mobility.urban.org/just-policing) for a thorough description of research surrounding this metric.*</div>
 
 <br>
 

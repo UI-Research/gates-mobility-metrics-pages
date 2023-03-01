@@ -220,10 +220,6 @@ create_tb_level3 <- function(metrics_info_df,
       table2 = create_tb_by_subgroup(sg_lst[2], note = notes3)
     )
     
-    # for (i in sg_lst){
-    #   print(create_tb_by_subgroup(i))
-    # }
-    
   } else{
     
     create_tb_by_subgroup(subgroup_this_var, note = notes2)

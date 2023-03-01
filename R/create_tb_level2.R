@@ -57,8 +57,7 @@ create_tb_level2 <- function(metrics_info_df,
   mb_vars_lst <- colnames(dataset %>% 
                             select(setdiff(matches(mb_vars),
                                            matches("_lb|_ub|_quality"))))
-  #print(c("mb_vars_lst is: ", mb_vars_lst))
-  
+
   if (ci_vars == 1){
     
     for (val in mb_vars_lst){      # update this to purrr 
@@ -110,14 +109,14 @@ create_tb_level2 <- function(metrics_info_df,
     
     col_from <- col_from[-grep("*_ci", col_from)]
     col_to <- col_to[-grep("*_ci", col_to)]
-    
-    notes <- paste0(notes, 
+
+        notes <- paste0(notes, 
                     "<br><br>",
                     "The Confidence Interval for this metric is not applicable.")
     
   }
   
-  temp %>% 
+  temp <- temp %>% 
     mutate_all(as.character) %>% 
     rename_at(vars(col_from), function(x) col_to)
   
@@ -128,9 +127,6 @@ create_tb_level2 <- function(metrics_info_df,
       relocate(!!sym(quality_var), .after = last_col())  
     
   } 
-  
-  # print("temp is:")
-  # print(temp)
   
   temp %>% 
     pivot_longer(!state_county, names_to="metrics", values_to="value") %>%
