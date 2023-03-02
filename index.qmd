@@ -21,6 +21,10 @@ execute:
   message: false
   error: true
   output: asis
+project:
+  render:
+    - index.qmd
+    - description.qmd
 ---
 
 ```{r header-image, fig.width = 5.14, fig.height = 1.46, echo = FALSE}
