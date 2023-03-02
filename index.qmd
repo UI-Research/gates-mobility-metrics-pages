@@ -1,10 +1,11 @@
 ---
-title: 'Upward Mobility from Poverty Region Fact Sheet'
+title: ''
 font: Lato
 format:
   html:
     self-contained: true
     toc: true
+    toc-location: left
     toc-depth: 4
     html-math-method: plain
     css: www/web_report.css
@@ -64,9 +65,9 @@ source(here::here("R", "create_tb_multi_yr.R"))
 tb_title_size <- 18
 tb_title_font <- "bold"
 
-tb_subtitle_size <- 14
+tb_subtitle_size <- 16
 tb_title_font <- "normal"
-tb_font_size <- 12 
+tb_font_size <- 14 
 
 source_note_size <- 11
 source_note_font <- "normal"
@@ -160,6 +161,9 @@ data <- bind_rows(list(`0` = data_not_multi_year,
 
 ```{r clean-data}  
 # data cleaning 
+
+#NOTE: THIS SHOULD GO AWAY WITH UPDATED CRIME DATA!
+
 data <- data %>% 
   mutate(state = str_pad(state, width = 2, side ="left", pad = "0"), #set max ub as 1 
          county = str_pad(county, width = 3, side ="left", pad = "0")) %>% 
@@ -243,7 +247,7 @@ if (!st) {
     select(state_county) %>% 
     pull() %>% 
     first()
-  
+
 } else {
   #get the upward county - the first element in the parameter 
   upward_county <- data %>% 
@@ -303,9 +307,12 @@ data <- data %>%
 
 note_ul_bound <- "Lower/Upper bound"
 ```
-# `r upward_county`
 
-<br><br>
+```{r create-title}
+title <- paste0("Mobility Metrics for ", upward_county)
+```
+# `r title`
+
 
 ## Pillar: Opportunity-Rich & Inclusive Neighborhoods
 
