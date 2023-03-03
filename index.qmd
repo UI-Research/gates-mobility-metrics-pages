@@ -318,9 +318,7 @@ note_ul_bound <- "Lower/Upper bound"
 
 #### Predictor: Housing Affordability 
 
-<div class="exclude">*Visit [here](description.html#sec-affordable-housing) for more details about this predictor.*</div>
 
-<br> 
 
 ::: {.panel-tabset .avoidpagebreak}
 
@@ -468,6 +466,8 @@ create_tb_multi_yr(metrics_info_df = rb_m_info_lst,
 ```
 
 :::
+
+<div class="exclude">*Visit [here](description.html#sec-affordable-housing) for more details about this predictor.*</div>
 
 
 <br>
