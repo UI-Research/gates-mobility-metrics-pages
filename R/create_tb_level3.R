@@ -205,7 +205,8 @@ create_tb_level3 <- function(metrics_info_df,
         locations = cells_body(
           columns = county_colnames, 
           rows = metrics == "Quality")
-      )
+      )  %>%
+      as_raw_html()
   } # end of create_tb_by_subgroup
   
   
@@ -218,10 +219,6 @@ create_tb_level3 <- function(metrics_info_df,
       table1 = create_tb_by_subgroup(sg_lst[1], note = notes2),
       table2 = create_tb_by_subgroup(sg_lst[2], note = notes3)
     )
-    
-    # for (i in sg_lst){
-    #   print(create_tb_by_subgroup(i))
-    # }
     
   } else{
     

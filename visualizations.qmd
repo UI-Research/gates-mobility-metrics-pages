@@ -1,22 +1,25 @@
 ---
-title: ""
-author: ""
-date: ""
+title: ''
 font: Lato
-output:
-  html_document:
-    self_contained: TRUE
-    toc: TRUE
-    toc_float: TRUE
+format:
+  html:
+    self-contained: true
+    toc: true
     mathjax: null
     css: www/web_report.css
     output_dir: "."
     editor_options:
       chunk_output_type: console
 params:
-  state_county: !r c("11001", "42101", "06001", "09003")
-  fake_labels: FALSE
-  state_title: FALSE
+  state_county: !expr c("11001", "42101", "06001", "09003")
+  fake_labels: false
+  state_title: false
+execute:
+  echo: false
+  warning: false
+  message: false
+  error: true
+  output: asis
 ---
 
 ```{r setup-rmarkdown, echo = FALSE}
