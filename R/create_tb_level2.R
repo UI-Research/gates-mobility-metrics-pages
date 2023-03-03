@@ -110,9 +110,9 @@ create_tb_level2 <- function(metrics_info_df,
     col_from <- col_from[-grep("*_ci", col_from)]
     col_to <- col_to[-grep("*_ci", col_to)]
 
-        notes <- paste0(notes, 
-                    "<br><br>",
-                    "The Confidence Interval for this metric is not applicable.")
+    notes <- paste0(notes, 
+                "<br><br>",
+                "The Confidence Interval for this metric is not applicable.")
     
   }
   

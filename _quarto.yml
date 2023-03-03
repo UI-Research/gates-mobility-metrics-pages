@@ -1,7 +1,10 @@
 project:
   type: website
   output-dir: '.'
-
+  render:
+    - "index.qmd"
+    - "description.qmd"
+    - "!factsheets/*"
 
 website:
   navbar:
