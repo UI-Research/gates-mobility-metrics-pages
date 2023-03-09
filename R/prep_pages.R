@@ -50,12 +50,13 @@ prep_pages <- function(url, output_directory, state_title = FALSE) {
     app_list$full_list
   )
   
+  #Changed here: fips used to be uni_id
+  #this used to shorten sub-directory names to only be the 5-digit fips code
   full_name_lst <- as.list(
-    app_list$uni_id
+    app_list$fips
   )
   
   if ("random_id" %in% names(app_list)) {
-    
     # create a data frame with parameters and output file names
     runs <- tibble(
       filename = "index.html",             # creates a string with output file names in the form <index>.pdf
@@ -64,7 +65,6 @@ prep_pages <- function(url, output_directory, state_title = FALSE) {
     )        # creates a nest list of parameters for each object in the index
     
   } else {
-    
     # create a data frame with parameters and output file names
     runs <- tibble(
       filename = "index.html",             # creates a string with output file names in the form <index>.pdf

@@ -11,7 +11,7 @@ source("R/render_pages.R")
 # through all counties/cities in 2023
 
 prepped_website_example <- prep_pages(url = "data/01_rfi-applicants.csv",
-                                      output_directory = "factsheets/") %>%
+                                      output_directory = "factsheets") %>%
   slice_head(n = 5)
 render_pages(prepped_object = prepped_website_example)
 
