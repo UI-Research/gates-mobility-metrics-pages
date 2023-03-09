@@ -8,19 +8,18 @@ If you have questions, please reach out to gmorrison@urban.org, awilliams@urban.
 ### Organization:
 
 These data pages are stored the `factsheets` sub-directory of the gates-mobility-metrics-pages 
-github repository. Within `factsheets`, we have two layers of folder organization of the form:
-`XX_description/YYYYY_region/index.html` where `XX` is a two digit number and `YYYYY` is a five
-digit fips code. One currently operational factsheet can be found at: 
-`01_rfi-applicants/39113-Montgomery-Ohio/index.html`
+github repository. Within `factsheets`, we have folder organization of the form:
+`YYYYY/index.html` where `YYYYY` is a five digit fips code. 
+One currently operational factsheet can be found at: 
+`06041/index.html`
 
 We use code to upload from the `factsheets/` directory to the s3 bucket. 
 
 Note that for each factsheet, we have a data page (`index.html`) and a description page 
 (`description.html`).
 
-We currently have uploaded factsheets from in three larger directories (i.e. from three folders
-of the form `XX_description`), but there are a total of 24 currently. If need be, Gabe can
-upload all of the factsheets in under a minute. 
+We currently have uploaded factsheets from in from 5 directories, but, as noted above, there will ultimately be 
+around 3500. If need be, Gabe can create more sample fact sheets. 
 
 ### Problems/Outstanding Questions:
 
