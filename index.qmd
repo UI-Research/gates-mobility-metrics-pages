@@ -315,8 +315,6 @@ note_ul_bound <- "Lower/Upper bound"
 
 <!-- This is a "hacky" way to get the header out of the TOC. The problem is that with the unlisted argument without a second empty header 1, quarto remove upward_county and all child elements. Now, we have a second empty header that is not listed in the TOC.  -->
 
-# `r upward_county` {.unnumbered .unlisted}
-
 # `r  ` 
 
 
