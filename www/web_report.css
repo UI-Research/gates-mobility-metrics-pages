@@ -61,12 +61,23 @@ img {
 }
 
 .navbar-default .navbar-nav>li>a {
-  color: #FFFFFF;
+  background-color: #FFFFFF;
+ 
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-  color: #1696d2;
   background-color: #FFFFFF;
+}
+
+
+/* Styling for the different tabs for the tables */
+.nav-tabs{
+  background-color:#ffffff;
+}
+.nav-tabs a {
+  color: #1696d2;
+  font-weight: 700;
+  bottom-border: 
 }
 
 /* list styles */
@@ -76,19 +87,22 @@ li {
 
 
 /* link styles */
-a {
+a:link {
   outline: none;
   text-decoration: none;
   padding: 2px 1px 0;
+
 }
 
-a:link {
+a:visited {
   color: #1696d2;
 }
+
 
 /* font size on tables */ 
 .panel-tabset .nav-item {
   font-size: 16px;
+  color: #1696d2
 }
 
 .tbody.gt_table_body{
@@ -101,7 +115,7 @@ a:link {
 }
 
 /* Legend Formatting */
-.list-group-item.active {
+.list-group-item.active, .list-group-item.active:focus {
   background-color: #1696d2;
   border-color: #1696d2;
 }
@@ -139,6 +153,7 @@ a:link {
     }
     .exclude{
         display: none;
+        font: 18px;
     }
     .contentBlock.title{
         padding-top: 0px;
