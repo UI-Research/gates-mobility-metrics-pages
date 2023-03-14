@@ -5,7 +5,9 @@ format:
   html:
     self-contained: true
     toc: true
-    mathjax: null
+    toc-location: left
+    toc-depth: 4
+    html-math-method: plain
     css: www/web_report.css
     output_dir: "."
     editor_options:
@@ -20,6 +22,10 @@ execute:
   message: false
   error: true
   output: asis
+project:
+  render:
+    - index.qmd
+    - description.qmd
 ---
 
 ```{r header-image, fig.width = 5.14, fig.height = 1.46, echo = FALSE}
@@ -59,9 +65,9 @@ source(here::here("R", "create_tb_multi_yr.R"))
 tb_title_size <- 18
 tb_title_font <- "bold"
 
-tb_subtitle_size <- 14
+tb_subtitle_size <- 16
 tb_title_font <- "normal"
-tb_font_size <- 12 
+tb_font_size <- 14 
 
 source_note_size <- 11
 source_note_font <- "normal"
@@ -155,6 +161,9 @@ data <- bind_rows(list(`0` = data_not_multi_year,
 
 ```{r clean-data}  
 # data cleaning 
+
+#NOTE: THIS SHOULD GO AWAY WITH UPDATED CRIME DATA!
+
 data <- data %>% 
   mutate(state = str_pad(state, width = 2, side ="left", pad = "0"), #set max ub as 1 
          county = str_pad(county, width = 3, side ="left", pad = "0")) %>% 
@@ -243,7 +252,7 @@ if (!st) {
     select(state_county) %>% 
     pull() %>% 
     first()
-  
+
 } else {
   #get the upward county - the first element in the parameter 
   upward_county <- data %>% 
@@ -304,13 +313,18 @@ data <- data %>%
 note_ul_bound <- "Lower/Upper bound"
 ```
 
+
+
+```{r create-title}
+title <- paste0("Mobility Metrics for ", upward_county)
+```
+
+
 <!-- This is a "hacky" way to get the header out of the TOC. The problem is that with the unlisted argument without a second empty header 1, quarto remove upward_county and all child elements. Now, we have a second empty header that is not listed in the TOC.  -->
 
-# `r upward_county` {.unnumbered .unlisted}
+# `r title` {.unnumbered .unlisted}
 
 # `r  ` 
-
-<br><br>
 
 ## Pillar: Opportunity-Rich & Inclusive Neighborhoods
 
