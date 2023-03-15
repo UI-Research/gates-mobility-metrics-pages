@@ -20,14 +20,13 @@ library(glue)
 #' @param state_title (boolean) Default to FALSE. The function returns a dataframe
 #'    with one column being a nested list (see below). One component of the list
 #'    is an element named "state_title." This argument is written into that element
-#'
 #' @returns run (tibble) A dataframe with three columns: 
 #'  filename - set to be "index.html" 
 #'  params - contains a list of the fips code listed in the fips and comparisons 
 #'    columns of the datasets pointed to by the url argument
 #'  dirname - location of where knitted hmtl files should be saved
 #'  
-prep_pages <- function(url, output_directory, state_title = FALSE) {
+prep_pages <- function(url, output_directory, state_title = FALSE, bespoke = TRUE) {
   
   # read in the applicant list 
   app_list <- read_csv(url)
@@ -50,11 +49,9 @@ prep_pages <- function(url, output_directory, state_title = FALSE) {
     app_list$full_list
   )
   
-  #Changed here: fips used to be uni_id
-  #this used to shorten sub-directory names to only be the 5-digit fips code
   full_name_lst <- as.list(
-    app_list$fips
-  )
+    app_list$uni_id
+    )
   
   if ("random_id" %in% names(app_list)) {
     # create a data frame with parameters and output file names

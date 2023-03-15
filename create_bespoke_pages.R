@@ -5,18 +5,6 @@ source("R/prep_pages.R")
 source("R/quarto_render_wrapper.R")
 source("R/render_pages.R")
 
-#Demo for 2023 Website:
-# Note that this uses different file formats from other requests which were "ad hoc"
-# This structure should be considered consistent with format we will use to iterate
-# through all counties/cities in 2023
-
-prepped_website_example <- prep_pages(url = "data/01_rfi-applicants.csv",
-                                      output_directory = "factsheets") %>%
-  slice_head(n = 5)
-render_pages(prepped_object = prepped_website_example)
-
-
-
 
 # Mobility Metrics applicants
 prepped01 <- prep_pages(url = "data/01_rfi-applicants.csv",
