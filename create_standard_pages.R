@@ -15,7 +15,11 @@ source("R/quarto_render_wrapper.R")
 source("R/render_pages.R")
 
 #For testing:
-small <- prepped_counties %>%
-  slice_head(n = 5)
+# small <- prepped_counties %>%
+#   slice_head(n = 5)
+# 
+# render_pages(prepped_object = small)
 
-render_pages(prepped_object = small)
+
+#For actual run:
+#render_pages(prepped_object = prepped_counties)
