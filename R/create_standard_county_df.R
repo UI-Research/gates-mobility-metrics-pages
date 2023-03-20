@@ -19,13 +19,16 @@ if(!(file.exists("data/100_all-counties.Rda"))){
            geoid = strsplit(geoid, ";")
     )
   
-  g <- as.list(prepped_counties$geoid)
+  geoid_lst <- as.list(prepped_counties$geoid)
   
   prepped_counties <- tibble(filename = "index.html", 
-                             params = map(g, ~list(state_county = ., state_title = FALSE)),
-                             dir_name = str_c("factsheets/", g, "/")
+                             params = map(geoid_lst, 
+                                          ~list(state_county = ., 
+                                                state_title = FALSE)
+                                          ),
+                             dir_name = str_c("factsheets/", geoid_lst, "/")
   )
   save(prepped_counties, file = "data/100_all-counties.Rda")
-}else{
+} else{
   load("data/100_all-counties.Rda")
 }
