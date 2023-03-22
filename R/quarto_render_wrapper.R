@@ -16,14 +16,17 @@
 
 quarto_render_wrapper <- function(input, output_file, execute_params, dir_name){
   
-  quarto_render(input = input,
-                output_file = output_file, 
-                execute_params = execute_params)
-  if(!(dir.exists(dir_name))){
-    dir.create(paste0(dir_name, "/"))
+  if(!dir.exists(dir_name)){
+    
+    dir.create(dir_name)
+    
   }
   
-  file.copy("index.html", to = paste0(dir_name, "/"), overwrite = TRUE)
+  quarto_render(
+    input = input,
+    output_file = output_file, 
+    execute_params = execute_params
+  )
 
 }
 

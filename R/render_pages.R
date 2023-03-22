@@ -17,20 +17,18 @@
 render_pages <- function(prepped_object, input = "index.qmd") {
   
   prepped_object %>%
-    select(output_file = filename, 
-           execute_params = params, 
-           dir_name
-           #output_dir = dir_name
-           ) %>%
+    mutate(output_file = paste0(dir_name, filename)) %>%
+    select(
+      output_file,
+      execute_params = params, 
+      dir_name
+    ) %>%
     pwalk(quarto_render_wrapper, input = input)
-  
-  
-
   
   prepped_object %>% 
     select(to = dir_name) %>% 
-    pwalk(file.copy, from = 'www', recursive = TRUE, overwrite = TRUE) %>% 
-    #pwalk(file.copy, from = 'site_libs',  recursive = TRUE, overwrite = TRUE) %>% 
-    pwalk(file.copy, from = 'description.html', overwrite = TRUE) 
+    pwalk(file.copy, from = "www", recursive = TRUE, overwrite = TRUE) %>% 
+    pwalk(file.copy, from = "site_libs",  recursive = TRUE, overwrite = TRUE) %>% 
+    pwalk(file.copy, from = "description.html", overwrite = TRUE) 
   
 }
