@@ -28,7 +28,7 @@ create_tb_multi_yr <- function(metrics_info_df,
                                source_note_size = 11,
                                tb_width_perc = 80,
                                tb_align = 'left'
-                               ){
+                               ) {
   
   mb_metrics <- metrics_info_df$metric_name
   mb_vars  <- metrics_info_df$metric_vars_prefix[[1]]
