@@ -19,7 +19,7 @@
 #'  Default to 80.
 #'@param tb_align (string) Table alignment. Default set to "left".
 #'@return (gt table object) Returns an unnamed gt table object. 
- 
+#'
 create_tb <- function(metrics_info_df, 
                       dataset, 
                       varname_maps,

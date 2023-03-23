@@ -13,13 +13,15 @@
 #'  mb_vars (string) is the name of the variable as listed in the metric_vars_prefix column
 
 
-get_vars_info <- function(varname, data_summary_file=m_info){
+get_vars_info <- function(varname, data_summary_file = m_info){
   
   info_lst <- data_summary_file %>% 
     filter(metric_name == varname) %>%
     purrr::transpose() %>% 
     simplify() %>%
     first()
+  
+  info_lst$years <- as.numeric(str_split(info_lst$years, ",")[[1]])
   
   mb_vars <- info_lst[4][[1]]
   

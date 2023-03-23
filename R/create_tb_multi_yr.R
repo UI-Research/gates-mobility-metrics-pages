@@ -27,24 +27,16 @@ create_tb_multi_yr <- function(metrics_info_df,
                                tb_font_size = 14,
                                source_note_size = 11,
                                tb_width_perc = 80,
-                               tb_align = 'left'
+                               tb_align = "left"
                                ) {
   
-  mb_metrics <- metrics_info_df$metric_name
   mb_vars  <- metrics_info_df$metric_vars_prefix[[1]]
   quality_var  <- metrics_info_df$quality_variable[[1]]
   metrics_desp  <- metrics_info_df$metrics_description
   subgroup_this_var <- metrics_info_df$subgroup_id
-  ci_vars <- metrics_info_df$ci_var
   notes <- metrics_info_df$notes
-  notes2 <- metrics_info_df$notes2
-  data_source2 <- metrics_info_df$source_data2
   
-  subgroup_varname = subgroup_type_name <- 'year'
-  
-  if (mb_vars == 'average_to_living_wage_ratio'){
-    notes <- notes2
-  }
+  subgroup_varname = subgroup_type_name <- "year"
   
   col_from <- varname_maps[3][[1]]
   col_to <- varname_maps[4][[1]]
@@ -54,37 +46,43 @@ create_tb_multi_yr <- function(metrics_info_df,
   dataset <- dataset %>% 
     filter(is_year == 1) 
   
-  mb_vars_lst <- colnames(dataset %>% 
-                            select(all_of(setdiff(matches(mb_vars), matches('_lb|_ub|_quality')))))
+  mb_vars_lst <- dataset %>% 
+    select(all_of(setdiff(matches(mb_vars), matches("_lb|_ub|_quality")))) %>%
+    colnames()
   
-  var_selection <- function(my_ds){
+  var_selection <- function(my_ds) {
+    
     my_ds %>% 
-      select(matches(glue('{mb_vars}|{quality_var}|{subgroup_varname}|state_county')), -matches('_lb|_ub')) %>% 
+      select(
+        matches(glue("{mb_vars}|{quality_var}|{subgroup_varname}|state_county")), 
+        -matches("_lb|_ub")
+      ) %>% 
       select(-is_year)
+    
   }
   
-  
-  if (ci_vars == 1){
+  if (metrics_info_df$ci_var == 1) {
     
-    for (val in mb_vars_lst){      # update this to purrr 
+    for (val in mb_vars_lst) {      # update this to purrr 
       
       dataset <- unite_col_values(dataset, val)
-      ci_str <- 'Confidence Interval'
+      ci_str <- "Confidence Interval"
     } 
     
     temp <- var_selection(dataset) 
     
     # display NA instead of (), if metrics and its CI for this subgroup is not avaiable 
-    temp <- temp %>% mutate_at(vars(contains('ci')), ~ifelse((. == '()')|(. == '(NA, NA)'), NA, .))
+    temp <- temp %>% 
+      mutate_at(vars(contains("ci")), ~ifelse((. == "()")|(. == "(NA, NA)"), NA, .))
     
-  } else if (ci_vars == 2){
+  } else if (metrics_info_df$ci_var == 2) {
     
-    ci_str <- 'Confidence Interval*'   # *CI not available at this time.
-    metrics_desp <- md(glue('{metrics_desp}<sup>*</sup>'))
+    ci_str <- "Confidence Interval*"   # *CI not available at this time.
+    metrics_desp <- md(glue("{metrics_desp}<sup>*</sup>"))
     
     # create an empty df      #take this part out as a sep func 
-    col_names <- glue('{mb_vars_lst}_ci')
-    vec <- vector(mode = 'character', length = nrow(dataset) * length(mb_vars_lst))
+    col_names <- glue("{mb_vars_lst}_ci")
+    vec <- vector(mode = "character", length = nrow(dataset) * length(mb_vars_lst))
     empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
     colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
     
@@ -94,17 +92,17 @@ create_tb_multi_yr <- function(metrics_info_df,
     temp <- var_selection(dataset) 
     
     notes <- paste0(notes, 
-                    '<br><br>',
-                    'The Confidence Interval for this metric is not available at this time.')
+                    "<br><br>",
+                    "The Confidence Interval for this metric is not available at this time.")
     
-  } else if (ci_vars == 3){
+  } else if (metrics_info_df$ci_var == 3) {
     
-    ci_str <- 'Confidence Interval+'   # '+CI not applicable.
-    metrics_desp <- md(glue('{metrics_desp}<sup>+</sup>'))
+    ci_str <- "Confidence Interval+"   # "+CI not applicable.
+    metrics_desp <- md(glue("{metrics_desp}<sup>+</sup>"))
     
     # create an empty df 
-    col_names <- glue('{mb_vars_lst}_ci')
-    vec <- vector(mode = 'character', length = nrow(dataset) * length(mb_vars_lst))
+    col_names <- glue("{mb_vars_lst}_ci")
+    vec <- vector(mode = "character", length = nrow(dataset) * length(mb_vars_lst))
     empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
     colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
     
@@ -114,61 +112,64 @@ create_tb_multi_yr <- function(metrics_info_df,
     temp <- var_selection(dataset)
     
     notes <- paste0(notes, 
-                    '<br><br>',
-                    'The Confidence Interval for this metric is not applicable.')
+                    "<br><br>",
+                    "The Confidence Interval for this metric is not applicable.")
     
   }
   
   temp <- temp %>% 
     mutate_all(as.character) %>% 
     rename_at(vars(col_from), function(x) col_to) %>% 
-    filter_at(vars(-c(subgroup_varname, 'state_county')), any_vars(!str_detect(., pattern = "NA|$NA")))
+    filter_at(vars(-c(subgroup_varname, "state_county")), any_vars(!str_detect(., pattern = "NA|$NA")))
   
   
-  if (str_detect(quality_var, '|') == FALSE){ #each variable has its own quality variable  
+  if (!str_detect(quality_var, "|")) { #each variable has its own quality variable  
     
     temp <- temp %>% 
       relocate(!!sym(quality_var), .after = last_col())  
   } 
   
   temp <- temp %>% 
-    pivot_longer(!c('state_county', 'year', all_of(subgroup_type_name)), 
-                 names_to='metrics', 
-                 values_to='value') %>% 
+    pivot_longer(
+      !c("state_county", "year", all_of(subgroup_type_name)), 
+      names_to="metrics", 
+      values_to="value"
+    ) %>% 
     arrange(desc(year)) %>%   
-    pivot_wider(names_from = 'state_county', 
-                values_from = 'value')
+    pivot_wider(
+      names_from = "state_county", 
+      values_from = "value"
+    )
   
-  
-  county_colnames <- colnames(temp)[c(3:length(colnames(temp)))]
+  county_colnames <- colnames(temp)[3:length(colnames(temp))]
   
   temp %>% 
     #arrange(match(metrics, col_to)) %>% 
     rename(Year = year) %>% 
-    mutate(Year = as.numeric(gsub(',', '', Year))) %>% 
-    mutate(metrics = gsub('.*_ci', ci_str, metrics)) %>% 
-    mutate(metrics = gsub('.*_quality', 'Quality', metrics)) %>% 
+    mutate(Year = as.numeric(gsub(",", "", Year))) %>% 
+    mutate(metrics = gsub(".*_ci", ci_str, metrics)) %>% 
+    mutate(metrics = gsub(".*_quality", "Quality", metrics)) %>% 
     mutate(metrics = recode(metrics, !!!var_rename_lst)) %>% 
     select(metrics, everything()) %>% 
     gt(
-      rowname_col = 'metrics',
-      id = 'tb_multi_yr'
+      rowname_col = "metrics",
+      id = "tb_multi_yr"
     ) %>% 
     tab_header(
-      title = '', 
+      title = "", 
       subtitle = metrics_desp
     ) %>% 
-    tab_source_note(html(str_c('<b>Source:</b>', data_source2, sep=' '))) %>% 
-    tab_source_note(html(str_c('<b>Notes:</b>', notes, sep=' '))) %>% 
+    tab_source_note(html(str_c("<b>Source:</b>", metrics_info_df$source_data2, sep=" "))) %>% 
+    tab_source_note(html(str_c("<b>Notes:</b>", notes, sep=" "))) %>% 
     cols_align(
-      align = 'left',
+      align = "left",
       columns = everything()
     ) %>% 
     # cols_align(
-    #   align = 'left',
+    #   align = "left",
     #   columns = TRUE
     # ) %>% 
-    opt_align_table_header('left') %>% 
+    opt_align_table_header("left") %>% 
     tab_options(
       heading.title.font.size = tb_title_size, 
       heading.subtitle.font.size = tb_subtitle_size, 
@@ -183,7 +184,7 @@ create_tb_multi_yr <- function(metrics_info_df,
       ),
       locations = cells_body(
         columns = county_colnames, 
-        rows = metrics == 'Quality')
+        rows = metrics == "Quality")
     ) %>%
     tab_style(
       style = list(
@@ -191,7 +192,7 @@ create_tb_multi_yr <- function(metrics_info_df,
       ),
       locations = cells_body(
         columns = county_colnames, 
-        rows = metrics == 'Quality')
+        rows = metrics == "Quality")
     ) %>%
     as_raw_html()
 } 
