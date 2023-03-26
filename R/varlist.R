@@ -1,3 +1,5 @@
+note_ul_bound <- "Lower/Upper bound"
+
 housing_varlist <- list(
   summary_vars = c(
     "Ratio for low-income households" = "share_affordable_80_ami", 
@@ -21,7 +23,7 @@ housing_insta_varlist <- list(
   ), 
   detail_vars = c(
     "Number homeless" = "homeless_count", 
-    note_ul_bound = "homeless_count_ci", 
+    "Lower/Upper bound" = "homeless_count_ci", 
     "Share homeless" = "homeless_share"
   )
 )
@@ -90,6 +92,69 @@ share_in_presch_varlist <- list(
     "% Pre-kindergarten_ci" = "share_in_preschool_ci"
   )
 )
+
+eff_pub_ed <- list(
+  summary_vars = c(
+    "Annual ELA achievement" = "learning_rate"
+  ),
+  detail_vars = c(
+    "Annual ELA achievement" = "learning_rate", 
+    note_ul_bound = "learning_rate_ci"
+  )
+)
+
+stu_poverty <- list(
+  summary_vars = c(
+    "% for White, non-Hispanic" = "frpl40_white", 
+    "% for White, non-Hispanic_quality" = "frpl40_white_quality",
+    "% for Black, non-Hispanic" = "frpl40_black",
+    "% for Black, non-Hispanic_quality" = "frpl40_black_quality",
+    "% for Hispanic" = "frpl40_hispanic", 
+    "% for Hispanic_quality" = "frpl40_hispanic_quality"
+  ),
+  detail_vars = c(
+    "% for White, non-Hispanic" = "frpl40_white", 
+    "% for White, non-Hispanic_ci" = "frpl40_white_ci", 
+    "% for White, non-Hispanic_quality" = "frpl40_white_quality",
+    "% for Black, non-Hispanic" = "frpl40_black",
+    "% for Black, non-Hispanic_ci" = "frpl40_black_ci", 
+    "% for Black, non-Hispanic_quality" = "frpl40_black_quality",
+    "% for Hispanic" = "frpl40_hispanic", 
+    "% for Hispanic_ci" = "frpl40_hispanic_ci",
+    "% for Hispanic_quality" = "frpl40_hispanic_quality"
+  )
+)
+
+college_readiness <- list(
+  summary_vars = c(
+    "% HS degree" = "share_hs_degree"
+  ),
+  detail_vars = c(
+    "% HS degree" = "share_hs_degree", 
+    "% HS degree_ci" = "share_hs_degree_ci"
+  )
+)
+
+emp_lst <- list(
+  summary_vars = c(
+    "Employment to population ratio" = "share_employed"
+  ),
+  detail_vars = c(
+    "Employment to population ratio" = "share_employed", 
+    "Employment to population ratio_ci" = "share_employed_ci"
+  )
+)
+
+job_wage <- list(
+  summary_vars = c(
+    "Ratio of pay to living wage" = "average_to_living_wage_ratio"
+  ),
+  detail_vars = c(
+    "Ratio of pay to living wage" = "average_to_living_wage_ratio", 
+    "Ratio of pay to living wage_ci" = "average_to_living_wage_ratio_ci"
+  )
+)
+
 
 income_varlist <- list(
   summary_vars = c(

@@ -3,7 +3,7 @@
 #'@param metrics_info_df (list) A list composed of 13 elements with information
 #'  about a metric. In practice, the first output from the get_vars_info function
 #'  for this argument
-#'@param dataset (data.frame) A dataframe. In practice either the data or data_sub
+#'@param data (data.frame) A dataframe. In practice either the data or data_sub
 #'  objects
 #'@param varname_maps (list of vectors containing strings) A list containing
 #'  four vectors. 
@@ -20,8 +20,8 @@
 #'@param tb_align (string) Table alignment. Default set to "left". 
 #'@return (gt table object) Returns an unnamed gt table object.
 
-create_tb_level2 <- function(metrics_info_df, 
-                             dataset, 
+create_tb_level2 <- function(data, 
+                             metrics_info_df, 
                              varname_maps,
                              tb_title_size = 18,
                              tb_subtitle_size = 16,
@@ -30,40 +30,34 @@ create_tb_level2 <- function(metrics_info_df,
                              tb_width_perc = 80,
                              tb_align = "left") {
   
-  mb_vars  <- metrics_info_df$metric_vars_prefix[[1]]
+  mb_vars  <- metrics_info_df$metric_vars_prefix
   metrics_desp  <- metrics_info_df$metrics_description
   data_source <- metrics_info_df$source_data
   subgroup_this_var <- metrics_info_df$subgroup_id
   notes <- metrics_info_df$notes
   
-  if (str_detect(subgroup_this_var, fixed("|")) == TRUE) {
-    
-    subgroup_this_var <- strsplit(subgroup_this_var, "|", fixed = TRUE)[[1]][1]
-    
-  } 
-  
-  dataset <- dataset %>% 
-    filter(subgroup_id == subgroup_this_var) %>% 
-    filter(subgroup_type == "all") 
-  
-  mb_vars_lst <- dataset %>% 
-    select(setdiff(matches(mb_vars),
-                   matches("_lb|_ub|_quality"))) %>%
-    colnames()
-      
   if (metrics_info_df$ci_var == 1) {
+    
+    # get variable names for confidence intervals
+    mb_vars_lst <- data %>% 
+      select(matches(mb_vars)) %>%
+      select(matches("_lb|_ub|_quality")) %>%
+      colnames() %>%
+      str_remove_all("_lb|_ub|_quality") %>%
+      unique()
     
     for (val in mb_vars_lst) {      # update this to purrr 
       
-      dataset <- unite_col_values(dataset, val)
+      # combine two CI variables into one variable
+      data <- unite_col_values(data, val)
       ci_str <- "Confidence Interval"
       
     } 
     
-    temp <- dataset %>% 
+    temp <- data %>% 
       select(
-        matches(metrics_info_df$metric_vars_prefix[[1]]),
-        matches(metrics_info_df$quality_variable[[1]]),
+        matches(metrics_info_df$metric_vars_prefix),
+        matches(metrics_info_df$quality_variable),
         matches("state_county"), 
         -matches("_lb|ub")
       )
@@ -77,16 +71,10 @@ create_tb_level2 <- function(metrics_info_df,
     ci_str <- "Confidence Interval*"   # *CI not available at this time.
     metrics_desp <- md(glue("{metrics_desp}<sup>*</sup>"))
     
-    # create an empty df      #take this part out as a sep func 
-    col_names <- glue("{mb_vars_lst}_ci")
-    vec <- vector(mode = "character", length = nrow(dataset) * length(mb_vars_lst))
-    empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
-    colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
-    
-    temp <- dataset %>% 
+    temp <- data %>% 
       select(
-        matches(metrics_info_df$metric_vars_prefix[[1]]),
-        matches(metrics_info_df$quality_variable[[1]]),
+        matches(metrics_info_df$metric_vars_prefix),
+        matches(metrics_info_df$quality_variable),
         matches("state_county"), 
         -matches("_lb|ub")
       )
@@ -105,17 +93,10 @@ create_tb_level2 <- function(metrics_info_df,
     
     metrics_desp <- md(glue("{metrics_desp}<sup>+</sup>"))
     
-    
-    # create an empty df 
-    col_names <- glue("{mb_vars_lst}_ci")
-    vec <- vector(mode = "character", length = nrow(dataset) * length(mb_vars_lst))
-    empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
-    colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
-    
-    temp <- dataset %>% 
+    temp <- data %>% 
       select(
-        matches(metrics_info_df$metric_vars_prefix[[1]]),
-        matches(metrics_info_df$quality_variable[[1]]),
+        matches(metrics_info_df$metric_vars_prefix),
+        matches(metrics_info_df$quality_variable),
         matches("state_county"), 
         -matches("_lb|ub")
       )
@@ -133,10 +114,10 @@ create_tb_level2 <- function(metrics_info_df,
 
   
   # each variable has its own quality variable 
-  if (!str_detect(metrics_info_df$quality_variable[[1]], "|")){  
+  if (!str_detect(metrics_info_df$quality_variable, "|")){  
     
     temp <- temp %>% 
-      relocate(!!sym(metrics_info_df$quality_variable[[1]]), .after = last_col())  
+      relocate(!!sym(metrics_info_df$quality_variable), .after = last_col())  
     
   } 
   

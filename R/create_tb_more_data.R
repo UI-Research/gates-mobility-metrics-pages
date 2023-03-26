@@ -11,6 +11,7 @@ create_tb_more_data <- function(
     years
 ) {
 
+  mb_vars  <- metrics_info_df$metric_vars_prefix
   metrics_desp  <- metrics_info_df$metrics_description  
   notes <- metrics_info_df$notes3
 
@@ -22,6 +23,33 @@ create_tb_more_data <- function(
   # different confidence intervals
   if (metrics_info_df$ci_var == 1) {
     
+    # get variable names for confidence intervals
+    mb_vars_lst <- data %>% 
+      select(matches(mb_vars)) %>%
+      select(matches("_lb|_ub|_quality")) %>%
+      colnames() %>%
+      str_remove_all("_lb|_ub|_quality") %>%
+      unique()
+    
+    for (val in mb_vars_lst) {      # update this to purrr 
+      
+      # combine two CI variables into one variable
+      data <- unite_col_values(data, val)
+      ci_str <- "Confidence Interval"
+      
+    } 
+    
+    temp <- data %>% 
+      select(
+        matches(metrics_info_df$metric_vars_prefix),
+        matches(metrics_info_df$quality_variable),
+        matches("state_county"), 
+        -matches("_lb|ub")
+      )
+    
+    temp <- temp %>% 
+      mutate_all(as.character) %>% 
+      rename(all_of(varname_maps$detail_vars))
     
   } else if (metrics_info_df$ci_var == 2) {
     
@@ -51,13 +79,13 @@ create_tb_more_data <- function(
       matches("year"),
       matches("state_county"),
       matches("subgroup"),
-      matches(metrics_info_df$metric_vars_prefix[[1]]),
-      matches(metrics_info_df$quality_variable[[1]]),
+      matches(metrics_info_df$metric_vars_prefix),
+      matches(metrics_info_df$quality_variable),
       -matches("subgroup_type")
     ) %>% 
     select(-matches("_lb|_ub")) %>% 
     select(sort(tidyselect::peek_vars())) %>% 
-    rename(all_of(varname_maps$summary_vars)) %>%
+    rename(any_of(varname_maps$detail_vars)) %>%
     mutate(across(everything(), as.character))
   
   # transpose table and generate HTML for table
@@ -69,7 +97,7 @@ create_tb_more_data <- function(
     ) %>%   
     pivot_wider(names_from = "state_county", values_from = "value") %>% 
     mutate(metrics = gsub(".*_quality", "Quality", metrics)) %>% 
-    mutate(metrics = factor(metrics, levels = c(names(varname_maps$summary_vars), "Quality")))
+    mutate(metrics = factor(metrics, levels = c(names(varname_maps$detail_vars), "Quality")))
   
   
   arrange_vars <- c("year", names(temp)[names(temp) %in% c("subgroup")], "metrics")

@@ -3,7 +3,7 @@
 #'@param metrics_info_df (list) A list composed of 13 elements with information
 #'  about a metric. In practice, the first output from the get_vars_info function
 #'  for this argument
-#'@param dataset (data.frame) A dataframe. In practice either the data or data_sub
+#'@param data (data.frame) A dataframe. In practice either the data or data_sub
 #'  objects
 #'@param varname_maps (list of vectors containing strings) A list containing
 #'  four vectors. 
@@ -20,8 +20,8 @@
 #'@param tb_align (string) Table alignment. Default set to "left".
 #'@return (gt table object) Returns an unnamed gt table object. 
 #'
-create_tb <- function(metrics_info_df, 
-                      dataset, 
+create_tb <- function(data,
+                      metrics_info_df, 
                       varname_maps,
                       tb_title_size = 18,
                       tb_subtitle_size = 16,
@@ -30,25 +30,11 @@ create_tb <- function(metrics_info_df,
                       tb_width_perc = 80,
                       tb_align = "left"
                       ) {
-  
-  # pluck out subgroup variable name if it exists
-  subgroup_this_var <- metrics_info_df$subgroup_id
-  
-  if (str_detect(subgroup_this_var, fixed("|"))) {
-    
-    subgroup_this_var <- strsplit(subgroup_this_var, "|", fixed = TRUE)[[1]][1]
-    
-  } 
-  
-  # only keep top-level information
-  temp <- dataset %>% 
-    filter(subgroup_type == "all", subgroup_id == subgroup_this_var)
-  
-  
-  temp <- temp %>% 
+
+  temp <- data %>% 
     select(
-      matches(metrics_info_df$metric_vars_prefix[[1]]),
-      matches(metrics_info_df$quality_variable[[1]]),
+      matches(metrics_info_df$metric_vars_prefix),
+      matches(metrics_info_df$quality_variable),
       matches("state_county")
     ) %>% 
     select(-matches("_lb|_ub")) %>% 
@@ -65,6 +51,7 @@ create_tb <- function(metrics_info_df,
   
   # transpose table and generate HTML for table
   temp %>% 
+    mutate(across(everything(), as.character)) %>%
     pivot_longer(!state_county, names_to="metrics", values_to="value") %>%   
     pivot_wider(names_from = "state_county", values_from = "value") %>% 
     arrange(match(metrics, names(varname_maps$summary_vars))) %>% 
