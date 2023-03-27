@@ -13,7 +13,7 @@ format:
 editor_options:
   chunk_output_type: console
 params:
-  state_county: !expr c("42095", "42017", "48453", "09003")
+  state_county: !expr c("42095", "42017", "48453", "09003", "15005")
   fake_labels: FALSE
   state_title: FALSE
 execute:
@@ -60,9 +60,8 @@ source(here("R", "varlist.R"))
 ```
 
 
-```{r set-vars}
-
-# set constant variables 
+```{r}
+#| label: set-vars
 
 tb_title_size <- 18
 tb_title_font <- "bold"
@@ -80,7 +79,6 @@ tb_align <- "left"
 decimal_points <- 2
 income_decimal <- 0
 
-
 # Get a list of all variables that should be presented as percentage 
 perc_vars <- c(
   "share_debt_coll", # % with debt
@@ -88,12 +86,6 @@ perc_vars <- c(
   "share_burdened_50_ami",
   "share_burdened_30_ami",
   "homeless_share", # share homeless
-  "famstruc_2par_married", # Two married biological/adoptive parents
-  "famstruc_1par_noadults", # One biological/adoptive parent and that parent's current spouse/partner
-  "famstruc_1par_plusadults", # One biological/adoptive parent and at least one other adult
-  "famstruc_0par_2adults", # One biological/adoptive parent
-  "famstruc_2par_unmarried", # Two adults, no parent
-  "famstruc_0par_other", # Other
   "election_turnout", # % voting 
   "lbw", # % low birthweight
   "white_nh_exposure",
@@ -139,29 +131,22 @@ data_years <- read_csv(
   here("mobility-metrics", "00_mobility-metrics_longitudinal.csv"),
   col_type = my_col_type,
   guess_max = 20000
-) %>%
-  prep_data()
+) 
 
 data_race_ethnicity <- read_csv(
   here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
   col_types = my_col_type
-) %>%
-  prep_data() %>%
-  mutate(year = 2018)
+)
 
 data_race <- read_csv(
   here("mobility-metrics", "03_mobility-metrics_race.csv"), 
   col_types = my_col_type
-) %>%
-  prep_data() %>%
-  mutate(year = 2018)
+)
 
 data_race_share <- read_csv(
   here("mobility-metrics", "04_mobility-metrics_race-share.csv"), 
   col_types = my_col_type
-) %>%
-  prep_data() %>%
-  mutate(year = 2018)
+)
 
 data_env_quality_poverty <- read_csv(
   here("mobility-metrics", "environmental-exposure_poverty.csv"), 
@@ -175,9 +160,7 @@ data_env_quality_poverty <- read_csv(
       select(state, county, state_name, county_name) %>%
       distinct(),
     by = c("state", "county")
-  ) %>%
-  prep_data() %>%
-  mutate(year = 2018)
+  ) 
 
 data_education_income <- read_csv(
   here("mobility-metrics", "SEDA_income.csv"), 
@@ -191,9 +174,7 @@ data_education_income <- read_csv(
       select(state, county, state_name, county_name) %>%
       distinct(),
     by = c("state", "county")
-  ) %>%
-  prep_data() %>%
-  mutate(year = 2018)
+  )
 
 data_race_poverty <- read_csv(
   here("mobility-metrics", "poverty-exposure_race.csv"), 
@@ -207,11 +188,126 @@ data_race_poverty <- read_csv(
       select(state, county, state_name, county_name) %>%
       distinct(),
     by = c("state", "county")
-  ) %>%
-  prep_data() %>%
-  mutate(year = 2018)
+  )
 
 ```
+
+```{r}
+#| label: fake-data-years
+
+shell <- data_years %>%
+  distinct(state, county, state_name, county_name) %>%
+  expand_grid(year = c(2019, 2020, 2021)) %>%
+  mutate(
+    share_affordable_80_ami = 0.1234, 
+    share_affordable_50_ami = 0.1234,
+    share_affordable_30_ami = 0.1234,
+    housing_quality = 3,
+    
+    homeless_count = 1234,
+    homeless_count_lb = 123,
+    homeless_count_ub = 12345,
+    homeless_quality = 3,
+    
+    poverty_exposure = 0.1234,
+    poverty_exposure_quality = 3,
+    
+    white_nh_exposure = 0.1234,
+    white_nh_exposure_quality = 3,
+    black_nh_exposure = 0.1234,
+    black_nh_exposure_quality = 3,
+    hispanic_exposure = 0.1234,
+    hispanic_exposure_quality = 3,
+    other_nh_exposure = 0.1234,
+    other_nh_exposure_quality = 3,
+    
+    pctl_20 = 12345,
+    pctl_50 = 12345,
+    pctl_80 = 12345,
+    
+    average_to_living_wage_ratio = 0.1234,
+    wage_ratio_quality = 3,
+    
+    violent_crime_rate = 1234,
+    property_crime_rate = 1234,
+    crime_rate_quality = 3
+    
+  )
+
+data_years <- data_years %>%
+  bind_rows(shell)
+
+add_value <- function(x, value) {
+  
+  if_else(is.na({{ x }}), NA_real_, value)
+  
+}
+
+data_years <- data_years %>%
+  mutate(
+    fips = paste0(state, county)
+  ) %>%
+  prep_data()
+
+```
+
+```{r}
+#| label: fake-data-other
+
+data_race_ethnicity <- bind_rows(
+  `2018` = data_race_ethnicity,
+  `2021` = data_race_ethnicity, 
+  .id = "year"
+) %>%
+  mutate(
+    learning_rate = sprintf("%.2f", round(as.numeric(learning_rate) , 2)),
+    learning_rate_lb = sprintf("%.2f", round(as.numeric(learning_rate_lb) , 2)),
+    learning_rate_ub = sprintf("%.2f", round(as.numeric(learning_rate_ub) , 2))
+  ) %>%
+  prep_data()
+
+data_race_poverty <- bind_rows(
+  `2018` = data_race_poverty,
+  `2021` = data_race_poverty, 
+  .id = "year"
+) %>%
+  prep_data()
+
+data_race <- bind_rows(
+  `2018` = data_race,
+  `2021` = data_race, 
+  .id = "year"
+) %>%
+  prep_data()
+
+data_race_share <- bind_rows(
+  `2018` = data_race_share,
+  `2021` = data_race_share, 
+  .id = "year"
+) %>%
+  prep_data()
+
+data_env_quality_poverty <- bind_rows(
+  `2018` = data_env_quality_poverty,
+  `2021` = data_env_quality_poverty, 
+  .id = "year"
+) %>%
+  prep_data()
+
+data_education_income <- bind_rows(
+  `2018` = data_education_income,
+  `2021` = data_education_income, 
+  .id = "year"
+) %>%
+  mutate(
+    learning_rate = sprintf("%.2f", round(as.numeric(learning_rate) , 2)),
+    learning_rate_lb = sprintf("%.2f", round(as.numeric(learning_rate_lb) , 2)),
+    learning_rate_ub = sprintf("%.2f", round(as.numeric(learning_rate_ub) , 2))
+  ) %>%
+  prep_data()
+
+```
+
 
 ```{r}
 #| label: fake-labels
@@ -434,14 +530,8 @@ create_tb_level2(data = data_recent,
 ##### Subgroup
 
 ```{r economic-inclusion-table3}
-data_race_poverty2 <- bind_rows(
-  `2018` = data_race_poverty,
-  `2021` = data_race_poverty, 
-  .id = "year"
-)
-
 create_tb_more_data(
-  data = data_race_poverty2 %>% 
+  data = data_race_poverty %>% 
     mutate(subgroup = if_else(subgroup == "Black, Non-Hispanic", "Black", subgroup)),
   metrics_info_df = ei_m_info_lst,
   varname_maps = econ_inc_varlist
@@ -478,6 +568,21 @@ create_tb(data = data_recent,
 create_tb_level2(data = data_recent, 
                  metrics_info_df = rd_m_info_lst, 
                  varname_maps = race_div_varlist) 
+
+```
+
+<br>
+
+##### Subgroup
+
+```{r}
+#| label: racial-diversity-table3
+
+create_tb_more_data(
+  data = data_years,
+  metrics_info_df = rd_m_info_lst, 
+  varname_maps = race_div_varlist
+)
 
 ```
 
@@ -882,12 +987,6 @@ create_tb_more_data(data = data_years,
 ```{r income}
 income_m_info_lst <- get_vars_info("Income", data_summary_file = m_info)$info_lst
 
-mb_vars <- get_vars_info("Income", data_summary_file = m_info)$mb_vars
-
-data_sub <- data %>% 
-  mutate_at(vars(matches(mb_vars), -ends_with("_quality")), 
-            function(x) gsub("\\..*","", glue("${x}"))) 
-
 create_tb(data = data_recent, 
           metrics_info_df = income_m_info_lst, 
           varname_maps = income_varlist) 
@@ -910,7 +1009,7 @@ create_tb_level2(data = data_recent,
 ##### Subgroup 
 
 ```{r income-table2}
-create_tb_more_data(data = date_race_ethnicity,
+create_tb_more_data(data = data_race_ethnicity,
                     metrics_info_df = income_m_info_lst,
                     varname_maps = income_varlist)
 
@@ -1095,7 +1194,7 @@ create_tb_level2(data = data_recent,
 ##### Sub-Area
 
 ```{r environmental-quality-table3}
-data_sub <- data %>%
+data_race_share <- data_race_share %>%
   mutate(
     subgroup = recode(
       subgroup,
@@ -1182,12 +1281,6 @@ create_tb_level2(data = data_recent,
 
 ```{r safety}
 ec_m_info_lst <- get_vars_info("Exposure to crime", data_summary_file = m_info)$info_lst
-mb_vars <- get_vars_info("Exposure to crime", data_summary_file = m_info)$mb_vars
-
-data_sub_exp_crime <- data %>% 
-  mutate_at(vars(matches(mb_vars), -ends_with("_quality")), 
-            function(x) gsub("\\..*","", x))
-
 
 create_tb(data = data_recent, 
           metrics_info_df = ec_m_info_lst, 
@@ -1211,9 +1304,9 @@ create_tb_level2(data = data_recent,
 ##### More Years
 
 ```{r safety-table3}
-create_tb_multi_yr(metrics_info_df = ec_m_info_lst, 
-                   dataset = data_sub_exp_crime, 
-                   varname_maps = exp_crime_varlist)
+create_tb_more_data(data = data_years,
+                    metrics_info_df = ec_m_info_lst, 
+                    varname_maps = exp_crime_varlist) 
 
 ```
 

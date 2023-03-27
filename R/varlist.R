@@ -1,5 +1,3 @@
-note_ul_bound <- "Lower/Upper bound"
-
 housing_varlist <- list(
   summary_vars = c(
     "Ratio for low-income households" = "share_affordable_80_ami", 
@@ -12,7 +10,8 @@ housing_varlist <- list(
     "Ratio for very low-income households" = "share_affordable_50_ami",
     "Ratio for very low-income households_ci" = "share_affordable_50_ami_ci",
     "Ratio for extremely low-income households" = "share_affordable_30_ami",
-    "Ratio for extremely low-income households_ci" = "share_affordable_30_ami_ci"
+    "Ratio for extremely low-income households_ci" = "share_affordable_30_ami_ci",
+    "housing_quality" = "housing_quality"
   )
 )
 
@@ -24,7 +23,8 @@ housing_insta_varlist <- list(
   detail_vars = c(
     "Number homeless" = "homeless_count", 
     "Lower/Upper bound" = "homeless_count_ci", 
-    "Share homeless" = "homeless_share"
+    "Share homeless" = "homeless_share",
+    "homeless_quality" = "homeless_quality"
   )
 )
 
@@ -33,7 +33,8 @@ econ_inc_varlist <- list(
     "% in high poverty neighborhoods" = "poverty_exposure"
   ),
   detail_vars = c(
-    "% in high poverty neighborhoods" = "poverty_exposure"
+    "% in high poverty neighborhoods" = "poverty_exposure",
+    "poverty_exposure_quality" = "poverty_exposure_quality"
   )
 )
 
@@ -70,7 +71,8 @@ trans_access <- list(
   ),
   detail_vars = c(
     "Transit trips" = "transit_trips", 
-    "transit_trips_ci" = "Transit trips_ci"
+    "transit_trips_ci" = "Transit trips_ci",
+    "transit_trips_quality" = "transit_trips_quality"
   )
 )
 
@@ -80,7 +82,8 @@ trans_cost_varlist <- list(
   ),
   detail_vars = c(
     "Transit cost" = "transit_cost", 
-    "Transit cost_ci" = "transit_cost_ci"
+    "Transit cost_ci" = "transit_cost_ci",
+    "transit_cost_quality" = "transit_cost_quality"
   )
 )
 
@@ -89,7 +92,8 @@ share_in_presch_varlist <- list(
     "% Pre-kindergarten" = "share_in_preschool"),
   detail_vars = c(
     "% Pre-kindergarten" = "share_in_preschool", 
-    "% Pre-kindergarten_ci" = "share_in_preschool_ci"
+    "% Pre-kindergarten_ci" = "share_in_preschool_ci",
+    "preschool_quality" = "preschool_quality"
   )
 )
 
@@ -99,11 +103,12 @@ eff_pub_ed <- list(
   ),
   detail_vars = c(
     "Annual ELA achievement" = "learning_rate", 
-    note_ul_bound = "learning_rate_ci"
+    "Lower/Upper bound" = "learning_rate_ci",
+    "learning_rate_quality" = "learning_rate_quality"
   )
 )
 
-stu_poverty <- list(
+stu_poverty_varlist <- list(
   summary_vars = c(
     "% for White, non-Hispanic" = "frpl40_white", 
     "% for White, non-Hispanic_quality" = "frpl40_white_quality",
@@ -131,7 +136,8 @@ college_readiness <- list(
   ),
   detail_vars = c(
     "% HS degree" = "share_hs_degree", 
-    "% HS degree_ci" = "share_hs_degree_ci"
+    "% HS degree_ci" = "share_hs_degree_ci",
+    "hs_degree_quality" = "hs_degree_quality"
   )
 )
 
@@ -141,7 +147,8 @@ emp_lst <- list(
   ),
   detail_vars = c(
     "Employment to population ratio" = "share_employed", 
-    "Employment to population ratio_ci" = "share_employed_ci"
+    "Employment to population ratio_ci" = "share_employed_ci",
+    "employed_quality" = "employed_quality"
   )
 )
 
@@ -151,7 +158,8 @@ job_wage <- list(
   ),
   detail_vars = c(
     "Ratio of pay to living wage" = "average_to_living_wage_ratio", 
-    "Ratio of pay to living wage_ci" = "average_to_living_wage_ratio_ci"
+    "Ratio of pay to living wage_ci" = "average_to_living_wage_ratio_ci",
+    "wage_ratio_quality" = "wage_ratio_quality"
   )
 )
 
@@ -160,12 +168,14 @@ income_varlist <- list(
   summary_vars = c(
     "20th Percentile" = "pctl_20", 
     "50th Percentile" = "pctl_50", 
-    "80th Percentile" = "pctl_80"
+    "80th Percentile" = "pctl_80",
+    "pctl_quality" = "pctl_quality"
   ), 
   detail_vars = c(
     "20th Percentile" = "pctl_20", 
     "50th Percentile" = "pctl_50", 
-    "80th Percentile" = "pctl_80"
+    "80th Percentile" = "pctl_80",
+    "pctl_quality" = "pctl_quality"
   )
 )
 
@@ -175,7 +185,8 @@ debt_varlist <- list(
   ),
   detail_vars = c(
     "% with debt" = "share_debt_coll", 
-    "% with debt_ci" = "share_debt_coll_ci"
+    "% with debt_ci" = "share_debt_coll_ci",
+    "share_debt_coll_quality" = "share_debt_coll_quality"
   )
 )
 
@@ -195,7 +206,8 @@ neonatal_varlist <- list(
   ),
   detail_vars = c(
     "% Low-weight birth" = "lbw", 
-    "% Low-weight birth_ci" = "lbw_ci"
+    "% Low-weight birth_ci" = "lbw_ci",
+    "lbw_quality" = "lbw_quality"
   )
 )
 
@@ -205,7 +217,8 @@ env_varlist <- list(
   ),
   detail_vars = c(
     "Air quality index" = "environmental", 
-    "Air quality index_ci" = "environmental_ci"
+    "Air quality index_ci" = "environmental_ci",
+    "environmental_quality" = "environmental_quality"
   )
 )
 
@@ -215,7 +228,8 @@ election_turnout_varlist <- list(
   ),
   detail_vars = c(
     "% voting" = "election_turnout", 
-    "% voting_ci" = "election_turnout_ci"
+    "% voting_ci" = "election_turnout_ci",
+    "election_turnout_quality" = "election_turnout_quality"
   )
 )
 
@@ -228,7 +242,8 @@ exp_crime_varlist <- list(
     "Violent crime" = "violent_crime_rate",
     "Violent crime_ci" = "violent_crime_rate_ci", 
     "Property crime" = "property_crime_rate",
-    "Property crime_ci" = "property_crime_rate_ci"
+    "Property crime_ci" = "property_crime_rate_ci",
+    "crime_rate_quality" = "crime_rate_quality"
   )
 )
 

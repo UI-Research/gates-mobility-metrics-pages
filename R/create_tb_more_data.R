@@ -53,6 +53,7 @@ create_tb_more_data <- function(
     
   } else if (metrics_info_df$ci_var == 2) {
     
+    ci_str <- "Confidence Interval*"   # *CI not available at this time.
     metrics_desp <- md(glue("{metrics_desp}<sup>*</sup>"))
     
     notes <- paste0(notes, 
@@ -61,6 +62,7 @@ create_tb_more_data <- function(
     
   } else if (metrics_info_df$ci_var == 3) {
     
+    ci_str <- "Confidence Interval+"   # "+CI not applicable.
     metrics_desp <- md(glue("{metrics_desp}<sup>+</sup>"))
     
     notes <- paste0(notes, 
@@ -95,17 +97,22 @@ create_tb_more_data <- function(
       names_to = "metrics", 
       values_to = "value"
     ) %>%   
-    pivot_wider(names_from = "state_county", values_from = "value") %>% 
-    mutate(metrics = gsub(".*_quality", "Quality", metrics)) %>% 
-    mutate(metrics = factor(metrics, levels = c(names(varname_maps$detail_vars), "Quality")))
-  
-  
+    pivot_wider(
+      names_from = "state_county", 
+      values_from = "value"
+    ) %>% 
+    mutate(metrics = factor(metrics, levels = c(names(varname_maps$detail_vars), "Quality"))) #%>%
+    #mutate(metrics = gsub(".*_quality", "Quality", metrics))
+    
   arrange_vars <- c("year", names(temp)[names(temp) %in% c("subgroup")], "metrics")
   
   temp <- temp %>%
     arrange(across(any_of(arrange_vars))) %>% 
     select(metrics, everything()) 
   
+  levels(temp$metrics) <- gsub(".*_quality", "Quality", levels(temp$metrics))
+  levels(temp$metrics) <- gsub(".*_ci", ci_str, levels(temp$metrics)) 
+
   name_table <- c(
     "Year" = "year",
     "Group" = "subgroup"

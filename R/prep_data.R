@@ -38,27 +38,36 @@ prep_data <- function(data) {
       -matches("year"),
       -starts_with("learning_rate"), 
       -all_of(perc_vars_in_data),
-      -starts_with("share_burdened")
+      -starts_with("share_burdened"),
+      -starts_with("pctl")
     ) %>%
     select_if(is.numeric) %>% 
     names()
   
   
   data <- data %>% 
-    mutate_at(vars(matches("share_affordable_")),  #for affordable housing variables, multiple the value by 100
+    # multiple affordable housing variables by 100
+    mutate_at(vars(matches("share_affordable_")),  
               function(x) x*100) %>%
-    mutate_at(vars(matches("share_hs_degree_ub")),     #update ub for share_hs_degree to 1
+    # update ub for share_hs_degree to 1
+    mutate_at(vars(matches("share_hs_degree_ub")),     
               function(x) case_when(x > 1 ~ 1, TRUE  ~ x)) %>%
-    mutate_at(perc_vars_in_data,             #convert to percentage
+    # convert to percentage
+    mutate_at(perc_vars_in_data,             
               function (x) scales::percent(x, accuracy = 0.1)) %>%
     mutate_at(numeric_vars_one_digit,
               function(x) {format(round(x, 1), big.mark=",", scientific=FALSE)}) %>%
     mutate_at(vars(matches("average_to_living_wage_ratio")), funs(as.numeric)) %>%
     mutate_at(vars(matches("average_to_living_wage_ratio")),
               function(x) {format(round(x, 2), big.mark=",",scientific=FALSE)}) %>%
-    mutate(na_quality = "NA")  %>%  #to be used for metrics where there is no quality variable %>%
+    # mutate(na_quality = "NA")  %>%  #to be used for metrics where there is no quality variable %>%
+    mutate_at(vars(matches("pctl"), -ends_with("_quality")), 
+              function(x) scales::dollar(x, accuracy = 1)) %>%
+    # remove whitespace in values  
     mutate_at(vars(-one_of(c("state_county", "subgroup"))),
-              function(x) gsub("\\s+", "", x)) %>%   #remove whitespace in values
+              function(x) gsub("\\s+", "", x)) %>%  
+    mutate_at(vars(matches("crime_rate"), -ends_with("_quality")), 
+              function(x) gsub("\\..*","", x)) %>%
     mutate_at(vars(ends_with("_quality")),
               function(x) recode(x, `1` = "Good", `2` = "Marginal", `3` = "Poor"))
   
