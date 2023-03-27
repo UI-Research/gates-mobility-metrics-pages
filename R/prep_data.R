@@ -69,7 +69,7 @@ prep_data <- function(data) {
     mutate_at(vars(matches("crime_rate"), -ends_with("_quality")), 
               function(x) gsub("\\..*","", x)) %>%
     mutate_at(vars(ends_with("_quality")),
-              function(x) recode(x, `1` = "Good", `2` = "Marginal", `3` = "Poor"))
+              function(x) recode(x, `1` = "Strong", `2` = "Marginal", `3` = "Weak"))
   
   
   return(data)

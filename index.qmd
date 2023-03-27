@@ -437,7 +437,7 @@ create_tb_level2(data = data_recent,
 
 <br>
 
-##### More Years
+##### More Data
 
 ```{r affordable-housing-table3}
 create_tb_more_data(
@@ -484,7 +484,7 @@ create_tb_level2(data = data_recent,
 
 <br><br>
 
-##### More Years
+##### More Data
 
 ```{r create_tb_multi_yr_homeless}
 create_tb_more_data(data = data_years,
@@ -527,7 +527,7 @@ create_tb_level2(data = data_recent,
 
 <br>
 
-##### Subgroup
+##### More Data
 
 ```{r economic-inclusion-table3}
 create_tb_more_data(
@@ -573,7 +573,7 @@ create_tb_level2(data = data_recent,
 
 <br>
 
-##### Subgroup
+##### More Data
 
 ```{r}
 #| label: racial-diversity-table3
@@ -644,8 +644,7 @@ data_race_share %>%
     )
   ) %>%
   create_tb_more_data(metrics_info_df = trans_info_lst, 
-                      varname_maps = trans_access)
-                      # subgroup_type_name = "Area") 
+                      varname_maps = trans_access) 
 
 ```
 
@@ -742,7 +741,7 @@ create_tb_level2(data = data_recent,
 
 <br>
 
-##### Subgroup
+##### More Data
 
 ```{r education-table3}
 create_tb_more_data(data = data_race_ethnicity,
@@ -786,7 +785,7 @@ create_tb_level2(data = data_recent,
 
 <br>
 
-##### Subgroup
+##### More Data
 
 ```{r learning-table3}
 create_tb_more_data(data = data_race_ethnicity %>% filter(subgroup != "Other Races and Ethnicities"),
@@ -866,7 +865,7 @@ create_tb_level2(data = data_recent,
 
 <br>
 
-##### Subgroup
+##### More Data
 
 ```{r college-readiness-table3}
 create_tb_more_data(data = data_race_ethnicity, 
@@ -920,7 +919,7 @@ create_tb_level2(data = data_recent,
 
 <br>
 
-##### Subgroup
+##### More Data
 
 ```{r employment-table3}
 create_tb_more_data(data = data_race_ethnicity,
@@ -963,7 +962,7 @@ create_tb_level2(data = data_recent,
 
 <br>
 
-##### More Years
+##### More Data
 
 ```{r wages-table3}
 create_tb_more_data(data = data_years,
@@ -1006,7 +1005,7 @@ create_tb_level2(data = data_recent,
 
 <br>
 
-##### Subgroup 
+##### More Data 
 
 ```{r income-table2}
 create_tb_more_data(data = data_race_ethnicity,
@@ -1145,7 +1144,7 @@ create_tb_level2(data = data_recent,
 
 <br>
 
-##### Subgroup
+##### More Data
 
 ```{r neonatal-health-table3}
 create_tb_more_data(data = data_race_ethnicity,
@@ -1301,7 +1300,7 @@ create_tb_level2(data = data_recent,
 
 <br>
 
-##### More Years
+##### More Data
 
 ```{r safety-table3}
 create_tb_more_data(data = data_years,
