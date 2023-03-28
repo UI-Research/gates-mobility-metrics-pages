@@ -1,6 +1,28 @@
+#' Create "More Data" for a given metric
+#' 
+#'@param metrics_info (list) A list composed of 13 elements with information
+#'  about a metric. In practice, the first output from the get_vars_info function
+#'  for this argument
+#'@param data (data.frame) A dataframe. In practice either the data or data_sub
+#'  objects
+#'@param varname_maps (list of vectors containing strings) A list containing
+#'  four vectors. 
+#'    The first vector lists the metric name(s). 
+#'    The second contains "human-readable" names. 
+#'    The third lists the metric names and their relevant confidence interval columns. 
+#'    The four lists the metric name(s) followed by the metric name(s) concatenated with "_ci"
+#'@param tb_title_size (integer) Table title size. Default set to 18
+#'@param tb_subtitle_size (integer) Table sub-title size. Default set to 14.
+#'@param tb_font_size (integer) Table font size. Default set to 12.
+#'@param source_note_size (integer) Size of source note. Default set to 11.
+#'@param tb_width_perc (float) Table width percentage. Should be between 0 and 100.
+#'  Default to 80.
+#'@param tb_align (string) Table alignment. Default set to "left".
+#'@return (gt table object) Returns an unnamed gt table object. 
+#'
 create_tb_more_data <- function(
     data,
-    metrics_info_df, 
+    metrics_info, 
     varname_maps,
     tb_title_size = 18,
     tb_subtitle_size = 16,
@@ -11,17 +33,17 @@ create_tb_more_data <- function(
     years
 ) {
 
-  mb_vars  <- metrics_info_df$metric_vars_prefix
-  metrics_desp  <- metrics_info_df$metrics_description  
-  notes <- metrics_info_df$notes3
+  mb_vars  <- metrics_info$metric_vars_prefix
+  metrics_desp  <- metrics_info$metrics_description  
+  notes <- metrics_info$notes3
 
   # filter data to years of interest
   data <- data %>%
-    filter(year %in% metrics_info_df$years)
+    filter(year %in% metrics_info$years)
   
   # prep table notes
   # different confidence intervals
-  if (metrics_info_df$ci_var == 1) {
+  if (metrics_info$ci_var == 1) {
     
     # get variable names for confidence intervals
     mb_vars_lst <- data %>% 
@@ -41,8 +63,8 @@ create_tb_more_data <- function(
     
     temp <- data %>% 
       select(
-        matches(metrics_info_df$metric_vars_prefix),
-        matches(metrics_info_df$quality_variable),
+        matches(metrics_info$metric_vars_prefix),
+        matches(metrics_info$quality_variable),
         matches("state_county"), 
         -matches("_lb|ub")
       )
@@ -51,7 +73,7 @@ create_tb_more_data <- function(
       mutate_all(as.character) %>% 
       rename(all_of(varname_maps$detail_vars))
     
-  } else if (metrics_info_df$ci_var == 2) {
+  } else if (metrics_info$ci_var == 2) {
     
     ci_str <- "Confidence Interval*"   # *CI not available at this time.
     metrics_desp <- md(glue("{metrics_desp}<sup>*</sup>"))
@@ -60,7 +82,7 @@ create_tb_more_data <- function(
                     "<br><br>",
                     "The Confidence Interval for this metric is not available at this time.")
     
-  } else if (metrics_info_df$ci_var == 3) {
+  } else if (metrics_info$ci_var == 3) {
     
     ci_str <- "Confidence Interval+"   # "+CI not applicable.
     metrics_desp <- md(glue("{metrics_desp}<sup>+</sup>"))
@@ -81,8 +103,8 @@ create_tb_more_data <- function(
       matches("year"),
       matches("state_county"),
       matches("subgroup"),
-      matches(metrics_info_df$metric_vars_prefix),
-      matches(metrics_info_df$quality_variable),
+      matches(metrics_info$metric_vars_prefix),
+      matches(metrics_info$quality_variable),
       -matches("subgroup_type")
     ) %>% 
     select(-matches("_lb|_ub")) %>% 
@@ -130,7 +152,7 @@ create_tb_more_data <- function(
       title = "", 
       subtitle = metrics_desp
     ) %>% 
-    tab_source_note(html(str_c("<b>Source:</b>", metrics_info_df$source_data2, sep=" "))) %>% 
+    tab_source_note(html(str_c("<b>Source:</b>", metrics_info$source_data2, sep=" "))) %>% 
     tab_source_note(html(str_c("<b>Notes:</b>", notes, sep=" "))) %>% 
     cols_align(
       align = "left",

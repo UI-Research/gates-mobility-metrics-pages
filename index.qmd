@@ -51,8 +51,7 @@ source(here("R", "get_vars_info.R"))
 source(here("R", "unite_col_values.R"))
 source(here("R", "gen_variable_name_map.R"))
 source(here("R", "create_tb.R"))
-source(here("R", "create_tb_level2.R"))
-source(here("R", "create_tb_multi_yr.R"))
+source(here("R", "create_tb_detail.R"))
 source(here("R", "create_tb_more_data.R"))
 source(here("R", "prep_data.R"))
 source(here("R", "varlist.R"))
@@ -230,8 +229,17 @@ shell <- data_years %>%
     
     violent_crime_rate = 1234,
     property_crime_rate = 1234,
-    crime_rate_quality = 3
+    crime_rate_quality = 3,
     
+    frpl40_white = 0.1234,
+    frpl40_white_quality = 3,
+    frpl40_black = 0.1234,
+    frpl40_black_quality = 3,
+    frpl40_hispanic = 0.1234,
+    frpl40_hispanic_quality = 3,
+    
+    election_turnout = 0.1234,
+    election_turnout_quality = 3
   )
 
 data_years <- data_years %>%
@@ -388,14 +396,13 @@ all_perc_vars <- sort(lst %>% reduce(c))
 # filter to get the ones only existing in the data 
 perc_vars_in_data <- all_perc_vars[(all_perc_vars %in% colnames(data))]
 
-note_ul_bound <- "Lower/Upper bound"
-
 ```
 
 
 
 ```{r create-title}
 title <- paste0("Mobility Metrics for ", upward_county)
+
 ```
 
 
@@ -419,7 +426,7 @@ title <- paste0("Mobility Metrics for ", upward_county)
 af_m_info_lst <- get_vars_info("Affordable housing", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = af_m_info_lst, 
+          metrics_info = af_m_info_lst, 
           varname_maps = housing_varlist) 
 
 ```
@@ -429,8 +436,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r affordable-housing-table2}
-create_tb_level2(data = data_recent, 
-                 metrics_info_df = af_m_info_lst, 
+create_tb_detail(data = data_recent, 
+                 metrics_info = af_m_info_lst, 
                  varname_maps = housing_varlist) 
 ```
 
@@ -442,7 +449,7 @@ create_tb_level2(data = data_recent,
 ```{r affordable-housing-table3}
 create_tb_more_data(
   data = data_years,
-  metrics_info_df = af_m_info_lst,
+  metrics_info = af_m_info_lst,
   varname_maps = housing_varlist
 )
 
@@ -466,7 +473,7 @@ create_tb_more_data(
 m_info_lst <- get_vars_info("Housing instability and homelessness", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent,
-          metrics_info_df = m_info_lst, 
+          metrics_info = m_info_lst, 
           varname_maps = housing_insta_varlist) 
 
 ```
@@ -476,8 +483,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r housing-instability-table2}
-create_tb_level2(data = data_recent,
-                 metrics_info_df = m_info_lst, 
+create_tb_detail(data = data_recent,
+                 metrics_info = m_info_lst, 
                  varname_maps = housing_insta_varlist) 
 
 ```
@@ -488,7 +495,7 @@ create_tb_level2(data = data_recent,
 
 ```{r create_tb_multi_yr_homeless}
 create_tb_more_data(data = data_years,
-                    metrics_info_df = m_info_lst, 
+                    metrics_info = m_info_lst, 
                     varname_maps = housing_insta_varlist) 
 
 ```
@@ -509,7 +516,7 @@ create_tb_more_data(data = data_years,
 ei_m_info_lst <- get_vars_info("Economic inclusion", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = ei_m_info_lst, 
+          metrics_info = ei_m_info_lst, 
           varname_maps = econ_inc_varlist) 
 
 ```
@@ -519,8 +526,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r economic-inclusion-table2}
-create_tb_level2(data = data_recent, 
-                 metrics_info_df = ei_m_info_lst, 
+create_tb_detail(data = data_recent, 
+                 metrics_info = ei_m_info_lst, 
                  varname_maps = econ_inc_varlist) 
 
 ```
@@ -533,7 +540,7 @@ create_tb_level2(data = data_recent,
 create_tb_more_data(
   data = data_race_poverty %>% 
     mutate(subgroup = if_else(subgroup == "Black, Non-Hispanic", "Black", subgroup)),
-  metrics_info_df = ei_m_info_lst,
+  metrics_info = ei_m_info_lst,
   varname_maps = econ_inc_varlist
 )
 
@@ -555,7 +562,7 @@ create_tb_more_data(
 rd_m_info_lst <- get_vars_info("Racial diversity", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = rd_m_info_lst, 
+          metrics_info = rd_m_info_lst, 
           varname_maps = race_div_varlist) 
 
 ```
@@ -565,8 +572,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r racial-diversity-table2}
-create_tb_level2(data = data_recent, 
-                 metrics_info_df = rd_m_info_lst, 
+create_tb_detail(data = data_recent, 
+                 metrics_info = rd_m_info_lst, 
                  varname_maps = race_div_varlist) 
 
 ```
@@ -580,7 +587,7 @@ create_tb_level2(data = data_recent,
 
 create_tb_more_data(
   data = data_years,
-  metrics_info_df = rd_m_info_lst, 
+  metrics_info = rd_m_info_lst, 
   varname_maps = race_div_varlist
 )
 
@@ -613,7 +620,7 @@ create_tb_more_data(
 trans_info_lst <- get_vars_info("Transportation access", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = trans_info_lst, 
+          metrics_info = trans_info_lst, 
           varname_maps = trans_access) 
 
 ```
@@ -623,8 +630,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r transportation-access-table2}
-create_tb_level2(data = data_recent, 
-                 metrics_info_df = trans_info_lst, 
+create_tb_detail(data = data_recent, 
+                 metrics_info = trans_info_lst, 
                  varname_maps = trans_access) 
 
 ```
@@ -643,7 +650,7 @@ data_race_share %>%
       `Mixed Race and Ethnicity` = "No Majority Race/Ethnicity Tracts"
     )
   ) %>%
-  create_tb_more_data(metrics_info_df = trans_info_lst, 
+  create_tb_more_data(metrics_info = trans_info_lst, 
                       varname_maps = trans_access) 
 
 ```
@@ -669,7 +676,7 @@ data_race_share %>%
 tr_cost_m_info_lst <- get_vars_info("Transportation access-cost", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = tr_cost_m_info_lst, 
+          metrics_info = tr_cost_m_info_lst, 
           varname_maps = trans_cost_varlist) 
 
 ```
@@ -679,8 +686,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r transportation-cost-table2}
-create_tb_level2(data = data_recent, 
-                 metrics_info_df = tr_cost_m_info_lst, 
+create_tb_detail(data = data_recent, 
+                 metrics_info = tr_cost_m_info_lst, 
                  varname_maps = trans_cost_varlist) 
 
 ```
@@ -699,7 +706,7 @@ data_race_share %>%
       `Mixed Race and Ethnicity` = "No Majority Race/Ethnicity Tracts"
     )
   ) %>%
-  create_tb_more_data(metrics_info_df = tr_cost_m_info_lst, 
+  create_tb_more_data(metrics_info = tr_cost_m_info_lst, 
                       varname_maps = trans_cost_varlist)
 
 ```
@@ -723,7 +730,7 @@ data_race_share %>%
 ap_m_info_lst <- get_vars_info("Access to preschool", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = ap_m_info_lst, 
+          metrics_info = ap_m_info_lst, 
           varname_maps = share_in_presch_varlist) 
 
 ```
@@ -733,8 +740,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r education-table2}
-create_tb_level2(data = data_recent, 
-                 metrics_info_df = ap_m_info_lst, 
+create_tb_detail(data = data_recent, 
+                 metrics_info = ap_m_info_lst, 
                  varname_maps = share_in_presch_varlist) 
 
 ```
@@ -745,7 +752,7 @@ create_tb_level2(data = data_recent,
 
 ```{r education-table3}
 create_tb_more_data(data = data_race_ethnicity,
-                    metrics_info_df = ap_m_info_lst, 
+                    metrics_info = ap_m_info_lst, 
                     varname_maps = share_in_presch_varlist) 
 
 ```
@@ -767,7 +774,7 @@ create_tb_more_data(data = data_race_ethnicity,
 epd_m_info_lst <- get_vars_info("Effective public education", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = epd_m_info_lst, 
+          metrics_info = epd_m_info_lst, 
           varname_maps = eff_pub_ed) 
 
 ```
@@ -777,8 +784,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r learning-table2}
-create_tb_level2(data = data_recent, 
-                 metrics_info_df = epd_m_info_lst, 
+create_tb_detail(data = data_recent, 
+                 metrics_info = epd_m_info_lst, 
                  varname_maps = eff_pub_ed) 
 
 ```
@@ -789,11 +796,11 @@ create_tb_level2(data = data_recent,
 
 ```{r learning-table3}
 create_tb_more_data(data = data_race_ethnicity %>% filter(subgroup != "Other Races and Ethnicities"),
-                    metrics_info_df = epd_m_info_lst, 
+                    metrics_info = epd_m_info_lst, 
                     varname_maps = eff_pub_ed) 
 
 create_tb_more_data(data = data_education_income,
-                    metrics_info_df = epd_m_info_lst, 
+                    metrics_info = epd_m_info_lst, 
                     varname_maps = eff_pub_ed) 
 ```
 
@@ -811,11 +818,13 @@ create_tb_more_data(data = data_education_income,
 
 ##### Summary
 
-```{r student-poverty}
+```{r}
+#| label: student-poverty-summary
+
 spoverty_m_info_lst <- get_vars_info("Student poverty concentration", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = spoverty_m_info_lst, 
+          metrics_info = spoverty_m_info_lst, 
           varname_maps = stu_poverty_varlist) 
 
 ```
@@ -824,10 +833,23 @@ create_tb(data = data_recent,
 
 ##### Detail
 
-```{r student-poverty-table2}
-create_tb_level2(data = data_recent, 
-                 metrics_info_df = spoverty_m_info_lst, 
+```{r}
+#| label: student-poverty-detail
+
+create_tb_detail(data = data_recent, 
+                 metrics_info = spoverty_m_info_lst, 
                  varname_maps = stu_poverty_varlist) 
+
+```
+
+##### More data
+
+```{r}
+#| label: student-poverty-more-data
+
+create_tb_more_data(data = data_years, 
+                    metrics_info = spoverty_m_info_lst, 
+                    varname_maps = stu_poverty_varlist) 
 
 ```
 
@@ -847,7 +869,7 @@ create_tb_level2(data = data_recent,
 m_info_lst <- get_vars_info("College readiness", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = m_info_lst, 
+          metrics_info = m_info_lst, 
           varname_maps = college_readiness) 
 
 ```
@@ -857,8 +879,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r college-readiness-table2}
-create_tb_level2(data = data_recent, 
-                 metrics_info_df = m_info_lst, 
+create_tb_detail(data = data_recent, 
+                 metrics_info = m_info_lst, 
                  varname_maps = college_readiness) 
 
 ```
@@ -869,7 +891,7 @@ create_tb_level2(data = data_recent,
 
 ```{r college-readiness-table3}
 create_tb_more_data(data = data_race_ethnicity, 
-                    metrics_info_df = m_info_lst, 
+                    metrics_info = m_info_lst, 
                     varname_maps = college_readiness) 
 
 ```
@@ -901,7 +923,7 @@ create_tb_more_data(data = data_race_ethnicity,
 emp_m_info_lst <- get_vars_info("Employment", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = emp_m_info_lst, 
+          metrics_info = emp_m_info_lst, 
           varname_maps = emp_lst) 
 
 ```
@@ -911,8 +933,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r employment-table2}
-create_tb_level2(data = data_recent, 
-                 metrics_info_df = emp_m_info_lst, 
+create_tb_detail(data = data_recent, 
+                 metrics_info = emp_m_info_lst, 
                  varname_maps = emp_lst) 
 
 ```
@@ -923,7 +945,7 @@ create_tb_level2(data = data_recent,
 
 ```{r employment-table3}
 create_tb_more_data(data = data_race_ethnicity,
-                    metrics_info_df = emp_m_info_lst, 
+                    metrics_info = emp_m_info_lst, 
                     varname_maps = emp_lst) 
 
 ```
@@ -944,7 +966,7 @@ create_tb_more_data(data = data_race_ethnicity,
 m_info_lst <- get_vars_info("Access to jobs paying a living wage", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = m_info_lst, 
+          metrics_info = m_info_lst, 
           varname_maps = job_wage) 
 
 ```
@@ -954,8 +976,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r wages-table2}
-create_tb_level2(data = data_recent, 
-                 metrics_info_df = m_info_lst, 
+create_tb_detail(data = data_recent, 
+                 metrics_info = m_info_lst, 
                  varname_maps = job_wage) 
 
 ```
@@ -966,7 +988,7 @@ create_tb_level2(data = data_recent,
 
 ```{r wages-table3}
 create_tb_more_data(data = data_years,
-                    metrics_info_df = m_info_lst, 
+                    metrics_info = m_info_lst, 
                     varname_maps = job_wage) 
 
 ```
@@ -987,7 +1009,7 @@ create_tb_more_data(data = data_years,
 income_m_info_lst <- get_vars_info("Income", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = income_m_info_lst, 
+          metrics_info = income_m_info_lst, 
           varname_maps = income_varlist) 
 
 ```
@@ -997,8 +1019,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r income-table1}
-create_tb_level2(data = data_recent,
-                 metrics_info_df = income_m_info_lst, 
+create_tb_detail(data = data_recent,
+                 metrics_info = income_m_info_lst, 
                  varname_maps = income_varlist)
 
 ```
@@ -1009,7 +1031,7 @@ create_tb_level2(data = data_recent,
 
 ```{r income-table2}
 create_tb_more_data(data = data_race_ethnicity,
-                    metrics_info_df = income_m_info_lst,
+                    metrics_info = income_m_info_lst,
                     varname_maps = income_varlist)
 
 ```
@@ -1031,7 +1053,7 @@ m_info_lst <- get_vars_info("Financial security", data_summary_file = m_info)$in
 mb_vars <- get_vars_info("Financial security", data_summary_file = m_info)$mb_vars
 
 create_tb(data = data_recent, 
-          metrics_info_df = m_info_lst, 
+          metrics_info = m_info_lst, 
           varname_maps = debt_varlist) 
 
 ```
@@ -1041,8 +1063,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r financial-security-table2}
-create_tb_level2(data = data_recent,
-                 metrics_info_df = m_info_lst, 
+create_tb_detail(data = data_recent,
+                 metrics_info = m_info_lst, 
                  varname_maps = debt_varlist) 
 
 ```
@@ -1061,7 +1083,7 @@ data_race_share %>%
       `Majority White, Non-Hispanic` = "Majority White, Non-Hispanic ZIPs"
     )
   ) %>%
-  create_tb_more_data(metrics_info_df = m_info_lst, 
+  create_tb_more_data(metrics_info = m_info_lst, 
                       varname_maps = debt_varlist) 
 
 ```
@@ -1094,7 +1116,7 @@ data_race_share %>%
 m_info_lst <- get_vars_info("Access to and utilization of health services", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = m_info_lst, 
+          metrics_info = m_info_lst, 
           varname_maps = accuils_varlist) 
 
 ```
@@ -1104,8 +1126,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r health-acces-table2}
-create_tb_level2(data = data_recent,
-                 metrics_info_df = m_info_lst, 
+create_tb_detail(data = data_recent,
+                 metrics_info = m_info_lst, 
                  varname_maps = accuils_varlist) 
 
 ```
@@ -1126,7 +1148,7 @@ create_tb_level2(data = data_recent,
 nh_m_info_lst <- get_vars_info("Neonatal health", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = nh_m_info_lst, 
+          metrics_info = nh_m_info_lst, 
           varname_maps = neonatal_varlist) 
 
 ```
@@ -1136,8 +1158,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r neonatal-health-table2}
-create_tb_level2(data = data_recent,
-                 metrics_info_df = nh_m_info_lst, 
+create_tb_detail(data = data_recent,
+                 metrics_info = nh_m_info_lst, 
                  varname_maps = neonatal_varlist) 
 
 ```
@@ -1148,7 +1170,7 @@ create_tb_level2(data = data_recent,
 
 ```{r neonatal-health-table3}
 create_tb_more_data(data = data_race_ethnicity,
-                    metrics_info_df = nh_m_info_lst, 
+                    metrics_info = nh_m_info_lst, 
                     varname_maps = neonatal_varlist) 
 
 ```
@@ -1171,7 +1193,7 @@ create_tb_more_data(data = data_race_ethnicity,
 env_m_info_lst <- get_vars_info("Environmental quality", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = env_m_info_lst, 
+          metrics_info = env_m_info_lst, 
           varname_maps = env_varlist) 
 
 ```
@@ -1181,8 +1203,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r environmental-quality-table2}
-create_tb_level2(data = data_recent,
-                 metrics_info_df = env_m_info_lst, 
+create_tb_detail(data = data_recent,
+                 metrics_info = env_m_info_lst, 
                  varname_maps = env_varlist) 
 
 
@@ -1204,11 +1226,11 @@ data_race_share <- data_race_share %>%
   )
 
 create_tb_more_data(data = data_race_share,
-                    metrics_info_df = env_m_info_lst, 
+                    metrics_info = env_m_info_lst, 
                     varname_maps = env_varlist) 
 
 create_tb_more_data(data = data_env_quality_poverty,
-                    metrics_info_df = env_m_info_lst, 
+                    metrics_info = env_m_info_lst, 
                     varname_maps = env_varlist) 
 
 ```
@@ -1236,11 +1258,13 @@ create_tb_more_data(data = data_env_quality_poverty,
 
 ##### Summary
 
-```{r political-participation}
+```{r}
+#| label: political-participation
+
 et_m_info_lst <- get_vars_info("Political participation", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = et_m_info_lst, 
+          metrics_info = et_m_info_lst, 
           varname_maps = election_turnout_varlist) 
 
 ```
@@ -1249,10 +1273,25 @@ create_tb(data = data_recent,
 
 ##### Detail
 
-```{r political-participation-table2}
-create_tb_level2(data = data_recent,
-                 metrics_info_df = et_m_info_lst, 
+```{r}
+#| label: political-participation-detail
+
+create_tb_detail(data = data_recent,
+                 metrics_info = et_m_info_lst, 
                  varname_maps = election_turnout_varlist) 
+
+```
+
+<br>
+
+##### More data
+
+```{r}
+#| label: political-participation-more-data
+
+create_tb_more_data(data = data_years,
+                    metrics_info = et_m_info_lst, 
+                    varname_maps = election_turnout_varlist) 
 
 ```
 
@@ -1282,7 +1321,7 @@ create_tb_level2(data = data_recent,
 ec_m_info_lst <- get_vars_info("Exposure to crime", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
-          metrics_info_df = ec_m_info_lst, 
+          metrics_info = ec_m_info_lst, 
           varname_maps = exp_crime_varlist) 
 
 ```
@@ -1292,8 +1331,8 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r safety-table2}
-create_tb_level2(data = data_recent,
-                 metrics_info_df = ec_m_info_lst, 
+create_tb_detail(data = data_recent,
+                 metrics_info = ec_m_info_lst, 
                  varname_maps = exp_crime_varlist)
 
 ```
@@ -1304,7 +1343,7 @@ create_tb_level2(data = data_recent,
 
 ```{r safety-table3}
 create_tb_more_data(data = data_years,
-                    metrics_info_df = ec_m_info_lst, 
+                    metrics_info = ec_m_info_lst, 
                     varname_maps = exp_crime_varlist) 
 
 ```

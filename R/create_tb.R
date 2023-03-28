@@ -1,6 +1,6 @@
 #' Create "Summary Table" for a given metric
 #' 
-#'@param metrics_info_df (list) A list composed of 13 elements with information
+#'@param metrics_info (list) A list composed of 13 elements with information
 #'  about a metric. In practice, the first output from the get_vars_info function
 #'  for this argument
 #'@param data (data.frame) A dataframe. In practice either the data or data_sub
@@ -21,7 +21,7 @@
 #'@return (gt table object) Returns an unnamed gt table object. 
 #'
 create_tb <- function(data,
-                      metrics_info_df, 
+                      metrics_info, 
                       varname_maps,
                       tb_title_size = 18,
                       tb_subtitle_size = 16,
@@ -33,8 +33,8 @@ create_tb <- function(data,
 
   temp <- data %>% 
     select(
-      matches(metrics_info_df$metric_vars_prefix),
-      matches(metrics_info_df$quality_variable),
+      matches(metrics_info$metric_vars_prefix),
+      matches(metrics_info$quality_variable),
       matches("state_county")
     ) %>% 
     select(-matches("_lb|_ub")) %>% 
@@ -42,10 +42,10 @@ create_tb <- function(data,
     rename(all_of(varname_maps$summary_vars)) 
   
   # each variable has its own quality variable
-  if (!str_detect(metrics_info_df$quality_variable[[1]], "|")) {   
+  if (!str_detect(metrics_info$quality_variable[[1]], "|")) {   
     
     temp <- temp %>% 
-      relocate(!!sym(metrics_info_df$quality_variable[[1]]), .after = last_col())  
+      relocate(!!sym(metrics_info$quality_variable[[1]]), .after = last_col())  
     
   } 
   
@@ -63,9 +63,9 @@ create_tb <- function(data,
     ) %>% 
     tab_header(
       title = "", 
-      subtitle = metrics_info_df$metrics_description
+      subtitle = metrics_info$metrics_description
     ) %>% 
-    tab_source_note(html(str_c("<b>Source:</b>", metrics_info_df$source_data, sep=" "))) %>% 
+    tab_source_note(html(str_c("<b>Source:</b>", metrics_info$source_data, sep=" "))) %>% 
     cols_align(
       align = "left",
       columns = everything()

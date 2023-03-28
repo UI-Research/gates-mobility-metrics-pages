@@ -1,6 +1,6 @@
 #' Function to create the "Detail" table for a metric
 #' 
-#'@param metrics_info_df (list) A list composed of 13 elements with information
+#'@param metrics_info (list) A list composed of 13 elements with information
 #'  about a metric. In practice, the first output from the get_vars_info function
 #'  for this argument
 #'@param data (data.frame) A dataframe. In practice either the data or data_sub
@@ -20,8 +20,8 @@
 #'@param tb_align (string) Table alignment. Default set to "left". 
 #'@return (gt table object) Returns an unnamed gt table object.
 
-create_tb_level2 <- function(data, 
-                             metrics_info_df, 
+create_tb_detail <- function(data, 
+                             metrics_info, 
                              varname_maps,
                              tb_title_size = 18,
                              tb_subtitle_size = 16,
@@ -30,13 +30,13 @@ create_tb_level2 <- function(data,
                              tb_width_perc = 80,
                              tb_align = "left") {
   
-  mb_vars  <- metrics_info_df$metric_vars_prefix
-  metrics_desp  <- metrics_info_df$metrics_description
-  data_source <- metrics_info_df$source_data
-  subgroup_this_var <- metrics_info_df$subgroup_id
-  notes <- metrics_info_df$notes
+  mb_vars  <- metrics_info$metric_vars_prefix
+  metrics_desp  <- metrics_info$metrics_description
+  data_source <- metrics_info$source_data
+  subgroup_this_var <- metrics_info$subgroup_id
+  notes <- metrics_info$notes
   
-  if (metrics_info_df$ci_var == 1) {
+  if (metrics_info$ci_var == 1) {
     
     # get variable names for confidence intervals
     mb_vars_lst <- data %>% 
@@ -56,8 +56,8 @@ create_tb_level2 <- function(data,
     
     temp <- data %>% 
       select(
-        matches(metrics_info_df$metric_vars_prefix),
-        matches(metrics_info_df$quality_variable),
+        matches(metrics_info$metric_vars_prefix),
+        matches(metrics_info$quality_variable),
         matches("state_county"), 
         -matches("_lb|ub")
       )
@@ -66,15 +66,15 @@ create_tb_level2 <- function(data,
       mutate_all(as.character) %>% 
       rename(all_of(varname_maps$detail_vars))
     
-  } else if (metrics_info_df$ci_var == 2) {
+  } else if (metrics_info$ci_var == 2) {
     
     ci_str <- "Confidence Interval*"   # *CI not available at this time.
     metrics_desp <- md(glue("{metrics_desp}<sup>*</sup>"))
     
     temp <- data %>% 
       select(
-        matches(metrics_info_df$metric_vars_prefix),
-        matches(metrics_info_df$quality_variable),
+        matches(metrics_info$metric_vars_prefix),
+        matches(metrics_info$quality_variable),
         matches("state_county"), 
         -matches("_lb|ub")
       )
@@ -87,7 +87,7 @@ create_tb_level2 <- function(data,
       mutate_all(as.character) %>% 
       rename(all_of(varname_maps$summary_vars))
     
-  } else if (metrics_info_df$ci_var == 3) {
+  } else if (metrics_info$ci_var == 3) {
     
     ci_str <- "Confidence Interval+"   # "+CI not applicable.
     
@@ -95,8 +95,8 @@ create_tb_level2 <- function(data,
     
     temp <- data %>% 
       select(
-        matches(metrics_info_df$metric_vars_prefix),
-        matches(metrics_info_df$quality_variable),
+        matches(metrics_info$metric_vars_prefix),
+        matches(metrics_info$quality_variable),
         matches("state_county"), 
         -matches("_lb|ub")
       )
@@ -114,10 +114,10 @@ create_tb_level2 <- function(data,
 
   
   # each variable has its own quality variable 
-  if (!str_detect(metrics_info_df$quality_variable, "|")){  
+  if (!str_detect(metrics_info$quality_variable, "|")){  
     
     temp <- temp %>% 
-      relocate(!!sym(metrics_info_df$quality_variable), .after = last_col())  
+      relocate(!!sym(metrics_info$quality_variable), .after = last_col())  
     
   } 
   
