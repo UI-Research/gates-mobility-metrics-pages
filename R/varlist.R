@@ -192,11 +192,12 @@ debt_varlist <- list(
 
 accuils_varlist <- list(
   summary_vars = c(
-    "HPSA" = "hpsa_yn"
+    "Ratio of physicians to people" = "pc_phys_ratio"
   ), 
   detail_vars = c(
-    "HPSA" = "hpsa_yn",
-    "HPSA_ci" = "hpsa_yn_ci"
+    "Ratio of physicians to people" = "pc_phys_ratio",
+    "Ratio of physicians to people_ci" = "pc_phys_ratio_ci",
+    "pc_phys_ratio_quality" = "pc_phys_ratio_quality"
   )
 )
 

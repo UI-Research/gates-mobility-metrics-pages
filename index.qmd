@@ -192,6 +192,44 @@ data_race_poverty <- read_csv(
 ```
 
 ```{r}
+#| label: fake-data-recent
+
+data_recent <- data_recent %>%
+  mutate(
+        just_policing = 1234,
+    just_policing_quality = 3,
+    
+    trauma = 0.1234,
+    trauma_quality = 3,
+    
+    r_black_nh_hv_hh = "12.3%:12.3%",
+    black_nh_wealth_quality = 3,
+    r_hispanic_hv_hh = "12.3%:12.3%",
+    hispanic_wealth_quality = 3,
+    r_other_nh_hv_hh = "12.3%:12.3%",
+    other_nh_wealth_quality = 3,
+    r_white_nh_hv_hh = "12.3%:12.3%",
+    white_nh_wealth_quality = 3,
+    
+    digital_access = 0.1234,
+    digital_access_quality = 3,
+    
+    ec_zip = 0.1234,
+    ec_zip_quality = 3,
+    socassn = 0.1234,
+    socassn_quality = 3,
+    
+    pc_phys_ratio = 0.1234,
+    pc_phys_ratio_quality = 3
+  )
+
+
+
+
+```
+
+
+```{r}
 #| label: fake-data-years
 
 shell <- data_years %>%
@@ -239,7 +277,43 @@ shell <- data_years %>%
     frpl40_hispanic_quality = 3,
     
     election_turnout = 0.1234,
-    election_turnout_quality = 3
+    election_turnout_quality = 3,
+    
+    asian_other = 0.1234,
+    asian_other_quality = 3,
+    black_nonhispanic = 0.1234,
+    black_nonhispanic_quality = 3,
+    hispanic = 0.1234,
+    hispanic_quality = 3,     
+    white_nonhispanic = 0.1234,
+    white_nonhispanic_quality = 3,
+    
+    just_policing = 1234,
+    just_policing_quality = 3,
+    
+    trauma = 0.1234,
+    trauma_quality = 3,
+    
+    r_black_nh_hv_hh = "12.3%:12.3%",
+    black_nh_wealth_quality = 3,
+    r_hispanic_hv_hh = "12.3%:12.3%",
+    hispanic_wealth_quality = 3,
+    r_other_nh_hv_hh = "12.3%:12.3%",
+    other_nh_wealth_quality = 3,
+    r_white_nh_hv_hh = "12.3%:12.3%",
+    white_nh_wealth_quality = 3,
+    
+    digital_access = 0.1234,
+    digital_access_quality = 3,
+    
+    ec_zip = 0.1234,
+    ec_zip_quality = 3,
+    socassn = 0.1234,
+    socassn_quality = 3,
+    
+    pc_phys_ratio = 0.1234,
+    pc_phys_ratio_quality = 3
+    
   )
 
 data_years <- data_years %>%
@@ -423,7 +497,7 @@ title <- paste0("Mobility Metrics for ", upward_county)
 ##### Summary
 
 ```{r affordable-housing}
-af_m_info_lst <- get_vars_info("Affordable housing", data_summary_file = m_info)$info_lst
+af_m_info_lst <- get_vars_info("Housing affordability", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = af_m_info_lst, 
@@ -470,7 +544,7 @@ create_tb_more_data(
 ##### Summary
 
 ```{r housing-instability}
-m_info_lst <- get_vars_info("Housing instability and homelessness", data_summary_file = m_info)$info_lst
+m_info_lst <- get_vars_info("Housing instability", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent,
           metrics_info = m_info_lst, 
@@ -673,7 +747,7 @@ data_race_share %>%
 ##### Summary 
 
 ```{r transportation-cost}
-tr_cost_m_info_lst <- get_vars_info("Transportation access-cost", data_summary_file = m_info)$info_lst
+tr_cost_m_info_lst <- get_vars_info("Transportation cost", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = tr_cost_m_info_lst, 
@@ -821,7 +895,7 @@ create_tb_more_data(data = data_education_income,
 ```{r}
 #| label: student-poverty-summary
 
-spoverty_m_info_lst <- get_vars_info("Student poverty concentration", data_summary_file = m_info)$info_lst
+spoverty_m_info_lst <- get_vars_info("School economic diversity", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = spoverty_m_info_lst, 
@@ -866,7 +940,7 @@ create_tb_more_data(data = data_years,
 ##### Summary
 
 ```{r college-readiness}
-m_info_lst <- get_vars_info("College readiness", data_summary_file = m_info)$info_lst
+m_info_lst <- get_vars_info("Preparation for college", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = m_info_lst, 
@@ -920,7 +994,7 @@ create_tb_more_data(data = data_race_ethnicity,
 ##### Summary
 
 ```{r employment}
-emp_m_info_lst <- get_vars_info("Employment", data_summary_file = m_info)$info_lst
+emp_m_info_lst <- get_vars_info("Employment opportunities", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = emp_m_info_lst, 
@@ -963,7 +1037,7 @@ create_tb_more_data(data = data_race_ethnicity,
 ##### Summary
 
 ```{r wages}
-m_info_lst <- get_vars_info("Access to jobs paying a living wage", data_summary_file = m_info)$info_lst
+m_info_lst <- get_vars_info("Jobs paying a living wage", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = m_info_lst, 
@@ -1006,7 +1080,7 @@ create_tb_more_data(data = data_years,
 ##### Summary
 
 ```{r income}
-income_m_info_lst <- get_vars_info("Income", data_summary_file = m_info)$info_lst
+income_m_info_lst <- get_vars_info("Opportunities for income", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = income_m_info_lst, 
@@ -1113,7 +1187,7 @@ data_race_share %>%
 ##### Summary
 
 ```{r health-access}
-m_info_lst <- get_vars_info("Access to and utilization of health services", data_summary_file = m_info)$info_lst
+m_info_lst <- get_vars_info("Access to health services", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = m_info_lst, 
@@ -1318,7 +1392,7 @@ create_tb_more_data(data = data_years,
 ##### Summary
 
 ```{r safety}
-ec_m_info_lst <- get_vars_info("Exposure to crime", data_summary_file = m_info)$info_lst
+ec_m_info_lst <- get_vars_info("Safety from crime", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = ec_m_info_lst, 
