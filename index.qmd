@@ -196,10 +196,9 @@ data_race_poverty <- read_csv(
 
 data_recent <- data_recent %>%
   mutate(
-        just_policing = 1234,
-    just_policing_quality = 3,
-    
     trauma = 0.1234,
+    trauma_lb = 0,
+    trauma_ub = 1,
     trauma_quality = 3,
     
     r_black_nh_hv_hh = "12.3%:12.3%",
@@ -234,7 +233,7 @@ data_recent <- data_recent %>%
 
 shell <- data_years %>%
   distinct(state, county, state_name, county_name) %>%
-  expand_grid(year = c(2019, 2020, 2021)) %>%
+  expand_grid(year = c(2019, 2020, 2021, 2022)) %>%
   mutate(
     share_affordable_80_ami = 0.1234, 
     share_affordable_50_ami = 0.1234,
@@ -288,10 +287,12 @@ shell <- data_years %>%
     white_nonhispanic = 0.1234,
     white_nonhispanic_quality = 3,
     
-    just_policing = 1234,
-    just_policing_quality = 3,
+    juvenile_arrest_rate = 1234,
+    juvenile_arrest_rate_quality = 3,
     
     trauma = 0.1234,
+    trauma_lb = 0,
+    trauma_ub = 1,
     trauma_quality = 3,
     
     r_black_nh_hv_hh = "12.3%:12.3%",
@@ -676,12 +677,101 @@ create_tb_more_data(
 
 #### Predictor: Social Capital {.tabset .avoidpagebreak}
 
-<!-- TO BE FILLED IN LATER -->
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r}
+#| label: social-capital1-summary
+
+sc1_m_info_lst <- get_vars_info("Social capital1", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = sc1_m_info_lst, 
+          varname_maps = social_capital1_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: social-capital1-detail
+
+create_tb_detail(data = data_recent,
+                 metrics_info = sc1_m_info_lst, 
+                 varname_maps = social_capital1_varlist)
+
+```
+
+<br>
+
+##### More Data
+
+```{r}
+#| label: social-capital1-more-data
+
+create_tb_more_data(data = data_years,
+                    metrics_info = sc1_m_info_lst, 
+                    varname_maps = social_capital1_varlist) 
+
+```
+
+:::
 
 <div class="exclude">*Visit [here](description.html#sec-social-capital) for more details about this predictor.*</div>
 
 <br>
 
+#### Predictor: Social Capital {.tabset .avoidpagebreak}
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r}
+#| label: social-capital2-summary
+
+sc2_m_info_lst <- get_vars_info("Social capital2", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = sc2_m_info_lst, 
+          varname_maps = social_capital2_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: social-capital2-detail
+
+create_tb_detail(data = data_recent,
+                 metrics_info = sc2_m_info_lst, 
+                 varname_maps = social_capital2_varlist)
+
+```
+
+<br>
+
+##### More Data
+
+```{r}
+#| label: social-capital2-more-data
+
+create_tb_more_data(data = data_years,
+                    metrics_info = sc2_m_info_lst, 
+                    varname_maps = social_capital2_varlist) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-social-capital) for more details about this predictor.*</div>
+
+<br>
 
 #### Predictor: Transportation access 
 
@@ -978,10 +1068,40 @@ create_tb_more_data(data = data_race_ethnicity,
 
 #### Predictor: Digital access 
 
-<!-- TO BE FILLED IN LATER -->
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r}
+#| label: digital-access-summary
+
+create_tb(
+  data = data_recent, 
+  metrics_info = get_vars_info("Digital access", data_summary_file = m_info)$info_lst, 
+  varname_maps = digital_access_varlist
+) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: digital-access-detail
+
+create_tb_detail(
+  data = data_recent, 
+  metrics_info = get_vars_info("Digital access", data_summary_file = m_info)$info_lst, 
+  varname_maps = digital_access_varlist
+) 
+
+```
+
+:::
 
 
-<!-- <div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div> -->
+<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
 
 <br>
 
@@ -1171,9 +1291,45 @@ data_race_share %>%
 
 #### Predictor: Wealth-Building Opportunities 
 
-<!-- TO BE FILLED IN LATER -->
+::: {.panel-tabset .avoidpagebreak}
 
-<!-- <div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div> -->
+##### Summary
+
+```{r}
+#| label: wealth-building-summary
+
+create_tb(
+  data = data_recent, 
+  metrics_info = get_vars_info(
+    "Wealth-building opportunities", 
+    data_summary_file = m_info
+  )$info_lst, 
+  varname_maps = wealth_building_varlist
+) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: wealth-building-detail
+
+create_tb_detail(
+  data = data_recent,
+  metrics_info = get_vars_info(
+    "Wealth-building opportunities", 
+    data_summary_file = m_info
+  )$info_lst, 
+  varname_maps = wealth_building_varlist
+) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here]() for more details about this predictor.*</div>
 
 <br>
 
@@ -1318,8 +1474,39 @@ create_tb_more_data(data = data_env_quality_poverty,
 
 #### Predictor: Safety from Trauma 
 
-<!-- TO BE FILLED OUT LATER -->
+::: {.panel-tabset .avoidpagebreak}
 
+##### Summary
+
+```{r}
+#| label: safety-from-trauma-summary
+
+create_tb(
+  data = data_recent, 
+  metrics_info = get_vars_info("Safety from trauma", data_summary_file = m_info)$info_lst, 
+  varname_maps = trauma_varlist
+) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: safety-from-trauma-detail
+
+create_tb_detail(
+  data = data_recent,
+  metrics_info = get_vars_info("Safety from trauma", data_summary_file = m_info)$info_lst, 
+  varname_maps = trauma_varlist
+) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here]() for more details about this predictor.*</div>
 
 <br>
 
@@ -1380,7 +1567,7 @@ create_tb_more_data(data = data_years,
 
 <!-- TO BE FILLED OUT LATER -->
 
-<!-- <div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div> -->
+<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
 
 <br>
 
@@ -1428,15 +1615,39 @@ create_tb_more_data(data = data_years,
 
 <br>
 
-
-
-
-<!-- NEED TO INCLUDE METRIC ON RATE OR REPORTED VIOLENT CRIME PER 100K -->
 #### Predictor: Just policing {.tabset .avoidpagebreak}
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r}
+#| label: just-policing-summary
+
+jp_m_info_lst <- get_vars_info("Just policing", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = jp_m_info_lst, 
+          varname_maps = just_policing_varlist) 
+
+```
 
 <br>
 
+##### Detail
 
+```{r}
+#| label: just-policing-detail
+
+create_tb_detail(data = data_recent,
+                 metrics_info = jp_m_info_lst, 
+                 varname_maps = just_policing_varlist)
+
+```
+
+:::
+
+<br>
 
 ## Notes on Data Quality
 | "Good" indicates that the metric is measured with adequate accuracy and sample size.

@@ -248,10 +248,71 @@ exp_crime_varlist <- list(
   )
 )
 
+just_policing_varlist <- list(
+  summary_vars = c(
+    "Juvenile arrest rate" = "juvenile_arrest_rate"
+  ),
+  detail_vars = c(
+    "Juvenile arrest rate" = "juvenile_arrest_rate",
+    "just_policing_quality" = "juvenile_arrest_rate_quality"
+  )
+)
 
+social_capital1_varlist <- list(
+  summary_vars = c(
+    "Membership associations" = "socassn"
+  ),
+  detail_vars = c(
+    "Membership associations" = "socassn",
+    "socassn_quality" = "socassn_quality"
+  )
+)
 
+social_capital2_varlist <- list(
+  summary_vars = c(
+    "Economic connectedness" = "ec_zip"
+  ),
+  detail_vars = c(
+    "Economic connectedness" = "ec_zip",
+    "ec_zip_quality" = "ec_zip_quality"
+  )
+)
 
+digital_access_varlist <- list(
+  summary_vars = c(
+    "Digital access" = "digital_access"
+  ),
+  detail_vars = c(
+    "Digital access" = "digital_access",
+    "digital_access_quality" = "digital_access_quality"
+  )
+)
 
+wealth_building_varlist <- list(
+  summary_vars = c(
+    "Black, non-Hispanic Opportunity" = "r_black_nh_hv_hh",
+    "Hispanic Opportunity" = "r_hispanic_hv_hh",
+    "Other Opportunity" = "r_other_nh_hv_hh",
+    "White, non-Hispanic Opportunity" = "r_white_nh_hv_hh"
+  ),
+  detail_vars = c(
+    "Black, non-Hispanic Opportunity" = "r_black_nh_hv_hh",
+    "black_nh_wealth_quality" = "black_nh_wealth_quality",
+    "Hispanic Opportunity" = "r_hispanic_hv_hh",
+    "hispanic_wealth_quality" = "hispanic_wealth_quality",
+    "Other Opportunity" = "r_other_nh_hv_hh",
+    "other_nh_wealth_quality" = "other_nh_wealth_quality",
+    "White, non-Hispanic Opportunity" = "r_white_nh_hv_hh",
+    "white_nh_wealth_quality" = "white_nh_wealth_quality"
+  )
+)
 
-
-
+trauma_varlist <- list(
+  summary_vars = c(
+    "Trauma" = "trauma"
+  ),
+  detail_vars = c(
+    "Trauma" = "trauma",
+    "trauma_quality" = "trauma_quality"
+  )
+)
