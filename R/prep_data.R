@@ -39,19 +39,24 @@ prep_data <- function(data) {
       -starts_with("learning_rate"), 
       -all_of(perc_vars_in_data),
       -starts_with("share_burdened"),
-      -starts_with("pctl")
+      -starts_with("pctl"),
+      -any_of(c("asian_other_pop", "black_nonhispanic_pop", "hispanic_pop", "white_nonhispanic_pop"))
     ) %>%
     select_if(is.numeric) %>% 
     names()
   
   
-  data <- data %>% 
+  data <- data %>%
+    mutate_at(vars(ends_with("_quality")),
+              function(x) recode(x, `1` = "Strong", `2` = "Marginal", `3` = "Weak")) %>% 
     # multiple affordable housing variables by 100
     mutate_at(vars(matches("share_affordable_")),  
               function(x) x*100) %>%
     # update ub for share_hs_degree to 1
     mutate_at(vars(matches("share_hs_degree_ub")),     
               function(x) case_when(x > 1 ~ 1, TRUE  ~ x)) %>%
+    mutate_at(vars(any_of(c("asian_other_pop", "black_nonhispanic_pop", "hispanic_pop", "white_nonhispanic_pop"))),
+              function(x) paste0("__:", scales::percent(x))) %>%    
     # convert to percentage
     mutate_at(perc_vars_in_data,             
               function (x) scales::percent(x, accuracy = 0.1)) %>%
@@ -67,10 +72,7 @@ prep_data <- function(data) {
     mutate_at(vars(-one_of(c("state_county", "subgroup"))),
               function(x) gsub("\\s+", "", x)) %>%  
     mutate_at(vars(matches("crime_rate"), -ends_with("_quality")), 
-              function(x) gsub("\\..*","", x)) %>%
-    mutate_at(vars(ends_with("_quality")),
-              function(x) recode(x, `1` = "Strong", `2` = "Marginal", `3` = "Weak"))
-  
+              function(x) gsub("\\..*","", x))
   
   return(data)
   

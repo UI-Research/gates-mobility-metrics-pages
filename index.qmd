@@ -118,13 +118,7 @@ identifying_vars <- c("subgroup_id", "state", "county", "state_name",
 data_recent <- read_csv(
   here("mobility-metrics", "01_mobility-metrics.csv"), 
   col_type = my_col_type
-) %>%
-  prep_data() %>%
-  mutate(
-    learning_rate = sprintf("%.2f", round(as.numeric(learning_rate) , 2)),
-    learning_rate_lb = sprintf("%.2f", round(as.numeric(learning_rate_lb) , 2)),
-    learning_rate_ub = sprintf("%.2f", round(as.numeric(learning_rate_ub) , 2))
-  )
+) 
 
 data_years <- read_csv(
   here("mobility-metrics", "00_mobility-metrics_longitudinal.csv"),
@@ -196,6 +190,15 @@ data_race_poverty <- read_csv(
 
 data_recent <- data_recent %>%
   mutate(
+    asian_other_pop = 0.1234,
+    asian_other_pop_quality = 3,
+    black_nonhispanic_pop = 0.1234,
+    black_nonhispanic_pop_quality = 3,
+    hispanic_pop = 0.1234,
+    hispanic_pop_quality = 3,     
+    white_nonhispanic_pop = 0.1234,
+    white_nonhispanic_pop_quality = 3,
+    
     trauma = 0.1234,
     trauma_lb = 0,
     trauma_ub = 1,
@@ -220,9 +223,13 @@ data_recent <- data_recent %>%
     
     pc_phys_ratio = 0.1234,
     pc_phys_ratio_quality = 3
+  ) %>%
+  prep_data() %>%
+  mutate(
+    learning_rate = sprintf("%.2f", round(as.numeric(learning_rate) , 2)),
+    learning_rate_lb = sprintf("%.2f", round(as.numeric(learning_rate_lb) , 2)),
+    learning_rate_ub = sprintf("%.2f", round(as.numeric(learning_rate_ub) , 2))
   )
-
-
 
 
 ```
@@ -278,14 +285,14 @@ shell <- data_years %>%
     election_turnout = 0.1234,
     election_turnout_quality = 3,
     
-    asian_other = 0.1234,
-    asian_other_quality = 3,
-    black_nonhispanic = 0.1234,
-    black_nonhispanic_quality = 3,
-    hispanic = 0.1234,
-    hispanic_quality = 3,     
-    white_nonhispanic = 0.1234,
-    white_nonhispanic_quality = 3,
+    asian_other_pop = 0.1234,
+    asian_other_pop_quality = 3,
+    black_nonhispanic_pop = 0.1234,
+    black_nonhispanic_pop_quality = 3,
+    hispanic_pop = 0.1234,
+    hispanic_pop_quality = 3,     
+    white_nonhispanic_pop = 0.1234,
+    white_nonhispanic_pop_quality = 3,
     
     juvenile_arrest_rate = 1234,
     juvenile_arrest_rate_quality = 3,
@@ -1562,12 +1569,26 @@ create_tb_more_data(data = data_years,
 
 <br>
 
-
 #### Predictor: Descriptive Representation {.tabset .avoidpagebreak}
 
-<!-- TO BE FILLED OUT LATER -->
+::: {.panel-tabset .avoidpagebreak}
 
-<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
+##### Detail
+
+```{r}
+#| label: descriptive-representation-detail
+
+create_tb_detail(
+  data = data_recent,
+  metrics_info = get_vars_info("Descriptive representation among local officials", data_summary_file = m_info)$info_lst, 
+  varname_maps = descriptive_representation_varlist
+) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here]() for more details about this predictor.*</div>
 
 <br>
 
@@ -1649,36 +1670,28 @@ create_tb_detail(data = data_recent,
 
 <br>
 
-## Notes on Data Quality
-| "Good" indicates that the metric is measured with adequate accuracy and sample size.
-| "Marginal" indicates that there are known shortcomings of the data for this metric for this county, and the metric should be used with caution.
-| "Poor" indicates that although the metric could be computed for this county, we have serious concerns about how accurately it is measured for this county and do not recommend its use.
+## Additional Notes on Data {.printbreak}
+
+### Data Quality
+
+| “Strong” indicates that the metric is measured with adequate accuracy and sample size. 
+| “Marginal” indicates that there are known shortcomings of the data for this metric for this community, and the metric should be used with caution. 
+| “Weak” indicates that although the metric could be computed for this community, we have serious concerns about how accurately it is measured for this community and do not recommend its use. Instead, we recommend seeking more local data sources for this metric.
 
 <br><br>
 
-
-## Additional Notes {.printbreak}
-
-<div class="p2">The following metrics require original data collection:</div> 
-
-* **Overall health:** Share of adults who rate their own and their children’s health as good or excellent
-* **Belongingness:** Inclusion of other in the self scale
-* **Social Capital:** Social capital community benchmark scale
-* **Exposure to Trauma:** Adverse childhood experiences scale
-* **Descriptive representation among local officials:** The ratio of the share of the city council or county board from specific racial and ethnic groups and the share of city or county residents from those racial or ethnic groups
-
-<br>
+### Confidence Intervals
 
 | Confidence intervals shown are 95 percent.
 | * This confidence interval is not available at this time.
 | + A confidence interval is not applicable.
-| Lower/Upper bound:  The data used to construct this metric do not lend themselves to conventional confidence intervals. The value of the metric shown represents are best estimate; the lower and upper bounds represent alternative estimates of the metric under different assumptions about missing data.
+| Lower/Upper bound:  The data used to construct this metric do not lend themselves to conventional confidence intervals. The value of the metric shown represents are best estimate; the lower and upper bounds represent alternative estimates of the metric under different assumptions about missing data. 
 
-<br>
+<div class="p2">“NC” in fields for confidence intervals or lower/upper bounds means that we are not able to calculate this because the underlying data lack variation. </div>
 
-<div class="p2">"NA" in fields for metric values and data quality values indicates that the data are suppressed due to sample sizes or because that element is not applicable to that community (e.g. no zip code in the county is majority non-white).</div> 
+### Missing and Suppressed Values
 
-<div class="p2">"NC" in fields for confidence intervals or lower/upper bounds means that we are not able to calculate this because the underlying data lack variation.</div>
+<div class="p2">“NA” in fields for metric values and data quality values indicates that the data are suppressed due to sample sizes or because that element is not applicable to that community (e.g., no zip code in the county is majority non-white). </div> 
 
 <br>
 

@@ -316,3 +316,25 @@ trauma_varlist <- list(
     "trauma_quality" = "trauma_quality"
   )
 )
+
+descriptive_representation_varlist <- list(
+  summary_vars = c(
+    "Asian and Other Races/Ethnicities" = "asian_other_pop",
+    "Black, non-Hispanic" = "black_nonhispanic_pop",
+    "Hispanic" = "hispanic_pop",
+    "White, non-Hispanic" = "white_nonhispanic_pop"
+  ),
+  detail_vars = c(
+    "Asian and Other Races/Ethnicities" = "asian_other_pop",
+    "asian_other_pop_quality" = "asian_other_pop_quality",
+    "Black, non-Hispanic" = "black_nonhispanic_pop",
+    "black_nonhispanic_pop_quality" = "black_nonhispanic_pop_quality",
+    "Hispanic" = "hispanic_pop",
+    "hispanic_pop_quality" = "hispanic_pop_quality",
+    "White, non-Hispanic" = "white_nonhispanic_pop",
+    "white_nonhispanic_pop_quality" = "white_nonhispanic_pop_quality"
+  )
+)
+
+
+

@@ -57,7 +57,7 @@ create_tb_detail <- function(data,
     temp <- data %>% 
       select(
         matches(metrics_info$metric_vars_prefix),
-        matches(metrics_info$quality_variable),
+        any_of(metrics_info$quality_variable),
         matches("state_county"), 
         -matches("_lb|ub")
       )
@@ -74,7 +74,7 @@ create_tb_detail <- function(data,
     temp <- data %>% 
       select(
         matches(metrics_info$metric_vars_prefix),
-        matches(metrics_info$quality_variable),
+        any_of(metrics_info$quality_variable),
         matches("state_county"), 
         -matches("_lb|ub")
       )
@@ -96,7 +96,7 @@ create_tb_detail <- function(data,
     temp <- data %>% 
       select(
         matches(metrics_info$metric_vars_prefix),
-        matches(metrics_info$quality_variable),
+        any_of(metrics_info$quality_variable),
         matches("state_county"), 
         -matches("_lb|ub")
       )
@@ -114,10 +114,10 @@ create_tb_detail <- function(data,
 
   
   # each variable has its own quality variable 
-  if (!str_detect(metrics_info$quality_variable, "|")){  
+  if (length(metrics_info$quality_variable) > 1){  
     
     temp <- temp %>% 
-      relocate(!!sym(metrics_info$quality_variable), .after = last_col())  
+      select(everything(), any_of(metrics_info$quality_variable))  
     
   } 
   
@@ -125,7 +125,7 @@ create_tb_detail <- function(data,
   temp %>% 
     pivot_longer(!state_county, names_to="metrics", values_to="value") %>%
     pivot_wider(names_from = "state_county", values_from = "value") %>% 
-    arrange(match(metrics, names(varname_maps$summary_vars))) %>%  
+    arrange(match(metrics, names(varname_maps$detail_vars))) %>%  
     mutate(metrics = gsub(".*_ci", ci_str, metrics)) %>% 
     mutate(metrics = gsub(".*_quality", "Quality", metrics)) %>% 
     select(metrics, everything()) %>% 
