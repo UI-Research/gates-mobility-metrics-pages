@@ -1,9 +1,9 @@
 #' Function to create the "Detail" table for a metric
 #' 
-#'@param metrics_info_df (list) A list composed of 13 elements with information
+#'@param metrics_info (list) A list composed of 13 elements with information
 #'  about a metric. In practice, the first output from the get_vars_info function
 #'  for this argument
-#'@param dataset (data.frame) A dataframe. In practice either the data or data_sub
+#'@param data (data.frame) A dataframe. In practice either the data or data_sub
 #'  objects
 #'@param varname_maps (list of vectors containing strings) A list containing
 #'  four vectors. 
@@ -20,118 +20,112 @@
 #'@param tb_align (string) Table alignment. Default set to "left". 
 #'@return (gt table object) Returns an unnamed gt table object.
 
-create_tb_level2 <- function(metrics_info_df, 
-                             dataset, 
+create_tb_detail <- function(data, 
+                             metrics_info, 
                              varname_maps,
                              tb_title_size = 18,
                              tb_subtitle_size = 16,
                              tb_font_size = 14, 
                              source_note_size = 11,
                              tb_width_perc = 80,
-                             tb_align = "left"
-                             ){
+                             tb_align = "left") {
   
-  mb_metrics <- metrics_info_df$metric_name
-  mb_vars  <- metrics_info_df$metric_vars_prefix[[1]]
-  quality_var  <- metrics_info_df$quality_variable[[1]]
-  metrics_desp  <- metrics_info_df$metrics_description
-  data_source <- metrics_info_df$source_data
-  subgroup_this_var <- metrics_info_df$subgroup_id
-  ci_vars <- metrics_info_df$ci_var
-  notes <- metrics_info_df$notes
+  mb_vars  <- metrics_info$metric_vars_prefix
+  metrics_desp  <- metrics_info$metrics_description
+  data_source <- metrics_info$source_data
+  subgroup_this_var <- metrics_info$subgroup_id
+  notes <- metrics_info$notes
   
-  col_from <- varname_maps[3][[1]]
-  col_to <- varname_maps[4][[1]]
-  
-  
-  if (str_detect(subgroup_this_var, fixed("|")) == TRUE) {
+  if (metrics_info$ci_var == 1) {
     
-    subgroup_this_var <- strsplit(subgroup_this_var, "|", fixed=TRUE)[[1]][1]
+    # get variable names for confidence intervals
+    mb_vars_lst <- data %>% 
+      select(matches(mb_vars)) %>%
+      select(matches("_lb|_ub|_quality")) %>%
+      colnames() %>%
+      str_remove_all("_lb|_ub|_quality") %>%
+      unique()
     
-  } 
-  
-  dataset <- dataset %>% 
-    filter(subgroup_id == subgroup_this_var) %>% 
-    filter(subgroup_type == "all") 
-  
-  mb_vars_lst <- colnames(dataset %>% 
-                            select(setdiff(matches(mb_vars),
-                                           matches("_lb|_ub|_quality"))))
-
-  if (ci_vars == 1){
-    
-    for (val in mb_vars_lst){      # update this to purrr 
+    for (val in mb_vars_lst) {      # update this to purrr 
       
-      dataset <- unite_col_values(dataset, val)
+      # combine two CI variables into one variable
+      data <- unite_col_values(data, val)
       ci_str <- "Confidence Interval"
       
     } 
     
-    temp <- dataset %>% 
-      select(matches(glue("{mb_vars}|{quality_var}|state_county")), -matches("_lb|ub"))
+    temp <- data %>% 
+      select(
+        matches(metrics_info$metric_vars_prefix),
+        matches(metrics_info$quality_variable),
+        matches("state_county"), 
+        -matches("_lb|ub")
+      )
     
-  } else if (ci_vars == 2){
+    temp <- temp %>% 
+      mutate_all(as.character) %>% 
+      rename(all_of(varname_maps$detail_vars))
+    
+  } else if (metrics_info$ci_var == 2) {
     
     ci_str <- "Confidence Interval*"   # *CI not available at this time.
     metrics_desp <- md(glue("{metrics_desp}<sup>*</sup>"))
     
-    # create an empty df      #take this part out as a sep func 
-    col_names <- glue("{mb_vars_lst}_ci")
-    vec <- vector(mode = "character", length = nrow(dataset) * length(mb_vars_lst))
-    empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
-    colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
-    
-    temp <- dataset %>% 
-      select(matches(glue("{mb_vars}|{quality_var}|state_county")), -matches("_lb|ub"))
-    
-    col_from <- col_from[-grep("*_ci", col_from)]
-    col_to <- col_to[-grep("*_ci", col_to)]
+    temp <- data %>% 
+      select(
+        matches(metrics_info$metric_vars_prefix),
+        matches(metrics_info$quality_variable),
+        matches("state_county"), 
+        -matches("_lb|ub")
+      )
     
     notes <- paste0(notes, 
                     "<br><br>",
                     "The Confidence Interval for this metric is not available at this time.")
     
-  } else if (ci_vars == 3){
+    temp <- temp %>% 
+      mutate_all(as.character) %>% 
+      rename(all_of(varname_maps$summary_vars))
+    
+  } else if (metrics_info$ci_var == 3) {
     
     ci_str <- "Confidence Interval+"   # "+CI not applicable.
     
     metrics_desp <- md(glue("{metrics_desp}<sup>+</sup>"))
     
-    
-    # create an empty df 
-    col_names <- glue("{mb_vars_lst}_ci")
-    vec <- vector(mode = "character", length = nrow(dataset) * length(mb_vars_lst))
-    empty_ci_df <- as.data.frame(matrix(vec, c(nrow(dataset), length(mb_vars_lst))))
-    colnames(empty_ci_df)[1:length(mb_vars_lst)] <- col_names
-    
-    temp <- dataset %>% 
-      select(matches(glue("{mb_vars}|{quality_var}|state_county")), -matches("_lb|ub"))
-    
-    col_from <- col_from[-grep("*_ci", col_from)]
-    col_to <- col_to[-grep("*_ci", col_to)]
+    temp <- data %>% 
+      select(
+        matches(metrics_info$metric_vars_prefix),
+        matches(metrics_info$quality_variable),
+        matches("state_county"), 
+        -matches("_lb|ub")
+      )
 
     notes <- paste0(notes, 
                 "<br><br>",
                 "The Confidence Interval for this metric is not applicable.")
     
+    temp <- temp %>% 
+      mutate_all(as.character) %>% 
+      rename(all_of(varname_maps$summary_vars))
+    
   }
   
-  temp <- temp %>% 
-    mutate_all(as.character) %>% 
-    rename_at(vars(col_from), function(x) col_to)
+
   
-  
-  if (str_detect(quality_var, "|") == FALSE){ #each variable has its own quality variable  
+  # each variable has its own quality variable 
+  if (!str_detect(metrics_info$quality_variable, "|")){  
     
     temp <- temp %>% 
-      relocate(!!sym(quality_var), .after = last_col())  
+      relocate(!!sym(metrics_info$quality_variable), .after = last_col())  
     
   } 
   
+  # transpose table and generate HTML for table
   temp %>% 
     pivot_longer(!state_county, names_to="metrics", values_to="value") %>%
     pivot_wider(names_from = "state_county", values_from = "value") %>% 
-    arrange(match(metrics, col_to)) %>% 
+    arrange(match(metrics, names(varname_maps$summary_vars))) %>%  
     mutate(metrics = gsub(".*_ci", ci_str, metrics)) %>% 
     mutate(metrics = gsub(".*_quality", "Quality", metrics)) %>% 
     select(metrics, everything()) %>% 
@@ -149,10 +143,6 @@ create_tb_level2 <- function(metrics_info_df,
       align = "left",
       columns = everything()
     ) %>%
-    # cols_align(
-    #   align = "left",
-    #   columns = TRUE
-    # ) %>%
     opt_align_table_header("left") %>%
     tab_options(
       heading.title.font.size = tb_title_size,
