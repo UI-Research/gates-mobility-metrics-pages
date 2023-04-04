@@ -1,9 +1,9 @@
 #' Create "Summary Table" for a given metric
 #' 
-#'@param metrics_info_df (list) A list composed of 13 elements with information
+#'@param metrics_info (list) A list composed of 13 elements with information
 #'  about a metric. In practice, the first output from the get_vars_info function
 #'  for this argument
-#'@param dataset (data.frame) A dataframe. In practice either the data or data_sub
+#'@param data (data.frame) A dataframe. In practice either the data or data_sub
 #'  objects
 #'@param varname_maps (list of vectors containing strings) A list containing
 #'  four vectors. 
@@ -19,9 +19,9 @@
 #'  Default to 80.
 #'@param tb_align (string) Table alignment. Default set to "left".
 #'@return (gt table object) Returns an unnamed gt table object. 
- 
-create_tb <- function(metrics_info_df, 
-                      dataset, 
+#'
+create_tb <- function(data,
+                      metrics_info, 
                       varname_maps,
                       tb_title_size = 18,
                       tb_subtitle_size = 16,
@@ -29,47 +29,32 @@ create_tb <- function(metrics_info_df,
                       source_note_size = 11,
                       tb_width_perc = 80,
                       tb_align = "left"
-                      ){
-  
-  mb_metrics <- metrics_info_df$metric_name
-  mb_vars  <- metrics_info_df$metric_vars_prefix[[1]]
-  quality_var  <- metrics_info_df$quality_variable[[1]]
-  metrics_desp  <- metrics_info_df$metrics_description
-  data_source <- metrics_info_df$source_data
-  subgroup_this_var <- metrics_info_df$subgroup_id
-  col_from <- varname_maps[1][[1]]
-  col_to <- varname_maps[2][[1]]
-  
-  if (str_detect(subgroup_this_var, fixed("|")) == TRUE) {
-    
-    subgroup_this_var <- strsplit(subgroup_this_var, "|", fixed=TRUE)[[1]][1]
-    
-  } 
-  
-  
-  temp <- dataset %>% 
-    filter(subgroup_type == "all", subgroup_id == subgroup_this_var)
-  
-  
-  temp <- temp %>% 
-    select(matches(glue("{mb_vars}|{quality_var}|state_county"))) %>% 
+                      ) {
+
+  temp <- data %>% 
+    select(
+      matches(metrics_info$metric_vars_prefix),
+      any_of(metrics_info$quality_variable),
+      matches("state_county")
+    ) %>% 
     select(-matches("_lb|_ub")) %>% 
     select(sort(tidyselect::peek_vars())) %>% 
-    rename_at(vars(all_of(col_from)), function(x) col_to) 
+    rename(all_of(varname_maps$summary_vars)) 
   
-  
-  if (str_detect(quality_var, "|") == FALSE){ #each variable has its own quality variable  
+  # each variable has its own quality variable
+  if (!str_detect(metrics_info$quality_variable[[1]], "|")) {   
     
     temp <- temp %>% 
-      relocate(!!sym(quality_var), .after = last_col())  
+      relocate(!!sym(metrics_info$quality_variable[[1]]), .after = last_col())  
     
   } 
   
-  
+  # transpose table and generate HTML for table
   temp %>% 
+    mutate(across(everything(), as.character)) %>%
     pivot_longer(!state_county, names_to="metrics", values_to="value") %>%   
     pivot_wider(names_from = "state_county", values_from = "value") %>% 
-    arrange(match(metrics, col_to)) %>% 
+    arrange(match(metrics, names(varname_maps$detail_vars))) %>% 
     mutate(metrics = gsub(".*_quality", "Quality", metrics)) %>% 
     select(metrics, everything()) %>% 
     gt(
@@ -78,17 +63,13 @@ create_tb <- function(metrics_info_df,
     ) %>% 
     tab_header(
       title = "", 
-      subtitle = metrics_desp
+      subtitle = metrics_info$metrics_description
     ) %>% 
-    tab_source_note(html(str_c("<b>Source:</b>", data_source, sep=" "))) %>% 
+    tab_source_note(html(str_c("<b>Source:</b>", metrics_info$source_data, sep=" "))) %>% 
     cols_align(
       align = "left",
       columns = everything()
     ) %>% 
-    # cols_align(
-    #   align = "left",
-    #   columns = TRUE
-    # ) %>% 
     opt_align_table_header("left") %>% 
     tab_options(
       heading.title.font.size = tb_title_size, 
@@ -108,4 +89,5 @@ create_tb <- function(metrics_info_df,
         rows = metrics == "Quality")
     ) %>%
     as_raw_html()
+  
 }
