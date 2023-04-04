@@ -14,9 +14,7 @@ prep_data <- function(data) {
     filter(fips %in% params$state_county) %>% 
     arrange(factor(fips, levels = params$state_county)) %>% 
     mutate(state_county = gsub("County", "", state_county)) %>% 
-    mutate(state_county = rm_white_comma(state_county)) %>%
-    mutate_at(vars(ends_with("_quality")),
-              function(x) recode(x, `1` = "Good", `2` = "Marginal", `3` = "Poor"))
+    mutate(state_county = rm_white_comma(state_county))
   
   data <- data %>%
     mutate(state_county = str_to_title(state_county))
@@ -35,6 +33,7 @@ prep_data <- function(data) {
     select(
       -matches("average_to_living_wage_ratio"),
       -fips, 
+      -matches("_quality"),
       -matches("year"),
       -starts_with("learning_rate"), 
       -all_of(perc_vars_in_data),

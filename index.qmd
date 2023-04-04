@@ -61,23 +61,6 @@ source(here("R", "varlist.R"))
 
 ```{r}
 #| label: set-vars
-
-tb_title_size <- 18
-tb_title_font <- "bold"
-
-tb_subtitle_size <- 16
-tb_title_font <- "normal"
-tb_font_size <- 14 
-
-source_note_size <- 11
-source_note_font <- "normal"
-
-tb_width_perc <- 80
-tb_align <- "left"
-
-decimal_points <- 2
-income_decimal <- 0
-
 # Get a list of all variables that should be presented as percentage 
 perc_vars <- c(
   "share_debt_coll", # % with debt
@@ -97,8 +80,8 @@ perc_vars <- c(
   "frpl40_black",
   "frpl40_hispanic", 
   "share_in_preschool", # % in pre k 
-  "share_hs_degree", 
-  "share_employed" # % with HS degree
+  "share_hs_degree", # % with HS degree
+  "share_employed" 
 )
 
 ```
@@ -107,9 +90,7 @@ perc_vars <- c(
 ```{r read-in-data}
 my_col_type <- cols(
   state = col_character(), 
-  county = col_character(),
-  hpsa_yn = col_double(),
-  hpsa_yn_quality = col_double()
+  county = col_character()
 )
 
 identifying_vars <- c("subgroup_id", "state", "county", "state_name", 
@@ -247,6 +228,7 @@ shell <- data_years %>%
     share_affordable_30_ami = 0.1234,
     housing_quality = 3,
     
+    honeless_share = 0.1234,
     homeless_count = 1234,
     homeless_count_lb = 123,
     homeless_count_ub = 12345,
@@ -437,8 +419,8 @@ m_info <- m_info %>%
 ```
 
 ```{r}
-if (!is.logical(params$state_title)){ #Check if logical
-  if(params$state_title == "no"){ #if not logical, convert "no" to FALSE
+if (!is.logical(params$state_title)) { #Check if logical
+  if(params$state_title == "no") { #if not logical, convert "no" to FALSE
     st = FALSE
   } else{
     st = TRUE
@@ -447,9 +429,9 @@ if (!is.logical(params$state_title)){ #Check if logical
   st = params$state_title
 }
 
-
+# choose which title to use at the top of the pages
 if (!st) {
-#if(!state_title)
+
   #get the upward county - the first element in the parameter 
   upward_county <- data_recent %>% 
     filter(fips == params$state_county[1]) %>% 
@@ -458,6 +440,7 @@ if (!st) {
     first()
 
 } else {
+  
   #get the upward county - the first element in the parameter 
   upward_county <- data_recent %>% 
     filter(fips == params$state_county[1]) %>% 
@@ -884,7 +867,7 @@ data_race_share %>%
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#sec-transportation-cost) for more details about this predictor.*</div>
 
 <br>
 
@@ -1108,7 +1091,7 @@ create_tb_detail(
 :::
 
 
-<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#sec-digital-access) for more details about this predictor.*</div>
 
 <br>
 
@@ -1251,7 +1234,6 @@ create_tb_more_data(data = data_race_ethnicity,
 
 ```{r financial-security}
 m_info_lst <- get_vars_info("Financial security", data_summary_file = m_info)$info_lst
-mb_vars <- get_vars_info("Financial security", data_summary_file = m_info)$mb_vars
 
 create_tb(data = data_recent, 
           metrics_info = m_info_lst, 
