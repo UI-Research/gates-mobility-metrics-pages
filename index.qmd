@@ -62,6 +62,9 @@ source(here("R", "varlist.R"))
 ```{r}
 #| label: set-vars
 
+#AS: it looks like you set table parameters here but then use default
+# arguments in the create_tb.R function
+
 tb_title_size <- 18
 tb_title_font <- "bold"
 
@@ -97,8 +100,8 @@ perc_vars <- c(
   "frpl40_black",
   "frpl40_hispanic", 
   "share_in_preschool", # % in pre k 
-  "share_hs_degree", 
-  "share_employed" # % with HS degree
+  "share_hs_degree", # % with HS degree
+  "share_employed" 
 )
 
 ```
@@ -108,6 +111,8 @@ perc_vars <- c(
 my_col_type <- cols(
   state = col_character(), 
   county = col_character(),
+  # AS: I got warnings for all the read_csv() calls that the hpsa_yn and hpsa_yn_quality
+  # named parsers don't match the column names. Just wanted to flag to confirm this is OK
   hpsa_yn = col_double(),
   hpsa_yn_quality = col_double()
 )
@@ -145,6 +150,7 @@ data_env_quality_poverty <- read_csv(
   here("mobility-metrics", "environmental-exposure_poverty.csv"), 
   col_types = my_col_type
 ) %>% 
+  #AS: could you use data_race_ethnicity above since you've already read this csv in?
   left_join(
     read_csv(
       here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
@@ -160,6 +166,7 @@ data_education_income <- read_csv(
   col_types = my_col_type
 ) %>%  
   left_join(
+    #AS: could you use data_race_ethnicity above since you've already read this csv in?
     read_csv(
       here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
       col_types = my_col_type
@@ -174,6 +181,7 @@ data_race_poverty <- read_csv(
   col_types = my_col_type
 ) %>%
   left_join(
+    #AS: could you use data_race_ethnicity above since you've already read this csv in?
     read_csv(
       here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
       col_types = my_col_type
@@ -251,6 +259,7 @@ shell <- data_years %>%
     homeless_count_lb = 123,
     homeless_count_ub = 12345,
     homeless_quality = 3,
+    #AS: I noted that share homeless for 2021 was NA for all counties in index.html
     
     poverty_exposure = 0.1234,
     poverty_exposure_quality = 3,
@@ -458,6 +467,9 @@ if (!st) {
     first()
 
 } else {
+  #AS: since this comment was the same as in the if block above I found it a bit
+  # confusing to totally follow the logic here (I can follow what is happening but
+  # I'm less clear on why)
   #get the upward county - the first element in the parameter 
   upward_county <- data_recent %>% 
     filter(fips == params$state_county[1]) %>% 
@@ -474,6 +486,9 @@ perc_vars_lb <- purrr::map_chr(perc_vars, ~ paste0(., "_lb"))
 perc_vars_ub <- purrr::map_chr(perc_vars, ~ paste0(., "_ub"))
 lst <- list(perc_vars, perc_vars_lb, perc_vars_ub)
 all_perc_vars <- sort(lst %>% reduce(c))
+
+#AS: this winds up being empty if params$fake_labels is false because
+#there is no data object
 
 # filter to get the ones only existing in the data 
 perc_vars_in_data <- all_perc_vars[(all_perc_vars %in% colnames(data))]
@@ -505,6 +520,9 @@ title <- paste0("Mobility Metrics for ", upward_county)
 ##### Summary
 
 ```{r affordable-housing}
+#AS: it looks like the data in the summary table is the 2018 data, but the source description 
+# corresponds to the 2021 data
+
 af_m_info_lst <- get_vars_info("Housing affordability", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 

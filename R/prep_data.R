@@ -47,6 +47,7 @@ prep_data <- function(data) {
   
   
   data <- data %>%
+    #AS: It looks like you've already done this recoding on data in line 18
     mutate_at(vars(ends_with("_quality")),
               function(x) recode(x, `1` = "Strong", `2` = "Marginal", `3` = "Weak")) %>% 
     # multiple affordable housing variables by 100
