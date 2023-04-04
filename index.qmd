@@ -521,7 +521,8 @@ title <- paste0("Mobility Metrics for ", upward_county)
 
 ```{r affordable-housing}
 #AS: it looks like the data in the summary table is the 2018 data, but the source description 
-# corresponds to the 2021 data
+# corresponds to the 2021 data. I think that has to do with how data_recent is being constructed
+# but wanted to flag to confirm OK
 
 af_m_info_lst <- get_vars_info("Housing affordability", data_summary_file = m_info)$info_lst
 
@@ -536,6 +537,10 @@ create_tb(data = data_recent,
 ##### Detail
 
 ```{r affordable-housing-table2}
+#AS: it looks like the data in the detail table is the 2018 data, but the source description 
+# corresponds to the 2021 data. I think that has to do with how data_recent is being constructed
+# but wanted to flag to confirm OK
+
 create_tb_detail(data = data_recent, 
                  metrics_info = af_m_info_lst, 
                  varname_maps = housing_varlist) 
@@ -898,6 +903,8 @@ data_race_share %>%
   create_tb_more_data(metrics_info = tr_cost_m_info_lst, 
                       varname_maps = trans_cost_varlist)
 
+
+#AS: in the section of the details page on this metric, there seems to be an errant {#sec-transportation-cost} in the write-up. Perhaps consider making a separate section?
 ```
 
 :::
@@ -1100,6 +1107,9 @@ create_tb_more_data(data = data_race_ethnicity,
 ```{r}
 #| label: digital-access-summary
 
+# AS: this is very nitpicky, but in the other sections so far you defined the metrics info as 
+# a separate argument rather than running get_vars_info() for each table
+
 create_tb(
   data = data_recent, 
   metrics_info = get_vars_info("Digital access", data_summary_file = m_info)$info_lst, 
@@ -1121,6 +1131,7 @@ create_tb_detail(
   varname_maps = digital_access_varlist
 ) 
 
+#AS: the link below seems incorrect, though I don't see a digital access section in the description
 ```
 
 :::
@@ -1269,6 +1280,7 @@ create_tb_more_data(data = data_race_ethnicity,
 
 ```{r financial-security}
 m_info_lst <- get_vars_info("Financial security", data_summary_file = m_info)$info_lst
+#AS: it doesn't seem like this gets used anywhere
 mb_vars <- get_vars_info("Financial security", data_summary_file = m_info)$mb_vars
 
 create_tb(data = data_recent, 
@@ -1296,6 +1308,9 @@ create_tb_detail(data = data_recent,
 data_race_share %>%
   filter(subgroup != "Mixed Race and Ethnicity") %>%
   mutate(
+    # AS: the other sub-area recode also included 
+    # `Mixed Race and Ethnicity` = "No Majority Race/Ethnicity Tracts"
+    # confirm if that shouldn't be included here
     subgroup = recode(
       subgroup,
       `Majority Non-White` = "Majority Non-White ZIPs",
@@ -1350,6 +1365,7 @@ create_tb_detail(
   varname_maps = wealth_building_varlist
 ) 
 
+#AS: flagging that there's no "more data" or "subgroup" table and need to add link below
 ```
 
 :::
@@ -1385,6 +1401,7 @@ create_tb_detail(data = data_recent,
                  metrics_info = m_info_lst, 
                  varname_maps = accuils_varlist) 
 
+#AS: flagging that there's no "more data" or "subgroup" table
 ```
 
 :::
@@ -1527,6 +1544,7 @@ create_tb_detail(
   varname_maps = trauma_varlist
 ) 
 
+#AS: flagging that there's no "more data" or "subgroup" table and need to add link below
 ```
 
 :::
@@ -1601,6 +1619,8 @@ create_tb_detail(
   metrics_info = get_vars_info("Descriptive representation among local officials", data_summary_file = m_info)$info_lst, 
   varname_maps = descriptive_representation_varlist
 ) 
+
+#AS: flagging that there's no "summary" or "more data"/"subgroup" table and need to add link below
 
 ```
 
@@ -1682,6 +1702,7 @@ create_tb_detail(data = data_recent,
                  metrics_info = jp_m_info_lst, 
                  varname_maps = just_policing_varlist)
 
+#AS: flagging that there's no "more data" or "subgroup" table
 ```
 
 :::
