@@ -228,7 +228,7 @@ shell <- data_years %>%
     share_affordable_30_ami = 0.1234,
     housing_quality = 3,
     
-    honeless_share = 0.1234,
+    homeless_share = 0.1234,
     homeless_count = 1234,
     homeless_count_lb = 123,
     homeless_count_ub = 12345,
