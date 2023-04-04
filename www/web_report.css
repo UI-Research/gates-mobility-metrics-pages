@@ -77,7 +77,6 @@ img {
 .nav-tabs a {
   color: #1696d2;
   font-weight: 700;
-  bottom-border: 
 }
 
 /* list styles */
@@ -91,7 +90,7 @@ a:link {
   outline: none;
   text-decoration: none;
   padding: 2px 1px 0;
-
+  color: #1696d2;
 }
 
 a:visited {
