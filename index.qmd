@@ -13,7 +13,7 @@ format:
 editor_options:
   chunk_output_type: console
 params:
-  state_county: !expr c("42095", "42017", "48453", "09003", "15005")
+  state_county: !expr c("42095", "42017", "48453", "09003")
   fake_labels: FALSE
   state_title: FALSE
 execute:
@@ -1280,6 +1280,23 @@ create_tb_detail(
   )$info_lst, 
   varname_maps = wealth_building_varlist
 ) 
+
+```
+<br>
+
+##### More Data
+
+```{r}
+#| label: wealth-building-more-data
+
+create_tb_more_data(
+  data = data_years,
+  metrics_info = get_vars_info(
+    "Wealth-building opportunities", 
+    data_summary_file = m_info
+  )$info_lst, 
+  varname_maps = wealth_building_varlist
+)
 
 ```
 
