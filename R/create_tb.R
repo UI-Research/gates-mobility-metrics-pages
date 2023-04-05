@@ -34,7 +34,7 @@ create_tb <- function(data,
   temp <- data %>% 
     select(
       matches(metrics_info$metric_vars_prefix),
-      matches(metrics_info$quality_variable),
+      any_of(metrics_info$quality_variable),
       matches("state_county")
     ) %>% 
     select(-matches("_lb|_ub")) %>% 
@@ -54,7 +54,7 @@ create_tb <- function(data,
     mutate(across(everything(), as.character)) %>%
     pivot_longer(!state_county, names_to="metrics", values_to="value") %>%   
     pivot_wider(names_from = "state_county", values_from = "value") %>% 
-    arrange(match(metrics, names(varname_maps$summary_vars))) %>% 
+    arrange(match(metrics, names(varname_maps$detail_vars))) %>% 
     mutate(metrics = gsub(".*_quality", "Quality", metrics)) %>% 
     select(metrics, everything()) %>% 
     gt(

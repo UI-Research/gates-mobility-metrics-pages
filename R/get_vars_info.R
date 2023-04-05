@@ -23,6 +23,8 @@ get_vars_info <- function(varname, data_summary_file = m_info){
   
   info_lst$metric_vars_prefix <- str_split(info_lst$metric_vars_prefix, ", ")[[1]]
   
+  info_lst$quality_variable <- str_split(info_lst$quality_variable, ", ")[[1]]
+  
   info_lst$years <- as.numeric(str_split(info_lst$years, ",")[[1]])
   
   mb_vars <- info_lst[4][[1]]

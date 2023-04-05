@@ -61,23 +61,6 @@ source(here("R", "varlist.R"))
 
 ```{r}
 #| label: set-vars
-
-tb_title_size <- 18
-tb_title_font <- "bold"
-
-tb_subtitle_size <- 16
-tb_title_font <- "normal"
-tb_font_size <- 14 
-
-source_note_size <- 11
-source_note_font <- "normal"
-
-tb_width_perc <- 80
-tb_align <- "left"
-
-decimal_points <- 2
-income_decimal <- 0
-
 # Get a list of all variables that should be presented as percentage 
 perc_vars <- c(
   "share_debt_coll", # % with debt
@@ -97,8 +80,8 @@ perc_vars <- c(
   "frpl40_black",
   "frpl40_hispanic", 
   "share_in_preschool", # % in pre k 
-  "share_hs_degree", 
-  "share_employed" # % with HS degree
+  "share_hs_degree", # % with HS degree
+  "share_employed" 
 )
 
 ```
@@ -107,9 +90,7 @@ perc_vars <- c(
 ```{r read-in-data}
 my_col_type <- cols(
   state = col_character(), 
-  county = col_character(),
-  hpsa_yn = col_double(),
-  hpsa_yn_quality = col_double()
+  county = col_character()
 )
 
 identifying_vars <- c("subgroup_id", "state", "county", "state_name", 
@@ -118,13 +99,7 @@ identifying_vars <- c("subgroup_id", "state", "county", "state_name",
 data_recent <- read_csv(
   here("mobility-metrics", "01_mobility-metrics.csv"), 
   col_type = my_col_type
-) %>%
-  prep_data() %>%
-  mutate(
-    learning_rate = sprintf("%.2f", round(as.numeric(learning_rate) , 2)),
-    learning_rate_lb = sprintf("%.2f", round(as.numeric(learning_rate_lb) , 2)),
-    learning_rate_ub = sprintf("%.2f", round(as.numeric(learning_rate_ub) , 2))
-  )
+) 
 
 data_years <- read_csv(
   here("mobility-metrics", "00_mobility-metrics_longitudinal.csv"),
@@ -192,17 +167,68 @@ data_race_poverty <- read_csv(
 ```
 
 ```{r}
+#| label: fake-data-recent
+
+data_recent <- data_recent %>%
+  mutate(
+    asian_other_pop = 0.1234,
+    asian_other_pop_quality = 3,
+    black_nonhispanic_pop = 0.1234,
+    black_nonhispanic_pop_quality = 3,
+    hispanic_pop = 0.1234,
+    hispanic_pop_quality = 3,     
+    white_nonhispanic_pop = 0.1234,
+    white_nonhispanic_pop_quality = 3,
+    
+    trauma = 0.1234,
+    trauma_lb = 0,
+    trauma_ub = 1,
+    trauma_quality = 3,
+    
+    r_black_nh_hv_hh = "12.3%:12.3%",
+    black_nh_wealth_quality = 3,
+    r_hispanic_hv_hh = "12.3%:12.3%",
+    hispanic_wealth_quality = 3,
+    r_other_nh_hv_hh = "12.3%:12.3%",
+    other_nh_wealth_quality = 3,
+    r_white_nh_hv_hh = "12.3%:12.3%",
+    white_nh_wealth_quality = 3,
+    
+    digital_access = 0.1234,
+    digital_access_quality = 3,
+    
+    ec_zip = 0.1234,
+    ec_zip_quality = 3,
+    socassn = 0.1234,
+    socassn_quality = 3,
+    
+    pc_phys_ratio = 0.1234,
+    pc_phys_ratio_quality = 3
+  ) %>%
+  prep_data() %>%
+  mutate(
+    learning_rate = sprintf("%.2f", round(as.numeric(learning_rate) , 2)),
+    learning_rate_lb = sprintf("%.2f", round(as.numeric(learning_rate_lb) , 2)),
+    learning_rate_ub = sprintf("%.2f", round(as.numeric(learning_rate_ub) , 2))
+  )
+
+
+```
+
+
+```{r}
 #| label: fake-data-years
 
 shell <- data_years %>%
   distinct(state, county, state_name, county_name) %>%
-  expand_grid(year = c(2019, 2020, 2021)) %>%
+  expand_grid(year = c(2019, 2020, 2021, 2022)) %>%
   mutate(
     share_affordable_80_ami = 0.1234, 
     share_affordable_50_ami = 0.1234,
     share_affordable_30_ami = 0.1234,
     housing_quality = 3,
     
+    homeless_share = 0.1234,
     homeless_count = 1234,
     homeless_count_lb = 123,
     homeless_count_ub = 12345,
@@ -239,7 +265,45 @@ shell <- data_years %>%
     frpl40_hispanic_quality = 3,
     
     election_turnout = 0.1234,
-    election_turnout_quality = 3
+    election_turnout_quality = 3,
+    
+    asian_other_pop = 0.1234,
+    asian_other_pop_quality = 3,
+    black_nonhispanic_pop = 0.1234,
+    black_nonhispanic_pop_quality = 3,
+    hispanic_pop = 0.1234,
+    hispanic_pop_quality = 3,     
+    white_nonhispanic_pop = 0.1234,
+    white_nonhispanic_pop_quality = 3,
+    
+    juvenile_arrest_rate = 1234,
+    juvenile_arrest_rate_quality = 3,
+    
+    trauma = 0.1234,
+    trauma_lb = 0,
+    trauma_ub = 1,
+    trauma_quality = 3,
+    
+    r_black_nh_hv_hh = "12.3%:12.3%",
+    black_nh_wealth_quality = 3,
+    r_hispanic_hv_hh = "12.3%:12.3%",
+    hispanic_wealth_quality = 3,
+    r_other_nh_hv_hh = "12.3%:12.3%",
+    other_nh_wealth_quality = 3,
+    r_white_nh_hv_hh = "12.3%:12.3%",
+    white_nh_wealth_quality = 3,
+    
+    digital_access = 0.1234,
+    digital_access_quality = 3,
+    
+    ec_zip = 0.1234,
+    ec_zip_quality = 3,
+    socassn = 0.1234,
+    socassn_quality = 3,
+    
+    pc_phys_ratio = 0.1234,
+    pc_phys_ratio_quality = 3
+    
   )
 
 data_years <- data_years %>%
@@ -355,8 +419,8 @@ m_info <- m_info %>%
 ```
 
 ```{r}
-if (!is.logical(params$state_title)){ #Check if logical
-  if(params$state_title == "no"){ #if not logical, convert "no" to FALSE
+if (!is.logical(params$state_title)) { #Check if logical
+  if(params$state_title == "no") { #if not logical, convert "no" to FALSE
     st = FALSE
   } else{
     st = TRUE
@@ -365,9 +429,9 @@ if (!is.logical(params$state_title)){ #Check if logical
   st = params$state_title
 }
 
-
+# choose which title to use at the top of the pages
 if (!st) {
-#if(!state_title)
+
   #get the upward county - the first element in the parameter 
   upward_county <- data_recent %>% 
     filter(fips == params$state_county[1]) %>% 
@@ -376,6 +440,7 @@ if (!st) {
     first()
 
 } else {
+  
   #get the upward county - the first element in the parameter 
   upward_county <- data_recent %>% 
     filter(fips == params$state_county[1]) %>% 
@@ -423,7 +488,7 @@ title <- paste0("Mobility Metrics for ", upward_county)
 ##### Summary
 
 ```{r affordable-housing}
-af_m_info_lst <- get_vars_info("Affordable housing", data_summary_file = m_info)$info_lst
+af_m_info_lst <- get_vars_info("Housing affordability", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = af_m_info_lst, 
@@ -470,7 +535,7 @@ create_tb_more_data(
 ##### Summary
 
 ```{r housing-instability}
-m_info_lst <- get_vars_info("Housing instability and homelessness", data_summary_file = m_info)$info_lst
+m_info_lst <- get_vars_info("Housing instability", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent,
           metrics_info = m_info_lst, 
@@ -602,12 +667,101 @@ create_tb_more_data(
 
 #### Predictor: Social Capital {.tabset .avoidpagebreak}
 
-<!-- TO BE FILLED IN LATER -->
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r}
+#| label: social-capital1-summary
+
+sc1_m_info_lst <- get_vars_info("Social capital1", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = sc1_m_info_lst, 
+          varname_maps = social_capital1_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: social-capital1-detail
+
+create_tb_detail(data = data_recent,
+                 metrics_info = sc1_m_info_lst, 
+                 varname_maps = social_capital1_varlist)
+
+```
+
+<br>
+
+##### More Data
+
+```{r}
+#| label: social-capital1-more-data
+
+create_tb_more_data(data = data_years,
+                    metrics_info = sc1_m_info_lst, 
+                    varname_maps = social_capital1_varlist) 
+
+```
+
+:::
 
 <div class="exclude">*Visit [here](description.html#sec-social-capital) for more details about this predictor.*</div>
 
 <br>
 
+#### Predictor: Social Capital {.tabset .avoidpagebreak}
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r}
+#| label: social-capital2-summary
+
+sc2_m_info_lst <- get_vars_info("Social capital2", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = sc2_m_info_lst, 
+          varname_maps = social_capital2_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: social-capital2-detail
+
+create_tb_detail(data = data_recent,
+                 metrics_info = sc2_m_info_lst, 
+                 varname_maps = social_capital2_varlist)
+
+```
+
+<br>
+
+##### More Data
+
+```{r}
+#| label: social-capital2-more-data
+
+create_tb_more_data(data = data_years,
+                    metrics_info = sc2_m_info_lst, 
+                    varname_maps = social_capital2_varlist) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-social-capital) for more details about this predictor.*</div>
+
+<br>
 
 #### Predictor: Transportation access 
 
@@ -673,7 +827,7 @@ data_race_share %>%
 ##### Summary 
 
 ```{r transportation-cost}
-tr_cost_m_info_lst <- get_vars_info("Transportation access-cost", data_summary_file = m_info)$info_lst
+tr_cost_m_info_lst <- get_vars_info("Transportation cost", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = tr_cost_m_info_lst, 
@@ -713,7 +867,7 @@ data_race_share %>%
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#sec-transportation-cost) for more details about this predictor.*</div>
 
 <br>
 
@@ -821,7 +975,7 @@ create_tb_more_data(data = data_education_income,
 ```{r}
 #| label: student-poverty-summary
 
-spoverty_m_info_lst <- get_vars_info("Student poverty concentration", data_summary_file = m_info)$info_lst
+spoverty_m_info_lst <- get_vars_info("School economic diversity", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = spoverty_m_info_lst, 
@@ -866,7 +1020,7 @@ create_tb_more_data(data = data_years,
 ##### Summary
 
 ```{r college-readiness}
-m_info_lst <- get_vars_info("College readiness", data_summary_file = m_info)$info_lst
+m_info_lst <- get_vars_info("Preparation for college", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = m_info_lst, 
@@ -904,10 +1058,40 @@ create_tb_more_data(data = data_race_ethnicity,
 
 #### Predictor: Digital access 
 
-<!-- TO BE FILLED IN LATER -->
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r}
+#| label: digital-access-summary
+
+create_tb(
+  data = data_recent, 
+  metrics_info = get_vars_info("Digital access", data_summary_file = m_info)$info_lst, 
+  varname_maps = digital_access_varlist
+) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: digital-access-detail
+
+create_tb_detail(
+  data = data_recent, 
+  metrics_info = get_vars_info("Digital access", data_summary_file = m_info)$info_lst, 
+  varname_maps = digital_access_varlist
+) 
+
+```
+
+:::
 
 
-<!-- <div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div> -->
+<div class="exclude">*Visit [here](description.html#sec-digital-access) for more details about this predictor.*</div>
 
 <br>
 
@@ -920,7 +1104,7 @@ create_tb_more_data(data = data_race_ethnicity,
 ##### Summary
 
 ```{r employment}
-emp_m_info_lst <- get_vars_info("Employment", data_summary_file = m_info)$info_lst
+emp_m_info_lst <- get_vars_info("Employment opportunities", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = emp_m_info_lst, 
@@ -963,7 +1147,7 @@ create_tb_more_data(data = data_race_ethnicity,
 ##### Summary
 
 ```{r wages}
-m_info_lst <- get_vars_info("Access to jobs paying a living wage", data_summary_file = m_info)$info_lst
+m_info_lst <- get_vars_info("Jobs paying a living wage", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = m_info_lst, 
@@ -1006,7 +1190,7 @@ create_tb_more_data(data = data_years,
 ##### Summary
 
 ```{r income}
-income_m_info_lst <- get_vars_info("Income", data_summary_file = m_info)$info_lst
+income_m_info_lst <- get_vars_info("Opportunities for income", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = income_m_info_lst, 
@@ -1050,7 +1234,6 @@ create_tb_more_data(data = data_race_ethnicity,
 
 ```{r financial-security}
 m_info_lst <- get_vars_info("Financial security", data_summary_file = m_info)$info_lst
-mb_vars <- get_vars_info("Financial security", data_summary_file = m_info)$mb_vars
 
 create_tb(data = data_recent, 
           metrics_info = m_info_lst, 
@@ -1097,9 +1280,45 @@ data_race_share %>%
 
 #### Predictor: Wealth-Building Opportunities 
 
-<!-- TO BE FILLED IN LATER -->
+::: {.panel-tabset .avoidpagebreak}
 
-<!-- <div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div> -->
+##### Summary
+
+```{r}
+#| label: wealth-building-summary
+
+create_tb(
+  data = data_recent, 
+  metrics_info = get_vars_info(
+    "Wealth-building opportunities", 
+    data_summary_file = m_info
+  )$info_lst, 
+  varname_maps = wealth_building_varlist
+) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: wealth-building-detail
+
+create_tb_detail(
+  data = data_recent,
+  metrics_info = get_vars_info(
+    "Wealth-building opportunities", 
+    data_summary_file = m_info
+  )$info_lst, 
+  varname_maps = wealth_building_varlist
+) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here]() for more details about this predictor.*</div>
 
 <br>
 
@@ -1113,7 +1332,7 @@ data_race_share %>%
 ##### Summary
 
 ```{r health-access}
-m_info_lst <- get_vars_info("Access to and utilization of health services", data_summary_file = m_info)$info_lst
+m_info_lst <- get_vars_info("Access to health services", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = m_info_lst, 
@@ -1244,8 +1463,39 @@ create_tb_more_data(data = data_env_quality_poverty,
 
 #### Predictor: Safety from Trauma 
 
-<!-- TO BE FILLED OUT LATER -->
+::: {.panel-tabset .avoidpagebreak}
 
+##### Summary
+
+```{r}
+#| label: safety-from-trauma-summary
+
+create_tb(
+  data = data_recent, 
+  metrics_info = get_vars_info("Safety from trauma", data_summary_file = m_info)$info_lst, 
+  varname_maps = trauma_varlist
+) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: safety-from-trauma-detail
+
+create_tb_detail(
+  data = data_recent,
+  metrics_info = get_vars_info("Safety from trauma", data_summary_file = m_info)$info_lst, 
+  varname_maps = trauma_varlist
+) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here]() for more details about this predictor.*</div>
 
 <br>
 
@@ -1301,12 +1551,26 @@ create_tb_more_data(data = data_years,
 
 <br>
 
-
 #### Predictor: Descriptive Representation {.tabset .avoidpagebreak}
 
-<!-- TO BE FILLED OUT LATER -->
+::: {.panel-tabset .avoidpagebreak}
 
-<!-- <div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div> -->
+##### Detail
+
+```{r}
+#| label: descriptive-representation-detail
+
+create_tb_detail(
+  data = data_recent,
+  metrics_info = get_vars_info("Descriptive representation among local officials", data_summary_file = m_info)$info_lst, 
+  varname_maps = descriptive_representation_varlist
+) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here]() for more details about this predictor.*</div>
 
 <br>
 
@@ -1318,7 +1582,7 @@ create_tb_more_data(data = data_years,
 ##### Summary
 
 ```{r safety}
-ec_m_info_lst <- get_vars_info("Exposure to crime", data_summary_file = m_info)$info_lst
+ec_m_info_lst <- get_vars_info("Safety from crime", data_summary_file = m_info)$info_lst
 
 create_tb(data = data_recent, 
           metrics_info = ec_m_info_lst, 
@@ -1354,46 +1618,62 @@ create_tb_more_data(data = data_years,
 
 <br>
 
-
-
-
-<!-- NEED TO INCLUDE METRIC ON RATE OR REPORTED VIOLENT CRIME PER 100K -->
 #### Predictor: Just policing {.tabset .avoidpagebreak}
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r}
+#| label: just-policing-summary
+
+jp_m_info_lst <- get_vars_info("Just policing", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = jp_m_info_lst, 
+          varname_maps = just_policing_varlist) 
+
+```
 
 <br>
 
+##### Detail
 
+```{r}
+#| label: just-policing-detail
 
-## Notes on Data Quality
-| "Good" indicates that the metric is measured with adequate accuracy and sample size.
-| "Marginal" indicates that there are known shortcomings of the data for this metric for this county, and the metric should be used with caution.
-| "Poor" indicates that although the metric could be computed for this county, we have serious concerns about how accurately it is measured for this county and do not recommend its use.
+create_tb_detail(data = data_recent,
+                 metrics_info = jp_m_info_lst, 
+                 varname_maps = just_policing_varlist)
+
+```
+
+:::
+
+<br>
+
+## Additional Notes on Data {.printbreak}
+
+### Data Quality
+
+| “Strong” indicates that the metric is measured with adequate accuracy and sample size. 
+| “Marginal” indicates that there are known shortcomings of the data for this metric for this community, and the metric should be used with caution. 
+| “Weak” indicates that although the metric could be computed for this community, we have serious concerns about how accurately it is measured for this community and do not recommend its use. Instead, we recommend seeking more local data sources for this metric.
 
 <br><br>
 
-
-## Additional Notes {.printbreak}
-
-<div class="p2">The following metrics require original data collection:</div> 
-
-* **Overall health:** Share of adults who rate their own and their children’s health as good or excellent
-* **Belongingness:** Inclusion of other in the self scale
-* **Social Capital:** Social capital community benchmark scale
-* **Exposure to Trauma:** Adverse childhood experiences scale
-* **Descriptive representation among local officials:** The ratio of the share of the city council or county board from specific racial and ethnic groups and the share of city or county residents from those racial or ethnic groups
-
-<br>
+### Confidence Intervals
 
 | Confidence intervals shown are 95 percent.
 | * This confidence interval is not available at this time.
 | + A confidence interval is not applicable.
-| Lower/Upper bound:  The data used to construct this metric do not lend themselves to conventional confidence intervals. The value of the metric shown represents are best estimate; the lower and upper bounds represent alternative estimates of the metric under different assumptions about missing data.
+| Lower/Upper bound:  The data used to construct this metric do not lend themselves to conventional confidence intervals. The value of the metric shown represents are best estimate; the lower and upper bounds represent alternative estimates of the metric under different assumptions about missing data. 
 
-<br>
+<div class="p2">“NC” in fields for confidence intervals or lower/upper bounds means that we are not able to calculate this because the underlying data lack variation. </div>
 
-<div class="p2">"NA" in fields for metric values and data quality values indicates that the data are suppressed due to sample sizes or because that element is not applicable to that community (e.g. no zip code in the county is majority non-white).</div> 
+### Missing and Suppressed Values
 
-<div class="p2">"NC" in fields for confidence intervals or lower/upper bounds means that we are not able to calculate this because the underlying data lack variation.</div>
+<div class="p2">“NA” in fields for metric values and data quality values indicates that the data are suppressed due to sample sizes or because that element is not applicable to that community (e.g., no zip code in the county is majority non-white). </div> 
 
 <br>
 
