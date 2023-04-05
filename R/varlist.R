@@ -203,11 +203,11 @@ accuils_varlist <- list(
 
 neonatal_varlist <- list(
   summary_vars = c(
-    "% Low-weight birth" = "lbw"
+    "% Low birth weight" = "lbw"
   ),
   detail_vars = c(
-    "% Low-weight birth" = "lbw", 
-    "% Low-weight birth_ci" = "lbw_ci",
+    "% Low birth weight" = "lbw", 
+    "% Low birth weight_ci" = "lbw_ci",
     "lbw_quality" = "lbw_quality"
   )
 )
