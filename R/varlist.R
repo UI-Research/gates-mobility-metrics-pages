@@ -192,11 +192,11 @@ debt_varlist <- list(
 
 accuils_varlist <- list(
   summary_vars = c(
-    "Ratio of physicians to people" = "pc_phys_ratio"
+    "Ratio of people to physicians" = "pc_phys_ratio"
   ), 
   detail_vars = c(
-    "Ratio of physicians to people" = "pc_phys_ratio",
-    "Ratio of physicians to people_ci" = "pc_phys_ratio_ci",
+    "Ratio of people to physicians" = "pc_phys_ratio",
+    "Ratio of people to physicians_ci" = "pc_phys_ratio_ci",
     "pc_phys_ratio_quality" = "pc_phys_ratio_quality"
   )
 )
@@ -313,19 +313,20 @@ trauma_varlist <- list(
   ),
   detail_vars = c(
     "Trauma" = "trauma",
+    "Trauma_ci" = "trauma_ci",
     "trauma_quality" = "trauma_quality"
   )
 )
 
 descriptive_representation_varlist <- list(
   summary_vars = c(
-    "Asian and Other Races/Ethnicities" = "asian_other_pop",
+    "Other Races/Ethnicities" = "asian_other_pop",
     "Black, non-Hispanic" = "black_nonhispanic_pop",
     "Hispanic" = "hispanic_pop",
     "White, non-Hispanic" = "white_nonhispanic_pop"
   ),
   detail_vars = c(
-    "Asian and Other Races/Ethnicities" = "asian_other_pop",
+    "Other Races/Ethnicities" = "asian_other_pop",
     "asian_other_pop_quality" = "asian_other_pop_quality",
     "Black, non-Hispanic" = "black_nonhispanic_pop",
     "black_nonhispanic_pop_quality" = "black_nonhispanic_pop_quality",

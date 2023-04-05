@@ -126,10 +126,10 @@ create_tb_more_data <- function(
     mutate(metrics = factor(metrics, levels = c(names(varname_maps$detail_vars), "Quality"))) #%>%
     #mutate(metrics = gsub(".*_quality", "Quality", metrics))
     
-  arrange_vars <- c("year", names(temp)[names(temp) %in% c("subgroup")], "metrics")
+  arrange_vars <- c(names(temp)[names(temp) %in% c("subgroup")], "metrics")
   
   temp <- temp %>%
-    arrange(across(any_of(arrange_vars))) %>% 
+    arrange(desc(year), across(any_of(arrange_vars))) %>% 
     select(metrics, everything()) 
   
   levels(temp$metrics) <- gsub(".*_quality", "Quality", levels(temp$metrics))
@@ -152,8 +152,8 @@ create_tb_more_data <- function(
       title = "", 
       subtitle = metrics_desp
     ) %>% 
-    tab_source_note(html(str_c("<b>Source:</b>", metrics_info$source_data2, sep=" "))) %>% 
-    tab_source_note(html(str_c("<b>Notes:</b>", notes, sep=" "))) %>% 
+    tab_source_note(md(str_c("<b>Source:</b>", metrics_info$source_data2, sep=" "))) %>% 
+    tab_source_note(md(str_c("<b>Notes:</b>", notes, sep=" "))) %>% 
     cols_align(
       align = "left",
       columns = everything()

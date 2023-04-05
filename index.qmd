@@ -90,7 +90,9 @@ perc_vars <- c(
 ```{r read-in-data}
 my_col_type <- cols(
   state = col_character(), 
-  county = col_character()
+  county = col_character(),
+  hpsa_yn = col_double(),
+  hpsa_yn_quality = col_double()
 )
 
 identifying_vars <- c("subgroup_id", "state", "county", "state_name", 
@@ -115,7 +117,7 @@ data_race_ethnicity <- read_csv(
 data_race <- read_csv(
   here("mobility-metrics", "03_mobility-metrics_race.csv"), 
   col_types = my_col_type
-)
+) 
 
 data_race_share <- read_csv(
   here("mobility-metrics", "04_mobility-metrics_race-share.csv"), 
@@ -202,7 +204,7 @@ data_recent <- data_recent %>%
     socassn = 0.1234,
     socassn_quality = 3,
     
-    pc_phys_ratio = 0.1234,
+    pc_phys_ratio = "1234:1",
     pc_phys_ratio_quality = 3
   ) %>%
   prep_data() %>%
@@ -695,19 +697,6 @@ create_tb_detail(data = data_recent,
 
 ```
 
-<br>
-
-##### More Data
-
-```{r}
-#| label: social-capital1-more-data
-
-create_tb_more_data(data = data_years,
-                    metrics_info = sc1_m_info_lst, 
-                    varname_maps = social_capital1_varlist) 
-
-```
-
 :::
 
 <div class="exclude">*Visit [here](description.html#sec-social-capital) for more details about this predictor.*</div>
@@ -741,19 +730,6 @@ create_tb(data = data_recent,
 create_tb_detail(data = data_recent,
                  metrics_info = sc2_m_info_lst, 
                  varname_maps = social_capital2_varlist)
-
-```
-
-<br>
-
-##### More Data
-
-```{r}
-#| label: social-capital2-more-data
-
-create_tb_more_data(data = data_years,
-                    metrics_info = sc2_m_info_lst, 
-                    varname_maps = social_capital2_varlist) 
 
 ```
 
@@ -792,7 +768,7 @@ create_tb_detail(data = data_recent,
 
 <br>
 
-##### Sub-Area
+##### More Data
 
 ```{r transportation-access-table3}
 data_race_share %>%
@@ -811,18 +787,9 @@ data_race_share %>%
 
 :::
 
-
-<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
-
 <br>
 
-
-####  {.tabset}
-
-#### Predictor: Transportation cost 
-
 ::: {.panel-tabset .avoidpagebreak}
-
 
 ##### Summary 
 
@@ -848,7 +815,7 @@ create_tb_detail(data = data_recent,
 
 <br>
 
-##### Sub-Area
+##### More Data
 
 ```{r transportation-cost-table3}
 data_race_share %>%
@@ -867,7 +834,7 @@ data_race_share %>%
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-transportation-cost) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
 
 <br>
 
@@ -1254,7 +1221,7 @@ create_tb_detail(data = data_recent,
 
 <br>
 
-##### Sub-Area 
+##### More Data
 
 ```{r financial-security-table3}
 data_race_share %>%
@@ -1400,8 +1367,6 @@ create_tb_more_data(data = data_race_ethnicity,
 
 <br>
 
-
-
 #### Predictor: Environmental quality 
 
 ::: {.panel-tabset .avoidpagebreak}
@@ -1431,7 +1396,7 @@ create_tb_detail(data = data_recent,
 
 <br>
 
-##### Sub-Area
+##### More Data
 
 ```{r environmental-quality-table3}
 data_race_share <- data_race_share %>%
@@ -1603,15 +1568,6 @@ create_tb_detail(data = data_recent,
 
 <br>
 
-##### More Data
-
-```{r safety-table3}
-create_tb_more_data(data = data_years,
-                    metrics_info = ec_m_info_lst, 
-                    varname_maps = exp_crime_varlist) 
-
-```
-
 :::
 
 <div class="exclude">*Visit [here](description.html#sec-exposure-to-crime) for more details about this predictor.*</div>
@@ -1645,6 +1601,18 @@ create_tb(data = data_recent,
 create_tb_detail(data = data_recent,
                  metrics_info = jp_m_info_lst, 
                  varname_maps = just_policing_varlist)
+
+```
+
+<br>
+
+##### More Data
+
+```{r}
+#| label: just-policing-more-data
+create_tb_more_data(data = data_race,
+                    metrics_info = jp_m_info_lst, 
+                    varname_maps = just_policing_varlist) 
 
 ```
 
