@@ -1109,42 +1109,7 @@ create_tb_more_data(data = data_race_ethnicity,
 
 #### Predictor: Access to jobs paying a living wage 
 
-::: {.panel-tabset .avoidpagebreak}
-
-##### Summary
-
-```{r wages}
-m_info_lst <- get_vars_info("Jobs paying a living wage", data_summary_file = m_info)$info_lst
-
-create_tb(data = data_recent, 
-          metrics_info = m_info_lst, 
-          varname_maps = job_wage) 
-
-```
-
-<br>
-
-##### Detail
-
-```{r wages-table2}
-create_tb_detail(data = data_recent, 
-                 metrics_info = m_info_lst, 
-                 varname_maps = job_wage) 
-
-```
-
-<br>
-
-##### More Data
-
-```{r wages-table3}
-create_tb_more_data(data = data_years,
-                    metrics_info = m_info_lst, 
-                    varname_maps = job_wage) 
-
-```
-
-:::
+This metric is not available for this city. If you would like to explore this metric further, please refer to its corresponding county.
 
 <div class="exclude">*Visit [here](description.html#sec-job-living-wage) for more details about this predictor.*</div>
 
@@ -1311,31 +1276,7 @@ create_tb_more_data(
 
 #### Predictor: Access to health services 
 
-::: {.panel-tabset .avoidpagebreak}
-
-##### Summary
-
-```{r health-access}
-m_info_lst <- get_vars_info("Access to health services", data_summary_file = m_info)$info_lst
-
-create_tb(data = data_recent, 
-          metrics_info = m_info_lst, 
-          varname_maps = accuils_varlist) 
-
-```
-
-<br>
-
-##### Detail
-
-```{r health-acces-table2}
-create_tb_detail(data = data_recent,
-                 metrics_info = m_info_lst, 
-                 varname_maps = accuils_varlist) 
-
-```
-
-:::
+This metric is not available for this city. If you would like to explore this metric further, please refer to its corresponding county.
 
 <div class="exclude">*Visit [here](description.html#sec-access-to-health) for more details about this predictor.*</div>
 
@@ -1343,42 +1284,7 @@ create_tb_detail(data = data_recent,
 
 #### Predictor: Neonatal health 
 
-::: {.panel-tabset .avoidpagebreak}
-
-##### Summary
-
-```{r neonatal-health}
-nh_m_info_lst <- get_vars_info("Neonatal health", data_summary_file = m_info)$info_lst
-
-create_tb(data = data_recent, 
-          metrics_info = nh_m_info_lst, 
-          varname_maps = neonatal_varlist) 
-
-```
-
-<br>
-
-##### Detail
-
-```{r neonatal-health-table2}
-create_tb_detail(data = data_recent,
-                 metrics_info = nh_m_info_lst, 
-                 varname_maps = neonatal_varlist) 
-
-```
-
-<br>
-
-##### More Data
-
-```{r neonatal-health-table3}
-create_tb_more_data(data = data_race_ethnicity,
-                    metrics_info = nh_m_info_lst, 
-                    varname_maps = neonatal_varlist) 
-
-```
-
-:::
+This metric is not available for this city. If you would like to explore this metric further, please refer to its corresponding county.
 
 <div class="exclude">*Visit [here](description.html#sec-neonatal-health) for more details about this predictor.*</div>
 
@@ -1445,37 +1351,7 @@ create_tb_more_data(data = data_env_quality_poverty,
 
 #### Predictor: Safety from Trauma 
 
-::: {.panel-tabset .avoidpagebreak}
-
-##### Summary
-
-```{r}
-#| label: safety-from-trauma-summary
-
-create_tb(
-  data = data_recent, 
-  metrics_info = get_vars_info("Safety from trauma", data_summary_file = m_info)$info_lst, 
-  varname_maps = trauma_varlist
-) 
-
-```
-
-<br>
-
-##### Detail
-
-```{r}
-#| label: safety-from-trauma-detail
-
-create_tb_detail(
-  data = data_recent,
-  metrics_info = get_vars_info("Safety from trauma", data_summary_file = m_info)$info_lst, 
-  varname_maps = trauma_varlist
-) 
-
-```
-
-:::
+This metric is not available for this city. If you would like to explore this metric further, please refer to its corresponding county.
 
 <div class="exclude">*Visit [here]() for more details about this predictor.*</div>
 
