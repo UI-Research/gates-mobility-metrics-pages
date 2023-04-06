@@ -1,0 +1,187 @@
+/* Global Formats */
+.container-fluid {
+  font-family: Lato, Arial, sans-serif;
+}
+
+.main-container {
+  font-family: Lato, Arial, sans-serif;
+}
+
+/* title styles */
+.h1 {
+  color: #000000;
+  font: 700 36px/1.3em  Lato, Arial, sans-serif;
+  margin: 0 0 .5em;
+}
+
+h2 {
+  color: #353535;
+  font: 700;
+  border-bottom: 1 px;
+  border-bottom-color: #d2d2d2;
+  padding-bottom: 12px;
+
+}
+
+h4 {
+  font: 700 24px/30px  Lato, Arial, sans-serif;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: 700;
+    font-stretch: normal;
+    font-size: 24px;
+    line-height: 30px;
+    font-family:  Lato, Arial, sans-serif;
+  color: #353535;
+}
+
+/* paragraph styles */ 
+p {
+  font-size: 14px;
+  margin: 0 0 8px 0;
+  color: #353535;
+}
+
+/* image styles */
+img {
+  padding: 36px 0 32px 0;
+}
+
+.navbar {
+  background-color: #1696d2;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-brand {
+  color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav>li>a {
+  background-color: #FFFFFF;
+ 
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+  background-color: #FFFFFF;
+}
+
+
+/* Styling for the different tabs for the tables */
+.nav-tabs{
+  background-color:#ffffff;
+}
+.nav-tabs a {
+  color: #1696d2;
+  font-weight: 700;
+  bottom-border: 
+}
+
+/* list styles */
+li {
+  font-size: 16px;
+}
+
+
+/* link styles */
+a:link {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+  color: #1696d2;
+
+}
+
+a:visited {
+  color: #1696d2;
+}
+
+
+/* font size on tables */ 
+.panel-tabset .nav-item {
+  font-size: 16px;
+  color: #1696d2
+}
+
+.tbody.gt_table_body{
+  font-size: 45px;
+}
+
+/* Header image formatting */
+#header {
+  padding-top: 12px;
+}
+
+/* Legend Formatting */
+.list-group-item.active, .list-group-item.active:focus {
+  background-color: #1696d2;
+  border-color: #1696d2;
+}
+
+.list-group-item.active:hover {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.tocify {
+  border-radius: 0;
+}
+
+/* Button Formatting */
+.btn {
+  border-radius: 0;
+}
+
+/* special styles */
+#date {
+  text-align: center;
+    font: italic 14px Georgia,serif;
+    color: #666;
+    margin-bottom: 2em;
+    margin-top: 2em;
+}
+
+@media print{
+    /* remove elements */
+    #TOC, #toc, #header-pinned{
+        display: none;
+    }
+    .nav-tabs{
+        display: none;
+    }
+    .exclude{
+        display: none;
+        font: 18px;
+    }
+    .contentBlock.title{
+        padding-top: 0px;
+    }
+    .expandContainer{
+        height: fit-content !important;
+        height: -moz-fit-content;
+    }
+    .expandFull{
+        display: block !important;
+    }
+  @page {
+    size: 210mm 297mm; /* portrait 
+    /* you can also specify margins here: */
+    margin: 15mm;   
+   /*margin-right: 45mm;  for compatibility with both A4 and Letter */
+  }
+  /* page breaks */
+  .printbreak { 
+    page-break-before: always;
+  }
+  .avoidpagebreak {
+    break-inside: avoid-page;
+  }
+}
+
+.p2 {
+  font-size: 14px;
+  margin: 0 0 8px 0;
+}
