@@ -3,7 +3,7 @@ title: ''
 font: Lato
 format:
   html:
-    embed-resources: true
+    embed-resources: false
     toc: true
     toc-location: left
     toc-depth: 4
@@ -406,7 +406,7 @@ if (params$fake_labels) {
 ```
 
 ```{r}
-m_info <- read_csv("metrics_summary.csv")
+m_info <- read_csv(here::here("metrics_summary.csv"))
 
 m_info <- m_info %>% 
   mutate_at(vars(c("notes", "metrics_description", "source_data")), 
