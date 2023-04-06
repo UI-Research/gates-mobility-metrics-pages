@@ -3,7 +3,7 @@ title: ''
 font: Lato
 format:
   html:
-    self-contained: true
+    embed-resources: true
     toc: true
     toc-location: left
     toc-depth: 4
