@@ -24,5 +24,5 @@ source("R/render_pages.R")
 
 #For actual run:
 tictoc::tic()
-render_pages(prepped_object = prepped_counties)
+render_pages(prepped_object = prepped_counties, workers = 96)
 tictoc::toc()
