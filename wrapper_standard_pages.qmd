@@ -1,0 +1,21 @@
+---
+title: "run_standard_pages_wrapper"
+format: html
+editor: visual
+---
+
+```{r}
+library(tictoc)
+
+tictoc::tic()
+source(
+  "create_standard_pages.R"
+)
+tictoc::toc()
+
+```
+
+```{bash, engine.opts = '-l'}
+bash aws_cp_command.sh
+```
+
