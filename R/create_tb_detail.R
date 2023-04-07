@@ -137,8 +137,8 @@ create_tb_detail <- function(data,
       title = "",
       subtitle = metrics_desp
     ) %>%
-    tab_source_note(html(str_c("<b>Source:</b>", data_source, sep=" "))) %>%
-    tab_source_note(html(str_c("<b>Notes:</b>", notes, sep=" "))) %>%
+    tab_source_note(md(str_c("<b>Source:</b>", data_source, sep=" "))) %>%
+    tab_source_note(md(str_c("<b>Notes:</b>", notes, sep=" "))) %>%
     cols_align(
       align = "left",
       columns = everything()
