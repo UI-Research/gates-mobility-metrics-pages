@@ -86,8 +86,9 @@ perc_vars <- c(
 
 ```
 
+```{r read-in-data-temporary}
+#Adding this temporary chunk to replace chunk below as we run code with un-updated data which is now in the mobility-metrics/old subdirectory
 
-```{r read-in-data}
 my_col_type <- cols(
   state = col_character(), 
   county = col_character(),
@@ -99,38 +100,38 @@ identifying_vars <- c("subgroup_id", "state", "county", "state_name",
                       "county_name", "population", "subgroup_type", "subgroup")
 
 data_recent <- read_csv(
-  here("mobility-metrics", "01_mobility-metrics.csv"), 
+  here("mobility-metrics", "old", "01_mobility-metrics.csv"), 
   col_type = my_col_type
 ) 
 
 data_years <- read_csv(
-  here("mobility-metrics", "00_mobility-metrics_longitudinal.csv"),
+  here("mobility-metrics", "old", "00_mobility-metrics_longitudinal.csv"),
   col_type = my_col_type,
   guess_max = 20000
 ) 
 
 data_race_ethnicity <- read_csv(
-  here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
+  here("mobility-metrics", "old", "02_mobility-metrics_race-ethnicity.csv"), 
   col_types = my_col_type
 )
 
 data_race <- read_csv(
-  here("mobility-metrics", "03_mobility-metrics_race.csv"), 
+  here("mobility-metrics", "old", "03_mobility-metrics_race.csv"), 
   col_types = my_col_type
 ) 
 
 data_race_share <- read_csv(
-  here("mobility-metrics", "04_mobility-metrics_race-share.csv"), 
+  here("mobility-metrics", "old", "04_mobility-metrics_race-share.csv"), 
   col_types = my_col_type
 )
 
 data_env_quality_poverty <- read_csv(
-  here("mobility-metrics", "environmental-exposure_poverty.csv"), 
+  here("mobility-metrics", "old", "environmental-exposure_poverty.csv"), 
   col_types = my_col_type
 ) %>% 
   left_join(
     read_csv(
-      here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
+      here("mobility-metrics", "old", "02_mobility-metrics_race-ethnicity.csv"), 
       col_types = my_col_type
     ) %>%
       select(state, county, state_name, county_name) %>%
@@ -139,12 +140,12 @@ data_env_quality_poverty <- read_csv(
   ) 
 
 data_education_income <- read_csv(
-  here("mobility-metrics", "SEDA_income.csv"), 
+  here("mobility-metrics", "old", "SEDA_income.csv"), 
   col_types = my_col_type
 ) %>%  
   left_join(
     read_csv(
-      here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
+      here("mobility-metrics", "old", "02_mobility-metrics_race-ethnicity.csv"), 
       col_types = my_col_type
     ) %>%
       select(state, county, state_name, county_name) %>%
@@ -153,18 +154,102 @@ data_education_income <- read_csv(
   )
 
 data_race_poverty <- read_csv(
-  here("mobility-metrics", "poverty-exposure_race.csv"), 
+  here("mobility-metrics", "old", "poverty-exposure_race.csv"), 
   col_types = my_col_type
 ) %>%
   left_join(
     read_csv(
-      here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
+      here("mobility-metrics", "old", "02_mobility-metrics_race-ethnicity.csv"), 
       col_types = my_col_type
     ) %>%
       select(state, county, state_name, county_name) %>%
       distinct(),
     by = c("state", "county")
   )
+
+```
+
+```
+
+
+```{r read-in-data}
+# my_col_type <- cols(
+#   state = col_character(), 
+#   county = col_character(),
+#   hpsa_yn = col_double(),
+#   hpsa_yn_quality = col_double()
+# )
+# 
+# identifying_vars <- c("subgroup_id", "state", "county", "state_name", 
+#                       "county_name", "population", "subgroup_type", "subgroup")
+# 
+# data_recent <- read_csv(
+#   here("mobility-metrics", "01_mobility-metrics.csv"), 
+#   col_type = my_col_type
+# ) 
+# 
+# data_years <- read_csv(
+#   here("mobility-metrics", "00_mobility-metrics_longitudinal.csv"),
+#   col_type = my_col_type,
+#   guess_max = 20000
+# ) 
+# 
+# data_race_ethnicity <- read_csv(
+#   here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
+#   col_types = my_col_type
+# )
+# 
+# data_race <- read_csv(
+#   here("mobility-metrics", "03_mobility-metrics_race.csv"), 
+#   col_types = my_col_type
+# ) 
+# 
+# data_race_share <- read_csv(
+#   here("mobility-metrics", "04_mobility-metrics_race-share.csv"), 
+#   col_types = my_col_type
+# )
+# 
+# data_env_quality_poverty <- read_csv(
+#   here("mobility-metrics", "environmental-exposure_poverty.csv"), 
+#   col_types = my_col_type
+# ) %>% 
+#   left_join(
+#     read_csv(
+#       here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
+#       col_types = my_col_type
+#     ) %>%
+#       select(state, county, state_name, county_name) %>%
+#       distinct(),
+#     by = c("state", "county")
+#   ) 
+# 
+# data_education_income <- read_csv(
+#   here("mobility-metrics", "SEDA_income.csv"), 
+#   col_types = my_col_type
+# ) %>%  
+#   left_join(
+#     read_csv(
+#       here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
+#       col_types = my_col_type
+#     ) %>%
+#       select(state, county, state_name, county_name) %>%
+#       distinct(),
+#     by = c("state", "county")
+#   )
+# 
+# data_race_poverty <- read_csv(
+#   here("mobility-metrics", "poverty-exposure_race.csv"), 
+#   col_types = my_col_type
+# ) %>%
+#   left_join(
+#     read_csv(
+#       here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
+#       col_types = my_col_type
+#     ) %>%
+#       select(state, county, state_name, county_name) %>%
+#       distinct(),
+#     by = c("state", "county")
+#   )
 
 ```
 
