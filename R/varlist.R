@@ -78,11 +78,11 @@ trans_access <- list(
 
 trans_cost_varlist <- list(
   summary_vars = c(
-    "Transit cost" = "transit_cost"
+    "Transportation cost" = "transit_cost"
   ),
   detail_vars = c(
-    "Transit cost" = "transit_cost", 
-    "Transit cost_ci" = "transit_cost_ci",
+    "Transportation cost" = "transit_cost", 
+    "Transportation cost_ci" = "transit_cost_ci",
     "transit_cost_quality" = "transit_cost_quality"
   )
 )
@@ -192,22 +192,22 @@ debt_varlist <- list(
 
 accuils_varlist <- list(
   summary_vars = c(
-    "Ratio of physicians to people" = "pc_phys_ratio"
+    "Ratio of people to physicians" = "pc_phys_ratio"
   ), 
   detail_vars = c(
-    "Ratio of physicians to people" = "pc_phys_ratio",
-    "Ratio of physicians to people_ci" = "pc_phys_ratio_ci",
+    "Ratio of people to physicians" = "pc_phys_ratio",
+    "Ratio of people to physicians_ci" = "pc_phys_ratio_ci",
     "pc_phys_ratio_quality" = "pc_phys_ratio_quality"
   )
 )
 
 neonatal_varlist <- list(
   summary_vars = c(
-    "% Low-weight birth" = "lbw"
+    "% Low birth weight" = "lbw"
   ),
   detail_vars = c(
-    "% Low-weight birth" = "lbw", 
-    "% Low-weight birth_ci" = "lbw_ci",
+    "% Low birth weight" = "lbw", 
+    "% Low birth weight_ci" = "lbw_ci",
     "lbw_quality" = "lbw_quality"
   )
 )
@@ -292,7 +292,7 @@ wealth_building_varlist <- list(
   summary_vars = c(
     "Black, non-Hispanic Opportunity" = "r_black_nh_hv_hh",
     "Hispanic Opportunity" = "r_hispanic_hv_hh",
-    "Other Opportunity" = "r_other_nh_hv_hh",
+    "Other Races and Ethnicities Opportunity" = "r_other_nh_hv_hh",
     "White, non-Hispanic Opportunity" = "r_white_nh_hv_hh"
   ),
   detail_vars = c(
@@ -300,7 +300,7 @@ wealth_building_varlist <- list(
     "black_nh_wealth_quality" = "black_nh_wealth_quality",
     "Hispanic Opportunity" = "r_hispanic_hv_hh",
     "hispanic_wealth_quality" = "hispanic_wealth_quality",
-    "Other Opportunity" = "r_other_nh_hv_hh",
+    "Other Races and Ethnicities Opportunity" = "r_other_nh_hv_hh",
     "other_nh_wealth_quality" = "other_nh_wealth_quality",
     "White, non-Hispanic Opportunity" = "r_white_nh_hv_hh",
     "white_nh_wealth_quality" = "white_nh_wealth_quality"
@@ -313,19 +313,20 @@ trauma_varlist <- list(
   ),
   detail_vars = c(
     "Trauma" = "trauma",
+    "Trauma_ci" = "trauma_ci",
     "trauma_quality" = "trauma_quality"
   )
 )
 
 descriptive_representation_varlist <- list(
   summary_vars = c(
-    "Asian and Other Races/Ethnicities" = "asian_other_pop",
+    "Other Races/Ethnicities" = "asian_other_pop",
     "Black, non-Hispanic" = "black_nonhispanic_pop",
     "Hispanic" = "hispanic_pop",
     "White, non-Hispanic" = "white_nonhispanic_pop"
   ),
   detail_vars = c(
-    "Asian and Other Races/Ethnicities" = "asian_other_pop",
+    "Other Races/Ethnicities" = "asian_other_pop",
     "asian_other_pop_quality" = "asian_other_pop_quality",
     "Black, non-Hispanic" = "black_nonhispanic_pop",
     "black_nonhispanic_pop_quality" = "black_nonhispanic_pop_quality",
