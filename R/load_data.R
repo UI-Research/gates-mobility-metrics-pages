@@ -11,7 +11,17 @@ load_data <- function() {
   
   data_recent <- read_csv(
     here("mobility-metrics", "00_mobility-metrics_recent.csv"), 
-    col_type = my_col_type
+    col_type = 
+      cols(
+        state = col_character(),
+        county = col_character(),
+        ratio_black_nh_house_value_households = col_character(),
+        ratio_hispanic_house_value_households = col_character(),
+        ratio_other_nh_house_value_households = col_character(),
+        ratio_white_nh_house_value_households = col_character(),
+        ratio_population_pc_physician = col_character(),
+        .default = col_double()
+      )
   ) %>%
     left_join(county_names, by = c("state", "county")) %>%
     mutate( 
