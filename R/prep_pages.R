@@ -32,7 +32,7 @@ prep_pages <- function(url, output_directory, state_title = FALSE, bespoke = TRU
   app_list <- read_csv(url)
   
   # format app list 
-  app_list <- app_list %>% 
+  app_list <- app_list  %>%
     mutate(fips = stringr::str_pad(fips, width = 5, side = 'left', pad = '0')) %>% 
     mutate(full_list = case_when(!is.na(comparisons) ~ stringr::str_c(fips, comparisons, sep = ';'),
                                  TRUE ~ str_c(fips, sep = ';'))) %>% 
