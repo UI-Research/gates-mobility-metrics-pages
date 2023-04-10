@@ -23,7 +23,15 @@ execute:
 number-sections: false
 ---
 
-### Pillar: Opportunity-Rich and Inclusive Neighborhoods {#pillar-opportunity-rich-and-inclusive-neighborhoods} 
+<br>
+
+![](www/images/mobility-icons/mobility-infographic-icons-panel-text.png){width=8in fig-align="center"}
+
+<br>
+
+## <span style="color:#62A1C0">Pillar: Opportunity-Rich & Inclusive Neighborhoods</span>{#pillar-opportunity-rich-and-inclusive-neighborhoods} 
+
+![](www/images/mobility-icons/mobility-infographic-house-icon.png){width=2in fig-align="center"}
 
 ##### [PREDICTOR: HOUSING AFFORDABILITY](https://upward-mobility.urban.org/housing-affordability)
 
@@ -208,7 +216,9 @@ This index reflects local transportation costs as a share of renters’ incomes.
 
 <br>
 
-### Pillar: High-Quality Education {#pillar-high-quality-education} 
+## <span style="color:#F584BE">Pillar: High-Quality Education</span>{#pillar-high-quality-education} 
+
+![](www/images/mobility-icons/mobility-infographic-book-icon.png){width=2in fig-align="center"}
 
 ##### [PREDICTOR: ACCESS TO PRESCHOOL](https://upward-mobility.urban.org/access-preschool) 
 
@@ -324,7 +334,9 @@ This is a measure of the share of households in a population that have a broadba
 
 <br> 
 
-### Pillar: Rewarding Work {#pillar-rewarding-work} 
+## <span style="color:#8ECF86">Pillar: Rewarding Work</span>{#pillar-rewarding-work} 
+
+![](www/images/mobility-icons/mobility-infographic-money-icon.png){width=2in fig-align="center"}
 
 ##### [PREDICTOR: EMPLOYMENT OPPORTUNITIES](https://upward-mobility.urban.org/employment-opportunities) 
 
@@ -440,7 +452,9 @@ This metric highlights racial and ethnic disparities in an important source of w
 
 <br> 
 
-### Pillar: Healthy Environment and Access to Good Health Care {#pillar-healthy-environment-and-access-to-good-health-care} 
+## <span style="color:#8A9191">Pillar: Healthy Environment and Good Access to Healthcare</span>{#pillar-healthy-environment-and-access-to-good-health-care} 
+
+![](www/images/mobility-icons/mobility-infographic-health-icon.png){width=2in fig-align="center"}
 
 ##### [PREDICTOR: ACCESS TO HEALTH SERVICES](https://upward-mobility.urban.org/access-health-services) 
 
@@ -538,7 +552,9 @@ This metric represents the number of deaths of community residents, both from in
 
 <br> 
 
-### Pillar: Responsive and Just Governance {#pillar-responsive-and-just-governance} 
+## <span style="color:#FFD175">Pillar: Responsible and Just Governance</span>{#pillar-responsive-and-just-governance}
+
+![](www/images/mobility-icons/mobility-infographic-govt-icon.png){width=2in fig-align="center"}
 
 ##### [PREDICTOR: POLITICAL PARTICIPATION](https://upward-mobility.urban.org/political-participation) 
 
