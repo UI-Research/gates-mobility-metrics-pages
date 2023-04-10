@@ -1,4 +1,4 @@
-prep_data <- function(data) {
+prep_data <- function(data, geography = "county") {
   
   # Get a list of all variables that should be presented as percentage 
   perc_vars <- c(
@@ -20,23 +20,46 @@ prep_data <- function(data) {
     "share_employed"
   )
   
-  
-  data <- data %>% 
-    mutate(
-      state = str_pad(state, width = 2, side ="left", pad = "0"), 
-      county = str_pad(county, width = 3, side ="left", pad = "0"),
-      fips = paste0(state, county)
-    )
-  
-  data <- data %>% 
-    filter(fips %in% params$state_county) %>% 
-    arrange(factor(fips, levels = params$state_county)) %>% 
-    unite("state_county", county_name, state_name, sep = ", ", remove = FALSE) %>% 
-    mutate(state_county = gsub("County", "", state_county)) %>% 
-    mutate(state_county = qdapRegex::rm_white_comma(state_county))
-  
-  data <- data %>%
-    mutate(state_county = str_to_title(state_county))
+  if (geography == "county") {
+    
+    data <- data %>% 
+      mutate(
+        state = str_pad(state, width = 2, side ="left", pad = "0"), 
+        county = str_pad(county, width = 3, side ="left", pad = "0"),
+        fips = paste0(state, county)
+      )
+    
+    data <- data %>% 
+      filter(fips %in% params$state_county) %>% 
+      arrange(factor(fips, levels = params$state_county)) %>% 
+      unite("state_county", county_name, state_name, sep = ", ", remove = FALSE) %>% 
+      mutate(state_county = gsub("County", "", state_county)) %>% 
+      mutate(state_county = qdapRegex::rm_white_comma(state_county))
+    
+    data <- data %>%
+      mutate(state_county = str_to_title(state_county))
+    
+  } else if (geography == "place") {
+    
+    data <- data %>% 
+      mutate(
+        state = str_pad(state, width = 2, side = "left", pad = "0"), 
+        place = str_pad(place, width = 5, side = "left", pad = "0"),
+        fips = paste0(state, place)
+      )
+    
+    data <- data %>% 
+      filter(fips %in% params$state_place) %>% 
+      arrange(factor(fips, levels = params$state_place)) %>% 
+      # keeping as state_county to simplify downstream code
+      unite("state_county", place_name, state_name, sep = ", ", remove = FALSE) %>% 
+      mutate(state_county = gsub("City", "", state_county)) %>% 
+      mutate(state_county = qdapRegex::rm_white_comma(state_county))
+    
+    data <- data %>%
+      mutate(state_county = str_to_title(state_county))
+    
+  }
   
   # get a full list of variables that are percentage 
   perc_vars_lb <- purrr::map_chr(perc_vars, ~ paste0(., "_lb"))

@@ -80,20 +80,13 @@ if (is.null(params$data)) {
   
 }
 
-data_recent <- data_list$recent %>%
-  rename(place = county)
+data_recent <- data_list$recent
   
-data_years <- data_list$years %>%
-  rename(place = county)
+data_years <- data_list$years
 
-data_race_ethnicity <- data_list$race_ethnicity %>%
-  rename(place = county)
+data_race_ethnicity <- data_list$race_ethnicity
 
-data_race <- data_list$race %>%
-  rename(place = county)
-
-data_race_share <- data_list$race_share %>%
-  rename(place = county)
+data_race_share <- data_list$race_share
 
 # data_education_income <- read_csv(
 #   here("mobility-metrics", "SEDA_income.csv"), 
@@ -157,8 +150,9 @@ if (!st) {
 
   #get the upward place - the first element in the parameter 
   upward_place <- data_recent %>% 
-    filter(fips == params$state_place[1]) %>% 
-    select(state_place) %>% 
+    filter(fips == params$state_place[1]) %>%
+    # keep as state_county to simplify downstream code
+    select(state_county) %>% 
     pull() %>% 
     first()
 
