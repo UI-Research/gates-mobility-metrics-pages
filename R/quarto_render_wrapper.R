@@ -14,7 +14,7 @@
 #' The function is not intended to return anything, but it writes htmls to the
 #'  output_file path 
 
-quarto_render_wrapper <- function(input, output_file, execute_params, dir_name){
+quarto_render_wrapper <- function(input, output_file, execute_params, dir_name) {
   
   # create directory
   if(!dir.exists(dir_name)){
