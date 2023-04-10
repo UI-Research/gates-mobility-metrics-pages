@@ -16,15 +16,67 @@
 
 quarto_render_wrapper <- function(input, output_file, execute_params, dir_name){
   
-  quarto_render(input = input,
-                output_file = output_file, 
-                execute_params = execute_params)
-  if(!(dir.exists(dir_name))){
-    dir.create(paste0(dir_name, "/"))
+  # create directory
+  if(!dir.exists(dir_name)){
+    
+    dir.create(dir_name)
+    
+  }
+
+  # copy index.qmd
+  template_name <- paste0(dir_name, "index.qmd")
+  if (!file.exists(template_name)) {
+    
+    file.copy(
+      from = "index.qmd", 
+      to = template_name
+    )
+    
   }
   
-  file.copy("index.html", to = paste0(dir_name, "/"), overwrite = TRUE)
+  # copy index.qmd
+  yaml_name <- paste0(dir_name, "_quarto.yml")
+  if (!file.exists(yaml_name)) {
+    
+    file.copy(
+      from = "_quarto.yml", 
+      to = yaml_name
+    )
+    
+  }
+  
+  # copy description qmd
+  description_qmd_name <- paste0(dir_name, "description.qmd")
+  if (!file.exists(description_qmd_name)) {
+    
+    file.copy(
+      from = "description.qmd", 
+      to = description_qmd_name
+    )
+    
+  }
+  
+  # copy description html
+  description_html_name <- paste0(dir_name, "description.html")
+  if (!file.exists(description_html_name)) {
+    
+    file.copy(
+      from = "description.html", 
+      to = description_html_name
+    )
+    
+  }
+  
+  quarto_render(
+    input = template_name,
+    output_file = output_file, 
+    execute_params = execute_params
+  )
 
+  file.remove(template_name)
+  file.remove(description_qmd_name)
+  file.remove(yaml_name)
+  
 }
 
 
