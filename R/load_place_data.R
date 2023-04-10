@@ -1,4 +1,4 @@
-load_data <- function() {
+load_place_data <- function() {
   
   my_col_type <- cols(
     state = col_character(), 

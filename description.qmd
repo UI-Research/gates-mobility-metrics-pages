@@ -461,7 +461,7 @@ This metric highlights racial and ethnic disparities in an important source of w
 
 <br> 
 
-## <span style="color:#8A9191">Pillar: Healthy Environment and Good Access to Healthcare</span>{#pillar-healthy-environment-and-access-to-good-health-care} 
+## <span style="color:#8A9191">Pillar: Healthy Environment and Access to Good Healthcare</span>{#pillar-healthy-environment-and-access-to-good-health-care} 
 
 ![](www/images/mobility-icons/mobility-infographic-health-icon.png){width=2in fig-align="center"}
 

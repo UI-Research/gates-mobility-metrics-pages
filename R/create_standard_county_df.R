@@ -22,7 +22,7 @@ if(!file.exists("data/999_all-counties.Rda")) {
   
   geoid_lst <- as.list(prepped_counties$geoid)
   
-  prepped_counties <- tibble(filename = "index.html", 
+  prepped_counties <- tibble(filename = "index-county.html", 
                              params = map(geoid_lst, 
                                           ~list(state_county = ., 
                                                 state_title = FALSE)

@@ -14,9 +14,10 @@ format:
 editor_options:
   chunk_output_type: console
 params:
-  state_county: !expr c("42095", "42017", "48453", "09003")
+  state_place: !expr c("0150000", "4740000", "1150000")
   fake_labels: FALSE
   state_title: FALSE
+  data: NULL
 execute:
   echo: false
   warning: false
@@ -25,7 +26,7 @@ execute:
   output: asis
 project:
   render:
-    - index.qmd
+    - index-place.qmd
     - description.qmd
 ---
 
@@ -64,333 +65,44 @@ source(here("R", "create_tb_detail.R"))
 source(here("R", "create_tb_more_data.R"))
 source(here("R", "prep_data.R"))
 source(here("R", "varlist.R"))
+source(here("R", "load_place_data.R"))
 
 ```
 
-
-```{r}
-#| label: set-vars
-# Get a list of all variables that should be presented as percentage 
-perc_vars <- c(
-  "share_debt_coll", # % with debt
-  "share_burdened_80_ami", 
-  "share_burdened_50_ami",
-  "share_burdened_30_ami",
-  "homeless_share", # share homeless
-  "election_turnout", # % voting 
-  "lbw", # % low birthweight
-  "white_nh_exposure",
-  "black_nh_exposure",
-  "hispanic_exposure",
-  "other_nh_exposure",
-  "poverty_exposure", # % in high poverty
-  "frpl40_total", # student poverty concentration
-  "frpl40_white", 
-  "frpl40_black",
-  "frpl40_hispanic", 
-  "share_in_preschool", # % in pre k 
-  "share_hs_degree", # % with HS degree
-  "share_employed" 
-)
-
-```
-
-
-```{r read-in-data}
-my_col_type <- cols(
-  state = col_character(), 
-  place = col_character(),
-  hpsa_yn = col_double(),
-  hpsa_yn_quality = col_double()
-)
-
-identifying_vars <- c("subgroup_id", "state", "place", "state_name", 
-                      "place_name", "population", "subgroup_type", "subgroup")
-
-data_recent <- read_csv(
-  here("mobility-metrics", "01_mobility-metrics.csv"), 
-  col_type = my_col_type
-) 
-
-data_years <- read_csv(
-  here("mobility-metrics", "00_mobility-metrics_longitudinal.csv"),
-  col_type = my_col_type,
-  guess_max = 20000
-) 
-
-data_race_ethnicity <- read_csv(
-  here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
-  col_types = my_col_type
-)
-
-data_race <- read_csv(
-  here("mobility-metrics", "03_mobility-metrics_race.csv"), 
-  col_types = my_col_type
-) 
-
-data_race_share <- read_csv(
-  here("mobility-metrics", "04_mobility-metrics_race-share.csv"), 
-  col_types = my_col_type
-)
-
-data_env_quality_poverty <- read_csv(
-  here("mobility-metrics", "environmental-exposure_poverty.csv"), 
-  col_types = my_col_type
-) %>% 
-  left_join(
-    read_csv(
-      here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
-      col_types = my_col_type
-    ) %>%
-      select(state, place, state_name, place_name) %>%
-      distinct(),
-    by = c("state", "place")
-  ) 
-
-data_education_income <- read_csv(
-  here("mobility-metrics", "SEDA_income.csv"), 
-  col_types = my_col_type
-) %>%  
-  left_join(
-    read_csv(
-      here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
-      col_types = my_col_type
-    ) %>%
-      select(state, place, state_name, place_name) %>%
-      distinct(),
-    by = c("state", "place")
-  )
-
-data_race_poverty <- read_csv(
-  here("mobility-metrics", "poverty-exposure_race.csv"), 
-  col_types = my_col_type
-) %>%
-  left_join(
-    read_csv(
-      here("mobility-metrics", "02_mobility-metrics_race-ethnicity.csv"), 
-      col_types = my_col_type
-    ) %>%
-      select(state, place, state_name, place_name) %>%
-      distinct(),
-    by = c("state", "place")
-  )
-
-```
-
-```{r}
-#| label: fake-data-recent
-
-data_recent <- data_recent %>%
-  mutate(
-    asian_other_pop = 0.1234,
-    asian_other_pop_quality = 3,
-    black_nonhispanic_pop = 0.1234,
-    black_nonhispanic_pop_quality = 3,
-    hispanic_pop = 0.1234,
-    hispanic_pop_quality = 3,     
-    white_nonhispanic_pop = 0.1234,
-    white_nonhispanic_pop_quality = 3,
-    
-    trauma = 0.1234,
-    trauma_lb = 0,
-    trauma_ub = 1,
-    trauma_quality = 3,
-    
-    r_black_nh_hv_hh = "12.3%:12.3%",
-    black_nh_wealth_quality = 3,
-    r_hispanic_hv_hh = "12.3%:12.3%",
-    hispanic_wealth_quality = 3,
-    r_other_nh_hv_hh = "12.3%:12.3%",
-    other_nh_wealth_quality = 3,
-    r_white_nh_hv_hh = "12.3%:12.3%",
-    white_nh_wealth_quality = 3,
-    
-    digital_access = 0.1234,
-    digital_access_quality = 3,
-    
-    ec_zip = 0.1234,
-    ec_zip_quality = 3,
-    socassn = 0.1234,
-    socassn_quality = 3,
-    
-    pc_phys_ratio = "1234:1",
-    pc_phys_ratio_quality = 3
-  ) %>%
-  prep_data() %>%
-  mutate(
-    learning_rate = sprintf("%.2f", round(as.numeric(learning_rate) , 2)),
-    learning_rate_lb = sprintf("%.2f", round(as.numeric(learning_rate_lb) , 2)),
-    learning_rate_ub = sprintf("%.2f", round(as.numeric(learning_rate_ub) , 2))
-  )
-
-
-```
-
-
-```{r}
-#| label: fake-data-years
-
-shell <- data_years %>%
-  distinct(state, place, state_name, place_name) %>%
-  expand_grid(year = c(2019, 2020, 2021, 2022)) %>%
-  mutate(
-    share_affordable_80_ami = 0.1234, 
-    share_affordable_50_ami = 0.1234,
-    share_affordable_30_ami = 0.1234,
-    housing_quality = 3,
-    
-    homeless_share = 0.1234,
-    homeless_count = 1234,
-    homeless_count_lb = 123,
-    homeless_count_ub = 12345,
-    homeless_quality = 3,
-    
-    poverty_exposure = 0.1234,
-    poverty_exposure_quality = 3,
-    
-    white_nh_exposure = 0.1234,
-    white_nh_exposure_quality = 3,
-    black_nh_exposure = 0.1234,
-    black_nh_exposure_quality = 3,
-    hispanic_exposure = 0.1234,
-    hispanic_exposure_quality = 3,
-    other_nh_exposure = 0.1234,
-    other_nh_exposure_quality = 3,
-    
-    pctl_20 = 12345,
-    pctl_50 = 12345,
-    pctl_80 = 12345,
-    
-    average_to_living_wage_ratio = 0.1234,
-    wage_ratio_quality = 3,
-    
-    violent_crime_rate = 1234,
-    property_crime_rate = 1234,
-    crime_rate_quality = 3,
-    
-    frpl40_white = 0.1234,
-    frpl40_white_quality = 3,
-    frpl40_black = 0.1234,
-    frpl40_black_quality = 3,
-    frpl40_hispanic = 0.1234,
-    frpl40_hispanic_quality = 3,
-    
-    election_turnout = 0.1234,
-    election_turnout_quality = 3,
-    
-    asian_other_pop = 0.1234,
-    asian_other_pop_quality = 3,
-    black_nonhispanic_pop = 0.1234,
-    black_nonhispanic_pop_quality = 3,
-    hispanic_pop = 0.1234,
-    hispanic_pop_quality = 3,     
-    white_nonhispanic_pop = 0.1234,
-    white_nonhispanic_pop_quality = 3,
-    
-    juvenile_arrest_rate = 1234,
-    juvenile_arrest_rate_quality = 3,
-    
-    trauma = 0.1234,
-    trauma_lb = 0,
-    trauma_ub = 1,
-    trauma_quality = 3,
-    
-    r_black_nh_hv_hh = "12.3%:12.3%",
-    black_nh_wealth_quality = 3,
-    r_hispanic_hv_hh = "12.3%:12.3%",
-    hispanic_wealth_quality = 3,
-    r_other_nh_hv_hh = "12.3%:12.3%",
-    other_nh_wealth_quality = 3,
-    r_white_nh_hv_hh = "12.3%:12.3%",
-    white_nh_wealth_quality = 3,
-    
-    digital_access = 0.1234,
-    digital_access_quality = 3,
-    
-    ec_zip = 0.1234,
-    ec_zip_quality = 3,
-    socassn = 0.1234,
-    socassn_quality = 3,
-    
-    pc_phys_ratio = 0.1234,
-    pc_phys_ratio_quality = 3
-    
-  )
-
-data_years <- data_years %>%
-  bind_rows(shell)
-
-add_value <- function(x, value) {
+```{r read-in-data-temporary}
+if (is.null(params$data)) {
   
-  if_else(is.na({{ x }}), NA_real_, value)
+  data_list <- load_place_data()
+  
+} else {
+  
+  data_list <- params$data
   
 }
 
-data_years <- data_years %>%
-  mutate(
-    fips = paste0(state, county)
-  ) %>%
-  prep_data()
+data_recent <- data_list$recent %>%
+  rename(place = county)
+  
+data_years <- data_list$years %>%
+  rename(place = county)
+
+data_race_ethnicity <- data_list$race_ethnicity %>%
+  rename(place = county)
+
+data_race <- data_list$race %>%
+  rename(place = county)
+
+data_race_share <- data_list$race_share %>%
+  rename(place = county)
+
+# data_education_income <- read_csv(
+#   here("mobility-metrics", "SEDA_income.csv"), 
+#   col_types = my_col_type
+# ) %>%
+#   left_join(county_names, by = c("state", "county")) %>%
+#   prep_data()
 
 ```
-
-```{r}
-#| label: fake-data-other
-
-data_race_ethnicity <- bind_rows(
-  `2018` = data_race_ethnicity,
-  `2021` = data_race_ethnicity, 
-  .id = "year"
-) %>%
-  mutate(
-    learning_rate = sprintf("%.2f", round(as.numeric(learning_rate) , 2)),
-    learning_rate_lb = sprintf("%.2f", round(as.numeric(learning_rate_lb) , 2)),
-    learning_rate_ub = sprintf("%.2f", round(as.numeric(learning_rate_ub) , 2))
-  ) %>%
-  prep_data()
-
-data_race_poverty <- bind_rows(
-  `2018` = data_race_poverty,
-  `2021` = data_race_poverty, 
-  .id = "year"
-) %>%
-  prep_data()
-
-data_race <- bind_rows(
-  `2018` = data_race,
-  `2021` = data_race, 
-  .id = "year"
-) %>%
-  prep_data()
-
-data_race_share <- bind_rows(
-  `2018` = data_race_share,
-  `2021` = data_race_share, 
-  .id = "year"
-) %>%
-  prep_data()
-
-data_env_quality_poverty <- bind_rows(
-  `2018` = data_env_quality_poverty,
-  `2021` = data_env_quality_poverty, 
-  .id = "year"
-) %>%
-  prep_data()
-
-data_education_income <- bind_rows(
-  `2018` = data_education_income,
-  `2021` = data_education_income, 
-  .id = "year"
-) %>%
-  mutate(
-    learning_rate = sprintf("%.2f", round(as.numeric(learning_rate) , 2)),
-    learning_rate_lb = sprintf("%.2f", round(as.numeric(learning_rate_lb) , 2)),
-    learning_rate_ub = sprintf("%.2f", round(as.numeric(learning_rate_ub) , 2))
-  ) %>%
-  prep_data()
-
-```
-
 
 ```{r}
 #| label: fake-labels
@@ -398,13 +110,13 @@ data_education_income <- bind_rows(
 if (params$fake_labels) {
   
   data <- data %>%
-    mutate(state_county = paste0(state, county)) %>%
-    mutate(county_name =
+    mutate(state_place = paste0(state, place)) %>%
+    mutate(place_name =
              case_when(
-               state_county == params$state_county[1] ~ "Upward County County",
-               state_county == params$state_county[2] ~ "Peer 1",
-               state_county == params$state_county[3] ~ "Peer 2",
-               state_county == params$state_county[4] ~ "Peer 3",
+               state_place == params$state_place[1] ~ "Upward Place",
+               state_place == params$state_place[2] ~ "Peer 1",
+               state_place == params$state_place[3] ~ "Peer 2",
+               state_place == params$state_place[4] ~ "Peer 3",
              )
     )
   
@@ -415,7 +127,7 @@ if (params$fake_labels) {
 ```
 
 ```{r}
-m_info <- read_csv("metrics_summary.csv")
+m_info <- read_csv(here::here("data", "00_metrics-summary_place.csv"))
 
 m_info <- m_info %>% 
   mutate_at(vars(c("notes", "metrics_description", "source_data")), 
@@ -443,46 +155,37 @@ if (!is.logical(params$state_title)) { #Check if logical
 # choose which title to use at the top of the pages
 if (!st) {
 
-  #get the upward county - the first element in the parameter 
-  upward_county <- data_recent %>% 
-    filter(fips == params$state_county[1]) %>% 
-    select(state_county) %>% 
+  #get the upward place - the first element in the parameter 
+  upward_place <- data_recent %>% 
+    filter(fips == params$state_place[1]) %>% 
+    select(state_place) %>% 
     pull() %>% 
     first()
 
 } else {
   
-  #get the upward county - the first element in the parameter 
-  upward_county <- data_recent %>% 
-    filter(fips == params$state_county[1]) %>% 
+  #get the upward place - the first element in the parameter 
+  upward_place <- data_recent %>% 
+    filter(fips == params$state_place[1]) %>% 
     select(state_name) %>% 
     pull() %>% 
     first()
   
-  upward_county <- paste("Selected Counties in", upward_county)
+  upward_place <- paste("Selected Cities in", upward_place)
   
 }
-
-# get a full list of variables that are percentage 
-perc_vars_lb <- purrr::map_chr(perc_vars, ~ paste0(., "_lb"))
-perc_vars_ub <- purrr::map_chr(perc_vars, ~ paste0(., "_ub"))
-lst <- list(perc_vars, perc_vars_lb, perc_vars_ub)
-all_perc_vars <- sort(lst %>% reduce(c))
-
-# filter to get the ones only existing in the data 
-perc_vars_in_data <- all_perc_vars[(all_perc_vars %in% colnames(data))]
 
 ```
 
 
 
 ```{r create-title}
-title <- paste0("Mobility Metrics for ", upward_county)
+title <- paste0("Mobility Metrics for ", upward_place)
 
 ```
 
 
-<!-- This is a "hacky" way to get the header out of the TOC. The problem is that with the unlisted argument without a second empty header 1, quarto remove upward_county and all child elements. Now, we have a second empty header that is not listed in the TOC.  -->
+<!-- This is a "hacky" way to get the header out of the TOC. The problem is that with the unlisted argument without a second empty header 1, quarto remove upward_place and all child elements. Now, we have a second empty header that is not listed in the TOC.  -->
 
 # `r title` {.unnumbered .unlisted}
 
@@ -1294,7 +997,7 @@ create_tb_more_data(
 
 <br>
 
-## <span style="color:#8A9191">Pillar: Healthy Environment and Good Access to Healthcare</span>
+## <span style="color:#8A9191">Pillar: Healthy Environment and Access to Good Healthcare</span>
 
 ![](www/images/mobility-icons/mobility-infographic-health-icon.png){width=2in fig-align="center"}
 
@@ -1560,7 +1263,7 @@ create_tb_more_data(data = data_race,
 
 ### Missing and Suppressed Values
 
-<div class="p2">“NA” in fields for metric values and data quality values indicates that the data are suppressed due to sample sizes or because that element is not applicable to that community (e.g., no zip code in the county is majority non-white). </div> 
+<div class="p2">“NA” in fields for metric values and data quality values indicates that the data are suppressed due to sample sizes or because that element is not applicable to that community (e.g., no zip code in the city is majority non-white). </div> 
 
 <br>
 

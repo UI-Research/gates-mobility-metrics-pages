@@ -26,7 +26,7 @@ execute:
   output: asis
 project:
   render:
-    - index.qmd
+    - index-county.qmd
     - description.qmd
 ---
 
@@ -1013,7 +1013,7 @@ create_tb_more_data(
 
 <br>
 
-## <span style="color:#8A9191">Pillar: Healthy Environment and Good Access to Healthcare</span>
+## <span style="color:#8A9191">Pillar: Healthy Environment and Access to Good Healthcare</span>
 
 ![](www/images/mobility-icons/mobility-infographic-health-icon.png){width=2in fig-align="center"}
 
