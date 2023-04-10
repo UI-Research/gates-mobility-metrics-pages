@@ -479,9 +479,19 @@ title <- paste0("Mobility Metrics for ", upward_county)
 
 # `r  `
 
-## Pillar: Opportunity-Rich & Inclusive Neighborhoods
+These Mobility Metrics Data Tables are designed to help local leaders in every county and over 450 cities measure their communities’ status and progress towards increasing upward mobility and equity.
 
-<br> 
+The Urban Institute’s [Upward Mobility Framework](https://upward-mobility.urban.org/mobility-metrics-framework) identifies predictors that are strongly correlated with the likelihood that a community’s residents will be able to boost economic and social mobility from poverty. These predictors reflect five essential pillars that support upward mobility. 
+
+<br>
+
+![](www/images/mobility-icons/mobility-infographic-icons-panel-text.png){width=8in fig-align="center"}
+
+<br>
+
+## <span style="color:#62A1C0">Pillar: Opportunity-Rich & Inclusive Neighborhoods</span>
+
+![](www/images/mobility-icons/mobility-infographic-house-icon.png){width=2in fig-align="center"}
 
 #### Predictor: Housing Affordability 
 
@@ -838,8 +848,9 @@ data_race_share %>%
 
 <br>
 
+## <span style="color:#F584BE">Pillar: High-Quality Education</span>
 
-## Pillar: High-Quality Education
+![](www/images/mobility-icons/mobility-infographic-book-icon.png){width=2in fig-align="center"}
 
 #### Predictor: Access to preschool 
 
@@ -1062,7 +1073,10 @@ create_tb_detail(
 
 <br>
 
-## Pillar: Rewarding Work
+## <span style="color:#8ECF86">Pillar: Rewarding Work</span>
+
+![](www/images/mobility-icons/mobility-infographic-money-icon.png){width=2in fig-align="center"}
+
 #### Predictor: Employment Opportunities 
 
 ::: {.panel-tabset .avoidpagebreak}
@@ -1306,8 +1320,9 @@ create_tb_more_data(
 
 <br>
 
+## <span style="color:#8A9191">Pillar: Healthy Environment and Good Access to Healthcare</span>
 
-## Pillar: Healthy Environment and Good Access to Healthcare
+![](www/images/mobility-icons/mobility-infographic-health-icon.png){width=2in fig-align="center"}
 
 #### Predictor: Access to health services 
 
@@ -1481,7 +1496,9 @@ create_tb_detail(
 
 <br>
 
-## Pillar: Responsible and Just Governance
+## <span style="color:#FFD175">Pillar: Responsible and Just Governance</span>
+
+![](www/images/mobility-icons/mobility-infographic-govt-icon.png){width=2in fig-align="center"}
 
 #### Predictor: Political participation 
 
