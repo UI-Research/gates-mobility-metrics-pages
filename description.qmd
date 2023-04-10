@@ -3,11 +3,12 @@ title: "Upward Mobility from Poverty Metric Descriptions"
 font: Lato
 format:
   html:
-    self-contained: true
+    embed-resources: true
     toc: true
     mathjax: null
     css: www/web_report.css
     output_dir: "."
+    include-in-header: analytics.html
 editor_options:
   chunk_output_type: console
 params:
@@ -23,7 +24,23 @@ execute:
 number-sections: false
 ---
 
-### Pillar: Opportunity-Rich & Inclusive Neighborhoods {#pillar-opportunity-rich-and-inclusive-neighborhoods} 
+<!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2NMF8C"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) -->
+
+<br>
+
+![](www/images/mobility-icons/mobility-infographic-icons-panel-text.png){width=8in fig-align="center"}
+
+<br>
+
+## <span style="color:#62A1C0">Pillar: Opportunity-Rich & Inclusive Neighborhoods</span>{#pillar-opportunity-rich-and-inclusive-neighborhoods} 
+
+![](www/images/mobility-icons/mobility-infographic-house-icon.png){width=2in fig-align="center"}
 
 ##### [PREDICTOR: HOUSING AFFORDABILITY](https://upward-mobility.urban.org/housing-affordability)
 
@@ -43,7 +60,7 @@ This metric reports the number of available housing units affordable for househo
 
 **Subgroups:** Because these ratios focus on the characteristics of the housing stock, stratifying by demographic subgroups is not relevant. However, housing units in each affordability category can be stratified by size (number of bedrooms) and tenure (owned or rented). 
 
-**Limitations:** These shares do not reflect the quality of the available and affordable housing units. Units counted as available and affordable for households with low or very low incomes may be of poor quality or too small to meet household needs. This metric is somewhat sensitive to patterns of residential mobility. For example, if the number of households with very low incomes were to decline (because of out-migration), this metric would show improvement even if no additional affordable units were produced. We calculate both the number of low-income households and the number of affordable houses by looking at the income threshold for a family of 4, regardless of the size of the actual household in question. 
+**Limitations:** These shares do not reflect the quality of the available and affordable housing units. Units counted as available and affordable for households with low or very low incomes may be of poor quality or too small to meet household needs. This metric is somewhat sensitive to patterns of residential mobility. For example, if the number of households with very low incomes were to decline (because of out-migration), this metric would show improvement even if no additional affordable units were produced. We calculate both the number of low-income households and the number of affordable houses by looking at the income threshold for a family of four, regardless of the size of the actual household in question. 
 
 <br> 
 
@@ -95,7 +112,7 @@ This metric measures the share of residents in a city or county who are experien
 
 **Metric: Index of people’s exposure to neighbors of different races and ethnicities** 
 
-This metric is constructed separately for each racial or ethnic group that is readily available and reliable, and reports the share of each group’s neighbors who are members of other racial or ethnic groups. The exposure index reflects the racial and ethnic diversity of neighborhoods. For example, the exposure index would report the share of people who are Hispanic; other races and ethnicities; and white, non-Hispanic in the census tract of the average Black, non-Hispanic person. Higher values of the index indicate more neighborhood diversity and more day-to-day exposure of people to neighbors of different races and ethnicities. 
+This metric is constructed separately for each racial or ethnic group that is readily available and reliable, and reports the share of each group’s neighbors who are members of other racial or ethnic groups. The exposure index reflects the racial and ethnic diversity of neighborhoods. For example, the exposure index would report the share of people who are Hispanic; white, non-Hispanic; and other races and ethnicities in the census tract of the average Black, non-Hispanic person. Higher values of the index indicate more neighborhood diversity and more day-to-day exposure of people to neighbors of different races and ethnicities. 
 
 **Validity:** The exposure index is one of several widely used measures of residential segregation or inclusion. It captures the multiracial or multiethnic diversity of American communities today and reflects the experience of individuals of different races and ethnicities, and it provides a robust picture of neighborhood racial and ethnic composition. Because this metric reflects the structural conditions facing a city or county’s residents, changes in the metric that may be caused by people moving into or out of a jurisdiction do represent changes to those structural conditions. 
 
@@ -121,13 +138,13 @@ Based on the US Census Bureau’s County Business Patterns (CBP) data, which mea
 
 **Validity:** The CBP data from the US Census Bureau are well established and widely used by academics and other researchers across the country. Research supports its use as a measure for social trust because social trust is enhanced when people belong to voluntary groups and organizations. People who belong to such groups tend to trust others who belong to the same group. The more such groups per person, the more likely that individuals in those communities belong to one or more groups. 
 
-**Availability:** The metric can be constructed using the CBP data set, which is publicly available nationwide. 
+**Availability:** The metric can be constructed using the CBP dataset, which is publicly available nationwide. 
 
 **Frequency:** This metric can be updated annually. 
 
 **Geography:** This metric is available at the county and city level. This metric is also available at the ZIP code level.
 
-**Consistency:** This metric is clearly defined and consistently measured across time since 2012 and for the entire population of the US. CBP data are derived from the Business Register, maintained and updated by the Census Bureau to track all known single- and multi-establishment employer companies in the US.
+**Consistency:** This metric is clearly defined and has been consistently measured across time since 2012 and for the entire population of the US. CBP data are derived from the Business Register, maintained and updated by the Census Bureau to track all known single- and multi-establishment employer companies in the US.
 
 **Structural equity\* and subgroups:** Data used to construct this metric can reflect racial or socioeconomic subgroups by matching it with demographic characteristics at the ZIP code level, such as racial or ethnic composition or concentrated poverty. 
 
@@ -135,7 +152,7 @@ Based on the US Census Bureau’s County Business Patterns (CBP) data, which mea
 
 **Limitations:** This metric captures only a certain aspect of social capital. It is trying to measure social associations within a community and is likely the best measure within the context of business and professional organizations. Nevertheless, it cannot capture (a) social associations at the granular, individual level, or (b) smaller, more informal organizations that would not be in a position to self-report to the Business Register. 
 
-\* These selection criteria on structural equity and structural relevance were explicitly added in a review of new metrics added to the Upward Mobility Framework updated in fall 2022. 
+\* These selection criteria on structural equity and structural relevance were explicitly added in a review of new metrics added to the Upward Mobility Framework in fall 2022. 
 
 <br> 
 <br>
@@ -148,7 +165,7 @@ Based on the US Census Bureau’s County Business Patterns (CBP) data, which mea
 
 **Availability:** The metric is publicly available through Opportunity Insights’ Social Capital Atlas. 
 
-**Frequency:** These data were released in Summer 2022. Because this was an inaugural data release contingent on the publication of new research, it is unclear if it will be updated or with what frequency. 
+**Frequency:** These data were released in summer 2022. Because this was an inaugural data release contingent on the publication of new research, it is unclear if it will be updated or with what frequency. 
 
 **Geography:** This metric is available at the county and city level. These data are available nationally in a standardized format for all counties. The smallest geography for which these data are available is the Zip Code Tabulation Area (ZCTA) level, which can be approximately aggregated to other geographies. 
 
@@ -158,9 +175,9 @@ Based on the US Census Bureau’s County Business Patterns (CBP) data, which mea
 
 **Structural relevance\*:** This metric is a systemic condition of economic mobility because it speaks to what level of socioeconomic intermingling is supported in the social environment of a given area. This metric, however, is also an outcome of greater economic mobility, since economic connectedness is positively correlated with increased mobility from poverty. 
 
-**Limitations:** The biggest limitation of this metric is its novelty. Although it was developed by reputable scholars and peer reviewed, it lacks the established track record of other metrics. Moreover, it focuses on the financial aspects of social capital and does not capture other important elements, like popularity and community ties. This metric may be sensitive to residential mobility into and out of a city or county, but not to an extent likely to affect its aggregate values. This metric also relies on the continued popularity and use of Facebook as a social media platform, the user base of which has been skewing older in recent years. Without continued engagement from the same user groups and the introduction of younger populations as they age, comparability and consistency over time may be compromised. This metric can only be calculated for ZIP codes containing at least 100 people. 
+**Limitations:** The biggest limitation of this metric is its novelty. Although it was developed by reputable scholars and peer reviewed, it lacks the established track record of other metrics. Moreover, it focuses on the financial aspects of social capital and does not capture other important elements like popularity and community ties. This metric may be sensitive to residential mobility into and out of a city or county, but not to an extent likely to affect its aggregate values. This metric also relies on the continued popularity and use of Facebook as a social media platform, the user base of which has been skewing older in recent years. Without continued engagement from the same user groups and the introduction of younger populations as they age, comparability and consistency over time may be compromised. This metric can only be calculated for ZIP codes containing at least 100 people. 
 
-\* These selection criteria on structural equity and structural relevance were explicitly added in a review of new metrics added to the Upward Mobility Framework updated in fall 2022. 
+\* These selection criteria on structural equity and structural relevance were explicitly added in a review of new metrics added to the Upward Mobility Framework in fall 2022. 
 
 <br> 
 
@@ -172,7 +189,7 @@ This metric reflects the number of public transit trips taken annually at the ce
 
 **Validity:** This metric was designed in partnership with the US Department of Transportation and has been used by the US Department of Housing and Urban Development in community efforts to affirmatively further fair housing. Several scholars have also used this metric and data in published in peer-reviewed journals. Although other arrangements of family composition, income, and housing status are possible in constructing this index and are available in the data, these characteristics were intended to more closely characterize a lower-income household in the community and are the most validated of other household combinations.
 
-**Availability:** The estimates come from the location affordability index, which is publicly available. 
+**Availability:** The estimates come from the Location Affordability Index, which is publicly available. 
 
 **Frequency:** This metric used to be released every three years. The Urban Institute is working to develop an updated version of the metric.
 
@@ -208,7 +225,9 @@ This index reflects local transportation costs as a share of renters’ incomes.
 
 <br>
 
-### Pillar: High-Quality Education {#pillar-high-quality-education} 
+## <span style="color:#F584BE">Pillar: High-Quality Education</span>{#pillar-high-quality-education} 
+
+![](www/images/mobility-icons/mobility-infographic-book-icon.png){width=2in fig-align="center"}
 
 ##### [PREDICTOR: ACCESS TO PRESCHOOL](https://upward-mobility.urban.org/access-preschool) 
 
@@ -220,7 +239,7 @@ This metric measures the share of 3- and 4-year-old children in a community who 
 
 **Availability:** The metric can be constructed using data from the US Census Bureau’s American Community Survey (ACS), which is publicly available nationwide. 
 
-**Frequency:** This metric can be updated annually. Survey data are collected annually and used to create 1- and 5-year estimates. For less populous communities, it may be necessary to pool several years of data to obtain reliable estimates. 
+**Frequency:** This metric can be updated annually. Survey data are collected annually and used to create one- and five-year estimates. For less populous communities, it may be necessary to pool several years of data to obtain reliable estimates. 
 
 **Geography:** This metric is available at the county and city level. 
 
@@ -234,7 +253,7 @@ This metric measures the share of 3- and 4-year-old children in a community who 
 
 ##### [PREDICTOR: EFFECTIVE PUBLIC EDUCATION](https://upward-mobility.urban.org/effective-public-education)
 
-**Metric: Average per-grade change in English Language Arts achievement between third and eighth grades** 
+**Metric: Average per-grade change in English language arts achievement between third and eighth grades** 
 
 This metric reports the average annual improvement in English language arts (reading comprehension and written expression) observed between the third and eighth grades.
 
@@ -258,11 +277,11 @@ This metric reports the average annual improvement in English language arts (rea
 
 **Metric: Share of students attending high-poverty schools, by student race or ethnicity** 
 
-This set of metrics is constructed separately for each racial or ethnic group and reports the share of students attending schools in which over 20 percent of students come from households earning at or below 100% of the Federal Poverty Level.
+This set of metrics is constructed separately for each racial or ethnic group and reports the share of students attending schools in which over 20 percent of students come from households earning at or below 100 percent of the federal poverty level.
 
 **Validity:** This set of metrics captures the interaction of economic and racial segregation of schools and therefore reveals whether (and to what degree) students of color are more likely than white students to attend schools with large concentrations of classmates experiencing poverty. Higher concentrations of students experiencing poverty are associated with worse achievement for all the students in a school.
 
-**Availability:** The metric can be constructed using data from the National Center for Education Statistics Common Core of Data and the Urban Insititute's Modeled Estimates of Students in Poverty, which are publicly available nationwide. 
+**Availability:** The metric can be constructed using data from the National Center for Education Statistics Common Core of Data and the Urban Institute's Modeled Estimates of Students in Poverty, which are publicly available nationwide. 
 
 **Frequency:** This metric can be updated annually. 
 
@@ -272,7 +291,7 @@ This set of metrics is constructed separately for each racial or ethnic group an
 
 **Subgroups:** This metric is by definition disaggregated by race or ethnicity. 
 
-**Limitations:** Because traditional proxies for school poverty (i.e., the share of free-and-reduced price meal students or the share of students directly certified for free meals) have grown inconsistent across time and states, this metric uses the Urban Institute's [Model Estimates of Poverty in Schools](https://www.urban.org/sites/default/files/2022-06/Model%20Estimates%20of%20Poverty%20in%20Schools.pdf) to identify school poverty levels. 
+**Limitations:** Because traditional proxies for school poverty (i.e., the share of free- and reduced-price-meal students or the share of students directly certified for free meals) have grown inconsistent across time and states, this metric uses the Urban Institute's [Model Estimates of Poverty in Schools](https://www.urban.org/sites/default/files/2022-06/Model%20Estimates%20of%20Poverty%20in%20Schools.pdf) to identify school poverty levels. 
 
 <br> 
 
@@ -286,7 +305,7 @@ This metric is the share of 19- and 20-year-olds in a community who have a high 
 
 **Availability:** The metric can be constructed using data from the US Census Bureau’s American Community Survey (ACS), which is publicly available nationwide. 
 
-**Frequency:** This metric can be updated annually. Survey data are collected annually and used to create 1- and 5-year estimates. For less populous communities, it may be necessary to pool several years of data to obtain reliable estimates. 
+**Frequency:** This metric can be updated annually. Survey data are collected annually and used to create one- and five-year estimates. For less populous communities, it may be necessary to pool several years of data to obtain reliable estimates. 
 
 **Geography:** This metric is available at the county and city level. 
 
@@ -324,7 +343,9 @@ This is a measure of the share of households in a population that have a broadba
 
 <br> 
 
-### Pillar: Rewarding Work {#pillar-rewarding-work} 
+## <span style="color:#8ECF86">Pillar: Rewarding Work</span>{#pillar-rewarding-work} 
+
+![](www/images/mobility-icons/mobility-infographic-money-icon.png){width=2in fig-align="center"}
 
 ##### [PREDICTOR: EMPLOYMENT OPPORTUNITIES](https://upward-mobility.urban.org/employment-opportunities) 
 
@@ -332,11 +353,11 @@ This is a measure of the share of households in a population that have a broadba
 
 This metric is the share of adults ages 25 to 54 in a given community who are employed.
 
-**Validity:** An employment ratio captures what share of adults in a community are engaging in work for pay. The prime-age employment-to-population ratio focuses on age groups that are traditionally older than college age and younger than retirement age. The prime-age employment to population ratio is a standard labor market indicator, which can be calculated using the Current Population Survey for states and the American Community Survey (ACS) for sub-state areas.
+**Validity:** An employment ratio captures what share of adults in a community are engaging in work for pay. The prime-age employment-to-population ratio focuses on age groups that are traditionally older than college age and younger than retirement age. The prime-age employment-to-population ratio is a standard labor market indicator, which can be calculated using the Current Population Survey for states and the American Community Survey (ACS) for sub-state areas.
 
 **Availability:** The metric can be constructed using data from the ACS, which is publicly available nationwide. 
 
-**Frequency:** This metric can be updated annually. Survey data are collected annually and used to create 1- and 5-year estimates. For less populous communities, it may be necessary to pool several years of data to obtain reliable estimates. 
+**Frequency:** This metric can be updated annually. Survey data are collected annually and used to create one- and five-year estimates. For less populous communities, it may be necessary to pool several years of data to obtain reliable estimates. 
 
 **Geography:** This metric is available at the county and city level. 
 
@@ -366,7 +387,7 @@ This metric shows average pay relative to the cost of living in a particular are
 
 **Subgroups:** This metric cannot be disaggregated into subgroups because these data describe wages rather than the people earning those wages. 
 
-**Limitations:** The measure cannot be disaggregated into subgroups. The measure relies on MIT’s computations of “living wages.” The Living Wage data is not available for every year. To compute the 2021 metric, the 2022 Living Wage data was deflated using the BLS’ consumer price index for all urban consumers. For the 2018 and 2014 metrics, the Living Wage data was deflated from 2019. 
+**Limitations:** The measure cannot be disaggregated into subgroups. The measure relies on MIT’s computations of “living wages.” The living wage data is not available for every year. To compute the 2021 metric, the 2022 living wage data was deflated using the BLS’ consumer price index for all urban consumers. For the 2018 and 2014 metrics, the living wage data was deflated from 2019. 
 
 <br> 
 
@@ -380,7 +401,7 @@ Household income is a standard measure of financial well-being. The Working Grou
 
 **Availability:** The metric can be constructed using data from the US Census Bureau’s American Community Survey, which is publicly available nationwide. 
 
-**Frequency:** This metric can be updated annually. Survey data are collected annually and used to create 1- and 5-year estimates.
+**Frequency:** This metric can be updated annually. Survey data are collected annually and used to create one- and five-year estimates.
 
 **Geography:** This metric is available at the county and city level. 
 
@@ -396,7 +417,7 @@ Household income is a standard measure of financial well-being. The Working Grou
 
 **Metric: Share of households with debt in collections** 
 
-This measure indicates the share of people in an area with a credit bureau record with debt that has progressed from being past due to being in collections. Debt in collections includes past-due credit lines that have been closed and charged-off on the creditor’s books as well as unpaid bills reported to the credit bureaus that the creditor is attempting to collect. For example, credit card accounts enter collections once they are 180 days past due. The city-level measure captures the share of people in an area with a credit bureau record with any derogatory debt, which is primarily debt in collections. 
+This measure indicates the share of people in an area with a credit bureau record with debt that has progressed from being past due to being in collections. Debt in collections includes past-due credit lines that have been closed and charged off on the creditor’s books as well as unpaid bills reported to the credit bureaus that the creditor is attempting to collect. For example, credit card accounts enter collections once they are 180 days past due. The city-level measure captures the share of people in an area with a credit bureau record with any derogatory debt, which is primarily debt in collections. 
 
 **Validity:** Consumers without other accessible financial resources may need to take out debt not only to pay for housing or education but also to pay for daily necessities such as food or utilities. The inability to pay back debts can signal current or near-term financial insecurity, particularly for families with lower incomes. Those households likely have few assets and as such may have negative wealth. Though not a standard measure, this metric has been used by researchers to distinguish between “good” debts (e.g., mortgages paid on time every month) and “bad” debts. 
 
@@ -436,17 +457,19 @@ This metric highlights racial and ethnic disparities in an important source of w
 
 **Limitations:** This metric only captures relative wealth-building opportunities and does not capture absolute wealth-building opportunities. It is possible that a community has an equitable distribution of housing wealth in a community with very little housing wealth. Such a community would rate well under this metric. This metric will also be imprecise or suppressed for communities that lack racial or ethnic diversity. Although we refer to this metric as housing wealth, the data reflect homeowners’ self-assessments of the value of their homes and does not account for mortgage debt. Black and Latino households, on average, buy their homes with more debt, so the racial housing wealth disparities are likely to widen if mortgage debt is incorporated. Also, this metric does not account for other financial costs and benefits of homeownership that could affect wealth building, nor does it account for other important differences such as the average age of people in different racial and ethnic groups. One would expect older people to have higher-value homes than younger people, so some racial and ethnic disparities could be exaggerated by age differences. Therefore, this metric may not fully reflect the size of the actual housing wealth gap and could be misleading without a deeper understanding of homeownership and demographic circumstances in a community. Further, this metric focuses on only one form of wealth based on homeownership, and does not consider other forms of wealth like owning a business, stocks, or bonds. The metric only considers the race of the head of household and does not account for household size. 
 
-\* These selection criteria on structural equity and structural relevance were explicitly added in a review of new metrics added to the Upward Mobility Framework updated in fall 2022. 
+\* These selection criteria on structural equity and structural relevance were explicitly added in a review of new metrics added to the Upward Mobility Framework in fall 2022. 
 
 <br> 
 
-### Pillar: Healthy Environment & Access to Good Health Care {#pillar-healthy-environment-and-access-to-good-health-care} 
+## <span style="color:#8A9191">Pillar: Healthy Environment and Good Access to Healthcare</span>{#pillar-healthy-environment-and-access-to-good-health-care} 
+
+![](www/images/mobility-icons/mobility-infographic-health-icon.png){width=2in fig-align="center"}
 
 ##### [PREDICTOR: ACCESS TO HEALTH SERVICES](https://upward-mobility.urban.org/access-health-services) 
 
 **Metric: Ratio of population per primary care physician** 
 
-This ratio represents the number of residents per primary care physician in a community. Primary care physicians include practicing non-federal physicians (M.D.s and D.O.s) under age 75 specializing in general practice medicine, family medicine, internal medicine, and pediatrics. If a community has a population of 50,000 and has 20 primary care physicians, for example, the ratio would be: 2,500:1. If a community has no primary care physicians, the ratio would be the population to zero.
+This ratio represents the number of residents per primary care physician in a community. Primary care physicians include practicing non-federal physicians (MDs and DOs) under age 75 specializing in general practice medicine, family medicine, internal medicine, and pediatrics. If a community has a population of 50,000 and has 20 primary care physicians, for example, the ratio would be: 2,500:1. If a community has no primary care physicians, the ratio would be the population to zero.
 
 **Validity:** This metric is defined and established by the US Department of Health and Human Services, Health Resources and Services Administration, Bureau of Health Workforce. 
 
@@ -498,7 +521,7 @@ The air quality index is an index that summarizes potential exposure to harmful 
 
 **Validity:** EPA scientists and researchers link air pollutants to health effects that can manifest within a few hours or days after breathing polluted air.
 
-**Consistency:** Air pollutants can be consistently measured across time and geographies. However, EPA standards may change in the coming years and should be re-evaluated for consistency moving forward.
+**Consistency:** Air pollutants can be consistently measured across time and geographies. However, EPA standards may change in the coming years and should be reevaluated for consistency moving forward.
 
 **Availability:** The metric can be constructed using data from the EPA’s AirToxScreen data, which are publicly available nationwide.
 
@@ -518,9 +541,9 @@ The air quality index is an index that summarizes potential exposure to harmful 
 
 This metric represents the number of deaths of community residents, both from intentional injuries such as homicide or suicide and unintentional injuries such as motor vehicle deaths, per 100,000 people in the community.
 
-**Validity:** These data are collected by the National Center for Health Statistics and the Centers for Disease Control and Prevention. Injury can be traumatic, and people living in communities with a high incidence of injury can experience both the direct trauma from injury and vicarious trauma from injuries sustained by others, which can lead to psychological distress, increased rates of aggression, and diminished physical health. High rates of injuries that lead to death in a community, such as opioid overdose, suicide, traffic fatalities, and homicide, can lead to community-level trauma. The County Health Rankings & Roadmaps uses a 5-year average to increase data reliability. 
+**Validity:** These data are collected by the National Center for Health Statistics and the Centers for Disease Control and Prevention. Injury can be traumatic, and people living in communities with a high incidence of injury can experience both the direct trauma from injury and vicarious trauma from injuries sustained by others, which can lead to psychological distress, increased rates of aggression, and diminished physical health. High rates of injuries that lead to death in a community, such as opioid overdose, suicide, traffic fatalities, and homicide, can lead to community-level trauma. The County Health Rankings and Roadmaps uses a five-year average to increase data reliability. 
 
-**Availability:** The metric can be constructed using data from the National Center for Health Statistics Mortality Files and Centers for Disease Control and Prevention’s Wide-Ranging Online Data for Epidemiologic Research, which are publicly available nationwide. The metric is available publicly for counties through the County Health Rankings & Roadmaps website.
+**Availability:** The metric can be constructed using data from the National Center for Health Statistics Mortality Files and Centers for Disease Control and Prevention’s Wide-Ranging Online Data for Epidemiologic Research, which are publicly available nationwide. The metric is available publicly for counties through the County Health Rankings and Roadmaps website.
 
 **Frequency:** This metric can be updated annually. 
 
@@ -538,7 +561,9 @@ This metric represents the number of deaths of community residents, both from in
 
 <br> 
 
-### Pillar: Responsive & Just Governance {#pillar-responsive-and-just-governance} 
+## <span style="color:#FFD175">Pillar: Responsible and Just Governance</span>{#pillar-responsive-and-just-governance}
+
+![](www/images/mobility-icons/mobility-infographic-govt-icon.png){width=2in fig-align="center"}
 
 ##### [PREDICTOR: POLITICAL PARTICIPATION](https://upward-mobility.urban.org/political-participation) 
 
@@ -566,7 +591,7 @@ This metric measures the share of the voting-age population that voted in the mo
 
 **Metric: Ratio of the share of local elected officials of a racial or ethnic group to the share of residents of the same racial or ethnic group** 
 
-This metric measures the ratio of the share of the city council or county board from specific racial and ethnic groups to the share of city or county residents from those racial or ethnic groups. Say that of your 10 elected officials, nine are white, non-Hispanic and your community’s population is half white, non-Hispanic, the metric will read as “90.0%:50.0%.” If the share of local officials is higher than the share of people in the community, then this group is over-represented. If the share of local officials is lower than the share of people in the community, then this group is under-represented.
+This metric measures the ratio of the share of the city council or county board from specific racial and ethnic groups to the share of city or county residents from those racial or ethnic groups. For example, if a community has 10 elected officials; 9 are white, non-Hispanic; and the community’s population is half white, non-Hispanic, the metric will read as “90.0%:50.0%.” If the share of local officials is higher than the share of people in the community, then this group is overrepresented. If the share of local officials is lower than the share of people in the community, then this group is underrepresented.
 
 **Validity:** Scholars of political science have used this metric in articles published in peer-reviewed journals. 
 
@@ -600,9 +625,9 @@ The Federal Bureau of Investigation’s (FBI) National Incident-Based Reporting 
 
 **Consistency:** The NIBRS data are consistent across the communities that provide data to the FBI, because the FBI establishes the definitions of the crimes included. Data may be accumulated and compiled differently at the local level. Prior to January 1, 2021, the FBI’s Uniform Crime Reporting (UCR) Program provided a standard, well-defined measure of crime. Reported crimes were captured for four “index” violent felonies (murder or nonnegligent manslaughter, rape, robbery, and aggravated assault) and four index property felonies (burglary, larceny-theft, motor vehicle theft, and arson). The UCR program was retired on January 1, 2021, transitioning the national standard for crime statistics to NIBRS to improve crime measures nationally. NIBRS offers greater specificity in reporting offenses, includes more detailed information, and provides context to specific crime problems. 
 
-**Subgroups:** The NIBRS data include demographic information about the age, race, and gender of victims and person suspected of committing the offense. However, demographics in these data are unreliable. Additionally, those not directly impacted by a crime can still be negatively impacted by general exposure to crime. Looking at differences in crime rates by neighborhood demographics can illustrate whether there are racial disparities in exposure to crime. NIBRS data does not include neighborhood level information necessary for this analysis, but local law enforcement agencies have anonymized geocoded incident level data and some agencies share this data publicly on government websites. The Urban Institute’s [Spatial Equity Data Tool](https://apps.urban.org/features/equity-data-tool/) can be used for this analysis. 
+**Subgroups:** The NIBRS data include demographic information about the age, race, and gender of victims and person suspected of committing the offense. However, demographics in these data are unreliable. Additionally, those not directly impacted by a crime can still be negatively impacted by general exposure to crime. Looking at differences in crime rates by neighborhood demographics can illustrate whether there are racial disparities in exposure to crime. NIBRS data does not include neighborhood level information necessary for this analysis, but local law enforcement agencies have anonymized geocoded incident-level data and some agencies share this data publicly on government websites. The Urban Institute’s [Spatial Equity Data Tool](https://apps.urban.org/features/equity-data-tool/) can be used for this analysis. 
 
-**Limitations:** Reporting to NIBRS is not mandatory, and although most communities provide data, NIBRS does not capture the universe of reported crimes across the US. NIBRS measures crime reported to the police, so unreported crime is not captured in these data. An FBI analysis estimated that up to half of violent crime goes unreported to the local police, and research finds that some neighborhoods are less likely to report violent crime, especially where trust of police is low. As a place-based measure, reported crime is affected by mobility in and out of the community. Crime rates are based on the number of incidents per 100,000 residents. If the number of residents increases and crime remains constant, the crime rate could go down without any change in the number of reported incidents. Also, since crime tends to be concentrated in certain areas, if new residents are moving to places where crime rates were already low, the populations and areas experiencing the most crime may not see any change even if city-wide rates decrease. Relatedly, NIBRS does not provide data on crime at the neighborhood level, so it cannot track changes in crime or compare different places within a community. NIBRS reports data at the agency level and some agencies may have jurisdiction in multiple counties and cities. Similarly, multiple law enforcement agencies (e.g., state, county, city, university, tribal) can fall within a single county. Because of this, at the county level, crime counts may be under-estimated in counties where some agency data is missing. 
+**Limitations:** Reporting to NIBRS is not mandatory, and although most communities provide data, NIBRS does not capture the universe of reported crimes across the US. NIBRS measures crime reported to the police, so unreported crime is not captured in these data. An FBI analysis estimated that up to half of violent crime goes unreported to the local police, and research finds that some neighborhoods are less likely to report violent crime, especially where trust of police is low. As a place-based measure, reported crime is affected by mobility in and out of the community. Crime rates are based on the number of incidents per 100,000 residents. If the number of residents increases and crime remains constant, the crime rate could go down without any change in the number of reported incidents. Also, since crime tends to be concentrated in certain areas, if new residents are moving to places where crime rates were already low, the populations and areas experiencing the most crime may not see any change even if city-wide rates decrease. Relatedly, NIBRS does not provide data on crime at the neighborhood level, so it cannot track changes in crime or compare different places within a community. NIBRS reports data at the agency level and some agencies may have jurisdiction in multiple counties and cities. Similarly, multiple law enforcement agencies (e.g., state, county, city, university, tribal) can fall within a single county. Because of this, at the county level, crime counts may be underestimated in counties where some agency data is missing. 
 
 <br> 
 
@@ -616,12 +641,12 @@ The Federal Bureau of Investigation’s (FBI) National Incident-Based Reporting 
 
 **Availability:** The metric can be constructed using data from NIBRS, which is gaining increased participation from agencies across the country. As of 2021, agencies reporting to NIBRS covered 66 percent of the US population. If a community is not included in NIBRS, the relevant and comparable data can be requested by the public directly from their local law enforcement agencies or may be posted on their local law enforcement website. 
 
-**Frequency:** This metric can be updated annually. Juvenile arrests data is available annually through the FBI. Arrest data before 2014 can be found on the Bureau of Justice Statistics Arrest Data tool.
+**Frequency:** This metric can be updated annually. Juvenile arrest data is available annually through the FBI. Arrest data before 2014 can be found on the Bureau of Justice Statistics Arrest Data tool.
 
 **Geography:** This metric is available at the county and city level. The NIBRS data are available at the agency level, which can be aggregated to other geographies.
 
 **Consistency:** These data are consistent across the communities that provide data to the FBI, because the FBI establishes the definitions of the crimes included in the index and of juvenile as between 10 and 17 years of age regardless of state definition.
 
-**Subgroups:** This metric necessarily measures people within a particular age group but also provides arrest level data including age as well as race or ethnicity and gender. Ethnicity data is inconsistently collected and frequently missing.
+**Subgroups:** This metric necessarily measures people within a particular age group but also provides arrest-level data including age as well as race or ethnicity and gender. Ethnicity data is inconsistently collected and frequently missing.
 
 **Limitations:** Reporting to NIBRS is not mandatory, and although most communities are covered by NIBRS data, NIBRS does not capture the universe of reported crimes across the US. As a place-based measure, levels of arrests are affected by mobility in and out of the community, and because the measure is a rate, large increases or declines in the number of youth under age 18 in an area could also affect the metric. 

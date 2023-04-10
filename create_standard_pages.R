@@ -15,11 +15,12 @@ source("R/quarto_render_wrapper.R")
 source("R/render_pages.R")
 
 #For testing:
-# small <- prepped_counties %>%
-#   slice_head(n = 5)
-# 
-# render_pages(prepped_object = small)
+small <- prepped_counties %>%
+  slice_head(n = 12)
 
+tictoc::tic()
+render_pages(prepped_object = small, workers = 4)
+tictoc::toc()
 
 #For actual run:
 #render_pages(prepped_object = prepped_counties)
