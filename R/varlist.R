@@ -11,7 +11,7 @@ housing_varlist <- list(
     "Ratio for very low-income households_ci" = "share_affordable_50_ami_ci",
     "Ratio for extremely low-income households" = "share_affordable_30_ami",
     "Ratio for extremely low-income households_ci" = "share_affordable_30_ami_ci",
-    "housing_quality" = "housing_quality"
+    "share_affordable_quality" = "share_affordable_quality"
   )
 )
 
@@ -63,12 +63,12 @@ race_div_varlist <- list(
 
 trans_access <- list(
   summary_vars = c(
-    "Transit trips" = "count_transportation_trips"
+    "Transit trips" = "index_transit_trips"
   ),
   detail_vars = c(
-    "Transit trips" = "count_transportation_trips", 
+    "Transit trips" = "index_transit_trips", 
     "transit_trips_ci" = "Transit trips_ci",
-    "count_transportation_trips_quality" = "count_transportation_trips_quality"
+    "index_transit_trips_quality" = "index_transit_trips_quality"
   )
 )
 
@@ -154,7 +154,7 @@ job_wage <- list(
   ),
   detail_vars = c(
     "Ratio of pay to living wage" = "ratio_average_to_living_wage", 
-    "wage_ratio_quality" = "ratio_average_to_living_wage_quality"
+    "ratio_average_to_living_wage_quality" = "ratio_average_to_living_wage_quality"
   )
 )
 
@@ -231,12 +231,12 @@ election_turnout_varlist <- list(
 
 exp_crime_varlist <- list(
   summary_vars = c(
-    "Violent crime" = "crime_violent_rate",
-    "Property crime" = "crime_property_rate"
+    "Violent crime" = "rate_violent_crime",
+    "Property crime" = "rate_property_crime"
   ),
   detail_vars = c(
-    "Violent crime" = "crime_violent_rate",
-    "Property crime" = "crime_property_rate",
+    "Violent crime" = "rate_violent_crime",
+    "Property crime" = "rate_property_crime",
     "rate_crime_quality" = "rate_crime_quality"
   )
 )
@@ -273,11 +273,11 @@ social_capital2_varlist <- list(
 
 digital_access_varlist <- list(
   summary_vars = c(
-    "% Digital access" = "digital_access"
+    "% Digital access" = "share_digital_access"
   ),
   detail_vars = c(
-    "% Digital access" = "digital_access",
-    "digital_access_quality" = "digital_access_quality"
+    "% Digital access" = "share_digital_access",
+    "digital_access_quality" = "share_digital_access_quality"
   )
 )
 
@@ -307,7 +307,7 @@ trauma_varlist <- list(
   detail_vars = c(
     "Trauma" = "rate_injury_death",
     "Trauma_ci" = "rate_injury_death_ci",
-    "rate_injury_deaths_quality" = "rate_injury_deaths_quality"
+    "rate_injury_death_quality" = "rate_injury_death_quality"
   )
 )
 

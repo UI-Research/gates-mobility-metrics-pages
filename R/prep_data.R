@@ -17,7 +17,8 @@ prep_data <- function(data, geography = "county") {
     "meps20_hispanic", 
     "share_in_preschool", # % in pre k 
     "share_hs_degree", # % with HS degree
-    "share_employed"
+    "share_employed",
+    "digital_access"
   )
   
   if (geography == "county") {
@@ -100,15 +101,18 @@ prep_data <- function(data, geography = "county") {
     # update ub for share_hs_degree to 1
     mutate_at(vars(matches("share_hs_degree_ub")),     
               function(x) case_when(x > 1 ~ 1, TRUE  ~ x)) %>%
-    mutate_at(vars(any_of(c("share_desc_rep_asian_other", "share_desc_rep_black_nonhispanic", "share_desc_rep_white_nonhispanic"))),
+    mutate_at(vars(any_of(c("share_desc_rep_asian_other", 
+                            "share_desc_rep_black_nonhispanic", 
+                            "share_desc_rep_hispanic", 
+                            "share_desc_rep_white_nonhispanic"))),
               function(x) paste0("__:", scales::percent(x))) %>%    
     # convert to percentage
     mutate_at(perc_vars_in_data,             
               function (x) scales::percent(x, accuracy = 0.1)) %>%
     mutate_at(numeric_vars_one_digit,
               function(x) {format(round(x, 1), big.mark=",", scientific=FALSE)}) %>%
-    mutate_at(vars(matches("ratio_average_to_living_wage")), funs(as.numeric)) %>%
-    mutate_at(vars(matches("ratio_average_to_living_wage")),
+    mutate_at(vars(any_of("ratio_average_to_living_wage")), funs(as.numeric)) %>%
+    mutate_at(vars(any_of("ratio_average_to_living_wage")),
               function(x) {format(round(x, 2), big.mark=",",scientific=FALSE)}) %>%
     mutate_at(vars(matches("pctl"), -ends_with("_quality")), 
               function(x) scales::dollar(x, accuracy = 1)) %>%

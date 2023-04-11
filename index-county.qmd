@@ -85,13 +85,8 @@ data_years <- data_list$years
 data_race_ethnicity <- data_list$race_ethnicity
 data_race <- data_list$race
 data_race_share <- data_list$race_share
-
-# data_education_income <- read_csv(
-#   here("mobility-metrics", "SEDA_income.csv"), 
-#   col_types = my_col_type
-# ) %>%
-#   left_join(county_names, by = c("state", "county")) %>%
-#   prep_data()
+data_education_income <- data_list$education_income
+data_env <- data_list$env
 
 ```
 
@@ -1151,7 +1146,7 @@ create_tb_more_data(data = data_race_share,
                     metrics_info = env_m_info_lst, 
                     varname_maps = env_varlist) 
 
-create_tb_more_data(data = data_env_quality_poverty,
+create_tb_more_data(data = data_env,
                     metrics_info = env_m_info_lst, 
                     varname_maps = env_varlist) 
 
@@ -1350,7 +1345,7 @@ create_tb_detail(data = data_recent,
 
 ```{r}
 #| label: just-policing-more-data
-create_tb_more_data(data = data_race,
+create_tb_more_data(data = data_race_ethnicity,
                     metrics_info = jp_m_info_lst, 
                     varname_maps = just_policing_varlist) 
 

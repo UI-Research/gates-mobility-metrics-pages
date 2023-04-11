@@ -16,8 +16,7 @@ load_data <- function() {
         .default = col_double()
       )
   ) %>%
-    prep_data() %>%
-    select(-rate_juv_arrest_property, -rate_juv_arrest_violent)
+    prep_data()
   
   data_years <- read_csv(
     here("mobility-metrics","00_mobility-metrics_longitudinal.csv"),
@@ -37,7 +36,7 @@ load_data <- function() {
     prep_data()
   
   data_race_ethnicity <- read_csv(
-    here("mobility-metrics", "04_poverty-exposure_race-ethnicity_longitudinal.csv"), 
+    here("mobility-metrics", "01_mobility-metrics_race-ethnicity_longitudinal.csv"), 
     col_types = cols(
       state = col_character(),
       county = col_character(),
@@ -51,7 +50,7 @@ load_data <- function() {
     prep_data()
   
   data_race <- read_csv(
-    here("mobility-metrics", "02_mobility-metrics_race_recent.csv"), 
+    here("mobility-metrics", "02_mobility-metrics_race_longitudinal.csv"), 
     col_types = cols(
       state = col_character(),
       county = col_character(),
@@ -65,7 +64,7 @@ load_data <- function() {
     prep_data()
   
   data_race_share <- read_csv(
-    here("mobility-metrics", "03_mobility-metrics_race-share_recent.csv"), 
+    here("mobility-metrics", "03_mobility-metrics_race-share_longitudinal.csv"), 
     col_types = cols(
       state = col_character(),
       county = col_character(),
@@ -78,12 +77,44 @@ load_data <- function() {
   ) %>%
     prep_data()
   
+  data_education_income <-
+    read_csv(
+      here("mobility-metrics", "04_SEDA-income_longitudinal.csv"),
+      col_types = cols(
+        state = col_character(),
+        county = col_character(),
+        state_name = col_character(),
+        county_name = col_character(),
+        subgroup_type = col_character(),
+        subgroup = col_character(),
+        .default = col_double()
+      )
+    ) %>%
+    prep_data()
+      
+  data_env <-
+    read_csv(
+      here("mobility-metrics", "04_environmental-exposure_poverty_longitudinal.csv"),
+      col_types = cols(
+        state = col_character(),
+        county = col_character(),
+        state_name = col_character(),
+        county_name = col_character(),
+        subgroup_type = col_character(),
+        subgroup = col_character(),
+        .default = col_double()
+      )
+    ) %>%
+    prep_data()
+  
   data_list <- list(
     recent = data_recent,
     years = data_years,
     race_ethnicity = data_race_ethnicity,
     race = data_race,
-    race_share = data_race_share
+    race_share = data_race_share,
+    education_income = data_education_income,
+    env = data_env
   )
   
   return(data_list)
