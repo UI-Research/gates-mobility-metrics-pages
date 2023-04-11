@@ -273,10 +273,10 @@ social_capital2_varlist <- list(
 
 digital_access_varlist <- list(
   summary_vars = c(
-    "Digital access" = "digital_access"
+    "% Digital access" = "digital_access"
   ),
   detail_vars = c(
-    "Digital access" = "digital_access",
+    "% Digital access" = "digital_access",
     "digital_access_quality" = "digital_access_quality"
   )
 )

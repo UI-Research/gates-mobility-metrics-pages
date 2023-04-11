@@ -319,9 +319,9 @@ This metric is the share of 19- and 20-year-olds in a community who have a high 
 
 ##### [PREDICTOR: DIGITAL ACCESS](https://upward-mobility.urban.org/digital-access) 
 
-**Metric: Share of households with broadband access in the home** 
+**Metric: Share of people in households with broadband access in the home** 
 
-This is a measure of the share of households in a population that have a broadband internet subscription of any type (e.g., DSL, cable modem, fiber-optic cell phone, or satellite) at their place of residence.
+This is a measure of the share of people in households in a population that have a broadband internet subscription of any type (e.g., DSL, cable modem, fiber-optic cell phone, or satellite) at their place of residence.
 
 **Validity:** The US Census Bureau uses a series of questions to measure aspects of digital access across the nation. Existing literature makes extensive use of these measures of digital access. 
 
@@ -415,11 +415,11 @@ Household income is a standard measure of financial well-being. The Working Grou
 
 ##### [PREDICTOR: FINANCIAL SECURITY](https://upward-mobility.urban.org/financial-security-and-wealth-building-opportunities) 
 
-**Metric: Share of households with debt in collections** 
+**Metric: Share with debt in collections** 
 
 This measure indicates the share of people in an area with a credit bureau record with debt that has progressed from being past due to being in collections. Debt in collections includes past-due credit lines that have been closed and charged off on the creditor’s books as well as unpaid bills reported to the credit bureaus that the creditor is attempting to collect. For example, credit card accounts enter collections once they are 180 days past due. The city-level measure captures the share of people in an area with a credit bureau record with any derogatory debt, which is primarily debt in collections. 
 
-**Validity:** Consumers without other accessible financial resources may need to take out debt not only to pay for housing or education but also to pay for daily necessities such as food or utilities. The inability to pay back debts can signal current or near-term financial insecurity, particularly for families with lower incomes. Those households likely have few assets and as such may have negative wealth. Though not a standard measure, this metric has been used by researchers to distinguish between “good” debts (e.g., mortgages paid on time every month) and “bad” debts. 
+**Validity:** Consumers without other accessible financial resources may need to take out debt not only to pay for housing or education but also to pay for daily necessities such as food or utilities. The inability to pay back debts can signal current or near-term financial insecurity, particularly for families with lower incomes. Those households likely have few assets and as such may have negative wealth.
 
 **Availability:** Drawn directly from credit reports, the credit bureau data are nationally representative and uniform across the country. The data are restricted and are not accessible directly from credit bureaus but are made available in aggregate form on the Urban Institute's [Debt in America feature](https://apps.urban.org/features/debt-interactive-map/?type=overall&variable=pct_debt_collections) and on the Urban Institute’s [Financial Health & Wealth Dashboard](https://apps.urban.org/features/financial-health-wealth-dashboard/).
 

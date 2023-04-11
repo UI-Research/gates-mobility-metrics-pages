@@ -772,6 +772,19 @@ create_tb_detail(
 
 ```
 
+##### More Data
+
+```{r}
+#| label: digital-access-more-data
+
+create_tb_more_data(
+  data = data_race_ethnicity, 
+  metrics_info = get_vars_info("Digital access", data_summary_file = m_info)$info_lst, 
+  varname_maps = digital_access_varlist
+) 
+
+```
+
 :::
 
 
