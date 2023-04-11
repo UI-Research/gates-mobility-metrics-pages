@@ -16,21 +16,19 @@ source("R/quarto_render_wrapper.R")
 source("R/render_pages.R")
 
 #For testing:
-small_county <- prepped_counties %>%
-  slice_head(n = 4)
-
-tictoc::tic()
-render_pages(prepped_object = small_county, workers = 4, input = "index-county.qmd")
-tictoc::toc()
-
+# small_county <- prepped_counties %>%
+#   slice_head(n = 4)
+# 
+# tictoc::tic()
+# render_pages(prepped_object = small_county, workers = 4, input = "index-county.qmd")
+# tictoc::toc()
+# 
 # small_place <- prepped_places %>%
 #   slice_head(n = 4)
 # 
 # tictoc::tic()
 # render_pages(prepped_object = small_place, workers = 4, input = "index-place.qmd")
 # tictoc::toc()
-
-
 
 #For actual run:
 tictoc::tic()
