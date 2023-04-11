@@ -318,7 +318,7 @@ create_tb_detail(data = data_recent,
 
 ```{r economic-inclusion-table3}
 create_tb_more_data(
-  data = data_race_poverty,
+  data = data_race_ethnicity,
   metrics_info = ei_m_info_lst,
   varname_maps = econ_inc_varlist
 )

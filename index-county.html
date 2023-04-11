@@ -3178,7 +3178,8 @@ margin: 0 0 8px 0;
 <p><br></p>
 </div>
 <div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
-<pre><code>Error in filter(., year %in% metrics_info$years): object &#39;data_race_poverty&#39; not found</code></pre>
+<pre><code>Error in `pivot_longer()`:
+! `cols` must select at least one column.</code></pre>
 </div>
 </div>
 </div>
@@ -3811,10 +3812,9 @@ Caused by error in `match()`:
 <p><br></p>
 </div>
 <div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
-<pre><code>Error in `filter()`:
-ℹ In argument: `year %in% metrics_info$years`.
-Caused by error in `match()`:
-! &#39;match&#39; requires vector arguments</code></pre>
+<pre><code>Error in `all_of()`:
+! Can&#39;t rename columns that don&#39;t exist.
+✖ Columns `share_in_preschool`, `share_in_preschool_ci`, and `share_in_preschool_quality` don&#39;t exist.</code></pre>
 </div>
 </div>
 </div>
@@ -3904,10 +3904,9 @@ Caused by error in `match()`:
 <p><br></p>
 </div>
 <div id="tabset-10-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-3-tab">
-<pre><code>Error in `filter()`:
-ℹ In argument: `year %in% metrics_info$years`.
-Caused by error in `match()`:
-! &#39;match&#39; requires vector arguments</code></pre>
+<pre><code>Error in `all_of()`:
+! Can&#39;t rename columns that don&#39;t exist.
+✖ Columns `rate_learning`, `rate_learning_ci`, and `rate_learning_quality` don&#39;t exist.</code></pre>
 <pre><code>Error in filter(., year %in% metrics_info$years): object &#39;data_education_income&#39; not found</code></pre>
 </div>
 </div>
@@ -4168,10 +4167,9 @@ Caused by error in `match()`:
 <p><br></p>
 </div>
 <div id="tabset-12-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-3-tab">
-<pre><code>Error in `filter()`:
-ℹ In argument: `year %in% metrics_info$years`.
-Caused by error in `match()`:
-! &#39;match&#39; requires vector arguments</code></pre>
+<pre><code>Error in `all_of()`:
+! Can&#39;t rename columns that don&#39;t exist.
+✖ Columns `share_hs_degree`, `share_hs_degree_ci`, and `share_hs_degree_quality` don&#39;t exist.</code></pre>
 </div>
 </div>
 </div>
@@ -4197,10 +4195,8 @@ Caused by error in `match()`:
 ✖ Column `digital_access` doesn&#39;t exist.</code></pre>
 </div>
 <div id="tabset-13-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-3-tab">
-<pre><code>Error in `filter()`:
-ℹ In argument: `year %in% metrics_info$years`.
-Caused by error in `match()`:
-! &#39;match&#39; requires vector arguments</code></pre>
+<pre><code>Error in `pivot_longer()`:
+! `cols` must select at least one column.</code></pre>
 </div>
 </div>
 </div>
@@ -4298,10 +4294,9 @@ Caused by error in `match()`:
 <p><br></p>
 </div>
 <div id="tabset-14-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-3-tab">
-<pre><code>Error in `filter()`:
-ℹ In argument: `year %in% metrics_info$years`.
-Caused by error in `match()`:
-! &#39;match&#39; requires vector arguments</code></pre>
+<pre><code>Error in `all_of()`:
+! Can&#39;t rename columns that don&#39;t exist.
+✖ Columns `share_employed`, `share_employed_ci`, and `share_employed_quality` don&#39;t exist.</code></pre>
 </div>
 </div>
 </div>
@@ -4528,10 +4523,8 @@ Caused by error in `match()`:
 <p><br></p>
 </div>
 <div id="tabset-16-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-16-3-tab">
-<pre><code>Error in `filter()`:
-ℹ In argument: `year %in% metrics_info$years`.
-Caused by error in `match()`:
-! &#39;match&#39; requires vector arguments</code></pre>
+<pre><code>Error in `pivot_longer()`:
+! `cols` must select at least one column.</code></pre>
 </div>
 </div>
 </div>
@@ -4997,10 +4990,9 @@ Caused by error in `match()`:
 <p><br></p>
 </div>
 <div id="tabset-20-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-20-3-tab">
-<pre><code>Error in `filter()`:
-ℹ In argument: `year %in% metrics_info$years`.
-Caused by error in `match()`:
-! &#39;match&#39; requires vector arguments</code></pre>
+<pre><code>Error in `all_of()`:
+! Can&#39;t rename columns that don&#39;t exist.
+✖ Columns `rate_low_birth_weight`, `rate_low_birth_weight_ci`, and `rate_low_birth_weight_quality` don&#39;t exist.</code></pre>
 </div>
 </div>
 </div>
@@ -5426,10 +5418,6 @@ Caused by error in `match()`:
 <td headers="stub_1_1 Philadelphia, Pennsylvania" class="gt_row gt_left" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;" valign="middle" align="left">727.8</td></tr>
     <tr style="border-style: none;"><th id="stub_1_2" scope="row" class="gt_row gt_left gt_stub" style="border-style: none; padding-top: 8px; padding-bottom: 8px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; text-align: left;" valign="middle" bgcolor="#FFFFFF" align="left">Quality</th>
 <td headers="stub_1_2 Philadelphia, Pennsylvania" class="gt_row gt_left" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left; font-style: italic; background-color: #ECECEC;" bgcolor="#ECECEC" valign="middle" align="left">Marginal</td></tr>
-    <tr style="border-style: none;"><th id="stub_1_3" scope="row" class="gt_row gt_left gt_stub" style="border-style: none; padding-top: 8px; padding-bottom: 8px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; text-align: left;" valign="middle" bgcolor="#FFFFFF" align="left">rate_juv_arrest_property</th>
-<td headers="stub_1_3 Philadelphia, Pennsylvania" class="gt_row gt_left" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;" valign="middle" align="left">283.5</td></tr>
-    <tr style="border-style: none;"><th id="stub_1_4" scope="row" class="gt_row gt_left gt_stub" style="border-style: none; padding-top: 8px; padding-bottom: 8px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; text-align: left;" valign="middle" bgcolor="#FFFFFF" align="left">rate_juv_arrest_violent</th>
-<td headers="stub_1_4 Philadelphia, Pennsylvania" class="gt_row gt_left" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;" valign="middle" align="left">177.3</td></tr>
   </tbody>
   <tfoot class="gt_sourcenotes" style="border-style: none; color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3;" bgcolor="#FFFFFF">
     <tr style="border-style: none;">
@@ -5465,10 +5453,6 @@ Caused by error in `match()`:
 <td headers="stub_1_1 Philadelphia, Pennsylvania" class="gt_row gt_left" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;" valign="middle" align="left">727.8</td></tr>
     <tr style="border-style: none;"><th id="stub_1_2" scope="row" class="gt_row gt_left gt_stub" style="border-style: none; padding-top: 8px; padding-bottom: 8px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; text-align: left;" valign="middle" bgcolor="#FFFFFF" align="left">Quality</th>
 <td headers="stub_1_2 Philadelphia, Pennsylvania" class="gt_row gt_left" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left; font-style: italic; background-color: #ECECEC;" bgcolor="#ECECEC" valign="middle" align="left">Marginal</td></tr>
-    <tr style="border-style: none;"><th id="stub_1_3" scope="row" class="gt_row gt_left gt_stub" style="border-style: none; padding-top: 8px; padding-bottom: 8px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; text-align: left;" valign="middle" bgcolor="#FFFFFF" align="left">rate_juv_arrest_violent</th>
-<td headers="stub_1_3 Philadelphia, Pennsylvania" class="gt_row gt_left" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;" valign="middle" align="left">177.3</td></tr>
-    <tr style="border-style: none;"><th id="stub_1_4" scope="row" class="gt_row gt_left gt_stub" style="border-style: none; padding-top: 8px; padding-bottom: 8px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; text-align: left;" valign="middle" bgcolor="#FFFFFF" align="left">rate_juv_arrest_property</th>
-<td headers="stub_1_4 Philadelphia, Pennsylvania" class="gt_row gt_left" style="border-style: none; padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; text-align: left;" valign="middle" align="left">283.5</td></tr>
   </tbody>
   <tfoot class="gt_sourcenotes" style="border-style: none; color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3;" bgcolor="#FFFFFF">
     <tr style="border-style: none;">
@@ -5520,7 +5504,7 @@ Lower/Upper bound: The data used to construct this metric do not lend themselves
 “NA” in fields for metric values and data quality values indicates that the data are suppressed due to sample sizes or because that element is not applicable to that community (e.g., no zip code in the county is majority non-white).
 </div>
 <p><br></p>
-<p>Version: 2023-04-10 20:11:34</p>
+<p>Version: 2023-04-11 06:47:05</p>
 </section>
 </section>
 </section>

@@ -1,20 +1,13 @@
 load_data <- function() {
   
-  my_col_type <- cols(
-    state = col_character(), 
-    county = col_character()
-  )
-  
-  county_names <- read_csv(here("mobility-metrics", "old", "01_mobility-metrics.csv")) %>%
-    select(state, county, state_name, county_name) %>%
-    distinct()
-  
   data_recent <- read_csv(
     here("mobility-metrics", "00_mobility-metrics_recent.csv"), 
     col_type = 
       cols(
         state = col_character(),
         county = col_character(),
+        state_name = col_character(),
+        county_name = col_character(),
         ratio_black_nh_house_value_households = col_character(),
         ratio_hispanic_house_value_households = col_character(),
         ratio_other_nh_house_value_households = col_character(),
@@ -23,14 +16,16 @@ load_data <- function() {
         .default = col_double()
       )
   ) %>%
-    left_join(county_names, by = c("state", "county")) %>%
-    prep_data()
+    prep_data() %>%
+    select(-rate_juv_arrest_property, -rate_juv_arrest_violent)
   
   data_years <- read_csv(
     here("mobility-metrics","00_mobility-metrics_longitudinal.csv"),
     col_type = cols(
       state = col_character(),
       county = col_character(),
+      state_name = col_character(),
+      county_name = col_character(),
       ratio_black_nh_house_value_households = col_character(),
       ratio_hispanic_house_value_households = col_character(),
       ratio_other_nh_house_value_households = col_character(),
@@ -39,28 +34,48 @@ load_data <- function() {
       .default = col_double()
     )
   ) %>%
-    left_join(county_names, by = c("state", "county")) %>%
     prep_data()
   
   data_race_ethnicity <- read_csv(
-    here("mobility-metrics", "01_mobility-metrics_race-ethnicity_recent.csv"), 
-    col_types = my_col_type
+    here("mobility-metrics", "04_poverty-exposure_race-ethnicity_longitudinal.csv"), 
+    col_types = cols(
+      state = col_character(),
+      county = col_character(),
+      state_name = col_character(),
+      county_name = col_character(),
+      subgroup_type = col_character(),
+      subgroup = col_character(),
+      .default = col_double()
+    )
   ) %>%
-    left_join(county_names, by = c("state", "county")) %>%
     prep_data()
   
   data_race <- read_csv(
     here("mobility-metrics", "02_mobility-metrics_race_recent.csv"), 
-    col_types = my_col_type
+    col_types = cols(
+      state = col_character(),
+      county = col_character(),
+      state_name = col_character(),
+      county_name = col_character(),
+      subgroup_type = col_character(),
+      subgroup = col_character(),
+      .default = col_double()
+    )
   ) %>%
-    left_join(county_names, by = c("state", "county")) %>%
     prep_data()
   
   data_race_share <- read_csv(
     here("mobility-metrics", "03_mobility-metrics_race-share_recent.csv"), 
-    col_types = my_col_type
+    col_types = cols(
+      state = col_character(),
+      county = col_character(),
+      state_name = col_character(),
+      county_name = col_character(),
+      subgroup_type = col_character(),
+      subgroup = col_character(),
+      .default = col_double()
+    )
   ) %>%
-    left_join(county_names, by = c("state", "county")) %>%
     prep_data()
   
   data_list <- list(
