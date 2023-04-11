@@ -2,7 +2,7 @@
 #This does not handle any comparisons. For bespoke comparisons for individual
 # counties, please see the create_bespoke_pages.R script
 
-#Gabe Morrison
+#Gabe Morrison and Aaron Williams
 
 #2023-03-15
 
@@ -16,19 +16,19 @@ source("R/quarto_render_wrapper.R")
 source("R/render_pages.R")
 
 #For testing:
-# small_county <- prepped_counties %>%
-#   slice_head(n = 4)
-# 
+small_county <- prepped_counties %>%
+  slice_head(n = 4)
+
 # tictoc::tic()
 # render_pages(prepped_object = small_county, workers = 4, input = "index-county.qmd")
 # tictoc::toc()
+
+small_place <- prepped_places %>%
+  slice_head(n = 4)
 # 
-# small_place <- prepped_places %>%
-#   slice_head(n = 4)
-# 
-# tictoc::tic()
-# render_pages(prepped_object = small_place, workers = 4, input = "index-place.qmd")
-# tictoc::toc()
+tictoc::tic()
+render_pages(prepped_object = small_place, workers = 4, input = "index-place.qmd")
+tictoc::toc()
 
 #For actual run:
 tictoc::tic()
@@ -36,5 +36,5 @@ render_pages(prepped_object = prepped_counties, workers = 96)
 tictoc::toc()
 
 tictoc::tic()
-render_pages(prepped_object = prepped_places, workers = 96)
+render_pages(prepped_object = prepped_places, workers = 96, input = "index-place.qmd")
 tictoc::toc()
