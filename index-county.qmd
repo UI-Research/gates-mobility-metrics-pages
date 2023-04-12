@@ -38,12 +38,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- End Google Tag Manager (noscript) -->
 
-```{r header-image, fig.width = 5.14, fig.height = 1.46, echo = FALSE}
-
-# All defaults
-knitr::include_graphics(here::here("www", "images", "urban-institute-logo.png"))
-
-```
+![](www/images/urban-institute-logo.png){width=5.14in height=1.46in}
 
 ```{r setup}
 library(here)
@@ -87,6 +82,7 @@ data_race <- data_list$race
 data_race_share <- data_list$race_share
 data_education_income <- data_list$education_income
 data_env <- data_list$env
+pov_exp <- data_list$pov_exp
 
 ```
 
@@ -313,7 +309,7 @@ create_tb_detail(data = data_recent,
 
 ```{r economic-inclusion-table3}
 create_tb_more_data(
-  data = data_race_ethnicity,
+  data = pov_exp,
   metrics_info = ei_m_info_lst,
   varname_maps = econ_inc_varlist
 )
@@ -760,7 +756,7 @@ create_tb_detail(
 #| label: digital-access-more-data
 
 create_tb_more_data(
-  data = data_race_ethnicity, 
+  data = data_race, 
   metrics_info = get_vars_info("Digital access", data_summary_file = m_info)$info_lst, 
   varname_maps = digital_access_varlist
 ) 
@@ -1345,7 +1341,7 @@ create_tb_detail(data = data_recent,
 
 ```{r}
 #| label: just-policing-more-data
-create_tb_more_data(data = data_race_ethnicity,
+create_tb_more_data(data = data_race,
                     metrics_info = jp_m_info_lst, 
                     varname_maps = just_policing_varlist) 
 

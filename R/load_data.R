@@ -107,6 +107,20 @@ load_data <- function() {
     ) %>%
     prep_data()
   
+  data_pov_exp <- read_csv(
+    here("mobility-metrics", "02_poverty-exposure_race-ethnicity.csv"),
+    col_types = cols(
+      year = col_double(),
+      state = col_character(),
+      county = col_character(),
+      subgroup_type = col_character(),
+      subgroup = col_character(),
+      share_poverty_exposure = col_double(),
+      share_poverty_exposure_quality = col_double()
+    )
+  ) %>%
+    prep_data()
+  
   data_list <- list(
     recent = data_recent,
     years = data_years,
@@ -114,7 +128,8 @@ load_data <- function() {
     race = data_race,
     race_share = data_race_share,
     education_income = data_education_income,
-    env = data_env
+    env = data_env,
+    pov_exp = data_pov_exp
   )
   
   return(data_list)

@@ -38,14 +38,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- End Google Tag Manager (noscript) -->
 
-```{r header-image, fig.width = 5.14, fig.height = 1.46, echo = FALSE}
-
-# All defaults
-#knitr::include_graphics(here::here("www", "images", "urban-institute-logo.png"))
-
-```
-
-![](www/images/urban-institute-logo.png){width=5.14in}
+![](www/images/urban-institute-logo.png){width=5.14in height=1.46in}
 
 
 ```{r setup}
@@ -324,8 +317,7 @@ create_tb_detail(data = data_recent,
 
 ```{r economic-inclusion-table3}
 create_tb_more_data(
-  data = data_race_poverty %>% 
-    mutate(subgroup = if_else(subgroup == "Black, Non-Hispanic", "Black", subgroup)),
+  data = data_race_ethnicity,
   metrics_info = ei_m_info_lst,
   varname_maps = econ_inc_varlist
 )
@@ -460,98 +452,7 @@ create_tb_detail(data = data_recent,
 
 #### Predictor: Transportation access 
 
-::: {.panel-tabset .avoidpagebreak}
-
-
-##### Summary 
-
-```{r transportation-access}
-trans_info_lst <- get_vars_info("Transportation access", data_summary_file = m_info)$info_lst
-
-create_tb(data = data_recent, 
-          metrics_info = trans_info_lst, 
-          varname_maps = trans_access) 
-
-```
-
-<br>
-
-##### Detail
-
-```{r transportation-access-table2}
-create_tb_detail(data = data_recent, 
-                 metrics_info = trans_info_lst, 
-                 varname_maps = trans_access) 
-
-```
-
-<br>
-
-##### More Data
-
-```{r transportation-access-table3}
-data_race_share %>%
-  mutate(
-    subgroup = recode(
-      subgroup,
-      `Majority Non-White` = "Majority Non-White Tracts",
-      `Majority White, Non-Hispanic` = "Majority White, Non-Hispanic Tracts",
-      `Mixed Race and Ethnicity` = "No Majority Race/Ethnicity Tracts"
-    )
-  ) %>%
-  create_tb_more_data(metrics_info = trans_info_lst, 
-                      varname_maps = trans_access) 
-
-```
-
-:::
-
-<br>
-
-::: {.panel-tabset .avoidpagebreak}
-
-##### Summary 
-
-```{r transportation-cost}
-tr_cost_m_info_lst <- get_vars_info("Transportation cost", data_summary_file = m_info)$info_lst
-
-create_tb(data = data_recent, 
-          metrics_info = tr_cost_m_info_lst, 
-          varname_maps = trans_cost_varlist) 
-
-```
-
-<br>
-
-##### Detail
-
-```{r transportation-cost-table2}
-create_tb_detail(data = data_recent, 
-                 metrics_info = tr_cost_m_info_lst, 
-                 varname_maps = trans_cost_varlist) 
-
-```
-
-<br>
-
-##### More Data
-
-```{r transportation-cost-table3}
-data_race_share %>%
-  mutate(
-    subgroup = recode(
-      subgroup,
-      `Majority Non-White` = "Majority Non-White Tracts",
-      `Majority White, Non-Hispanic` = "Majority White, Non-Hispanic Tracts",
-      `Mixed Race and Ethnicity` = "No Majority Race/Ethnicity Tracts"
-    )
-  ) %>%
-  create_tb_more_data(metrics_info = tr_cost_m_info_lst, 
-                      varname_maps = trans_cost_varlist)
-
-```
-
-:::
+This metric is not currently available for cities. If you would like to explore this metric further, please refer to its corresponding county.
 
 <div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
 

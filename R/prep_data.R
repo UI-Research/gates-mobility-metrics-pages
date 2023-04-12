@@ -18,7 +18,7 @@ prep_data <- function(data, geography = "county") {
     "share_in_preschool", # % in pre k 
     "share_hs_degree", # % with HS degree
     "share_employed",
-    "digital_access"
+    "share_digital_access"
   )
   
   if (geography == "county") {
