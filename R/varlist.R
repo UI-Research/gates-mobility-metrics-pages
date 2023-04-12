@@ -88,7 +88,6 @@ share_in_presch_varlist <- list(
     "% Pre-kindergarten" = "share_in_preschool"),
   detail_vars = c(
     "% Pre-kindergarten" = "share_in_preschool", 
-    "% Pre-kindergarten_ci" = "share_in_preschool_ci",
     "share_in_preschool_quality" = "share_in_preschool_quality"
   )
 )

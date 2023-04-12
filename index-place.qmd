@@ -77,12 +77,13 @@ if (is.null(params$data)) {
 }
 
 data_recent <- data_list$recent
-  
 data_years <- data_list$years
-
 data_race_ethnicity <- data_list$race_ethnicity
-
 data_race_share <- data_list$race_share
+data_env <- data_list$env
+data_education_income <- data_list$education_income
+data_digital <- data_list$digital
+data_pov_exp <- data_list$pov_exp
 
 # data_education_income <- read_csv(
 #   here("mobility-metrics", "SEDA_income.csv"), 
@@ -317,7 +318,7 @@ create_tb_detail(data = data_recent,
 
 ```{r economic-inclusion-table3}
 create_tb_more_data(
-  data = data_race_ethnicity,
+  data = data_pov_exp,
   metrics_info = ei_m_info_lst,
   varname_maps = econ_inc_varlist
 )
@@ -353,21 +354,6 @@ create_tb(data = data_recent,
 create_tb_detail(data = data_recent, 
                  metrics_info = rd_m_info_lst, 
                  varname_maps = race_div_varlist) 
-
-```
-
-<br>
-
-##### More Data
-
-```{r}
-#| label: racial-diversity-table3
-
-create_tb_more_data(
-  data = data_years,
-  metrics_info = rd_m_info_lst, 
-  varname_maps = race_div_varlist
-)
 
 ```
 
@@ -682,7 +668,7 @@ create_tb_detail(
 #| label: digital-access-more-data
 
 create_tb_more_data(
-  data = data_race_ethnicity, 
+  data = data_digital, 
   metrics_info = get_vars_info("Digital access", data_summary_file = m_info)$info_lst, 
   varname_maps = digital_access_varlist
 ) 
@@ -974,7 +960,7 @@ create_tb_more_data(data = data_race_share,
                     metrics_info = env_m_info_lst, 
                     varname_maps = env_varlist) 
 
-create_tb_more_data(data = data_env_quality_poverty,
+create_tb_more_data(data = data_env,
                     metrics_info = env_m_info_lst, 
                     varname_maps = env_varlist) 
 
@@ -1027,19 +1013,6 @@ create_tb(data = data_recent,
 create_tb_detail(data = data_recent,
                  metrics_info = et_m_info_lst, 
                  varname_maps = election_turnout_varlist) 
-
-```
-
-<br>
-
-##### More data
-
-```{r}
-#| label: political-participation-more-data
-
-create_tb_more_data(data = data_years,
-                    metrics_info = et_m_info_lst, 
-                    varname_maps = election_turnout_varlist) 
 
 ```
 
