@@ -15,7 +15,16 @@ tictoc::toc()
 
 ```
 
+```{r}
+tictoc::tic()
+
+```
+
 ```{bash, engine.opts = '-l'}
 bash aws_cp_command.sh
 ```
 
+```{r}
+tictoc::toc()
+
+```

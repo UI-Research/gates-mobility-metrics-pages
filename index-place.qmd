@@ -38,8 +38,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- End Google Tag Manager (noscript) -->
 
-![](www/images/urban-institute-logo.png){width=5.14in height=1.46in}
-
+![](www/images/urban-institute-logo.png){width=5.14in}
 
 ```{r setup}
 library(here)
