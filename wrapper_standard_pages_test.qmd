@@ -6,10 +6,10 @@ editor: visual
 
 ```{r}
 library(tictoc)
-
 library(tidyverse)
 library(quarto)
 library(tidycensus)
+library(future)
 
 source("R/create_standard_county_df.R")
 source("R/create_standard_place_df.R")
@@ -20,7 +20,7 @@ source("R/render_pages.R")
 
 #For testing:
 small_county <- prepped_counties %>%
-  slice_head(n = 4)
+  slice_head(n = 120)
 small_place <- prepped_places %>%
   slice_head(n = 4)
 
@@ -28,7 +28,7 @@ small_place <- prepped_places %>%
 
 ```{r}
 tictoc::tic()
-render_pages(prepped_object = small_county, workers = 4, input = "index-county.qmd")
+render_pages(prepped_object = small_county, workers = 120, input = "index-county.qmd")
 tictoc::toc()
 
 tictoc::tic()

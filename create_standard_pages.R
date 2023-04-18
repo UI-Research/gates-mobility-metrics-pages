@@ -18,8 +18,8 @@ source("R/render_pages.R")
 
 #Set number of cores for instance:
 NCORES <- 124
-# 
-# #For testing:
+
+#For testing:
 # small_county <- prepped_counties %>%
 #   slice_head(n = 4)
 # 
