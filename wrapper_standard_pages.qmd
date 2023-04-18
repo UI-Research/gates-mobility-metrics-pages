@@ -15,7 +15,24 @@ tictoc::toc()
 
 ```
 
+```{r}
+tictoc::tic()
+
+```
+
 ```{bash, engine.opts = '-l'}
 bash aws_cp_command.sh
 ```
 
+```{r}
+tictoc::toc()
+
+```
+
+```{bash, engine.opts = '-l'}
+sudo aws s3 cp factsheets/ s3://mobility-metrics-data-pages-dev \
+    --recursive \
+    --exclude "*" \
+    --include "998_place-pages*" \
+    --include "999_county-pages*
+```

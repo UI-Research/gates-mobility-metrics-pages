@@ -6,6 +6,7 @@
 
 library(tidyverse)
 library(tidycensus)
+library(here)
 
 if(!file.exists("data/998_all-places.Rda")) {
   
