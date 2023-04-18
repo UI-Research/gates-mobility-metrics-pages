@@ -92,7 +92,7 @@ prep_data <- function(data) {
     # remove whitespace in values  
     mutate_at(vars(-one_of(c("state_county", "subgroup"))),
               function(x) gsub("\\s+", "", x)) %>%  
-    mutate_at(vars(matches("crime_violent_rate"), matches("crime_property_rate"), -ends_with("_quality")), 
+    mutate_at(vars(matches("rate_violent_crime"), matches("rate_property_crime"), -ends_with("_quality")), 
               function(x) gsub("\\..*","", x)) 
       
       

@@ -209,12 +209,12 @@ neonatal_varlist <- list(
 
 env_varlist <- list(
   summary_vars = c(
-    "Air quality index" = "air_quality_index"
+    "Air quality index" = "index_air_quality"
   ),
   detail_vars = c(
-    "Air quality index" = "air_quality_index", 
-    "Air quality index_ci" = "air_quality_index_ci",
-    "air_quality_index_quality" = "air_quality_index_quality"
+    "Air quality index" = "index_air_quality", 
+    "Air quality index_ci" = "index_air_quality_ci",
+    "air_quality_index_quality" = "index_air_quality_quality"
   )
 )
 
@@ -231,12 +231,12 @@ election_turnout_varlist <- list(
 
 exp_crime_varlist <- list(
   summary_vars = c(
-    "Violent crime" = "crime_violent_rate",
-    "Property crime" = "crime_property_rate"
+    "Violent crime" = "rate_violent_crime",
+    "Property crime" = "rate_property_crime"
   ),
   detail_vars = c(
-    "Violent crime" = "crime_violent_rate",
-    "Property crime" = "crime_property_rate",
+    "Violent crime" = "rate_violent_crime",
+    "Property crime" = "rate_property_crime",
     "rate_crime_quality" = "rate_crime_quality"
   )
 )
