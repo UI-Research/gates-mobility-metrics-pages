@@ -208,12 +208,12 @@ neonatal_varlist <- list(
 
 env_varlist <- list(
   summary_vars = c(
-    "Air quality index" = "air_quality_index"
+    "Air quality index" = "index_air_quality"
   ),
   detail_vars = c(
-    "Air quality index" = "air_quality_index", 
-    "Air quality index_ci" = "air_quality_index_ci",
-    "air_quality_index_quality" = "air_quality_index_quality"
+    "Air quality index" = "index_air_quality", 
+    "Air quality index_ci" = "index_air_quality_ci",
+    "air_quality_index_quality" = "index_air_quality_quality"
   )
 )
 
