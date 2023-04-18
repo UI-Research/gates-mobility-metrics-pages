@@ -16,8 +16,15 @@
 
 quarto_render_wrapper <- function(input, output_file, execute_params, dir_name) {
 
+  # delete directory and contents if it exists
+  if (dir.exists(dir_name)) {
+    
+    unlink(dir_name, recursive = TRUE)
+    
+  }
+  
   # create directory
-  if(!dir.exists(dir_name)){
+  if (!dir.exists(dir_name)){
     
     dir.create(dir_name)
     
@@ -59,12 +66,12 @@ quarto_render_wrapper <- function(input, output_file, execute_params, dir_name) 
   # copy description html
   description_html_name <- paste0(dir_name, "description.html")
   if (!file.exists(description_html_name)) {
-    
+
     file.copy(
       from = "description.html",
       to = description_html_name
     )
-    
+
   }
   
   www_name <- paste0(dir_name, "www")

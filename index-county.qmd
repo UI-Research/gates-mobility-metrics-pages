@@ -24,10 +24,6 @@ execute:
   message: false
   error: true
   output: asis
-project:
-  render:
-    - index-county.qmd
-    - description.qmd
 ---
 
 <!-- Google Tag Manager (noscript) -->
@@ -230,7 +226,7 @@ create_tb_more_data(
 
 <br>
 
-<div class="exclude">*Visit [here](description.html#sec-affordable-housing) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-housing-affordability) for more details about this predictor.*</div>
 
 <br>
 
@@ -273,7 +269,7 @@ create_tb_more_data(data = data_years,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-homelessness) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-housing-stability) for more details about this predictor.*</div>
 
 <br>
 
@@ -318,7 +314,7 @@ create_tb_more_data(
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-economic-inclusion) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-economic-inclusion) for more details about this predictor.*</div>
 
 <br>
 
@@ -365,7 +361,7 @@ create_tb_more_data(
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-racial-diversity) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-racial-diversity) for more details about this predictor.*</div>
 
 <br>
 
@@ -402,7 +398,7 @@ create_tb_detail(data = data_recent,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-social-capital) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-social-capital) for more details about this predictor.*</div>
 
 <br>
 
@@ -438,7 +434,7 @@ create_tb_detail(data = data_recent,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-social-capital) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-social-capital) for more details about this predictor.*</div>
 
 <br>
 
@@ -530,7 +526,7 @@ data_race_share %>%
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-social-capital) for more details about this predictor.*</div>
 
 <br>
 
@@ -577,7 +573,7 @@ create_tb_more_data(data = data_race_ethnicity,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-preschool) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-access-to-preschool) for more details about this predictor.*</div>
 
 <br>
 
@@ -624,7 +620,7 @@ create_tb_more_data(data = data_education_income,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-public-education) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-effective-public-education) for more details about this predictor.*</div>
 
 <br>
 
@@ -671,7 +667,7 @@ create_tb_more_data(data = data_years,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-poverty-concentration) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-school-economic-diversity) for more details about this predictor.*</div>
 
 <br>
 
@@ -714,7 +710,7 @@ create_tb_more_data(data = data_race_ethnicity,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-college-readiness) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-preparation-for-college) for more details about this predictor.*</div>
 
 <br>
 
@@ -766,7 +762,7 @@ create_tb_more_data(
 :::
 
 
-<div class="exclude">*Visit [here](description.html#sec-digital-access) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-digital-access) for more details about this predictor.*</div>
 
 <br>
 
@@ -814,7 +810,7 @@ create_tb_more_data(data = data_race_ethnicity,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-employment) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-employment-opportunities) for more details about this predictor.*</div>
 
 <br>
 
@@ -857,7 +853,7 @@ create_tb_more_data(data = data_years,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-job-living-wage) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-jobs-paying-a-living-wage) for more details about this predictor.*</div>
 
 <br>
 
@@ -900,7 +896,7 @@ create_tb_more_data(data = data_race_ethnicity,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-income) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-opportunities-for-income) for more details about this predictor.*</div>
 
 <br>
 
@@ -951,7 +947,7 @@ data_race_share %>%
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-financial-security) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-financial-security) for more details about this predictor.*</div>
 
 <br>
 
@@ -1013,7 +1009,7 @@ create_tb_more_data(
 
 :::
 
-<div class="exclude">*Visit [here]() for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-wealth-building-opportunities) for more details about this predictor.*</div>
 
 <br>
 
@@ -1049,7 +1045,7 @@ create_tb_detail(data = data_recent,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-access-to-health) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-access-to-health-services) for more details about this predictor.*</div>
 
 <br>
 
@@ -1092,7 +1088,7 @@ create_tb_more_data(data = data_race_ethnicity,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-neonatal-health) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-neonatal-health) for more details about this predictor.*</div>
 
 <br>
 
@@ -1150,7 +1146,7 @@ create_tb_more_data(data = data_env,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-environmental-quality) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-environmental-quality) for more details about this predictor.*</div>
 
 <br>
 
@@ -1189,7 +1185,7 @@ create_tb_detail(
 
 :::
 
-<div class="exclude">*Visit [here]() for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-safety-from-trauma) for more details about this predictor.*</div>
 
 <br>
 
@@ -1243,7 +1239,7 @@ create_tb_more_data(data = data_years,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-political-participation) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-political-participation) for more details about this predictor.*</div>
 
 <br>
 
@@ -1266,7 +1262,7 @@ create_tb_detail(
 
 :::
 
-<div class="exclude">*Visit [here]() for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-descriptive-representation) for more details about this predictor.*</div>
 
 <br>
 
@@ -1301,7 +1297,7 @@ create_tb_detail(data = data_recent,
 
 :::
 
-<div class="exclude">*Visit [here](description.html#sec-exposure-to-crime) for more details about this predictor.*</div>
+<div class="exclude">*Visit [here](description.html#predictor-safety-from-crime) for more details about this predictor.*</div>
 
 <br>
 
@@ -1347,7 +1343,11 @@ create_tb_more_data(data = data_race,
 
 ```
 
+<br>
+
 :::
+
+<div class="exclude">*Visit [here](description.html#predictor-just-policing) for more details about this predictor.*</div>
 
 <br>
 

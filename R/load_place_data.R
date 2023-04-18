@@ -75,10 +75,6 @@ load_place_data <- function() {
       .default = col_double()
     )
   ) %>%
-    rename(
-      share_debt_col = share_debt_coll,
-      share_debt_col_quality = share_debt_coll_quality
-    ) %>%
     prep_data(geography = "place")
   
   data_env <-
