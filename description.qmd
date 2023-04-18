@@ -146,7 +146,8 @@ Based on the US Census Bureau’s County Business Patterns (CBP) data, which mea
 \* These selection criteria on structural equity and structural relevance were explicitly added in a review of new metrics added to the Upward Mobility Framework in fall 2022. 
 
 <br> 
-<br>
+
+##### [PREDICTOR: SOCIAL CAPITAL](https://upward-mobility.urban.org/social-capital) 
 
 **Metric: Ratio of Facebook friends with higher socioeconomic status to Facebook friends with lower socioeconomic status**
 
