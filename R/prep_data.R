@@ -80,7 +80,7 @@ prep_data <- function(data, geography = "county") {
       -matches("year"),
       -starts_with("rate_learning"), 
       -all_of(perc_vars_in_data),
-      -starts_with("pctl"),
+      -starts_with("pctl")
     ) %>%
     select_if(is.numeric) %>% 
     names()
