@@ -1,0 +1,1379 @@
+---
+title: ''
+font: Lato
+format:
+  html:
+    embed-resources: true
+    toc: true
+    toc-location: left
+    toc-depth: 4
+    html-math-method: plain
+    css: www/web_report.css
+    output_dir: "."
+    include-in-header: analytics.html
+editor_options:
+  chunk_output_type: console
+params:
+  state_county: !expr c("42101")
+  fake_labels: FALSE
+  state_title: FALSE
+  data: NULL
+execute:
+  echo: false
+  warning: false
+  message: false
+  error: true
+  output: asis
+project:
+  render:
+    - index-county.qmd
+    - description.qmd
+---
+
+<!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2NMF8C"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) -->
+
+![](www/images/urban-institute-logo.png){width=5.14in height=1.46in}
+
+```{r setup}
+library(here)
+library(gt)
+library(tidyverse)
+library(glue)
+library(rlang)
+library(scales)
+library(qdapRegex)
+library(purrr)
+
+options(scipen = 999)
+
+source(here("R", "get_vars_info.R"))
+source(here("R", "unite_col_values.R"))
+source(here("R", "gen_variable_name_map.R"))
+source(here("R", "create_tb.R"))
+source(here("R", "create_tb_detail.R"))
+source(here("R", "create_tb_more_data.R"))
+source(here("R", "prep_data.R"))
+source(here("R", "varlist.R"))
+source(here("R", "load_data.R"))
+
+```
+
+```{r read-in-data-temporary}
+if (is.null(params$data)) {
+  
+  data_list <- load_data()
+  
+} else {
+  
+  data_list <- params$data
+  
+}
+
+data_recent <- data_list$recent
+data_years <- data_list$years
+data_race_ethnicity <- data_list$race_ethnicity
+data_race <- data_list$race
+data_race_share <- data_list$race_share
+data_education_income <- data_list$education_income
+data_env <- data_list$env
+pov_exp <- data_list$pov_exp
+
+```
+
+```{r}
+#| label: fake-labels
+
+if (params$fake_labels) {
+  
+  data <- data %>%
+    mutate(state_county = paste0(state, county)) %>%
+    mutate(county_name =
+             case_when(
+               state_county == params$state_county[1] ~ "Upward County County",
+               state_county == params$state_county[2] ~ "Peer 1",
+               state_county == params$state_county[3] ~ "Peer 2",
+               state_county == params$state_county[4] ~ "Peer 3",
+             )
+    )
+  
+  data <- data %>%
+    mutate(state_name = "MB") 
+}
+
+```
+
+```{r}
+m_info <- read_csv(here::here("data", "00_metrics-summary_county.csv"))
+
+m_info <- m_info %>% 
+  mutate_at(vars(c("notes", "metrics_description", "source_data")), 
+            function(x) gsub("&#700;", "'", x)) %>% 
+  mutate_at(vars(c("notes", "metrics_description", "source_data")), 
+            function(x) gsub("\"\"", "\"", x)) %>% 
+  mutate_if(is.character, list(~na_if(.,""))) %>% 
+  mutate(source_data2 = ifelse(is.na(source_data2), source_data, source_data2)) %>% 
+  mutate(notes2 =  ifelse(!is.na(notes2), paste(notes, notes2), notes)) %>%
+  mutate(notes3 =  ifelse(!is.na(notes3), paste(notes2, notes3), notes2))
+
+```
+
+```{r}
+if (!is.logical(params$state_title)) { #Check if logical
+  if(params$state_title == "no") { #if not logical, convert "no" to FALSE
+    st = FALSE
+  } else{
+    st = TRUE
+  }
+} else{ #If it is logical, set st as the value
+  st = params$state_title
+}
+
+# choose which title to use at the top of the pages
+if (!st) {
+
+  #get the upward county - the first element in the parameter 
+  upward_county <- data_recent %>% 
+    filter(fips == params$state_county[1]) %>% 
+    select(state_county) %>% 
+    pull() %>% 
+    first()
+
+} else {
+  
+  #get the upward county - the first element in the parameter 
+  upward_county <- data_recent %>% 
+    filter(fips == params$state_county[1]) %>% 
+    select(state_name) %>% 
+    pull() %>% 
+    first()
+  
+  upward_county <- paste("Selected Counties in", upward_county)
+  
+}
+
+```
+
+
+
+```{r create-title}
+title <- paste0("Mobility Metrics for ", upward_county)
+
+```
+
+
+<!-- This is a "hacky" way to get the header out of the TOC. The problem is that with the unlisted argument without a second empty header 1, quarto remove upward_county and all child elements. Now, we have a second empty header that is not listed in the TOC.  -->
+
+# `r title` {.unnumbered .unlisted}
+
+# `r  `
+
+These Mobility Metrics Data Tables are designed to help local leaders in every county and over 450 cities measure their communities’ status and progress towards increasing upward mobility and equity.
+
+The Urban Institute’s [Upward Mobility Framework](https://upward-mobility.urban.org/mobility-metrics-framework) identifies predictors that are strongly correlated with the likelihood that a community’s residents will be able to boost economic and social mobility from poverty. These predictors reflect five essential pillars that support upward mobility. 
+
+<br>
+
+![](www/images/mobility-icons/mobility-infographic-icons-panel-text.png){width=8in fig-align="center"}
+
+<br>
+
+## <span style="color:#62A1C0">Pillar: Opportunity-Rich & Inclusive Neighborhoods</span>
+
+![](www/images/mobility-icons/mobility-infographic-house-icon.png){width=2in fig-align="center"}
+
+#### Predictor: Housing Affordability 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r affordable-housing}
+af_m_info_lst <- get_vars_info("Housing affordability", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = af_m_info_lst, 
+          varname_maps = housing_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r affordable-housing-table2}
+create_tb_detail(data = data_recent, 
+                 metrics_info = af_m_info_lst, 
+                 varname_maps = housing_varlist) 
+```
+
+
+<br>
+
+##### More Data
+
+```{r affordable-housing-table3}
+create_tb_more_data(
+  data = data_years,
+  metrics_info = af_m_info_lst,
+  varname_maps = housing_varlist
+)
+
+```
+
+:::
+
+<br>
+
+<div class="exclude">*Visit [here](description.html#sec-affordable-housing) for more details about this predictor.*</div>
+
+<br>
+
+#### Predictor: Housing stability 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r housing-instability}
+m_info_lst <- get_vars_info("Housing instability", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent,
+          metrics_info = m_info_lst, 
+          varname_maps = housing_insta_varlist) 
+
+```
+
+<br><br>
+
+##### Detail
+
+```{r housing-instability-table2}
+create_tb_detail(data = data_recent,
+                 metrics_info = m_info_lst, 
+                 varname_maps = housing_insta_varlist) 
+
+```
+
+<br><br>
+
+##### More Data
+
+```{r create_tb_multi_yr_homeless}
+create_tb_more_data(data = data_years,
+                    metrics_info = m_info_lst, 
+                    varname_maps = housing_insta_varlist) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-homelessness) for more details about this predictor.*</div>
+
+<br>
+
+#### Predictor: Economic inclusion 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r economic-inclusion}
+ei_m_info_lst <- get_vars_info("Economic inclusion", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = ei_m_info_lst, 
+          varname_maps = econ_inc_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r economic-inclusion-table2}
+create_tb_detail(data = data_recent, 
+                 metrics_info = ei_m_info_lst, 
+                 varname_maps = econ_inc_varlist) 
+
+```
+
+<br>
+
+##### More Data
+
+```{r economic-inclusion-table3}
+create_tb_more_data(
+  data = pov_exp,
+  metrics_info = ei_m_info_lst,
+  varname_maps = econ_inc_varlist
+)
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-economic-inclusion) for more details about this predictor.*</div>
+
+<br>
+
+#### Predictor: Racial diversity 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r racial-diversity}
+rd_m_info_lst <- get_vars_info("Racial diversity", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = rd_m_info_lst, 
+          varname_maps = race_div_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r racial-diversity-table2}
+create_tb_detail(data = data_recent, 
+                 metrics_info = rd_m_info_lst, 
+                 varname_maps = race_div_varlist) 
+
+```
+
+<br>
+
+##### More Data
+
+```{r}
+#| label: racial-diversity-table3
+
+create_tb_more_data(
+  data = data_years,
+  metrics_info = rd_m_info_lst, 
+  varname_maps = race_div_varlist
+)
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-racial-diversity) for more details about this predictor.*</div>
+
+<br>
+
+
+#### Predictor: Social Capital {.tabset .avoidpagebreak}
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r}
+#| label: social-capital1-summary
+
+sc1_m_info_lst <- get_vars_info("Social capital1", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = sc1_m_info_lst, 
+          varname_maps = social_capital1_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: social-capital1-detail
+
+create_tb_detail(data = data_recent,
+                 metrics_info = sc1_m_info_lst, 
+                 varname_maps = social_capital1_varlist)
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-social-capital) for more details about this predictor.*</div>
+
+<br>
+
+#### Predictor: Social Capital {.tabset .avoidpagebreak}
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r}
+#| label: social-capital2-summary
+
+sc2_m_info_lst <- get_vars_info("Social capital2", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = sc2_m_info_lst, 
+          varname_maps = social_capital2_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: social-capital2-detail
+
+create_tb_detail(data = data_recent,
+                 metrics_info = sc2_m_info_lst, 
+                 varname_maps = social_capital2_varlist)
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-social-capital) for more details about this predictor.*</div>
+
+<br>
+
+#### Predictor: Transportation access 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary 
+
+```{r transportation-access}
+trans_info_lst <- get_vars_info("Transportation access", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = trans_info_lst, 
+          varname_maps = trans_access) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r transportation-access-table2}
+create_tb_detail(data = data_recent, 
+                 metrics_info = trans_info_lst, 
+                 varname_maps = trans_access) 
+
+```
+
+<br>
+
+##### More Data
+
+```{r transportation-access-table3}
+create_tb_more_data(
+  data = data_race_share,
+  metrics_info = trans_info_lst, 
+  varname_maps = trans_access
+) 
+
+```
+
+:::
+
+<br>
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary 
+
+```{r transportation-cost}
+tr_cost_m_info_lst <- get_vars_info("Transportation cost", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = tr_cost_m_info_lst, 
+          varname_maps = trans_cost_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r transportation-cost-table2}
+create_tb_detail(data = data_recent, 
+                 metrics_info = tr_cost_m_info_lst, 
+                 varname_maps = trans_cost_varlist) 
+
+```
+
+<br>
+
+##### More Data
+
+```{r transportation-cost-table3}
+data_race_share %>%
+  mutate(
+    subgroup = recode(
+      subgroup,
+      `Majority Non-White` = "Majority Non-White Tracts",
+      `Majority White, Non-Hispanic` = "Majority White, Non-Hispanic Tracts",
+      `Mixed Race and Ethnicity` = "No Majority Race/Ethnicity Tracts"
+    )
+  ) %>%
+  create_tb_more_data(metrics_info = tr_cost_m_info_lst, 
+                      varname_maps = trans_cost_varlist)
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-transportation-access) for more details about this predictor.*</div>
+
+<br>
+
+## <span style="color:#F584BE">Pillar: High-Quality Education</span>
+
+![](www/images/mobility-icons/mobility-infographic-book-icon.png){width=2in fig-align="center"}
+
+#### Predictor: Access to preschool 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r education}
+ap_m_info_lst <- get_vars_info("Access to preschool", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = ap_m_info_lst, 
+          varname_maps = share_in_presch_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r education-table2}
+create_tb_detail(data = data_recent, 
+                 metrics_info = ap_m_info_lst, 
+                 varname_maps = share_in_presch_varlist) 
+
+```
+
+<br>
+
+##### More Data
+
+```{r education-table3}
+create_tb_more_data(data = data_race_ethnicity,
+                    metrics_info = ap_m_info_lst, 
+                    varname_maps = share_in_presch_varlist) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-preschool) for more details about this predictor.*</div>
+
+<br>
+
+
+#### Predictor: Effective public education 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r learning}
+epd_m_info_lst <- get_vars_info("Effective public education", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = epd_m_info_lst, 
+          varname_maps = eff_pub_ed) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r learning-table2}
+create_tb_detail(data = data_recent, 
+                 metrics_info = epd_m_info_lst, 
+                 varname_maps = eff_pub_ed) 
+
+```
+
+<br>
+
+##### More Data
+
+```{r learning-table3}
+create_tb_more_data(data = data_race_ethnicity,
+                    metrics_info = epd_m_info_lst, 
+                    varname_maps = eff_pub_ed) 
+
+create_tb_more_data(data = data_education_income,
+                    metrics_info = epd_m_info_lst, 
+                    varname_maps = eff_pub_ed) 
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-public-education) for more details about this predictor.*</div>
+
+<br>
+
+#### Predictor: School economic diversity 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r}
+#| label: student-poverty-summary
+
+spoverty_m_info_lst <- get_vars_info("School economic diversity", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = spoverty_m_info_lst, 
+          varname_maps = stu_poverty_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: student-poverty-detail
+
+create_tb_detail(data = data_recent, 
+                 metrics_info = spoverty_m_info_lst, 
+                 varname_maps = stu_poverty_varlist) 
+
+```
+
+##### More data
+
+```{r}
+#| label: student-poverty-more-data
+
+create_tb_more_data(data = data_years, 
+                    metrics_info = spoverty_m_info_lst, 
+                    varname_maps = stu_poverty_varlist) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-poverty-concentration) for more details about this predictor.*</div>
+
+<br>
+
+#### Predictor: Preparation for college 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r college-readiness}
+m_info_lst <- get_vars_info("Preparation for college", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = m_info_lst, 
+          varname_maps = college_readiness) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r college-readiness-table2}
+create_tb_detail(data = data_recent, 
+                 metrics_info = m_info_lst, 
+                 varname_maps = college_readiness) 
+
+```
+
+<br>
+
+##### More Data
+
+```{r college-readiness-table3}
+create_tb_more_data(data = data_race_ethnicity, 
+                    metrics_info = m_info_lst, 
+                    varname_maps = college_readiness) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-college-readiness) for more details about this predictor.*</div>
+
+<br>
+
+#### Predictor: Digital access 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r}
+#| label: digital-access-summary
+
+create_tb(
+  data = data_recent, 
+  metrics_info = get_vars_info("Digital access", data_summary_file = m_info)$info_lst, 
+  varname_maps = digital_access_varlist
+) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: digital-access-detail
+
+create_tb_detail(
+  data = data_recent, 
+  metrics_info = get_vars_info("Digital access", data_summary_file = m_info)$info_lst, 
+  varname_maps = digital_access_varlist
+) 
+
+```
+
+##### More Data
+
+```{r}
+#| label: digital-access-more-data
+
+create_tb_more_data(
+  data = data_race, 
+  metrics_info = get_vars_info("Digital access", data_summary_file = m_info)$info_lst, 
+  varname_maps = digital_access_varlist
+) 
+
+```
+
+:::
+
+
+<div class="exclude">*Visit [here](description.html#sec-digital-access) for more details about this predictor.*</div>
+
+<br>
+
+## <span style="color:#8ECF86">Pillar: Rewarding Work</span>
+
+![](www/images/mobility-icons/mobility-infographic-money-icon.png){width=2in fig-align="center"}
+
+#### Predictor: Employment Opportunities 
+
+::: {.panel-tabset .avoidpagebreak}
+
+
+##### Summary
+
+```{r employment}
+emp_m_info_lst <- get_vars_info("Employment opportunities", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = emp_m_info_lst, 
+          varname_maps = emp_lst) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r employment-table2}
+create_tb_detail(data = data_recent, 
+                 metrics_info = emp_m_info_lst, 
+                 varname_maps = emp_lst) 
+
+```
+
+<br>
+
+##### More Data
+
+```{r employment-table3}
+create_tb_more_data(data = data_race_ethnicity,
+                    metrics_info = emp_m_info_lst, 
+                    varname_maps = emp_lst) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-employment) for more details about this predictor.*</div>
+
+<br>
+
+#### Predictor: Access to jobs paying a living wage 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r wages}
+m_info_lst <- get_vars_info("Jobs paying a living wage", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = m_info_lst, 
+          varname_maps = job_wage) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r wages-table2}
+create_tb_detail(data = data_recent, 
+                 metrics_info = m_info_lst, 
+                 varname_maps = job_wage) 
+
+```
+
+<br>
+
+##### More Data
+
+```{r wages-table3}
+create_tb_more_data(data = data_years,
+                    metrics_info = m_info_lst, 
+                    varname_maps = job_wage) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-job-living-wage) for more details about this predictor.*</div>
+
+<br>
+
+#### Predictor: Opportunities for Income 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r income}
+income_m_info_lst <- get_vars_info("Opportunities for income", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = income_m_info_lst, 
+          varname_maps = income_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r income-table1}
+create_tb_detail(data = data_recent,
+                 metrics_info = income_m_info_lst, 
+                 varname_maps = income_varlist)
+
+```
+
+<br>
+
+##### More Data 
+
+```{r income-table2}
+create_tb_more_data(data = data_race_ethnicity,
+                    metrics_info = income_m_info_lst,
+                    varname_maps = income_varlist)
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-income) for more details about this predictor.*</div>
+
+<br>
+
+#### Predictor: Financial security 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r financial-security}
+m_info_lst <- get_vars_info("Financial security", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = m_info_lst, 
+          varname_maps = debt_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r financial-security-table2}
+create_tb_detail(data = data_recent,
+                 metrics_info = m_info_lst, 
+                 varname_maps = debt_varlist) 
+
+```
+
+<br>
+
+##### More Data
+
+```{r financial-security-table3}
+data_race_share %>%
+  filter(subgroup != "Mixed Race and Ethnicity") %>%
+  mutate(
+    subgroup = recode(
+      subgroup,
+      `Majority Non-White` = "Majority Non-White ZIPs",
+      `Majority White, Non-Hispanic` = "Majority White, Non-Hispanic ZIPs"
+    )
+  ) %>%
+  create_tb_more_data(metrics_info = m_info_lst, 
+                      varname_maps = debt_varlist) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-financial-security) for more details about this predictor.*</div>
+
+<br>
+
+
+#### Predictor: Wealth-Building Opportunities 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r}
+#| label: wealth-building-summary
+
+create_tb(
+  data = data_recent, 
+  metrics_info = get_vars_info(
+    "Wealth-building opportunities", 
+    data_summary_file = m_info
+  )$info_lst, 
+  varname_maps = wealth_building_varlist
+) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: wealth-building-detail
+
+create_tb_detail(
+  data = data_recent,
+  metrics_info = get_vars_info(
+    "Wealth-building opportunities", 
+    data_summary_file = m_info
+  )$info_lst, 
+  varname_maps = wealth_building_varlist
+) 
+
+```
+<br>
+
+##### More Data
+
+```{r}
+#| label: wealth-building-more-data
+
+create_tb_more_data(
+  data = data_years,
+  metrics_info = get_vars_info(
+    "Wealth-building opportunities", 
+    data_summary_file = m_info
+  )$info_lst, 
+  varname_maps = wealth_building_varlist
+)
+
+```
+
+:::
+
+<div class="exclude">*Visit [here]() for more details about this predictor.*</div>
+
+<br>
+
+## <span style="color:#8A9191">Pillar: Healthy Environment and Access to Good Healthcare</span>
+
+![](www/images/mobility-icons/mobility-infographic-health-icon.png){width=2in fig-align="center"}
+
+#### Predictor: Access to health services 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r health-access}
+m_info_lst <- get_vars_info("Access to health services", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = m_info_lst, 
+          varname_maps = accuils_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r health-acces-table2}
+create_tb_detail(data = data_recent,
+                 metrics_info = m_info_lst, 
+                 varname_maps = accuils_varlist) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-access-to-health) for more details about this predictor.*</div>
+
+<br>
+
+#### Predictor: Neonatal health 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r neonatal-health}
+nh_m_info_lst <- get_vars_info("Neonatal health", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = nh_m_info_lst, 
+          varname_maps = neonatal_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r neonatal-health-table2}
+create_tb_detail(data = data_recent,
+                 metrics_info = nh_m_info_lst, 
+                 varname_maps = neonatal_varlist) 
+
+```
+
+<br>
+
+##### More Data
+
+```{r neonatal-health-table3}
+create_tb_more_data(data = data_race_ethnicity,
+                    metrics_info = nh_m_info_lst, 
+                    varname_maps = neonatal_varlist) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-neonatal-health) for more details about this predictor.*</div>
+
+<br>
+
+#### Predictor: Environmental quality 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r environmental-quality}
+env_m_info_lst <- get_vars_info("Environmental quality", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = env_m_info_lst, 
+          varname_maps = env_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r environmental-quality-table2}
+create_tb_detail(data = data_recent,
+                 metrics_info = env_m_info_lst, 
+                 varname_maps = env_varlist) 
+
+
+```
+
+<br>
+
+##### More Data
+
+```{r environmental-quality-table3}
+data_race_share <- data_race_share %>%
+  mutate(
+    subgroup = recode(
+      subgroup,
+      `Majority Non-White` = "Majority Non-White Tracts",
+      `Majority White, Non-Hispanic` = "Majority White, Non-Hispanic Tracts",
+      `Mixed Race and Ethnicity` = "No Majority Race/Ethnicity Tracts"
+    )
+  )
+
+create_tb_more_data(data = data_race_share,
+                    metrics_info = env_m_info_lst, 
+                    varname_maps = env_varlist) 
+
+create_tb_more_data(data = data_env,
+                    metrics_info = env_m_info_lst, 
+                    varname_maps = env_varlist) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-environmental-quality) for more details about this predictor.*</div>
+
+<br>
+
+
+#### Predictor: Safety from Trauma 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r}
+#| label: safety-from-trauma-summary
+
+create_tb(
+  data = data_recent, 
+  metrics_info = get_vars_info("Safety from trauma", data_summary_file = m_info)$info_lst, 
+  varname_maps = trauma_varlist
+) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: safety-from-trauma-detail
+
+create_tb_detail(
+  data = data_recent,
+  metrics_info = get_vars_info("Safety from trauma", data_summary_file = m_info)$info_lst, 
+  varname_maps = trauma_varlist
+) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here]() for more details about this predictor.*</div>
+
+<br>
+
+## <span style="color:#FFD175">Pillar: Responsible and Just Governance</span>
+
+![](www/images/mobility-icons/mobility-infographic-govt-icon.png){width=2in fig-align="center"}
+
+#### Predictor: Political participation 
+
+::: {.panel-tabset .avoidpagebreak}
+
+
+##### Summary
+
+```{r}
+#| label: political-participation
+
+et_m_info_lst <- get_vars_info("Political participation", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = et_m_info_lst, 
+          varname_maps = election_turnout_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: political-participation-detail
+
+create_tb_detail(data = data_recent,
+                 metrics_info = et_m_info_lst, 
+                 varname_maps = election_turnout_varlist) 
+
+```
+
+<br>
+
+##### More data
+
+```{r}
+#| label: political-participation-more-data
+
+create_tb_more_data(data = data_years,
+                    metrics_info = et_m_info_lst, 
+                    varname_maps = election_turnout_varlist) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-political-participation) for more details about this predictor.*</div>
+
+<br>
+
+#### Predictor: Descriptive Representation {.tabset .avoidpagebreak}
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Detail
+
+```{r}
+#| label: descriptive-representation-detail
+
+create_tb_detail(
+  data = data_recent,
+  metrics_info = get_vars_info("Descriptive representation among local officials", data_summary_file = m_info)$info_lst, 
+  varname_maps = descriptive_representation_varlist
+) 
+
+```
+
+:::
+
+<div class="exclude">*Visit [here]() for more details about this predictor.*</div>
+
+<br>
+
+
+#### Predictor: Safety from Crime 
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r safety}
+ec_m_info_lst <- get_vars_info("Safety from crime", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = ec_m_info_lst, 
+          varname_maps = exp_crime_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r safety-table2}
+create_tb_detail(data = data_recent,
+                 metrics_info = ec_m_info_lst, 
+                 varname_maps = exp_crime_varlist)
+
+```
+
+<br>
+
+:::
+
+<div class="exclude">*Visit [here](description.html#sec-exposure-to-crime) for more details about this predictor.*</div>
+
+<br>
+
+#### Predictor: Just policing {.tabset .avoidpagebreak}
+
+::: {.panel-tabset .avoidpagebreak}
+
+##### Summary
+
+```{r}
+#| label: just-policing-summary
+
+jp_m_info_lst <- get_vars_info("Just policing", data_summary_file = m_info)$info_lst
+
+create_tb(data = data_recent, 
+          metrics_info = jp_m_info_lst, 
+          varname_maps = just_policing_varlist) 
+
+```
+
+<br>
+
+##### Detail
+
+```{r}
+#| label: just-policing-detail
+
+create_tb_detail(data = data_recent,
+                 metrics_info = jp_m_info_lst, 
+                 varname_maps = just_policing_varlist)
+
+```
+
+<br>
+
+##### More Data
+
+```{r}
+#| label: just-policing-more-data
+create_tb_more_data(data = data_race,
+                    metrics_info = jp_m_info_lst, 
+                    varname_maps = just_policing_varlist) 
+
+```
+
+:::
+
+<br>
+
+## Additional Notes on Data {.printbreak}
+
+### Data Quality
+
+| “Strong” indicates that the metric is measured with adequate accuracy and sample size. 
+| “Marginal” indicates that there are known shortcomings of the data for this metric for this community, and the metric should be used with caution. 
+| “Weak” indicates that although the metric could be computed for this community, we have serious concerns about how accurately it is measured for this community and do not recommend its use. Instead, we recommend seeking more local data sources for this metric.
+
+<br><br>
+
+### Confidence Intervals
+
+| Confidence intervals shown are 95 percent.
+| * This confidence interval is not available at this time.
+| + A confidence interval is not applicable.
+| Lower/Upper bound:  The data used to construct this metric do not lend themselves to conventional confidence intervals. The value of the metric shown represents are best estimate; the lower and upper bounds represent alternative estimates of the metric under different assumptions about missing data. 
+
+<div class="p2">“NC” in fields for confidence intervals or lower/upper bounds means that we are not able to calculate this because the underlying data lack variation. </div>
+
+### Missing and Suppressed Values
+
+<div class="p2">“NA” in fields for metric values and data quality values indicates that the data are suppressed due to sample sizes or because that element is not applicable to that community (e.g., no zip code in the county is majority non-white). </div> 
+
+<br>
+
+Version: `r Sys.time()`

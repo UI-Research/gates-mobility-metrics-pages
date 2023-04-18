@@ -14,7 +14,7 @@
 #' 
 #' @returns pwalk implicitly returns the list inputted to it. The return objects
 #' are not used for this function, however.
-render_pages <- function(prepped_object, input = "index.qmd", workers = 1) {
+render_pages <- function(prepped_object, input, workers = 1) {
   
   future::plan(future::multisession, workers = workers)
   
@@ -31,10 +31,10 @@ render_pages <- function(prepped_object, input = "index.qmd", workers = 1) {
       .options = furrr::furrr_options(seed = NULL)
     )
   
-  prepped_object %>% 
-    select(to = dir_name) %>% 
-    pwalk(file.copy, from = "www", recursive = TRUE, overwrite = TRUE) %>% 
-    pwalk(file.copy, from = "site_libs",  recursive = TRUE, overwrite = TRUE) #%>% 
-    #pwalk(file.copy, from = "description.html", overwrite = TRUE) 
+  # prepped_object %>% 
+  #   select(to = dir_name) %>% 
+  #   #pwalk(file.copy, from = "www", recursive = TRUE, overwrite = TRUE) %>% 
+  #   pwalk(file.copy, from = "site_libs",  recursive = TRUE, overwrite = TRUE) #%>% 
+  #   #pwalk(file.copy, from = "description.html", overwrite = TRUE) 
   
 }
