@@ -24,10 +24,6 @@ execute:
   message: false
   error: true
   output: asis
-project:
-  render:
-    - index-place.qmd
-    - description.qmd
 ---
 
 <!-- Google Tag Manager (noscript) -->
