@@ -129,7 +129,8 @@ load_data <- function() {
         .default = col_double()
       )
     ) %>%
-    prep_data()
+    prep_data() %>%
+    filter(subgroup_type != "race-ethnicity")
   
   data_pov_exp <- read_csv(
     here("mobility-metrics", "02_poverty-exposure_race-ethnicity.csv"),
