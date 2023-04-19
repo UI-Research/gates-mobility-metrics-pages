@@ -16,7 +16,15 @@ load_data <- function() {
         .default = col_double()
       )
   ) %>%
-    prep_data()
+    prep_data() %>%
+    select(
+      -share_in_preschool_ub,
+      -share_in_preschool_lb,
+      -share_hs_degree_ub,
+      -share_hs_degree_lb,
+      -share_employed_ub,
+      -share_employed_ub
+    )
   
   data_years <- read_csv(
     here("mobility-metrics","00_mobility-metrics_longitudinal.csv"),
@@ -33,7 +41,15 @@ load_data <- function() {
       .default = col_double()
     )
   ) %>%
-    prep_data()
+    prep_data() %>%
+    select(
+      -share_in_preschool_ub,
+      -share_in_preschool_lb,
+      -share_hs_degree_ub,
+      -share_hs_degree_lb,
+      -share_employed_ub,
+      -share_employed_ub
+    )
   
   data_race_ethnicity <- read_csv(
     here("mobility-metrics", "01_mobility-metrics_race-ethnicity_longitudinal.csv"), 
@@ -47,7 +63,15 @@ load_data <- function() {
       .default = col_double()
     )
   ) %>%
-    prep_data()
+    prep_data() %>%
+    select(
+      -share_in_preschool_ub,
+      -share_in_preschool_lb,
+      -share_hs_degree_ub,
+      -share_hs_degree_lb,
+      -share_employed_ub,
+      -share_employed_ub
+    )
   
   data_race <- read_csv(
     here("mobility-metrics", "02_mobility-metrics_race_longitudinal.csv"), 
