@@ -2,9 +2,7 @@
 #This does not handle any comparisons. For bespoke comparisons for individual
 # counties, please see the create_bespoke_pages.R script
 
-#Gabe Morrison and Aaron Williams
-
-#2023-03-15
+#Gabe Morrison and Aaron R. Williams
 
 library(tidyverse)
 library(quarto)
@@ -17,22 +15,22 @@ source("R/render_pages.R")
 
 
 #Set number of cores for instance:
-NCORES <- 124
-
-#For testing:
-small_county <- prepped_counties %>%
-  slice_head(n = 4)
-
-tictoc::tic()
-render_pages(prepped_object = small_county, workers = 4, input = "index-county.qmd")
-tictoc::toc()
-
-small_place <- prepped_places %>%
-  slice_head(n = 4)
-
-tictoc::tic()
-render_pages(prepped_object = small_place, workers = 4, input = "index-place.qmd")
-tictoc::toc()
+NCORES <- 124 
+# 
+# #For testing:
+# small_county <- prepped_counties %>%
+#   slice_head(n = 4)
+# 
+# tictoc::tic()
+# render_pages(prepped_object = small_county, workers = 4, input = "index-county.qmd")
+# tictoc::toc()
+# 
+# small_place <- prepped_places %>%
+#   slice_head(n = 4)
+# 
+# tictoc::tic()
+# render_pages(prepped_object = small_place, workers = 4, input = "index-place.qmd")
+# tictoc::toc()
 
 # #For actual run:
 tictoc::tic()

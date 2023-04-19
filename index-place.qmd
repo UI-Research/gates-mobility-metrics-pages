@@ -74,10 +74,10 @@ if (is.null(params$data)) {
 data_recent <- data_list$recent
 data_years <- data_list$years
 data_race_ethnicity <- data_list$race_ethnicity
+data_race <- data_list$race
 data_race_share <- data_list$race_share
 data_env <- data_list$env
 data_education_income <- data_list$education_income
-data_digital <- data_list$digital
 data_pov_exp <- data_list$pov_exp
 
 # data_education_income <- read_csv(
@@ -663,7 +663,7 @@ create_tb_detail(
 #| label: digital-access-more-data
 
 create_tb_more_data(
-  data = data_digital, 
+  data = data_race, 
   metrics_info = get_vars_info("Digital access", data_summary_file = m_info)$info_lst, 
   varname_maps = digital_access_varlist
 ) 

@@ -131,7 +131,6 @@ college_readiness <- list(
   ),
   detail_vars = c(
     "% HS degree" = "share_hs_degree", 
-    "% HS degree_ci" = "share_hs_degree_ci",
     "share_hs_degree_quality" = "share_hs_degree_quality"
   )
 )
@@ -142,7 +141,6 @@ emp_lst <- list(
   ),
   detail_vars = c(
     "Employment to population ratio" = "share_employed", 
-    "Employment to population ratio_ci" = "share_employed_ci",
     "share_employed_quality" = "share_employed_quality"
   )
 )
@@ -208,12 +206,12 @@ neonatal_varlist <- list(
 
 env_varlist <- list(
   summary_vars = c(
-    "Air quality index" = "air_quality_index"
+    "Air quality index" = "index_air_quality"
   ),
   detail_vars = c(
-    "Air quality index" = "air_quality_index", 
-    "Air quality index_ci" = "air_quality_index_ci",
-    "air_quality_index_quality" = "air_quality_index_quality"
+    "Air quality index" = "index_air_quality", 
+    "Air quality index_ci" = "index_air_quality_ci",
+    "air_quality_index_quality" = "index_air_quality_quality"
   )
 )
 

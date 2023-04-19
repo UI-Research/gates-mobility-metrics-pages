@@ -62,6 +62,11 @@ load_place_data <- function() {
   ) %>%
     prep_data(geography = "place")
   
+  data_race <- read_csv(
+    here("mobility-metrics", "07_mobility-metrics_place_race_longitudinal.csv")
+  ) %>%
+    prep_data(geography = "place")
+  
   data_race_share <- read_csv(
     here("mobility-metrics", "08_place_mobility-metrics_race-share_longitudinal.csv"), 
     col_types = cols(
@@ -107,9 +112,6 @@ load_place_data <- function() {
     ) %>%
     prep_data(geography = "place")
   
-  data_digital <- read_csv(here("mobility-metrics", "07_digital-access_city_subgroup.csv")) %>%
-    prep_data(geography = "place") 
-  
   data_pov_exp <- read_csv(here("mobility-metrics", "07_poverty-exposure_city_subgroup.csv")) %>%
     prep_data(geography = "place")
   
@@ -117,10 +119,10 @@ load_place_data <- function() {
     recent = data_recent,
     years = data_years,
     race_ethnicity = data_race_ethnicity,
+    race = data_race,
     race_share = data_race_share,
     env = data_env,
     education_income = data_education_income,
-    digital = data_digital,
     pov_exp = data_pov_exp
   )
   

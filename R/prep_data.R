@@ -71,23 +71,28 @@ prep_data <- function(data, geography = "county") {
   # filter to get the ones only existing in the data 
   perc_vars_in_data <- all_perc_vars[(all_perc_vars %in% colnames(data))]
   
+  quality_boolean <- grepl("_quality", colnames(data))
+  quality_variables <- colnames(data)[quality_boolean]
+  quality_variables <- quality_variables[quality_variables != "index_air_quality"]
+  
+  
   numeric_vars_one_digit <- data %>% 
     select(
       -matches("ratio_average_to_living_wage"),
       -matches("share_desc_rep"), 
       -fips, 
-      -matches("_quality"),
+      -any_of(quality_variables),
       -matches("year"),
       -starts_with("rate_learning"), 
       -all_of(perc_vars_in_data),
-      -starts_with("pctl"),
+      -starts_with("pctl")
     ) %>%
     select_if(is.numeric) %>% 
     names()
   
   
   data <- data %>%
-    mutate_at(vars(ends_with("_quality")),
+    mutate_at(vars(any_of(quality_variables)),
               function(x) recode(x, `1` = "Strong", `2` = "Marginal", `3` = "Weak")) %>% 
     mutate(
       across(
