@@ -264,17 +264,6 @@ create_tb_detail(data = data_recent,
 
 ```
 
-<br><br>
-
-##### More Data
-
-```{r create_tb_multi_yr_homeless}
-create_tb_more_data(data = data_years,
-                    metrics_info = m_info_lst, 
-                    varname_maps = housing_insta_varlist) 
-
-```
-
 :::
 
 <div class="exclude">*Visit [here](description.html#predictor-housing-stability) for more details about this predictor.*</div>
