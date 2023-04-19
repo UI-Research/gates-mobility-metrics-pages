@@ -2,9 +2,7 @@
 #This does not handle any comparisons. For bespoke comparisons for individual
 # counties, please see the create_bespoke_pages.R script
 
-#Gabe Morrison and Aaron Williams
-
-#2023-03-15
+#Gabe Morrison and Aaron R. Williams
 
 library(tidyverse)
 library(quarto)

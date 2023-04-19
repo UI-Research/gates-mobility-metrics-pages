@@ -74,6 +74,7 @@ if (is.null(params$data)) {
 data_recent <- data_list$recent
 data_years <- data_list$years
 data_race_ethnicity <- data_list$race_ethnicity
+data_race <- data_list$race
 data_race_share <- data_list$race_share
 data_env <- data_list$env
 data_education_income <- data_list$education_income
