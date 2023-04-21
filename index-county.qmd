@@ -14,7 +14,7 @@ format:
 editor_options:
   chunk_output_type: console
 params:
-  state_county: !expr c("42101")
+  state_county: !expr c("51760", "51041", "51087", "51710")
   fake_labels: FALSE
   state_title: FALSE
   data: NULL
