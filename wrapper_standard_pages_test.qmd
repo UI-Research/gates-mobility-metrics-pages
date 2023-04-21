@@ -28,7 +28,7 @@ small_place <- prepped_places %>%
 
 ```{r}
 tictoc::tic()
-render_pages(prepped_object = small_county, workers = 120, input = "index-county.qmd")
+render_pages(prepped_object = small_county, workers = 4, input = "index-county.qmd")
 tictoc::toc()
 
 tictoc::tic()

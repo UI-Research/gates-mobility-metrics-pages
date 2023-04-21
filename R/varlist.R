@@ -131,7 +131,6 @@ college_readiness <- list(
   ),
   detail_vars = c(
     "% HS degree" = "share_hs_degree", 
-    "% HS degree_ci" = "share_hs_degree_ci",
     "share_hs_degree_quality" = "share_hs_degree_quality"
   )
 )
@@ -142,7 +141,6 @@ emp_lst <- list(
   ),
   detail_vars = c(
     "Employment to population ratio" = "share_employed", 
-    "Employment to population ratio_ci" = "share_employed_ci",
     "share_employed_quality" = "share_employed_quality"
   )
 )

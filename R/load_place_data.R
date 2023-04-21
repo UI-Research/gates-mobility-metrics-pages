@@ -112,9 +112,6 @@ load_place_data <- function() {
     ) %>%
     prep_data(geography = "place")
   
-  data_digital <- read_csv(here("mobility-metrics", "07_digital-access_city_subgroup.csv")) %>%
-    prep_data(geography = "place") 
-  
   data_pov_exp <- read_csv(here("mobility-metrics", "07_poverty-exposure_city_subgroup.csv")) %>%
     prep_data(geography = "place")
   
@@ -126,7 +123,6 @@ load_place_data <- function() {
     race_share = data_race_share,
     env = data_env,
     education_income = data_education_income,
-    digital = data_digital,
     pov_exp = data_pov_exp
   )
   
