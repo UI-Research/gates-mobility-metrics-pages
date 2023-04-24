@@ -14,7 +14,7 @@ format:
 editor_options:
   chunk_output_type: console
 params:
-  state_county: !expr c("51760", "51041", "51087", "51710")
+  state_county: !expr c("51760")
   fake_labels: FALSE
   state_title: FALSE
   data: NULL
@@ -78,28 +78,36 @@ data_race <- data_list$race
 data_race_share <- data_list$race_share
 data_education_income <- data_list$education_income
 data_env <- data_list$env
-pov_exp <- data_list$pov_exp
+data_pov_exp <- data_list$pov_exp
 
 ```
 
 ```{r}
 #| label: fake-labels
 
-if (params$fake_labels) {
+relabel_data <- function(data) {
   
   data <- data %>%
-    mutate(state_county = paste0(state, county)) %>%
-    mutate(county_name =
-             case_when(
-               state_county == params$state_county[1] ~ "Upward County County",
-               state_county == params$state_county[2] ~ "Peer 1",
-               state_county == params$state_county[3] ~ "Peer 2",
-               state_county == params$state_county[4] ~ "Peer 3",
-             )
-    )
+    mutate(state_county = "Upward County, MB")
   
   data <- data %>%
     mutate(state_name = "MB") 
+  
+  return(data)
+  
+}
+
+if (params$fake_labels) {
+  
+  data_recent <- relabel_data(data_recent)
+  data_years <- relabel_data(data_years)
+  data_race_ethnicity <- relabel_data(data_race_ethnicity)
+  data_race <- relabel_data(data_race)
+  data_race_share <- relabel_data(data_race_share)
+  data_education_income <- relabel_data(data_education_income)
+  data_env <- relabel_data(data_env)
+  data_pov_exp <- relabel_data(data_pov_exp)
+  
 }
 
 ```
@@ -305,7 +313,7 @@ create_tb_detail(data = data_recent,
 
 ```{r economic-inclusion-table3}
 create_tb_more_data(
-  data = pov_exp,
+  data = data_pov_exp,
   metrics_info = ei_m_info_lst,
   varname_maps = econ_inc_varlist
 )
