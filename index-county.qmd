@@ -169,13 +169,16 @@ title <- paste0("Mobility Metrics for ", upward_county)
 
 # `r  `
 
-These Mobility Metrics Data Tables are designed to help local leaders in every county and over 450 cities measure their communities’ status and progress towards increasing upward mobility and equity.
+These mobility metrics data tables are designed to help local leaders in every county and over 450 cities in the United States measure the status of and progress toward increasing upward mobility and equity in their communities. 
 
-The Urban Institute’s [Upward Mobility Framework](https://upward-mobility.urban.org/mobility-metrics-framework) identifies predictors that are strongly correlated with the likelihood that a community’s residents will be able to boost economic and social mobility from poverty. These predictors reflect five essential pillars that support upward mobility. 
-
+The Urban Institute’s [Upward Mobility Framework](https://upward-mobility.urban.org/mobility-metrics-framework) identifies five essential pillars and a set of [evidence-based predictors](https://upward-mobility.urban.org/boosting-upward-mobility-metrics-inform-local-action-second-edition) that are strongly correlated with the likelihood that a community can create conditions to propel people out of poverty and boost the economic and social mobility of its residents while narrowing racial and ethnic inequities. Identified by an interdisciplinary group of [experts and refined through testing](https://upward-mobility.urban.org/methodology) with cross-sector partners, these predictors cover diverse aspects of community, such as affordable housing, living-wage jobs, and political participation, and can be influenced by state and local policy.  
 <br>
 
+This [suite of metrics](https://upward-mobility.urban.org/boosting-upward-mobility-metrics-inform-local-action-second-edition) is available for communities to use in combination with the [Planning Guide for Local Action](https://upward-mobility.urban.org/boosting-upward-mobility-planning-guide-local-action) to work toward developing a [strategic plan for upward mobility](https://upward-mobility.urban.org/mobility-action-plans) and monitoring progress over time.    
+
 ![](www/images/mobility-icons/mobility-infographic-icons-panel-text.png){width=8in fig-align="center"}
+
+*Return [here](https://upward-mobility.urban.org/mobility-metrics-data) to select another community*
 
 <br>
 
@@ -1358,6 +1361,7 @@ create_tb_more_data(data = data_race,
 | “Strong” indicates that the metric is measured with adequate accuracy and sample size. 
 | “Marginal” indicates that there are known shortcomings of the data for this metric for this community, and the metric should be used with caution. 
 | “Weak” indicates that although the metric could be computed for this community, we have serious concerns about how accurately it is measured for this community and do not recommend its use. Instead, we recommend seeking more local data sources for this metric.
+| “NA” indicates that the metric value may be suppressed or unavailable and the quality is not applicable. 
 
 <br><br>
 
