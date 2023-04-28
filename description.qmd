@@ -66,7 +66,7 @@ This metric reports the number of available housing units affordable for househo
 
 ##### [PREDICTOR: HOUSING STABILITY ](https://upward-mobility.urban.org/housing-stability) 
 
-**Metric: Number and share of public-school children who are ever homeless during the school year** 
+**Metric: Number and share of public school children who are ever homeless during the school year** 
 
 This metric identifies the number of children (age 3 through 12th grade) who are enrolled in public schools and whose primary nighttime residence at any time during a school year was a shelter, transitional housing, or awaiting foster care placement; unsheltered (e.g., a car, park, campground, temporary trailer, or abandoned building); a hotel or motel because of the lack of alternative adequate accommodations; or in housing of other people because of loss of housing, economic hardship, or a similar reason.
 
@@ -88,7 +88,7 @@ This metric identifies the number of children (age 3 through 12th grade) who are
 
 ##### [PREDICTOR: ECONOMIC INCLUSION](https://upward-mobility.urban.org/economic-inclusion) 
 
-**Metric: Share of people experiencing poverty who live in high-poverty neighborhoods** 
+**Metric: Share of residents experiencing poverty who live in high-poverty neighborhoods** 
 
 This metric measures the share of residents in a city or county who are experiencing poverty and who live in high-poverty neighborhoods (measured by census tract). People and families are classified as being in poverty if their income (before taxes and excluding capital gains or noncash benefits) is less than their poverty threshold, as defined by the US Census Bureau. Poverty thresholds vary by the size of the family and age of its members and are updated for inflation, but do not vary geographically. A high-poverty neighborhood is one in which over 40 percent of the residents are experiencing poverty.
 
@@ -155,7 +155,8 @@ Based on the US Census Bureau’s County Business Patterns (CBP) data, which mea
 \* These selection criteria on structural equity and structural relevance were explicitly added in a review of new metrics added to the Upward Mobility Framework in fall 2022. 
 
 <br> 
-<br>
+
+##### [PREDICTOR: SOCIAL CAPITAL](https://upward-mobility.urban.org/social-capital) 
 
 **Metric: Ratio of Facebook friends with higher socioeconomic status to Facebook friends with lower socioeconomic status**
 
@@ -387,7 +388,7 @@ This metric shows average pay relative to the cost of living in a particular are
 
 **Subgroups:** This metric cannot be disaggregated into subgroups because these data describe wages rather than the people earning those wages. 
 
-**Limitations:** The measure cannot be disaggregated into subgroups. The measure relies on MIT’s computations of “living wages.” The living wage data is not available for every year. To compute the 2021 metric, the 2022 living wage data was deflated using the BLS’ consumer price index for all urban consumers. For the 2018 and 2014 metrics, the living wage data was deflated from 2019. 
+**Limitations:** The measure cannot be disaggregated into subgroups. The measure relies on MIT’s computations of “living wages.” The living wage data is not available for every year.
 
 <br> 
 
@@ -395,7 +396,7 @@ This metric shows average pay relative to the cost of living in a particular are
 
 **Metric: Household income at the 20th, 50th, and 80th percentiles** 
 
-Household income is a standard measure of financial well-being. The Working Group recommended the metrics at these three levels to track how and for whom incomes are changing in a given place as well as whether incomes are rising across the board or more so for those with higher incomes. To identify income percentiles, all households are ranked by income from lowest to highest. The income level threshold for the poorest 20 percent of households is the value at the 20th percentile. The 50th percentile income threshold indicates the median, with half of households earning less and half earning more. The income level threshold for the richest 20 percent of households is the value at the 80th percentile. 
+Household income is a standard measure of financial well-being. The three levels help a community to track how and for whom incomes are changing in a given place as well as whether incomes are rising across the board or more so for those with higher incomes. To identify income percentiles, all households are ranked by income from lowest to highest. The income level threshold for the poorest 20 percent of households is the value at the 20th percentile. The 50th percentile income threshold indicates the median, with half of households earning less and half earning more. The income level threshold for the richest 20 percent of households is the value at the 80th percentile. 
 
 **Validity:** These are well-established and frequently-used measures to assess the financial well-being of families by several federal agencies and many scholars. 
 
@@ -431,7 +432,7 @@ This measure indicates the share of people in an area with a credit bureau recor
 
 **Subgroups:** This metric can reflect racial or socioeconomic subgroups by matching it with demographic characteristics at the ZIP code level, such as racial or ethnic composition or concentrated poverty. 
 
-**Limitations:** Aside from the limitations related to geography, subgroup analysis, and the definition of debt in collections, these data do not capture “credit invisible” households without a credit record. And as a measure of financial well-being, even if few consumers have no debt in collections, many may still have too little wealth or savings to be primed for upward mobility. This measure is somewhat sensitive to resident turnover. If a large number of residents without overdue debt move into a county or ZIP code, or if a large number of residents with overdue debt move out, this measure could shift without any in-household change in debt management. The measure from the Urban Institute’s [Financial Health & Wealth Dashboard](https://apps.urban.org/features/financial-health-wealth-dashboard/) captures all derogatory debt, which is primarily debt in collections, while the measure from the Urban Institute’s [Debt in America feature](https://apps.urban.org/features/debt-interactive-map/?type=overall&variable=pct_debt_collections) includes debt in collections only.
+**Limitations:** Aside from the limitations related to geography, subgroup analysis, and the definition of debt in collections, these data do not capture “credit invisible” households without a credit record. And as a measure of financial well-being, even if few consumers have no debt in collections, many may still have too little wealth or savings to be primed for upward mobility. This measure is somewhat sensitive to resident turnover. If many residents without overdue debt move into a county or ZIP code, or if many residents with overdue debt move out, this measure could shift without any in-household change in debt management. The measure from the Urban Institute’s [Financial Health & Wealth Dashboard](https://apps.urban.org/features/financial-health-wealth-dashboard/) captures all derogatory debt, which is primarily debt in collections, while the measure from the Urban Institute’s [Debt in America feature](https://apps.urban.org/features/debt-interactive-map/?type=overall&variable=pct_debt_collections) includes debt in collections only.
 
 <br> 
 
@@ -469,7 +470,7 @@ This metric highlights racial and ethnic disparities in an important source of w
 
 **Metric: Ratio of population per primary care physician** 
 
-This ratio represents the number of residents per primary care physician in a community. Primary care physicians include practicing non-federal physicians (MDs and DOs) under age 75 specializing in general practice medicine, family medicine, internal medicine, and pediatrics. If a community has a population of 50,000 and has 20 primary care physicians, for example, the ratio would be: 2,500:1. If a community has no primary care physicians, the ratio would be the population to zero.
+This ratio represents the number of residents per primary care physician in a community. Primary care physicians include practicing non-federal physicians (MDs and DOs) under age 75 specializing in general practice medicine, family medicine, internal medicine, and pediatrics. If a community has a population of 50,000 and has 20 primary care physicians, for example, the ratio would be: 2,500:1. If a community has no primary care physicians, the ratio would be the population size to zero.
 
 **Validity:** This metric is defined and established by the US Department of Health and Human Services, Health Resources and Services Administration, Bureau of Health Workforce. 
 
@@ -493,7 +494,7 @@ This ratio represents the number of residents per primary care physician in a co
 
 ##### [PREDICTOR: NEONATAL HEALTH](https://upward-mobility.urban.org/neonatal-health)
 
-**Metric: Share of low-weight births** 
+**Metric: Share with low birth weight** 
 
 A child born weighing less than 5 pounds 8 ounces (<2,500 grams) is considered to have a low birthweight. Children born below that threshold are at elevated risk for health conditions and infant mortality. This metric looks at the share of low-birthweight babies out of all births with available birthweight information.
 
@@ -531,7 +532,7 @@ The air quality index is an index that summarizes potential exposure to harmful 
 
 **Subgroups:** This metric can reflect racial or socioeconomic subgroups by matching it with demographic characteristics of residents at the census tract level, such as racial or ethnic composition or concentrated poverty.
 
-**Limitations:** These data may not be updated with enough frequency for some communities. Alternative data sources can offer information annually, or even daily, but they are only available at higher levels of geography and for a limited set of places, and cannot be disaggregated by subgroups.
+**Limitations:** These data may not be updated with enough frequency for some communities. Alternative data sources can offer information annually, or even daily, but they are only available at higher levels of geography and for a limited set of places and cannot be disaggregated by subgroups.
 
 <br> 
 
@@ -543,7 +544,7 @@ This metric represents the number of deaths of community residents, both from in
 
 **Validity:** These data are collected by the National Center for Health Statistics and the Centers for Disease Control and Prevention. Injury can be traumatic, and people living in communities with a high incidence of injury can experience both the direct trauma from injury and vicarious trauma from injuries sustained by others, which can lead to psychological distress, increased rates of aggression, and diminished physical health. High rates of injuries that lead to death in a community, such as opioid overdose, suicide, traffic fatalities, and homicide, can lead to community-level trauma. The County Health Rankings and Roadmaps uses a five-year average to increase data reliability. 
 
-**Availability:** The metric can be constructed using data from the National Center for Health Statistics Mortality Files and Centers for Disease Control and Prevention’s Wide-Ranging Online Data for Epidemiologic Research, which are publicly available nationwide. The metric is available publicly for counties through the County Health Rankings and Roadmaps website.
+**Availability:** The metric can be constructed using data from the National Center for Health Statistics Mortality Files and Centers for Disease Control and Prevention’s Wide-Ranging Online Data for Epidemiologic Research, which are publicly available nationwide. The metric is available publicly for counties through the [County Health Rankings & Roadmaps](https://www.countyhealthrankings.org/) website.
 
 **Frequency:** This metric can be updated annually. 
 
@@ -595,9 +596,9 @@ This metric measures the ratio of the share of the city council or county board 
 
 **Validity:** Scholars of political science have used this metric in articles published in peer-reviewed journals. 
 
-**Availability:** Data on the racial or ethnic characteristics of city council or county boards can be collected locally. Communities should ask their local elected officials to self-report their racial or ethnic identity (see suggestions for collecting this information in the Boosting Upward Mobility Planning Guide (Fedorowicz et al. 2022, pg. 27)). The racial and ethnic composition of residents in those communities can be calculated using data from the US Census Bureau’s American Community Survey, which is publicly available nationwide.
+**Availability:** Data on the racial or ethnic characteristics of city council or county boards can be collected locally. Communities should ask their local elected officials to self-report their racial or ethnic identity (see suggestions for collecting this information in the Boosting Upward Mobility [Planning Guide](https://upward-mobility.urban.org/boosting-upward-mobility-planning-guide-local-action) (Fedorowicz et al. 2022, pg. 27)). The racial and ethnic composition of residents in those communities can be calculated using data from the US Census Bureau’s American Community Survey, which is publicly available nationwide.
 
-**Frequency:** This metric can be updated as frequently as elections occur. The population denominator can be updated annually. 
+**Frequency:** This metric can be updated as frequently as elections occur. The population figure can be updated annually. 
 
 **Geography:** This metric is available at the county and city level; however, aggregation to the city level is imprecise because census tracts and census places do not always perfectly align. 
 
@@ -615,7 +616,7 @@ This metric measures the ratio of the share of the city council or county board 
 
 The Federal Bureau of Investigation’s (FBI) National Incident-Based Reporting System (NIBRS) provides a standard, well-defined measure of crime. Reported crimes are captured as crimes against persons (e.g., assault, homicide, human trafficking, kidnapping or abduction, and sex offenses) and crimes against property (e.g., arson, bribery, burglary or breaking and entering, counterfeiting or forgery, destruction/damage/vandalism of property, embezzlement, extortion or blackmail, larceny or theft offenses, motor vehicle theft, robbery, and stolen property offenses). Crimes against society and arrest-only offenses are also captured in NIBRS but are not used in our data. This metric shows crime rates as the number of reported crimes per 100,000 people.
 
-**Validity:** NIBRS is the most widely used way to measure and compare reported crime across communities. The FBI provides definitions of each variable collected and provides technical specifications and a user manual. 
+**Validity:** NIBRS is the most widely used source to measure and compare reported crime across the country. The FBI provides definitions of each variable collected and provides technical specifications and a user manual. 
 
 **Availability:** The metric can be constructed using data from NIBRS, which is gaining increased participation from agencies across the country. As of 2021, agencies reporting to NIBRS covered 66 percent of the US population. If a community is not included in NIBRS, the relevant and comparable data can be requested by the public directly from their local law enforcement agencies or may be posted on their local law enforcement website. 
 
