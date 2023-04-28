@@ -1,0 +1,61 @@
+---
+title: "wrapper_standard_pages_test"
+format: html
+editor: visual
+---
+
+```{r}
+library(tictoc)
+library(tidyverse)
+library(quarto)
+library(tidycensus)
+library(future)
+
+source("R/create_standard_county_df.R")
+source("R/create_standard_place_df.R")
+source("R/quarto_render_wrapper.R")
+source("R/render_pages.R")
+
+
+
+#For testing:
+small_county <- prepped_counties %>%
+  slice_head(n = 120)
+small_place <- prepped_places %>%
+  slice_head(n = 4)
+
+```
+
+```{r}
+tictoc::tic()
+render_pages(prepped_object = small_county, workers = 4, input = "index-county.qmd")
+tictoc::toc()
+
+tictoc::tic()
+render_pages(prepped_object = small_place, workers = 4, input = "index-place.qmd")
+tictoc::toc()
+
+```
+
+```{r}
+tictoc::tic()
+```
+
+```{bash, engine.opts = '-l',   echo: false}
+sudo aws s3 cp factsheets/ s3://mobility-metrics-data-pages-dev \
+    --recursive \
+    --exclude "*" \
+    --include "999_county-pages/01001*" \
+    --include "999_county-pages/01003*" \
+    --include "999_county-pages/01005*" \
+    --include "999_county-pages/01007*" \
+    --include "998_place-pages/0103076*" \
+    --include "998_place-pages/0107000*" \
+    --include "998_place-pages/0135896*" \
+    --include "998_place-pages/0137000*"
+
+```
+
+```{r}
+tictoc::toc()
+```

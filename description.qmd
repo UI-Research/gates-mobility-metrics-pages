@@ -3,11 +3,12 @@ title: "Upward Mobility from Poverty Metric Descriptions"
 font: Lato
 format:
   html:
-    self-contained: true
+    embed-resources: true
     toc: true
     mathjax: null
     css: www/web_report.css
     output_dir: "."
+    include-in-header: analytics.html
 editor_options:
   chunk_output_type: console
 params:
@@ -22,6 +23,14 @@ execute:
   output: asis
 number-sections: false
 ---
+
+<!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2NMF8C"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) -->
 
 <br>
 
@@ -191,7 +200,7 @@ This metric reflects the number of public transit trips taken annually at the ce
 
 **Subgroups:** This metric is based on a lower-income population, notably single-parent families with two children earning half the local AMI among renters. 
 
-**Limitations:** This metric cannot alone capture the concept of transportation access. This must be used in partnership with the low transportation cost index to cover geographies that may not have an extensive public transportation system, such as rural areas. 
+**Limitations:** This metric cannot alone capture the concept of transportation access. This must be used in partnership with the transportation cost index to cover geographies that may not have an extensive public transportation system, such as rural areas. 
 
 <br>
 
@@ -407,11 +416,11 @@ Household income is a standard measure of financial well-being. The three levels
 
 ##### [PREDICTOR: FINANCIAL SECURITY](https://upward-mobility.urban.org/financial-security-and-wealth-building-opportunities) 
 
-**Metric: Share of people with debt in collections** 
+**Metric: Share with debt in collections** 
 
 This measure indicates the share of people in an area with a credit bureau record with debt that has progressed from being past due to being in collections. Debt in collections includes past-due credit lines that have been closed and charged off on the creditor’s books as well as unpaid bills reported to the credit bureaus that the creditor is attempting to collect. For example, credit card accounts enter collections once they are 180 days past due. The city-level measure captures the share of people in an area with a credit bureau record with any derogatory debt, which is primarily debt in collections. 
 
-**Validity:** Consumers without other accessible financial resources may need to take out debt not only to pay for housing or education but also to pay for daily necessities such as food or utilities. The inability to pay back debts can signal current or near-term financial insecurity, particularly for families with lower incomes. Those households likely have few assets and as such may have negative wealth. Though not a standard measure, this metric has been used by researchers to distinguish between “good” debts (e.g., mortgages paid on time every month) and “bad” debts. 
+**Validity:** Consumers without other accessible financial resources may need to take out debt not only to pay for housing or education but also to pay for daily necessities such as food or utilities. The inability to pay back debts can signal current or near-term financial insecurity, particularly for families with lower incomes. Those households likely have few assets and as such may have negative wealth.
 
 **Availability:** Drawn directly from credit reports, the credit bureau data are nationally representative and uniform across the country. The data are restricted and are not accessible directly from credit bureaus but are made available in aggregate form on the Urban Institute's [Debt in America feature](https://apps.urban.org/features/debt-interactive-map/?type=overall&variable=pct_debt_collections) and on the Urban Institute’s [Financial Health & Wealth Dashboard](https://apps.urban.org/features/financial-health-wealth-dashboard/).
 
@@ -453,7 +462,7 @@ This metric highlights racial and ethnic disparities in an important source of w
 
 <br> 
 
-## <span style="color:#8A9191">Pillar: Healthy Environment and Good Access to Healthcare</span>{#pillar-healthy-environment-and-access-to-good-health-care} 
+## <span style="color:#8A9191">Pillar: Healthy Environment and Access to Good Healthcare</span>{#pillar-healthy-environment-and-access-to-good-health-care} 
 
 ![](www/images/mobility-icons/mobility-infographic-health-icon.png){width=2in fig-align="center"}
 

@@ -14,27 +14,34 @@
 #' The function is not intended to return anything, but it writes htmls to the
 #'  output_file path 
 
-quarto_render_wrapper <- function(input, output_file, execute_params, dir_name){
+quarto_render_wrapper <- function(input, output_file, execute_params, dir_name) {
+
+  # delete directory and contents if it exists
+  if (dir.exists(dir_name)) {
+    
+    unlink(dir_name, recursive = TRUE)
+    
+  }
   
   # create directory
-  if(!dir.exists(dir_name)){
+  if (!dir.exists(dir_name)){
     
     dir.create(dir_name)
     
   }
-
+  
   # copy index.qmd
   template_name <- paste0(dir_name, "index.qmd")
   if (!file.exists(template_name)) {
     
     file.copy(
-      from = "index.qmd", 
+      from = input, 
       to = template_name
     )
     
   }
   
-  # copy index.qmd
+  # copy project yaml
   yaml_name <- paste0(dir_name, "_quarto.yml")
   if (!file.exists(yaml_name)) {
     
@@ -45,7 +52,7 @@ quarto_render_wrapper <- function(input, output_file, execute_params, dir_name){
     
   }
   
-  # copy description qmd
+  # copy description .qmd
   description_qmd_name <- paste0(dir_name, "description.qmd")
   if (!file.exists(description_qmd_name)) {
     
@@ -59,20 +66,34 @@ quarto_render_wrapper <- function(input, output_file, execute_params, dir_name){
   # copy description html
   description_html_name <- paste0(dir_name, "description.html")
   if (!file.exists(description_html_name)) {
+
+    file.copy(
+      from = "description.html",
+      to = description_html_name
+    )
+
+  }
+  
+  www_name <- paste0(dir_name, "www")
+  if (!file.exists(www_name)) {
+    
+    dir.create(www_name)
     
     file.copy(
-      from = "description.html", 
-      to = description_html_name
+      from = "www", 
+      to = dir_name,
+      recursive = TRUE
     )
     
   }
   
+  
   quarto_render(
     input = template_name,
-    output_file = output_file, 
+    output_file = output_file,
     execute_params = execute_params
   )
-
+  
   file.remove(template_name)
   file.remove(description_qmd_name)
   file.remove(yaml_name)

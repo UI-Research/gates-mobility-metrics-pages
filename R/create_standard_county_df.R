@@ -18,11 +18,12 @@ if(!file.exists("data/999_all-counties.Rda")) {
     mutate(state_title = list(state_title = FALSE),
            geoid = str_c(geoid, ";"),
            geoid = strsplit(geoid, ";")
-    )
+    ) %>%
+    filter(str_sub(geoid, 1, 2) != "72")
   
   geoid_lst <- as.list(prepped_counties$geoid)
   
-  prepped_counties <- tibble(filename = "index.html", 
+  prepped_counties <- tibble(filename = "index.html",
                              params = map(geoid_lst, 
                                           ~list(state_county = ., 
                                                 state_title = FALSE)

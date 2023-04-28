@@ -9,16 +9,11 @@ project:
 website:
   navbar:
     background: primary
+    search: false
+    pinned: true
     left:
       - text: "Home"
-        file: index.qmd
+        file: index.html
       - text: "Description"
-        file: description.qmd
+        file: description.html
 
-output:
-  html_document:
-    output_dir: '.'
-    css: styles.css
-    lib_dir: site_libs
-    self_contained: no
-output_dir: '.'
