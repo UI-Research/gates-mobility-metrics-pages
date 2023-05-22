@@ -144,4 +144,9 @@ prepped24 <- prep_pages(url = "data/24_website_requests.csv",
 
 render_pages(prepped_object = prepped24)
 
+# Upward County, MB
+prepped25 <- prep_pages(url = "data/25_upward-county.csv",
+                        output_directory = "factsheets/25_upward-county", 
+                        fake_labels = "yes")
 
+render_pages(prepped_object = prepped25, input = "index-county.qmd")
