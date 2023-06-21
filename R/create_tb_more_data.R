@@ -123,8 +123,7 @@ create_tb_more_data <- function(
       names_from = "state_county", 
       values_from = "value"
     ) %>% 
-    mutate(metrics = factor(metrics, levels = c(names(varname_maps$detail_vars), "Quality"))) #%>%
-    #mutate(metrics = gsub(".*_quality", "Quality", metrics))
+    mutate(metrics = factor(metrics, levels = c(names(varname_maps$detail_vars), "Data quality")))
     
   arrange_vars <- c(names(temp)[names(temp) %in% c("subgroup")], "metrics")
   
@@ -132,7 +131,7 @@ create_tb_more_data <- function(
     arrange(desc(year), across(any_of(arrange_vars))) %>% 
     select(metrics, everything()) 
   
-  levels(temp$metrics) <- gsub(".*_quality", "Quality", levels(temp$metrics))
+  levels(temp$metrics) <- gsub(".*_quality", "Data quality", levels(temp$metrics))
   levels(temp$metrics) <- gsub(".*_ci", ci_str, levels(temp$metrics)) 
 
   name_table <- c(
@@ -174,7 +173,7 @@ create_tb_more_data <- function(
       ),
       locations = cells_body(
         columns = everything(), 
-        rows = metrics == "Quality")
+        rows = metrics == "Data quality")
     ) %>%
     as_raw_html()
   
