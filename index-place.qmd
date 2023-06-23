@@ -92,21 +92,29 @@ data_pov_exp <- data_list$pov_exp
 ```{r}
 #| label: fake-labels
 
-if (params$fake_labels) {
+relabel_data <- function(data) {
   
   data <- data %>%
-    mutate(state_place = paste0(state, place)) %>%
-    mutate(place_name =
-             case_when(
-               state_place == params$state_place[1] ~ "Upward Place",
-               state_place == params$state_place[2] ~ "Peer 1",
-               state_place == params$state_place[3] ~ "Peer 2",
-               state_place == params$state_place[4] ~ "Peer 3",
-             )
-    )
+    mutate(state_county = "Upward City, MB")
   
   data <- data %>%
     mutate(state_name = "MB") 
+  
+  return(data)
+  
+}
+
+if (params$fake_labels == "yes") {
+  
+  data_recent <- relabel_data(data_recent)
+  data_years <- relabel_data(data_years)
+  data_race_ethnicity <- relabel_data(data_race_ethnicity)
+  data_race <- relabel_data(data_race)
+  data_race_share <- relabel_data(data_race_share)
+  data_education_income <- relabel_data(data_education_income)
+  data_env <- relabel_data(data_env)
+  data_pov_exp <- relabel_data(data_pov_exp)
+  
 }
 
 ```
