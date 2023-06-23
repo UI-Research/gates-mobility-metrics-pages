@@ -26,7 +26,7 @@ library(glue)
 #'    columns of the datasets pointed to by the url argument
 #'  dirname - location of where knitted hmtl files should be saved
 #'  
-prep_pages <- function(url, output_directory, state_title = FALSE, bespoke = TRUE) {
+prep_pages <- function(url, output_directory, state_title = FALSE, fake_labels = FALSE, bespoke = TRUE) {
   
   # read in the applicant list 
   app_list <- read_csv(url)
@@ -57,16 +57,16 @@ prep_pages <- function(url, output_directory, state_title = FALSE, bespoke = TRU
     # create a data frame with parameters and output file names
     runs <- tibble(
       filename = "index.html",             # creates a string with output file names in the form <index>.pdf
-      params = map(app_indexes, ~list(state_county = ., state_title = state_title)), 
-      dir_name = paste0(output_directory, '/', full_name_lst, "_", app_list$random_id)
+      params = map(app_indexes, ~list(state_county = ., state_title = state_title, fake_labels = fake_labels)), 
+      dir_name = paste0(output_directory, '/', full_name_lst, "_", app_list$random_id, "/")
     )        # creates a nest list of parameters for each object in the index
     
   } else {
     # create a data frame with parameters and output file names
     runs <- tibble(
       filename = "index.html",             # creates a string with output file names in the form <index>.pdf
-      params = map(app_indexes, ~list(state_county = ., state_title = state_title)), 
-      dir_name = map(full_name_lst, function(x) paste0(output_directory, glue('/{x}')))
+      params = map(app_indexes, ~list(state_county = ., state_title = state_title, fake_labels = fake_labels)), 
+      dir_name = map(full_name_lst, function(x) paste0(output_directory, glue('/{x}/')))
     )        # creates a nest list of parameters for each object in the index
     
   }
