@@ -44,7 +44,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 ##### [PREDICTOR: HOUSING AFFORDABILITY](https://upward-mobility.urban.org/housing-affordability)
 
-**Metric: Ratio of affordable and available housing units to households with low, very low, and extremely low income levels** 
+**Metric: Ratio of affordable housing units to households with low, very low, and extremely low income levels** 
 
 This metric reports the number of available housing units affordable for households with low (below 80 percent of area median income, or AMI), very low (below 50 percent of AMI), and extremely low (below 30 percent of AMI) incomes relative to every 100 households with these income levels. Housing units are defined as affordable if the monthly costs do not exceed 30 percent of a household’s income. For this metric, the stock of available housing units includes both vacant and occupied units and both rental and homeowner units. A unit is considered available for households at a given level of income if its monthly cost is affordable at that income level—regardless of the income of the current occupant. 
 
@@ -60,7 +60,7 @@ This metric reports the number of available housing units affordable for househo
 
 **Subgroups:** Because these ratios focus on the characteristics of the housing stock, stratifying by demographic subgroups is not relevant. However, housing units in each affordability category can be stratified by size (number of bedrooms) and tenure (owned or rented). 
 
-**Limitations:** These shares do not reflect the quality of the available and affordable housing units. Units counted as available and affordable for households with low or very low incomes may be of poor quality or too small to meet household needs. This metric is somewhat sensitive to patterns of residential mobility. For example, if the number of households with very low incomes were to decline (because of out-migration), this metric would show improvement even if no additional affordable units were produced. We calculate both the number of low-income households and the number of affordable houses by looking at the income threshold for a family of four, regardless of the size of the actual household in question. 
+**Limitations:** This metric does not account for availability of the affordable units. Higher income households may occupy units that are otherwise deemed affordable to lower-income households, rendering these units unavailable. This metric also does not account for the quality of the affordable units, which may be of substandard quality or too small to meet the size of the occupying household. This metric is somewhat sensitive to patterns of residential mobility. For example, if the number of households with very low incomes were to decline (because of out-migration), this metric would show improvement even if no additional affordable units were produced. We calculate both the number of low-income households and the number of affordable houses by looking at the income threshold for a family of four, regardless of the size of the actual household in question. 
 
 <br> 
 
