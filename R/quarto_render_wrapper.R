@@ -60,6 +60,12 @@ quarto_render_wrapper <- function(input, output_file, execute_params, dir_name) 
     from = "_quarto.yml", 
     to = paste0(dir_name, "_quarto.yml")
   )
+  
+  # copy analytics header
+  file.copy(
+    from = "analytics.html", 
+    to = paste0(dir_name, "analytics.html")
+  )
 
   # render the quarto document in the new directory
   # rendering in the top level directory and then copying does not work
@@ -75,6 +81,7 @@ quarto_render_wrapper <- function(input, output_file, execute_params, dir_name) 
   # delete extra files
   file.remove(paste0(dir_name, "search.json"))
   file.remove(paste0(dir_name, "index.qmd"))
+  file.remove(paste0(dir_name, "analytics.html"))
   
 }
 
