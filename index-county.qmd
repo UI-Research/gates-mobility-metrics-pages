@@ -10,7 +10,6 @@ format:
     html-math-method: plain
     css: www/web_report.css
     output_dir: "."
-    include-in-header: analytics.html
 editor_options:
   chunk_output_type: console
 params:

@@ -150,3 +150,11 @@ prepped25 <- prep_pages(url = "data/25_upward-county.csv",
                         fake_labels = "yes")
 
 render_pages(prepped_object = prepped25, input = "index-county.qmd")
+
+# Upward City, MB
+prepped26 <- prep_pages(url = "data/26_upward-city.csv",
+                        output_directory = "factsheets/26_upward-city",
+                        fake_labels = "yes",
+                        geography = "place")
+
+render_pages(prepped_object = prepped26, input = "index-place.qmd")
