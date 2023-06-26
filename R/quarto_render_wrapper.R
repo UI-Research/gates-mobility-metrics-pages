@@ -16,12 +16,7 @@
 
 quarto_render_wrapper <- function(input, output_file, execute_params, dir_name) {
   
-  # we must render the pages in the top-level directory because of changes to 
-  # quarto
-  # we render all files in the top-level directory and then copy the needed 
-  # files to the destination directory
-  # delete directory and contents if it exists
-  
+  # delete the directory if it exists
   if (dir.exists(dir_name)) {
     
     unlink(dir_name, recursive = TRUE)
@@ -66,6 +61,8 @@ quarto_render_wrapper <- function(input, output_file, execute_params, dir_name) 
     to = paste0(dir_name, "_quarto.yml")
   )
 
+  # render the quarto document in the new directory
+  # rendering in the top level directory and then copying does not work
   xfun::in_dir(
     dir = dir_name,
     expr = quarto_render(
@@ -75,8 +72,9 @@ quarto_render_wrapper <- function(input, output_file, execute_params, dir_name) 
     )
   )
   
+  # delete extra files
+  file.remove(paste0(dir_name, "search.json"))
   file.remove(paste0(dir_name, "index.qmd"))
-  
   
 }
 
