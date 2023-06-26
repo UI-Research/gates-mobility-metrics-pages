@@ -33,9 +33,9 @@ NCORES <- 124
 # tictoc::toc()
 
 # #For actual run:
-tictoc::tic()
-render_pages(prepped_object = prepped_counties, workers = NCORES, input = "index-county.qmd")
-tictoc::toc()
+# tictoc::tic()
+# render_pages(prepped_object = prepped_counties, workers = NCORES, input = "index-county.qmd")
+# tictoc::toc()
 
 tictoc::tic()
 render_pages(prepped_object = prepped_places, workers = NCORES, input = "index-place.qmd")
