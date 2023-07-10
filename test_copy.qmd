@@ -3,43 +3,24 @@ title: "test_copy"
 format: html
 editor: visual
 ---
+This quarto document is intended to test whether all of the files created on an ec2 instance were successfully copied from the volume on that instance to S3. The script that performs the copy operation is `aws_cp_command.sh`. 
 
-This quarto document is intended to test whether all of the files created on an ec2 instance were successfully copied from the volume on that instance to S3. The script that performs the copy operation is `aws_cp_command.sh`.
+The first two tests are intended to be run *after* the files are copied and can be run locally (as long as the user running the commands has CLI access to AWS). The last test is intended to be run on the EC2 instance to ensure that correct number of files were generated.  
 
-The two tests are intended to be run *after* the files are copied.
-
-## Test 1: Count the number of sub-folders in the bucket's `999_county-pages` and `998_place-pages` folders. Note that each sub-folder corresponds to a place or county. Then check if those equal the expected numbers. 
-
-
-```{bash}
-echo "count" > count.csv
-aws s3 ls s3://mobility-metrics-data-pages-dev/999_county-pages/ | wc -l >> count.csv
-aws s3 ls s3://mobility-metrics-data-pages-dev/998_place-pages/ | wc -l >> count.csv
-
-```
-
+## Test 1: Count the number of files in 
 ```{r}
+library(aws.s3)
 library(tidyverse)
-
-count <- read_csv("count.csv")
-
-counties_count <- count[1, 1] %>%
-  pull(count)
-
-places_count <- count[2, 1] %>%
-  pull(count)
-
-stopifnot(counties_count == 3183)
-stopifnot(places_count == 486)
 ```
 
-
-## Test 2:
-This test prints the date of the oldest file in the the `999_county-pages` and `998_place-pages` subdirectory. The idea is that when running the code, the oldest files should not be very old. If these tests are run shortly after the `create_standard_pages.R` code is completed, then the oldest file should be less than 2 hours old. 
-
+This script creates a `count.csv` file that has a column "count" with the first variable being the number of counties in the s3 bucket and the second bing the number of places. 
 ```{bash}
-aws s3 ls s3://mobility-metrics-data-pages-dev/999_county-pages/ --recursive | sort | tail -n 1
 
-aws s3 ls s3://mobility-metrics-data-pages-dev/998_place-pages/ --recursive | sort | tail -n 1
+
 ```
-```
+
+## Test 3: 
+To ensure that all of the files are created, we can count the number of files called `index.html` on the EC2 instance in each of the sub-directories. Specifically, you can run:
+`find factsheets/999_county-pages/ -type f -name 'index.html' | wc -l`
+
+`find factsheets/998_place-pages/ -type f -name 'index.html' | wc -l`

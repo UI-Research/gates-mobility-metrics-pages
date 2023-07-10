@@ -7,7 +7,7 @@
  - Note that you may not have credentials to  do this and may need to reach out to the AWS Goverance team for assistance (use the ec2 intake form: https://app.smartsheet.com/b/form/2c9200302b9941cebc0b61e945653f48)
  
 
-#2 Connect to the EC2 intake form. You can only connect to an RStudio GUI running on the instance from a remote desktop so you should:
+#2 Connect to the EC2 instance. You can only connect to an RStudio GUI running on the instance from a remote desktop so you should:
   - Go to Urban Users (or another remote desktop)
   - Go to the link that is sent to you in the email by etyagi@urban.org. The link is also ec2-[IPV4 address separated by hypens. Ex: 54-161-108-151].compute-1.amazonaws.com:8787
   - Log in using the credentials shared in the email you receive
