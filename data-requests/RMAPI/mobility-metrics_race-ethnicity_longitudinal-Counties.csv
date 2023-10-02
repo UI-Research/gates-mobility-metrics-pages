@@ -1,0 +1,301 @@
+year,state,county,state_name,county_name,population,subgroup_type,subgroup,share_in_preschool,share_in_preschool_quality,share_hs_degree,share_hs_degree_quality,rate_learning,rate_learning_lb,rate_learning_ub,rate_learning_quality,pctl_income_20,pctl_income_50,pctl_income_80,pctl_income_quality,rate_low_birth_weight,rate_low_birth_weight_lb,rate_low_birth_weight_ub,rate_low_birth_weight_quality,share_employed,share_employed_quality
+2013,36,029,New York,Erie County,954236,all,All,NA,NA,NA,NA,0.97238243,0.93197864,1.0127863,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,029,New York,Erie County,954236,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.87358296,0.80326945,0.94389647,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,029,New York,Erie County,954236,race-ethnicity,Hispanic,NA,NA,NA,NA,1.0192722,0.84737688,1.1911676,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,029,New York,Erie County,954236,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,029,New York,Erie County,954236,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,0.99391675,0.95157456,1.0362589,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,055,New York,Monroe County,759443,all,All,NA,NA,NA,NA,0.98343229,0.9396655,1.027199,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,055,New York,Monroe County,759443,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.80963391,0.73914516,0.88012266,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,055,New York,Monroe County,759443,race-ethnicity,Hispanic,NA,NA,NA,NA,0.86613041,0.76324028,0.96902055,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,055,New York,Monroe County,759443,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,055,New York,Monroe County,759443,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.0387496,0.9901433,1.0873559,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,067,New York,Onondaga County,476516,all,All,NA,NA,NA,NA,1.0209713,0.96680927,1.0751333,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,067,New York,Onondaga County,476516,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.79179609,0.69598794,0.88760424,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,067,New York,Onondaga County,476516,race-ethnicity,Hispanic,NA,NA,NA,NA,0.84863979,0.57942218,1.1178575,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,067,New York,Onondaga County,476516,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,067,New York,Onondaga County,476516,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.0660725,1.0101159,1.1220291,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,113,Ohio,Montgomery County,537309,all,All,NA,NA,NA,NA,1.0185956,0.96553284,1.0716584,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,113,Ohio,Montgomery County,537309,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.96252126,0.88253713,1.0425054,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,113,Ohio,Montgomery County,537309,race-ethnicity,Hispanic,NA,NA,NA,NA,1.2171036,0.94207215,1.492135,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,113,Ohio,Montgomery County,537309,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,113,Ohio,Montgomery County,537309,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.051172,0.99346292,1.1088811,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,153,Ohio,Summit County,540428,all,All,NA,NA,NA,NA,1.0638702,1.0104617,1.1172787,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,153,Ohio,Summit County,540428,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.98752928,0.89171809,1.0833405,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,153,Ohio,Summit County,540428,race-ethnicity,Hispanic,NA,NA,NA,NA,1.129951,0.78301191,1.4768901,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,153,Ohio,Summit County,540428,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,153,Ohio,Summit County,540428,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.1070995,1.0525134,1.1616857,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,55,079,Wisconsin,Milwaukee County,939489,all,All,NA,NA,NA,NA,1.1342008,1.1032978,1.1651038,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,1.0287209,0.98980427,1.0676374,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Hispanic,NA,NA,NA,NA,1.2014012,1.1461189,1.2566836,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.1156279,1.0714972,1.1597586,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,029,New York,Erie County,954236,all,All,NA,NA,NA,NA,1.0151621,0.95661259,1.0737116,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,029,New York,Erie County,954236,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.87557042,0.77318299,0.97795784,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,029,New York,Erie County,954236,race-ethnicity,Hispanic,NA,NA,NA,NA,0.87971419,0.61709952,1.1423289,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,029,New York,Erie County,954236,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,029,New York,Erie County,954236,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.0401924,0.97820222,1.1021825,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,055,New York,Monroe County,759443,all,All,NA,NA,NA,NA,1.012583,0.94907534,1.0760907,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,055,New York,Monroe County,759443,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.78220046,0.68107927,0.88332164,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,055,New York,Monroe County,759443,race-ethnicity,Hispanic,NA,NA,NA,NA,0.8512032,0.70915276,0.99325365,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,055,New York,Monroe County,759443,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,055,New York,Monroe County,759443,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.0971011,1.0255421,1.16866,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,067,New York,Onondaga County,476516,all,All,NA,NA,NA,NA,1.0246735,0.94655836,1.1027886,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,067,New York,Onondaga County,476516,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.68306309,0.53933573,0.82679045,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,067,New York,Onondaga County,476516,race-ethnicity,Hispanic,NA,NA,NA,NA,0.68506056,0.28316012,1.086961,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,067,New York,Onondaga County,476516,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,067,New York,Onondaga County,476516,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.1119362,1.0306168,1.1932557,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,113,Ohio,Montgomery County,537309,all,All,NA,NA,NA,NA,0.95887983,0.91412556,1.0036341,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,113,Ohio,Montgomery County,537309,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.92090875,0.85422409,0.98759341,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,113,Ohio,Montgomery County,537309,race-ethnicity,Hispanic,NA,NA,NA,NA,0.99013025,0.77345073,1.2068098,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,113,Ohio,Montgomery County,537309,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,113,Ohio,Montgomery County,537309,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,0.98199588,0.93258935,1.0314025,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,153,Ohio,Summit County,540428,all,All,NA,NA,NA,NA,1.0677252,1.022408,1.1130424,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,153,Ohio,Summit County,540428,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,1.1127433,1.0309741,1.1945124,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,153,Ohio,Summit County,540428,race-ethnicity,Hispanic,NA,NA,NA,NA,1.1000428,0.83419573,1.3658899,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,153,Ohio,Summit County,540428,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,153,Ohio,Summit County,540428,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.0622061,1.015281,1.1091313,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,55,079,Wisconsin,Milwaukee County,939489,all,All,NA,NA,NA,NA,1.1487467,1.1169908,1.1805027,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,1.0942808,1.0534559,1.1351057,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Hispanic,NA,NA,NA,NA,1.2852781,1.2331785,1.3373777,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.0788165,1.0321187,1.1255144,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,029,New York,Erie County,954236,all,All,NA,NA,NA,NA,0.95757961,0.86645186,1.0487074,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,029,New York,Erie County,954236,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,1.0314597,0.87152028,1.1913991,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,029,New York,Erie County,954236,race-ethnicity,Hispanic,NA,NA,NA,NA,0.87165046,0.61440861,1.1288923,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,029,New York,Erie County,954236,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,029,New York,Erie County,954236,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,0.90082145,0.8042233,0.9974196,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,055,New York,Monroe County,759443,all,All,NA,NA,NA,NA,0.92145222,0.82227004,1.0206344,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,055,New York,Monroe County,759443,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.62716126,0.46850163,0.7858209,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,055,New York,Monroe County,759443,race-ethnicity,Hispanic,NA,NA,NA,NA,0.68718582,0.47104567,0.90332597,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,055,New York,Monroe County,759443,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,055,New York,Monroe County,759443,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,0.96365213,0.85109097,1.0762134,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,067,New York,Onondaga County,476516,all,All,NA,NA,NA,NA,0.97954679,0.85765344,1.1014402,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,067,New York,Onondaga County,476516,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.93361002,0.70450926,1.1627108,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,067,New York,Onondaga County,476516,race-ethnicity,Hispanic,NA,NA,NA,NA,0.97335613,0.57815379,1.3685584,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,067,New York,Onondaga County,476516,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,067,New York,Onondaga County,476516,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,0.94035411,0.81392413,1.0667841,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,113,Ohio,Montgomery County,537309,all,All,NA,NA,NA,NA,1.0211073,0.98114681,1.0610678,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,113,Ohio,Montgomery County,537309,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.95326215,0.89236873,1.0141555,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,113,Ohio,Montgomery County,537309,race-ethnicity,Hispanic,NA,NA,NA,NA,1.140767,0.95954502,1.3219889,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,113,Ohio,Montgomery County,537309,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,113,Ohio,Montgomery County,537309,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.0292943,0.98554093,1.0730476,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,153,Ohio,Summit County,540428,all,All,NA,NA,NA,NA,1.0186704,0.97812551,1.0592153,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,153,Ohio,Summit County,540428,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.99158782,0.92059213,1.0625836,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,153,Ohio,Summit County,540428,race-ethnicity,Hispanic,NA,NA,NA,NA,1.0452553,0.83724827,1.2532624,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,153,Ohio,Summit County,540428,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,153,Ohio,Summit County,540428,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.0211031,0.97862303,1.0635833,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,55,079,Wisconsin,Milwaukee County,939489,all,All,NA,NA,NA,NA,1.1531087,1.1217674,1.18445,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,1.0941591,1.0543523,1.133966,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Hispanic,NA,NA,NA,NA,1.2518729,1.2010964,1.3026494,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.0848382,1.0380121,1.1316642,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,029,New York,Erie County,954236,all,All,NA,NA,NA,NA,0.97741956,0.79738259,1.1574565,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,029,New York,Erie County,954236,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,1.0290632,0.71678203,1.3413445,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,029,New York,Erie County,954236,race-ethnicity,Hispanic,NA,NA,NA,NA,1.1350406,0.66123337,1.6088479,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,029,New York,Erie County,954236,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,029,New York,Erie County,954236,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,0.89353877,0.69644552,1.090632,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,055,New York,Monroe County,759443,all,All,NA,NA,NA,NA,0.95745063,0.8603884,1.0545129,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,055,New York,Monroe County,759443,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.9067567,0.74963063,1.0638827,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,055,New York,Monroe County,759443,race-ethnicity,Hispanic,NA,NA,NA,NA,0.79110575,0.58791977,0.99429172,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,055,New York,Monroe County,759443,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,055,New York,Monroe County,759443,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,0.98604435,0.87390769,1.098181,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,067,New York,Onondaga County,476516,all,All,NA,NA,NA,NA,0.99839187,0.87683153,1.1199522,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,067,New York,Onondaga County,476516,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.64143121,0.41881725,0.86404514,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,067,New York,Onondaga County,476516,race-ethnicity,Hispanic,NA,NA,NA,NA,1.1696649,0.80783349,1.5314963,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,067,New York,Onondaga County,476516,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,067,New York,Onondaga County,476516,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,0.99756825,0.86757618,1.1275603,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,113,Ohio,Montgomery County,537309,all,All,NA,NA,NA,NA,1.0310318,0.99164551,1.0704181,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,113,Ohio,Montgomery County,537309,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.96382749,0.90455878,1.0230962,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,113,Ohio,Montgomery County,537309,race-ethnicity,Hispanic,NA,NA,NA,NA,1.1183147,0.96502578,1.2716037,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,113,Ohio,Montgomery County,537309,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,113,Ohio,Montgomery County,537309,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.0472423,1.0028607,1.0916239,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,153,Ohio,Summit County,540428,all,All,NA,NA,NA,NA,1.0273148,0.98692524,1.0677043,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,153,Ohio,Summit County,540428,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.89545804,0.82291621,0.96799988,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,153,Ohio,Summit County,540428,race-ethnicity,Hispanic,NA,NA,NA,NA,1.1254576,0.92656928,1.3243461,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,153,Ohio,Summit County,540428,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,153,Ohio,Summit County,540428,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.0663911,1.0237385,1.1090437,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,55,079,Wisconsin,Milwaukee County,939489,all,All,NA,NA,NA,NA,1.1233897,1.0928766,1.1539029,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,1.0926775,1.053521,1.1318339,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Hispanic,NA,NA,NA,NA,1.231385,1.1838857,1.2788843,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.0643243,1.0178118,1.1108367,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,029,New York,Erie County,954236,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,029,New York,Erie County,954236,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,029,New York,Erie County,954236,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,029,New York,Erie County,954236,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,029,New York,Erie County,954236,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,055,New York,Monroe County,759443,all,All,NA,NA,NA,NA,1.0615398,0.84833783,1.2747418,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,055,New York,Monroe County,759443,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,1.2459284,0.91432655,1.5775303,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,055,New York,Monroe County,759443,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,055,New York,Monroe County,759443,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,055,New York,Monroe County,759443,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.060251,0.83307266,1.2874293,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,067,New York,Onondaga County,476516,all,All,NA,NA,NA,NA,0.81974083,0.55960989,1.0798718,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,067,New York,Onondaga County,476516,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,1.047899,0.58806354,1.5077344,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,067,New York,Onondaga County,476516,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,067,New York,Onondaga County,476516,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,067,New York,Onondaga County,476516,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,0.78419042,0.52779341,1.0405874,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,113,Ohio,Montgomery County,537309,all,All,NA,NA,NA,NA,0.9958902,0.94963944,1.042141,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,113,Ohio,Montgomery County,537309,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.93552214,0.86695576,1.0040885,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,113,Ohio,Montgomery County,537309,race-ethnicity,Hispanic,NA,NA,NA,NA,1.1857803,0.98202485,1.3895358,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,113,Ohio,Montgomery County,537309,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,113,Ohio,Montgomery County,537309,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.0191094,0.97155017,1.0666685,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,153,Ohio,Summit County,540428,all,All,NA,NA,NA,NA,0.94801754,0.90115219,0.99488288,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,153,Ohio,Summit County,540428,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.80519557,0.72416437,0.88622677,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,153,Ohio,Summit County,540428,race-ethnicity,Hispanic,NA,NA,NA,NA,1.0286121,0.79026723,1.2669570000000001,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,153,Ohio,Summit County,540428,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,153,Ohio,Summit County,540428,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,0.98015457,0.93411517,1.026194,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,55,079,Wisconsin,Milwaukee County,939489,all,All,NA,NA,NA,NA,1.0845345,1.0521531,1.1169159,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,0.97528958,0.93405533,1.0165238,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Hispanic,NA,NA,NA,NA,1.1871998,1.1310695,1.2433301,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,1.0671252,1.0220059,1.1122445,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,36,029,New York,Erie County,954236,all,All,NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,36,029,New York,Erie County,954236,race-ethnicity,"Black, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,36,029,New York,Erie County,954236,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,36,029,New York,Erie County,954236,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,36,029,New York,Erie County,954236,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,36,055,New York,Monroe County,759443,all,All,NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,36,055,New York,Monroe County,759443,race-ethnicity,"Black, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,36,055,New York,Monroe County,759443,race-ethnicity,Hispanic,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,36,055,New York,Monroe County,759443,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,36,055,New York,Monroe County,759443,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,36,067,New York,Onondaga County,476516,all,All,NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,36,067,New York,Onondaga County,476516,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,36,067,New York,Onondaga County,476516,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,36,067,New York,Onondaga County,476516,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,36,067,New York,Onondaga County,476516,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,39,113,Ohio,Montgomery County,537309,all,All,NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,39,113,Ohio,Montgomery County,537309,race-ethnicity,"Black, Non-Hispanic",NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,39,113,Ohio,Montgomery County,537309,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2018,39,113,Ohio,Montgomery County,537309,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2018,39,113,Ohio,Montgomery County,537309,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,39,153,Ohio,Summit County,540428,all,All,NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,39,153,Ohio,Summit County,540428,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,39,153,Ohio,Summit County,540428,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2018,39,153,Ohio,Summit County,540428,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,39,153,Ohio,Summit County,540428,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,55,079,Wisconsin,Milwaukee County,939489,all,All,NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"Black, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Hispanic,NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2018,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,TRUE
+2019,36,029,New York,Erie County,954236,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,029,New York,Erie County,954236,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,029,New York,Erie County,954236,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,029,New York,Erie County,954236,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,029,New York,Erie County,954236,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,055,New York,Monroe County,759443,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,055,New York,Monroe County,759443,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,055,New York,Monroe County,759443,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,055,New York,Monroe County,759443,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,055,New York,Monroe County,759443,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,067,New York,Onondaga County,476516,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,067,New York,Onondaga County,476516,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,067,New York,Onondaga County,476516,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,067,New York,Onondaga County,476516,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,067,New York,Onondaga County,476516,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,39,113,Ohio,Montgomery County,537309,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,39,113,Ohio,Montgomery County,537309,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,39,113,Ohio,Montgomery County,537309,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,39,113,Ohio,Montgomery County,537309,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,39,113,Ohio,Montgomery County,537309,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,39,153,Ohio,Summit County,540428,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,39,153,Ohio,Summit County,540428,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,39,153,Ohio,Summit County,540428,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,39,153,Ohio,Summit County,540428,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,39,153,Ohio,Summit County,540428,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,55,079,Wisconsin,Milwaukee County,939489,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,36,029,New York,Erie County,954236,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,36,029,New York,Erie County,954236,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,36,029,New York,Erie County,954236,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,36,029,New York,Erie County,954236,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,36,029,New York,Erie County,954236,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,36,055,New York,Monroe County,759443,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,36,055,New York,Monroe County,759443,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,36,055,New York,Monroe County,759443,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,36,055,New York,Monroe County,759443,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,36,055,New York,Monroe County,759443,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,36,067,New York,Onondaga County,476516,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,36,067,New York,Onondaga County,476516,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,36,067,New York,Onondaga County,476516,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,36,067,New York,Onondaga County,476516,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,36,067,New York,Onondaga County,476516,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,39,113,Ohio,Montgomery County,537309,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,39,113,Ohio,Montgomery County,537309,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,39,113,Ohio,Montgomery County,537309,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,39,113,Ohio,Montgomery County,537309,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,39,113,Ohio,Montgomery County,537309,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,39,153,Ohio,Summit County,540428,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,39,153,Ohio,Summit County,540428,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,39,153,Ohio,Summit County,540428,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,39,153,Ohio,Summit County,540428,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,39,153,Ohio,Summit County,540428,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,55,079,Wisconsin,Milwaukee County,939489,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2021,36,029,New York,Erie County,954236,all,All,NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,36,029,New York,Erie County,954236,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,36,029,New York,Erie County,954236,race-ethnicity,Hispanic,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,36,029,New York,Erie County,954236,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,36,029,New York,Erie County,954236,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,36,055,New York,Monroe County,759443,all,All,NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,36,055,New York,Monroe County,759443,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,36,055,New York,Monroe County,759443,race-ethnicity,Hispanic,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,36,055,New York,Monroe County,759443,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,36,055,New York,Monroe County,759443,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,36,067,New York,Onondaga County,476516,all,All,NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,36,067,New York,Onondaga County,476516,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,36,067,New York,Onondaga County,476516,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,36,067,New York,Onondaga County,476516,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,36,067,New York,Onondaga County,476516,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,39,113,Ohio,Montgomery County,537309,all,All,NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,39,113,Ohio,Montgomery County,537309,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,39,113,Ohio,Montgomery County,537309,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,39,113,Ohio,Montgomery County,537309,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,39,113,Ohio,Montgomery County,537309,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,39,153,Ohio,Summit County,540428,all,All,NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,39,153,Ohio,Summit County,540428,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,39,153,Ohio,Summit County,540428,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,39,153,Ohio,Summit County,540428,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,39,153,Ohio,Summit County,540428,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,55,079,Wisconsin,Milwaukee County,939489,all,All,NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"Black, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Hispanic,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2021,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,TRUE
+2022,36,029,New York,Erie County,954236,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,029,New York,Erie County,954236,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,029,New York,Erie County,954236,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,029,New York,Erie County,954236,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,029,New York,Erie County,954236,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,055,New York,Monroe County,759443,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,055,New York,Monroe County,759443,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,055,New York,Monroe County,759443,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,055,New York,Monroe County,759443,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,055,New York,Monroe County,759443,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,067,New York,Onondaga County,476516,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,067,New York,Onondaga County,476516,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,067,New York,Onondaga County,476516,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,067,New York,Onondaga County,476516,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,067,New York,Onondaga County,476516,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,113,Ohio,Montgomery County,537309,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,113,Ohio,Montgomery County,537309,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,113,Ohio,Montgomery County,537309,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,113,Ohio,Montgomery County,537309,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,113,Ohio,Montgomery County,537309,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,153,Ohio,Summit County,540428,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,153,Ohio,Summit County,540428,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,153,Ohio,Summit County,540428,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,153,Ohio,Summit County,540428,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,153,Ohio,Summit County,540428,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,55,079,Wisconsin,Milwaukee County,939489,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

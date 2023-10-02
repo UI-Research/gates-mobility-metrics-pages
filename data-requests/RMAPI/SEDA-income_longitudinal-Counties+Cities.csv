@@ -1,0 +1,121 @@
+year,state,geo,state_name,geo_name,subgroup_type,subgroup,rate_learning,rate_learning_lb,rate_learning_ub,rate_learning_quality
+2017,36,029,New York,Erie County,all,All,NA,NA,NA,NA
+2017,36,029,New York,Erie County,income,Low Income,NA,NA,NA,NA
+2017,36,029,New York,Erie County,income,Not Low-Income,NA,NA,NA,NA
+2017,36,055,New York,Monroe County,all,All,1.0615398,0.84833783,1.2747418,3
+2017,36,055,New York,Monroe County,income,Low Income,1.2000092,0.9250105,1.4750079,3
+2017,36,055,New York,Monroe County,income,Not Low-Income,1.1332206,0.88582307,1.380618,3
+2017,36,067,New York,Onondaga County,all,All,0.81974083,0.55960989,1.0798718,3
+2017,36,067,New York,Onondaga County,income,Low Income,1.0008789,0.65548778,1.3462701,3
+2017,36,067,New York,Onondaga County,income,Not Low-Income,0.79822767,0.50125962,1.0951957,3
+2017,39,113,Ohio,Montgomery County,all,All,0.9958902,0.94963944,1.042141,1
+2017,39,113,Ohio,Montgomery County,income,Low Income,0.91941565,0.86507875,0.97375256,1
+2017,39,113,Ohio,Montgomery County,income,Not Low-Income,0.99917567,0.93965417,1.0586971,1
+2017,39,153,Ohio,Summit County,all,All,0.94801754,0.90115219,0.99488288,1
+2017,39,153,Ohio,Summit County,income,Low Income,0.83282191,0.77575487,0.88988894,1
+2017,39,153,Ohio,Summit County,income,Not Low-Income,0.99718302,0.93948245,1.0548836,1
+2017,55,079,Wisconsin,Milwaukee County,all,All,1.0845345,1.0521531,1.1169159,1
+2017,55,079,Wisconsin,Milwaukee County,income,Low Income,1.0705993,1.0344808,1.1067178,1
+2017,55,079,Wisconsin,Milwaukee County,income,Not Low-Income,1.0138026,0.96858621,1.0590191,1
+2016,36,029,New York,Erie County,all,All,0.97741956,0.79738259,1.1574565,3
+2016,36,029,New York,Erie County,income,Low Income,0.99251539,0.76416528,1.2208655,3
+2016,36,029,New York,Erie County,income,Not Low-Income,0.75972098,0.5285663,0.99087566,3
+2016,36,055,New York,Monroe County,all,All,0.95745063,0.8603884,1.0545129,3
+2016,36,055,New York,Monroe County,income,Low Income,0.90958077,0.78505766,1.0341039,3
+2016,36,055,New York,Monroe County,income,Not Low-Income,0.95280659,0.82949287,1.0761204,3
+2016,36,067,New York,Onondaga County,all,All,0.99839187,0.87683153,1.1199522,3
+2016,36,067,New York,Onondaga County,income,Low Income,1.0129194,0.85455859,1.1712803,3
+2016,36,067,New York,Onondaga County,income,Not Low-Income,0.85006082,0.69752198,1.0025996,3
+2016,39,113,Ohio,Montgomery County,all,All,1.0310318,0.99164551,1.0704181,1
+2016,39,113,Ohio,Montgomery County,income,Low Income,0.95125765,0.90493566,0.99757963,1
+2016,39,113,Ohio,Montgomery County,income,Not Low-Income,1.0598874,1.0047309,1.1150439,1
+2016,39,153,Ohio,Summit County,all,All,1.0273148,0.98692524,1.0677043,1
+2016,39,153,Ohio,Summit County,income,Low Income,0.90927178,0.8588959,0.95964766,2
+2016,39,153,Ohio,Summit County,income,Not Low-Income,1.0480196,0.99417478,1.1018646,2
+2016,55,079,Wisconsin,Milwaukee County,all,All,1.1233897,1.0928766,1.1539029,1
+2016,55,079,Wisconsin,Milwaukee County,income,Low Income,1.1398015,1.1058595,1.1737435,1
+2016,55,079,Wisconsin,Milwaukee County,income,Not Low-Income,1.0033634,0.95674777,1.049979,1
+2015,36,029,New York,Erie County,all,All,0.95757961,0.86645186,1.0487074,3
+2015,36,029,New York,Erie County,income,Low Income,0.95288533,0.8394835,1.0662872,3
+2015,36,029,New York,Erie County,income,Not Low-Income,0.89426732,0.78047311,1.0080615,3
+2015,36,055,New York,Monroe County,all,All,0.92145222,0.82227004,1.0206344,3
+2015,36,055,New York,Monroe County,income,Low Income,0.76588804,0.64113545,0.89064062,3
+2015,36,055,New York,Monroe County,income,Not Low-Income,0.92734617,0.80509233,1.0496,3
+2015,36,067,New York,Onondaga County,all,All,0.97954679,0.85765344,1.1014402,3
+2015,36,067,New York,Onondaga County,income,Low Income,0.97635293,0.81705159,1.1356543,3
+2015,36,067,New York,Onondaga County,income,Not Low-Income,0.92632169,0.77925426,1.0733892,3
+2015,39,113,Ohio,Montgomery County,all,All,1.0211073,0.98114681,1.0610678,1
+2015,39,113,Ohio,Montgomery County,income,Low Income,0.94367409,0.89845079,0.98889738,1
+2015,39,113,Ohio,Montgomery County,income,Not Low-Income,1.0860243,1.0308781,1.1411705,1
+2015,39,153,Ohio,Summit County,all,All,1.0186704,0.97812551,1.0592153,1
+2015,39,153,Ohio,Summit County,income,Low Income,0.94566214,0.89750415,0.99382013,1
+2015,39,153,Ohio,Summit County,income,Not Low-Income,1.0367026,0.98322511,1.0901802,1
+2015,55,079,Wisconsin,Milwaukee County,all,All,1.1531087,1.1217674,1.18445,1
+2015,55,079,Wisconsin,Milwaukee County,income,Low Income,1.1555613,1.1219568,1.1891658,1
+2015,55,079,Wisconsin,Milwaukee County,income,Not Low-Income,1.0354522,0.98795664,1.0829479,1
+2014,36,029,New York,Erie County,all,All,1.0151621,0.95661259,1.0737116,2
+2014,36,029,New York,Erie County,income,Low Income,0.92222613,0.84794343,0.99650884,2
+2014,36,029,New York,Erie County,income,Not Low-Income,1.0627568,0.99239308,1.1331205,2
+2014,36,055,New York,Monroe County,all,All,1.012583,0.94907534,1.0760907,2
+2014,36,055,New York,Monroe County,income,Low Income,0.8660481,0.78514004,0.94695616,2
+2014,36,055,New York,Monroe County,income,Not Low-Income,1.106197,1.0309511,1.1814429,2
+2014,36,067,New York,Onondaga County,all,All,1.0246735,0.94655836,1.1027886,2
+2014,36,067,New York,Onondaga County,income,Low Income,0.8324827,0.73035192,0.93461347,2
+2014,36,067,New York,Onondaga County,income,Not Low-Income,1.1325142,1.0410177,1.2240108,2
+2014,39,113,Ohio,Montgomery County,all,All,0.95887983,0.91412556,1.0036341,1
+2014,39,113,Ohio,Montgomery County,income,Low Income,0.91779184,0.86693263,0.96865106,1
+2014,39,113,Ohio,Montgomery County,income,Not Low-Income,1.064077,1.00401,1.1241441,1
+2014,39,153,Ohio,Summit County,all,All,1.0677252,1.022408,1.1130424,1
+2014,39,153,Ohio,Summit County,income,Low Income,1.0675017,1.0125134,1.1224899,1
+2014,39,153,Ohio,Summit County,income,Not Low-Income,1.0844628,1.0279278,1.1409978,1
+2014,55,079,Wisconsin,Milwaukee County,all,All,1.1487467,1.1169908,1.1805027,1
+2014,55,079,Wisconsin,Milwaukee County,income,Low Income,1.0652755,1.0206625,1.1098886,1
+2014,55,079,Wisconsin,Milwaukee County,income,Not Low-Income,1.0651736,1.0029888,1.1273584,1
+2013,36,029,New York,Erie County,all,All,0.97238243,0.93197864,1.0127863,1
+2013,36,029,New York,Erie County,income,Low Income,0.91070634,0.85947555,0.96193713,1
+2013,36,029,New York,Erie County,income,Not Low-Income,0.97568077,0.92940909,1.0219525,1
+2013,36,055,New York,Monroe County,all,All,0.98343229,0.9396655,1.027199,1
+2013,36,055,New York,Monroe County,income,Low Income,0.85515738,0.79925627,0.91105849,1
+2013,36,055,New York,Monroe County,income,Not Low-Income,1.0680118,1.0185995,1.117424,1
+2013,36,067,New York,Onondaga County,all,All,1.0209713,0.96680927,1.0751333,1
+2013,36,067,New York,Onondaga County,income,Low Income,0.87498665,0.80487788,0.94509542,1
+2013,36,067,New York,Onondaga County,income,Not Low-Income,1.1004927,1.039935,1.1610504,1
+2013,39,113,Ohio,Montgomery County,all,All,1.0185956,0.96553284,1.0716584,1
+2013,39,113,Ohio,Montgomery County,income,Low Income,1.0120763,0.94968867,1.0744638,1
+2013,39,113,Ohio,Montgomery County,income,Not Low-Income,1.0976622,1.0331855,1.1621389,1
+2013,39,153,Ohio,Summit County,all,All,1.0638702,1.0104617,1.1172787,1
+2013,39,153,Ohio,Summit County,income,Low Income,0.96514106,0.90079182,1.0294904,1
+2013,39,153,Ohio,Summit County,income,Not Low-Income,1.1614281,1.0982183,1.2246379,1
+2013,55,079,Wisconsin,Milwaukee County,all,All,1.1342008,1.1032978,1.1651038,1
+2013,55,079,Wisconsin,Milwaukee County,income,Low Income,1.1106497,1.0776371,1.1436623,1
+2013,55,079,Wisconsin,Milwaukee County,income,Not Low-Income,1.1445348,1.1011851,1.1878846,1
+2017,36,11000,New York,Buffalo city,all,All,NA,NA,NA,NA
+2017,36,11000,New York,Buffalo city,income,Low Income,NA,NA,NA,NA
+2017,36,11000,New York,Buffalo city,income,Not Low-Income,NA,NA,NA,NA
+2017,36,73000,New York,Syracuse city,all,All,NA,NA,NA,NA
+2017,36,73000,New York,Syracuse city,income,Low Income,NA,NA,NA,NA
+2017,36,73000,New York,Syracuse city,income,Not Low-Income,NA,NA,NA,NA
+2017,39,01000,Ohio,Akron city,all,All,0.77686441,0.58937722,0.96435153,1
+2017,39,01000,Ohio,Akron city,income,Low Income,0.74427617,0.57331198,0.91524029,1
+2017,39,01000,Ohio,Akron city,income,Not Low-Income,0.99527699,0.53221804,1.458336,1
+2017,39,21000,Ohio,Dayton city,all,All,0.88076675,0.66483939,1.0966941,1
+2017,39,21000,Ohio,Dayton city,income,Low Income,0.86693573,0.68726438,1.046607,1
+2017,39,21000,Ohio,Dayton city,income,Not Low-Income,0.87618697,0.46615112,1.2862227,1
+2017,55,53000,Wisconsin,Milwaukee city,all,All,1.0969625,1.0282747,1.1656501,1
+2017,55,53000,Wisconsin,Milwaukee city,income,Low Income,1.1016207,1.0412041,1.1620373,1
+2017,55,53000,Wisconsin,Milwaukee city,income,Not Low-Income,0.95994836,0.81820709,1.1016896,1
+2016,36,11000,New York,Buffalo city,all,All,NA,NA,NA,NA
+2016,36,11000,New York,Buffalo city,income,Low Income,NA,NA,NA,NA
+2016,36,11000,New York,Buffalo city,income,Not Low-Income,NA,NA,NA,NA
+2016,36,73000,New York,Syracuse city,all,All,NA,NA,NA,NA
+2016,36,73000,New York,Syracuse city,income,Low Income,NA,NA,NA,NA
+2016,36,73000,New York,Syracuse city,income,Not Low-Income,NA,NA,NA,NA
+2016,39,01000,Ohio,Akron city,all,All,0.88339424,0.71676862,1.0500199,1
+2016,39,01000,Ohio,Akron city,income,Low Income,0.86847138,0.72393131,1.0130115,1
+2016,39,01000,Ohio,Akron city,income,Not Low-Income,0.97989595,0.47804716,1.4817448,1
+2016,39,21000,Ohio,Dayton city,all,All,0.9332369,0.75459015,1.1118836,1
+2016,39,21000,Ohio,Dayton city,income,Low Income,0.90247184,0.75169271,1.0532509,1
+2016,39,21000,Ohio,Dayton city,income,Not Low-Income,0.97262275,0.59566909,1.3495765,1
+2016,55,53000,Wisconsin,Milwaukee city,all,All,1.1481248,1.0816811,1.2145685,1
+2016,55,53000,Wisconsin,Milwaukee city,income,Low Income,1.1720799,1.1132492,1.2309107,1
+2016,55,53000,Wisconsin,Milwaukee city,income,Not Low-Income,0.92474145,0.7755146,1.0739683,1

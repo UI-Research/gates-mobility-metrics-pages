@@ -1,0 +1,116 @@
+year,state,geo,state_name,geo_name,population,subgroup_type,subgroup,share_digital_access,share_digital_access_quality,rate_juv_arrest_quality,rate_juv_arrest
+2018,36,029,New York,Erie County,954236,all,All,NA,NA,NA,NA
+2018,36,029,New York,Erie County,954236,race-ethnicity,Black,NA,NA,NA,NA
+2018,36,029,New York,Erie County,954236,race-ethnicity,Hispanic,NA,NA,NA,NA
+2018,36,029,New York,Erie County,954236,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA
+2018,36,029,New York,Erie County,954236,race-ethnicity,White,NA,NA,NA,NA
+2018,36,055,New York,Monroe County,759443,all,All,NA,NA,NA,NA
+2018,36,055,New York,Monroe County,759443,race-ethnicity,Black,NA,NA,NA,NA
+2018,36,055,New York,Monroe County,759443,race-ethnicity,Hispanic,NA,NA,NA,NA
+2018,36,055,New York,Monroe County,759443,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA
+2018,36,055,New York,Monroe County,759443,race-ethnicity,White,NA,NA,NA,NA
+2018,36,067,New York,Onondaga County,476516,all,All,NA,NA,NA,NA
+2018,36,067,New York,Onondaga County,476516,race-ethnicity,Black,NA,NA,NA,NA
+2018,36,067,New York,Onondaga County,476516,race-ethnicity,Hispanic,NA,NA,NA,NA
+2018,36,067,New York,Onondaga County,476516,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA
+2018,36,067,New York,Onondaga County,476516,race-ethnicity,White,NA,NA,NA,NA
+2018,39,113,Ohio,Montgomery County,537309,all,All,NA,NA,NA,NA
+2018,39,113,Ohio,Montgomery County,537309,race-ethnicity,Black,NA,NA,NA,NA
+2018,39,113,Ohio,Montgomery County,537309,race-ethnicity,Hispanic,NA,NA,NA,NA
+2018,39,113,Ohio,Montgomery County,537309,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA
+2018,39,113,Ohio,Montgomery County,537309,race-ethnicity,White,NA,NA,NA,NA
+2018,39,153,Ohio,Summit County,540428,all,All,NA,NA,NA,NA
+2018,39,153,Ohio,Summit County,540428,race-ethnicity,Black,NA,NA,NA,NA
+2018,39,153,Ohio,Summit County,540428,race-ethnicity,Hispanic,NA,NA,NA,NA
+2018,39,153,Ohio,Summit County,540428,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA
+2018,39,153,Ohio,Summit County,540428,race-ethnicity,White,NA,NA,NA,NA
+2018,55,079,Wisconsin,Milwaukee County,939489,all,All,NA,NA,NA,NA
+2018,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Black,NA,NA,NA,NA
+2018,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Hispanic,NA,NA,NA,NA
+2018,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA
+2018,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,White,NA,NA,NA,NA
+2021,36,029,New York,Erie County,954236,all,All,NA,1,NA,NA
+2021,36,029,New York,Erie County,954236,race-ethnicity,Black,NA,1,NA,NA
+2021,36,029,New York,Erie County,954236,race-ethnicity,Hispanic,NA,1,NA,NA
+2021,36,029,New York,Erie County,954236,race-ethnicity,Other Races and Ethnicities,NA,1,NA,NA
+2021,36,029,New York,Erie County,954236,race-ethnicity,White,NA,1,NA,NA
+2021,36,055,New York,Monroe County,759443,all,All,NA,1,NA,NA
+2021,36,055,New York,Monroe County,759443,race-ethnicity,Black,NA,1,NA,NA
+2021,36,055,New York,Monroe County,759443,race-ethnicity,Hispanic,NA,1,NA,NA
+2021,36,055,New York,Monroe County,759443,race-ethnicity,Other Races and Ethnicities,NA,1,NA,NA
+2021,36,055,New York,Monroe County,759443,race-ethnicity,White,NA,1,NA,NA
+2021,36,067,New York,Onondaga County,476516,all,All,NA,1,NA,NA
+2021,36,067,New York,Onondaga County,476516,race-ethnicity,Black,NA,1,NA,NA
+2021,36,067,New York,Onondaga County,476516,race-ethnicity,Hispanic,NA,1,NA,NA
+2021,36,067,New York,Onondaga County,476516,race-ethnicity,Other Races and Ethnicities,NA,1,NA,NA
+2021,36,067,New York,Onondaga County,476516,race-ethnicity,White,NA,1,NA,NA
+2021,39,113,Ohio,Montgomery County,537309,all,All,NA,1,NA,NA
+2021,39,113,Ohio,Montgomery County,537309,race-ethnicity,Black,NA,1,NA,NA
+2021,39,113,Ohio,Montgomery County,537309,race-ethnicity,Hispanic,NA,1,NA,NA
+2021,39,113,Ohio,Montgomery County,537309,race-ethnicity,Other Races and Ethnicities,NA,1,NA,NA
+2021,39,113,Ohio,Montgomery County,537309,race-ethnicity,White,NA,1,NA,NA
+2021,39,153,Ohio,Summit County,540428,all,All,NA,1,NA,NA
+2021,39,153,Ohio,Summit County,540428,race-ethnicity,Black,NA,1,NA,NA
+2021,39,153,Ohio,Summit County,540428,race-ethnicity,Hispanic,NA,1,NA,NA
+2021,39,153,Ohio,Summit County,540428,race-ethnicity,Other Races and Ethnicities,NA,1,NA,NA
+2021,39,153,Ohio,Summit County,540428,race-ethnicity,White,NA,1,NA,NA
+2021,55,079,Wisconsin,Milwaukee County,939489,all,All,NA,1,NA,NA
+2021,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Black,NA,1,NA,NA
+2021,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Hispanic,NA,1,NA,NA
+2021,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Other Races and Ethnicities,NA,1,NA,NA
+2021,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,White,NA,1,NA,NA
+2022,36,029,New York,Erie County,954236,all,All,NA,NA,NA,NA
+2022,36,029,New York,Erie County,954236,race-ethnicity,Black,NA,NA,NA,NA
+2022,36,029,New York,Erie County,954236,race-ethnicity,Hispanic,NA,NA,NA,NA
+2022,36,029,New York,Erie County,954236,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA
+2022,36,029,New York,Erie County,954236,race-ethnicity,White,NA,NA,NA,NA
+2022,36,055,New York,Monroe County,759443,all,All,NA,NA,NA,NA
+2022,36,055,New York,Monroe County,759443,race-ethnicity,Black,NA,NA,NA,NA
+2022,36,055,New York,Monroe County,759443,race-ethnicity,Hispanic,NA,NA,NA,NA
+2022,36,055,New York,Monroe County,759443,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA
+2022,36,055,New York,Monroe County,759443,race-ethnicity,White,NA,NA,NA,NA
+2022,36,067,New York,Onondaga County,476516,all,All,NA,NA,NA,NA
+2022,36,067,New York,Onondaga County,476516,race-ethnicity,Black,NA,NA,NA,NA
+2022,36,067,New York,Onondaga County,476516,race-ethnicity,Hispanic,NA,NA,NA,NA
+2022,36,067,New York,Onondaga County,476516,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA
+2022,36,067,New York,Onondaga County,476516,race-ethnicity,White,NA,NA,NA,NA
+2022,39,113,Ohio,Montgomery County,537309,all,All,NA,NA,NA,NA
+2022,39,113,Ohio,Montgomery County,537309,race-ethnicity,Black,NA,NA,NA,NA
+2022,39,113,Ohio,Montgomery County,537309,race-ethnicity,Hispanic,NA,NA,NA,NA
+2022,39,113,Ohio,Montgomery County,537309,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA
+2022,39,113,Ohio,Montgomery County,537309,race-ethnicity,White,NA,NA,NA,NA
+2022,39,153,Ohio,Summit County,540428,all,All,NA,NA,NA,NA
+2022,39,153,Ohio,Summit County,540428,race-ethnicity,Black,NA,NA,NA,NA
+2022,39,153,Ohio,Summit County,540428,race-ethnicity,Hispanic,NA,NA,NA,NA
+2022,39,153,Ohio,Summit County,540428,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA
+2022,39,153,Ohio,Summit County,540428,race-ethnicity,White,NA,NA,NA,NA
+2022,55,079,Wisconsin,Milwaukee County,939489,all,All,NA,NA,NA,NA
+2022,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Black,NA,NA,NA,NA
+2022,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Hispanic,NA,NA,NA,NA
+2022,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA
+2022,55,079,Wisconsin,Milwaukee County,939489,race-ethnicity,White,NA,NA,NA,NA
+2021,36,11000,New York,Buffalo city,NA,all,All,0.841980935542424,1,2,697.0730427613087
+2021,36,11000,New York,Buffalo city,NA,race-ethnicity,Other Races and Ethnicities,0.8800850379223167,1,2,26.81684097613301
+2021,36,11000,New York,Buffalo city,NA,race-ethnicity,Black,0.8063148949151804,1,2,1382.0775746767722
+2021,36,11000,New York,Buffalo city,NA,race-ethnicity,Hispanic,0.8681443083981291,1,2,540.5405405405405
+2021,36,11000,New York,Buffalo city,NA,race-ethnicity,White,0.8517073688037814,1,2,362.04744069912607
+2021,36,73000,New York,Syracuse city,NA,all,All,0.7113863510944877,1,NA,NA
+2021,36,73000,New York,Syracuse city,NA,race-ethnicity,Other Races and Ethnicities,0.7336669977840605,1,NA,NA
+2021,36,73000,New York,Syracuse city,NA,race-ethnicity,Black,0.6795939796989849,1,NA,NA
+2021,36,73000,New York,Syracuse city,NA,race-ethnicity,Hispanic,0.7049640287769784,1,NA,NA
+2021,36,73000,New York,Syracuse city,NA,race-ethnicity,White,0.7214090955859657,1,NA,NA
+2021,39,01000,Ohio,Akron city,NA,all,All,0.8617475180564332,1,1,1249.7840234982434
+2021,39,01000,Ohio,Akron city,NA,race-ethnicity,Other Races and Ethnicities,0.888855317679558,1,1,177.83046828689982
+2021,39,01000,Ohio,Akron city,NA,race-ethnicity,Black,0.8478377955765589,1,1,2839.625685705066
+2021,39,01000,Ohio,Akron city,NA,race-ethnicity,Hispanic,0.8799094876353645,1,1,0
+2021,39,01000,Ohio,Akron city,NA,race-ethnicity,White,0.8633055851496054,1,1,423.5656526761648
+2021,39,21000,Ohio,Dayton city,NA,all,All,0.75999884406427,1,2,11169.731685257762
+2021,39,21000,Ohio,Dayton city,NA,race-ethnicity,Other Races and Ethnicities,0.8124949224144935,1,2,150.37593984962407
+2021,39,21000,Ohio,Dayton city,NA,race-ethnicity,Black,0.7783850791683101,1,2,16359.017781541066
+2021,39,21000,Ohio,Dayton city,NA,race-ethnicity,Hispanic,0.787662242963395,1,2,1565.9955257270694
+2021,39,21000,Ohio,Dayton city,NA,race-ethnicity,White,0.7376965937474268,1,2,9482.116244411323
+2021,55,53000,Wisconsin,Milwaukee city,NA,all,All,0.8111633039201104,1,2,1717.2696754942187
+2021,55,53000,Wisconsin,Milwaukee city,NA,race-ethnicity,Other Races and Ethnicities,0.8303054702833275,1,2,94.4733112895607
+2021,55,53000,Wisconsin,Milwaukee city,NA,race-ethnicity,Black,0.7798092314439207,1,2,3104.367314797989
+2021,55,53000,Wisconsin,Milwaukee city,NA,race-ethnicity,Hispanic,0.8179601292446503,1,2,511.11813678996737
+2021,55,53000,Wisconsin,Milwaukee city,NA,race-ethnicity,White,0.8322385655583315,1,2,722.2147920288886

@@ -1,0 +1,86 @@
+year,state,geo,subgroup_type,subgroup,share_poverty_exposure,share_poverty_exposure_quality,state_name,geo_name
+2018,36,029,all,All,0.2542897392669915,1,New York,Erie County
+2018,36,029,race-ethnicity,Black,0.328042328042328,1,New York,Erie County
+2018,36,029,race-ethnicity,Hispanic,0.5184941345463251,1,New York,Erie County
+2018,36,029,race-ethnicity,Other Races and Ethnicities,0.45473799525287567,1,New York,Erie County
+2018,36,029,race-ethnicity,"White, Non-Hispanic",0.10420878210439104,1,New York,Erie County
+2018,36,055,all,All,0.26380813268623665,1,New York,Monroe County
+2018,36,055,race-ethnicity,Black,0.3945834850928768,1,New York,Monroe County
+2018,36,055,race-ethnicity,Hispanic,0.4383277327535086,1,New York,Monroe County
+2018,36,055,race-ethnicity,Other Races and Ethnicities,0.3194772695676352,1,New York,Monroe County
+2018,36,055,race-ethnicity,"White, Non-Hispanic",0.07442212404500964,1,New York,Monroe County
+2018,36,067,all,All,0.2807362264556437,1,New York,Onondaga County
+2018,36,067,race-ethnicity,Black,0.4396585393070356,1,New York,Onondaga County
+2018,36,067,race-ethnicity,Hispanic,0.43463153322716086,1,New York,Onondaga County
+2018,36,067,race-ethnicity,Other Races and Ethnicities,0.3606294477297785,1,New York,Onondaga County
+2018,36,067,race-ethnicity,"White, Non-Hispanic",0.1493698042370609,1,New York,Onondaga County
+2018,39,113,all,All,0.18550092372070248,1,Ohio,Montgomery County
+2018,39,113,race-ethnicity,Black,0.2802712665672398,1,Ohio,Montgomery County
+2018,39,113,race-ethnicity,Hispanic,0.27991169977924946,1,Ohio,Montgomery County
+2018,39,113,race-ethnicity,Other Races and Ethnicities,0.1390207513902075,1,Ohio,Montgomery County
+2018,39,113,race-ethnicity,"White, Non-Hispanic",0.1102365776759589,1,Ohio,Montgomery County
+2018,39,153,all,All,0.1623548350005749,1,Ohio,Summit County
+2018,39,153,race-ethnicity,Black,0.2676607724113662,1,Ohio,Summit County
+2018,39,153,race-ethnicity,Hispanic,0.13984168865435356,1,Ohio,Summit County
+2018,39,153,race-ethnicity,Other Races and Ethnicities,0.15498632896819686,1,Ohio,Summit County
+2018,39,153,race-ethnicity,"White, Non-Hispanic",0.10249739854318418,1,Ohio,Summit County
+2018,55,079,all,All,0.2572739957010564,1,Wisconsin,Milwaukee County
+2018,55,079,race-ethnicity,Black,0.3028793177789489,1,Wisconsin,Milwaukee County
+2018,55,079,race-ethnicity,Hispanic,0.304755944931164,1,Wisconsin,Milwaukee County
+2018,55,079,race-ethnicity,Other Races and Ethnicities,0.30795741103950686,1,Wisconsin,Milwaukee County
+2018,55,079,race-ethnicity,"White, Non-Hispanic",0.1448247758761206,1,Wisconsin,Milwaukee County
+2021,36,029,all,All,0.1680807352110909,1,New York,Erie County
+2021,36,029,race-ethnicity,Black,0.28120068177514046,1,New York,Erie County
+2021,36,029,race-ethnicity,Hispanic,0.3106689099031154,1,New York,Erie County
+2021,36,029,race-ethnicity,Other Races and Ethnicities,0.25968566678169214,1,New York,Erie County
+2021,36,029,race-ethnicity,"White, Non-Hispanic",0.05531836829992329,1,New York,Erie County
+2021,36,055,all,All,0.25229137482489494,1,New York,Monroe County
+2021,36,055,race-ethnicity,Black,0.351177105516497,1,New York,Monroe County
+2021,36,055,race-ethnicity,Hispanic,0.3960951988460746,1,New York,Monroe County
+2021,36,055,race-ethnicity,Other Races and Ethnicities,0.33497390891840606,1,New York,Monroe County
+2021,36,055,race-ethnicity,"White, Non-Hispanic",0.10699309478970497,1,New York,Monroe County
+2021,36,067,all,All,0.24996419762908745,1,New York,Onondaga County
+2021,36,067,race-ethnicity,Black,0.4152420866879894,1,New York,Onondaga County
+2021,36,067,race-ethnicity,Hispanic,0.492045771699693,1,New York,Onondaga County
+2021,36,067,race-ethnicity,Other Races and Ethnicities,0.33198458574181117,1,New York,Onondaga County
+2021,36,067,race-ethnicity,"White, Non-Hispanic",0.105935268769855,1,New York,Onondaga County
+2021,39,113,all,All,0.13616618259881297,1,Ohio,Montgomery County
+2021,39,113,race-ethnicity,Black,0.25880190869228786,1,Ohio,Montgomery County
+2021,39,113,race-ethnicity,Hispanic,0.07723890171927124,1,Ohio,Montgomery County
+2021,39,113,race-ethnicity,Other Races and Ethnicities,0.07909533924778209,1,Ohio,Montgomery County
+2021,39,113,race-ethnicity,"White, Non-Hispanic",0.05326901365082624,1,Ohio,Montgomery County
+2021,39,153,all,All,0.10471438147017204,1,Ohio,Summit County
+2021,39,153,race-ethnicity,Black,0.14644803377681773,1,Ohio,Summit County
+2021,39,153,race-ethnicity,Hispanic,0.16303671437461106,1,Ohio,Summit County
+2021,39,153,race-ethnicity,Other Races and Ethnicities,0.1185329960910554,1,Ohio,Summit County
+2021,39,153,race-ethnicity,"White, Non-Hispanic",0.0776089916437515,1,Ohio,Summit County
+2021,55,079,all,All,0.2520463639791289,1,Wisconsin,Milwaukee County
+2021,55,079,race-ethnicity,Black,0.31963096119276724,1,Wisconsin,Milwaukee County
+2021,55,079,race-ethnicity,Hispanic,0.2601182654402103,1,Wisconsin,Milwaukee County
+2021,55,079,race-ethnicity,Other Races and Ethnicities,0.27134102892974205,1,Wisconsin,Milwaukee County
+2021,55,079,race-ethnicity,"White, Non-Hispanic",0.11994931718991976,1,Wisconsin,Milwaukee County
+2021,36,11000,all,All,0.270785297707853,1,New York,Buffalo city
+2021,36,11000,race-ethnicity,Black,0.3189424121695038,1,New York,Buffalo city
+2021,36,11000,race-ethnicity,Hispanic,0.3714097303634232,1,New York,Buffalo city
+2021,36,11000,race-ethnicity,Other Races and Ethnicities,0.341007918707374,1,New York,Buffalo city
+2021,36,11000,race-ethnicity,"White, Non-Hispanic",0.13071804178882218,1,New York,Buffalo city
+2021,36,73000,all,All,0.3968073049443729,1,New York,Syracuse city
+2021,36,73000,race-ethnicity,Black,0.4529980966138939,1,New York,Syracuse city
+2021,36,73000,race-ethnicity,Hispanic,0.6198104171146567,1,New York,Syracuse city
+2021,36,73000,race-ethnicity,Other Races and Ethnicities,0.4595504948042589,1,New York,Syracuse city
+2021,36,73000,race-ethnicity,"White, Non-Hispanic",0.25141201662550045,1,New York,Syracuse city
+2021,39,01000,all,All,0.1647464615114056,1,Ohio,Akron city
+2021,39,01000,race-ethnicity,Black,0.17275895253774126,1,Ohio,Akron city
+2021,39,01000,race-ethnicity,Hispanic,0.2241310239169189,2,Ohio,Akron city
+2021,39,01000,race-ethnicity,Other Races and Ethnicities,0.1676153216986732,2,Ohio,Akron city
+2021,39,01000,race-ethnicity,"White, Non-Hispanic",0.15474995566576136,1,Ohio,Akron city
+2021,39,21000,all,All,0.26229507831592713,1,Ohio,Dayton city
+2021,39,21000,race-ethnicity,Black,0.37812573830203505,1,Ohio,Dayton city
+2021,39,21000,race-ethnicity,Hispanic,0.15707046039785924,2,Ohio,Dayton city
+2021,39,21000,race-ethnicity,Other Races and Ethnicities,0.146967112940053,2,Ohio,Dayton city
+2021,39,21000,race-ethnicity,"White, Non-Hispanic",0.1388020230160478,1,Ohio,Dayton city
+2021,55,53000,all,All,0.3054114284076664,1,Wisconsin,Milwaukee city
+2021,55,53000,race-ethnicity,Black,0.33681073025335323,1,Wisconsin,Milwaukee city
+2021,55,53000,race-ethnicity,Hispanic,0.2926891560689664,1,Wisconsin,Milwaukee city
+2021,55,53000,race-ethnicity,Other Races and Ethnicities,0.3137751772114528,1,Wisconsin,Milwaukee city
+2021,55,53000,race-ethnicity,"White, Non-Hispanic",0.2105898032120679,1,Wisconsin,Milwaukee city

@@ -1,0 +1,251 @@
+year,state,place,state_name,place_name,population,subgroup_type,subgroup,share_in_preschool,share_in_preschool_quality,rate_learning,rate_learning_lb,rate_learning_ub,rate_learning_quality,share_hs_degree,share_hs_degree_quality,pctl_income_20,pctl_income_50,pctl_income_80,pctl_income_quality,count_homeless,count_homeless_lb,count_homeless_ub,share_homeless,homeless_quality,share_employed,share_employed_quality
+2013,36,11000,New York,Buffalo city,278349,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,11000,New York,Buffalo city,278349,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,11000,New York,Buffalo city,278349,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,11000,New York,Buffalo city,278349,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,11000,New York,Buffalo city,278349,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,73000,New York,Syracuse city,148620,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,73000,New York,Syracuse city,148620,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,73000,New York,Syracuse city,148620,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,73000,New York,Syracuse city,148620,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,36,73000,New York,Syracuse city,148620,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,01000,Ohio,Akron city,190469,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,01000,Ohio,Akron city,190469,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,01000,Ohio,Akron city,190469,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,01000,Ohio,Akron city,190469,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,01000,Ohio,Akron city,190469,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,21000,Ohio,Dayton city,137644,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,21000,Ohio,Dayton city,137644,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,21000,Ohio,Dayton city,137644,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,21000,Ohio,Dayton city,137644,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,39,21000,Ohio,Dayton city,137644,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,55,53000,Wisconsin,Milwaukee city,577222,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2013,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,11000,New York,Buffalo city,278349,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,11000,New York,Buffalo city,278349,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,11000,New York,Buffalo city,278349,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,11000,New York,Buffalo city,278349,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,11000,New York,Buffalo city,278349,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,73000,New York,Syracuse city,148620,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,73000,New York,Syracuse city,148620,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,73000,New York,Syracuse city,148620,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,73000,New York,Syracuse city,148620,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,36,73000,New York,Syracuse city,148620,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,01000,Ohio,Akron city,190469,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,01000,Ohio,Akron city,190469,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,01000,Ohio,Akron city,190469,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,01000,Ohio,Akron city,190469,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,01000,Ohio,Akron city,190469,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,21000,Ohio,Dayton city,137644,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,21000,Ohio,Dayton city,137644,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,21000,Ohio,Dayton city,137644,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,21000,Ohio,Dayton city,137644,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,39,21000,Ohio,Dayton city,137644,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,55,53000,Wisconsin,Milwaukee city,577222,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2014,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,11000,New York,Buffalo city,278349,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,11000,New York,Buffalo city,278349,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,11000,New York,Buffalo city,278349,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,11000,New York,Buffalo city,278349,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,11000,New York,Buffalo city,278349,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,73000,New York,Syracuse city,148620,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,73000,New York,Syracuse city,148620,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,73000,New York,Syracuse city,148620,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,73000,New York,Syracuse city,148620,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,36,73000,New York,Syracuse city,148620,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,01000,Ohio,Akron city,190469,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,01000,Ohio,Akron city,190469,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,01000,Ohio,Akron city,190469,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,01000,Ohio,Akron city,190469,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,01000,Ohio,Akron city,190469,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,21000,Ohio,Dayton city,137644,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,21000,Ohio,Dayton city,137644,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,21000,Ohio,Dayton city,137644,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,21000,Ohio,Dayton city,137644,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,39,21000,Ohio,Dayton city,137644,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,55,53000,Wisconsin,Milwaukee city,577222,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2015,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,11000,New York,Buffalo city,278349,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2016,36,11000,New York,Buffalo city,278349,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,11000,New York,Buffalo city,278349,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,11000,New York,Buffalo city,278349,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,11000,New York,Buffalo city,278349,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,73000,New York,Syracuse city,148620,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2016,36,73000,New York,Syracuse city,148620,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,73000,New York,Syracuse city,148620,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,73000,New York,Syracuse city,148620,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,36,73000,New York,Syracuse city,148620,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,01000,Ohio,Akron city,190469,all,All,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2016,39,01000,Ohio,Akron city,190469,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,01000,Ohio,Akron city,190469,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,01000,Ohio,Akron city,190469,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,01000,Ohio,Akron city,190469,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,21000,Ohio,Dayton city,137644,all,All,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2016,39,21000,Ohio,Dayton city,137644,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,21000,Ohio,Dayton city,137644,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,21000,Ohio,Dayton city,137644,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,39,21000,Ohio,Dayton city,137644,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,55,53000,Wisconsin,Milwaukee city,577222,all,All,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2016,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2016,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,11000,New York,Buffalo city,278349,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2017,36,11000,New York,Buffalo city,278349,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,11000,New York,Buffalo city,278349,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,11000,New York,Buffalo city,278349,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,11000,New York,Buffalo city,278349,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,73000,New York,Syracuse city,148620,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2017,36,73000,New York,Syracuse city,148620,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,73000,New York,Syracuse city,148620,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,73000,New York,Syracuse city,148620,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,36,73000,New York,Syracuse city,148620,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,01000,Ohio,Akron city,190469,all,All,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2017,39,01000,Ohio,Akron city,190469,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,01000,Ohio,Akron city,190469,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,01000,Ohio,Akron city,190469,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,01000,Ohio,Akron city,190469,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,21000,Ohio,Dayton city,137644,all,All,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2017,39,21000,Ohio,Dayton city,137644,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,21000,Ohio,Dayton city,137644,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,21000,Ohio,Dayton city,137644,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,39,21000,Ohio,Dayton city,137644,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,55,53000,Wisconsin,Milwaukee city,577222,all,All,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2017,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2017,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,36,11000,New York,Buffalo city,278349,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2018,36,11000,New York,Buffalo city,278349,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,36,11000,New York,Buffalo city,278349,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,36,11000,New York,Buffalo city,278349,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,36,11000,New York,Buffalo city,278349,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,36,73000,New York,Syracuse city,148620,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2018,36,73000,New York,Syracuse city,148620,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,36,73000,New York,Syracuse city,148620,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,36,73000,New York,Syracuse city,148620,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,36,73000,New York,Syracuse city,148620,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,39,01000,Ohio,Akron city,190469,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2018,39,01000,Ohio,Akron city,190469,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,39,01000,Ohio,Akron city,190469,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,39,01000,Ohio,Akron city,190469,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,39,01000,Ohio,Akron city,190469,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,39,21000,Ohio,Dayton city,137644,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2018,39,21000,Ohio,Dayton city,137644,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,39,21000,Ohio,Dayton city,137644,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,39,21000,Ohio,Dayton city,137644,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,39,21000,Ohio,Dayton city,137644,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,55,53000,Wisconsin,Milwaukee city,577222,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2018,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2018,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,11000,New York,Buffalo city,278349,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,36,11000,New York,Buffalo city,278349,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,36,11000,New York,Buffalo city,278349,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,36,11000,New York,Buffalo city,278349,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,11000,New York,Buffalo city,278349,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,36,73000,New York,Syracuse city,148620,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,36,73000,New York,Syracuse city,148620,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,36,73000,New York,Syracuse city,148620,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,36,73000,New York,Syracuse city,148620,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,36,73000,New York,Syracuse city,148620,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,39,01000,Ohio,Akron city,190469,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,39,01000,Ohio,Akron city,190469,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,39,01000,Ohio,Akron city,190469,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,39,01000,Ohio,Akron city,190469,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,39,01000,Ohio,Akron city,190469,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,39,21000,Ohio,Dayton city,137644,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,39,21000,Ohio,Dayton city,137644,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,39,21000,Ohio,Dayton city,137644,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,39,21000,Ohio,Dayton city,137644,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,39,21000,Ohio,Dayton city,137644,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,55,53000,Wisconsin,Milwaukee city,577222,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2019,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2019,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA
+2020,36,11000,New York,Buffalo city,278349,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,36,11000,New York,Buffalo city,278349,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,36,11000,New York,Buffalo city,278349,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,36,11000,New York,Buffalo city,278349,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,36,11000,New York,Buffalo city,278349,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,36,73000,New York,Syracuse city,148620,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,36,73000,New York,Syracuse city,148620,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,36,73000,New York,Syracuse city,148620,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,36,73000,New York,Syracuse city,148620,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,36,73000,New York,Syracuse city,148620,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,39,01000,Ohio,Akron city,190469,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,39,01000,Ohio,Akron city,190469,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,39,01000,Ohio,Akron city,190469,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,39,01000,Ohio,Akron city,190469,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,39,01000,Ohio,Akron city,190469,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,39,21000,Ohio,Dayton city,137644,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,39,21000,Ohio,Dayton city,137644,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,39,21000,Ohio,Dayton city,137644,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,39,21000,Ohio,Dayton city,137644,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,39,21000,Ohio,Dayton city,137644,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,55,53000,Wisconsin,Milwaukee city,577222,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2020,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2021,36,11000,New York,Buffalo city,278349,all,All,NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,36,11000,New York,Buffalo city,278349,race-ethnicity,"Black, Non-Hispanic",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,36,11000,New York,Buffalo city,278349,race-ethnicity,Hispanic,NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,36,11000,New York,Buffalo city,278349,race-ethnicity,Other Races and Ethnicities,NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,36,11000,New York,Buffalo city,278349,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,36,73000,New York,Syracuse city,148620,all,All,NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,36,73000,New York,Syracuse city,148620,race-ethnicity,"Black, Non-Hispanic",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,36,73000,New York,Syracuse city,148620,race-ethnicity,Hispanic,NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,36,73000,New York,Syracuse city,148620,race-ethnicity,Other Races and Ethnicities,NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,36,73000,New York,Syracuse city,148620,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,39,01000,Ohio,Akron city,190469,all,All,NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,39,01000,Ohio,Akron city,190469,race-ethnicity,"Black, Non-Hispanic",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,39,01000,Ohio,Akron city,190469,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,39,01000,Ohio,Akron city,190469,race-ethnicity,Other Races and Ethnicities,NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,39,01000,Ohio,Akron city,190469,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,39,21000,Ohio,Dayton city,137644,all,All,NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,39,21000,Ohio,Dayton city,137644,race-ethnicity,"Black, Non-Hispanic",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,39,21000,Ohio,Dayton city,137644,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,39,21000,Ohio,Dayton city,137644,race-ethnicity,Other Races and Ethnicities,NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,39,21000,Ohio,Dayton city,137644,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,55,53000,Wisconsin,Milwaukee city,577222,all,All,NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"Black, Non-Hispanic",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Hispanic,NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Other Races and Ethnicities,NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2021,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"White, Non-Hispanic",NA,TRUE,NA,NA,NA,NA,NA,TRUE,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,TRUE
+2022,36,11000,New York,Buffalo city,278349,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,11000,New York,Buffalo city,278349,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,11000,New York,Buffalo city,278349,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,11000,New York,Buffalo city,278349,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,11000,New York,Buffalo city,278349,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,73000,New York,Syracuse city,148620,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,73000,New York,Syracuse city,148620,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,73000,New York,Syracuse city,148620,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,73000,New York,Syracuse city,148620,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,36,73000,New York,Syracuse city,148620,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,01000,Ohio,Akron city,190469,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,01000,Ohio,Akron city,190469,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,01000,Ohio,Akron city,190469,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,01000,Ohio,Akron city,190469,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,01000,Ohio,Akron city,190469,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,21000,Ohio,Dayton city,137644,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,21000,Ohio,Dayton city,137644,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,21000,Ohio,Dayton city,137644,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,21000,Ohio,Dayton city,137644,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,39,21000,Ohio,Dayton city,137644,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,55,53000,Wisconsin,Milwaukee city,577222,all,All,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"Black, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Hispanic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,Other Races and Ethnicities,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2022,55,53000,Wisconsin,Milwaukee city,577222,race-ethnicity,"White, Non-Hispanic",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
