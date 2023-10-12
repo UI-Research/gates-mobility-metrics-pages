@@ -144,4 +144,10 @@ prepped24 <- prep_pages(url = "data/24_website_requests.csv",
 
 render_pages(prepped_object = prepped24)
 
+# Rmapi update
+prepped25 <- prep_pages(url = "data/25_rmapi.csv",
+                        output_directory = "factsheets/25_rmapi")
+
+render_pages(prepped_object = prepped25, input = "index.qmd")
+
 
