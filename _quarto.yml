@@ -1,0 +1,19 @@
+project:
+  type: website
+  output-dir: '.'
+  render:
+    - "index.qmd"
+    - "description.qmd"
+    - "!factsheets/*"
+
+website:
+  navbar:
+    background: primary
+    search: false
+    pinned: true
+    left:
+      - text: "Home"
+        file: index.html
+      - text: "Description"
+        file: description.html
+
