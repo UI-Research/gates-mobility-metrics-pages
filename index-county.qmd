@@ -10,12 +10,12 @@ format:
     html-math-method: plain
     css: www/web_report.css
     output_dir: "."
-    include-in-header: analytics.html
+    include-in-header: analytics.html    
 editor_options:
   chunk_output_type: console
 params:
-  state_county: !expr c("51760")
-  fake_labels: FALSE
+  state_county: !expr c("01001")
+  fake_labels: "no"
   state_title: FALSE
   data: NULL
 execute:
@@ -97,7 +97,7 @@ relabel_data <- function(data) {
   
 }
 
-if (params$fake_labels) {
+if (params$fake_labels == "yes") {
   
   data_recent <- relabel_data(data_recent)
   data_years <- relabel_data(data_years)

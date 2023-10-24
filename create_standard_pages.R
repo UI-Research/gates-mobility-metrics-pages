@@ -7,6 +7,7 @@
 library(tidyverse)
 library(quarto)
 library(tidycensus)
+library(furrr)
 
 source("R/create_standard_county_df.R")
 source("R/create_standard_place_df.R")

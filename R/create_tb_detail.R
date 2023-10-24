@@ -127,7 +127,7 @@ create_tb_detail <- function(data,
     pivot_wider(names_from = "state_county", values_from = "value") %>% 
     arrange(match(metrics, names(varname_maps$detail_vars))) %>%  
     mutate(metrics = gsub(".*_ci", ci_str, metrics)) %>% 
-    mutate(metrics = gsub(".*_quality", "Quality", metrics)) %>% 
+    mutate(metrics = gsub(".*_quality", "Data quality", metrics)) %>% 
     select(metrics, everything()) %>% 
     gt(
       rowname_col = "metrics",
@@ -159,7 +159,7 @@ create_tb_detail <- function(data,
       ),
       locations = cells_body(
         columns = everything(),
-        rows = metrics == "Quality")
+        rows = metrics == "Data quality")
     ) %>%
     as_raw_html()
   
