@@ -261,6 +261,7 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 * Bexar County, TX - RFA ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/24_website_requests/48029-Bexar-Texas_707), Viz Page)
 * Henry County, IL ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/24_website_requests/17073-Henry-Illinois_771), Viz Page)
 * Fresno County, CA ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/24_website_requests/06019-Fresno-California_339), Viz Page)
+* King County, WA ([Data Page](https://ui-research.github.io/gates-mobility-metrics-pages/factsheets/24_website_requests/53033-King-Washington_418), Viz Page)
 
 
 ## Contributors
