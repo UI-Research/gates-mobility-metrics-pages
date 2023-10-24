@@ -14,17 +14,75 @@
 #' The function is not intended to return anything, but it writes htmls to the
 #'  output_file path 
 
-quarto_render_wrapper <- function(input, output_file, execute_params, dir_name){
+quarto_render_wrapper <- function(input, output_file, execute_params, dir_name) {
   
-  quarto_render(input = input,
-                output_file = output_file, 
-                execute_params = execute_params)
-  if(!(dir.exists(dir_name))){
-    dir.create(paste0(dir_name, "/"))
+  # delete the directory if it exists
+  if (dir.exists(dir_name)) {
+    
+    unlink(dir_name, recursive = TRUE)
+    
   }
   
-  file.copy("index.html", to = paste0(dir_name, "/"), overwrite = TRUE)
+  # create destination directory for data tables
+  if (!dir.exists(dir_name)){
+    
+    dir.create(dir_name)
+    
+  }
+  
+  # copy supporting files to destination directory
+  www_name <- paste0(dir_name, "www")
+  dir.create(www_name)
+  file.copy(
+    from = "www", 
+    to = dir_name,
+    recursive = TRUE
+  )
+  
+  # copy description html to destination directory
+  description_html_name <- paste0(dir_name, "description.html")
+  file.copy(
+    from = "description.html",
+    to = description_html_name,
+    overwrite = TRUE
+  )
+  
+  # copy input to generic index.qmd
+  # this is needed so _quarto.yml will work with the county and city templates
+  file.copy(
+    from = input, 
+    to = paste0(dir_name, "index.qmd")
+  )
+  
+  # this file ensures that the rendered document is a full website instead of 
+  # individual pages
+  file.copy(
+    from = "_quarto.yml", 
+    to = paste0(dir_name, "_quarto.yml")
+  )
+  
+  # copy analytics header
+  file.copy(
+    from = "analytics.html", 
+    to = paste0(dir_name, "analytics.html")
+  )
 
+  # render the quarto document in the new directory
+  # rendering in the top level directory and then copying does not work
+  xfun::in_dir(
+    dir = dir_name,
+    expr = quarto_render(
+      input = "index.qmd",
+      output_file = basename(output_file),
+      execute_params = execute_params
+    )
+  )
+  
+  # delete extra files
+  file.remove(paste0(dir_name, "search.json"))
+  file.remove(paste0(dir_name, "index.qmd"))
+  file.remove(paste0(dir_name, "analytics.html"))
+  
 }
 
 
