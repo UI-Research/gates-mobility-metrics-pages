@@ -46,8 +46,9 @@ The Urban Institute uses the font [Lato](https://fonts.google.com/specimen/Lato)
 1. If needed, update `mobility-metrics/` with updated data from the [mobility metrics code](https://github.com/UI-Research/mobility-from-poverty).
 2. `R/create_standard_county_df.R` and `R/create_standard_place_df.R` create the data used to iterate the pages. The files created by these scripts, `data/999_all-counties.Rda` and `data/998_all-places.Rda`, rarely need updating. 
 3. Launch an EC2 instance with 64 to 128 cores. Memory-optimized machines are ideal.
-4. `create_standard_pages` iterates the pages. Be sure to set `NCORES` to align with the instance specs from step 3. 
+4. `create_standard_pages.R` iterates the pages. Be sure to set `NCORES` to align with the instance specs from step 3. 
 5. Use `aws_cp_command.sh` to copy pages from the EC2 instances to the S3 bucket where pages are hosted and accessible to the [tool interface](https://upward-mobility.urban.org/measuring-upward-mobility-counties-and-cities-across-us). 
+6. `test_copy.qmd` ensures that all pages were correctly copied to the S3 bucket.
 
 ## One-Off Pages
 
