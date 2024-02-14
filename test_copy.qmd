@@ -37,9 +37,7 @@ stopifnot(places_count == 486)
 
 ```
 
-##Test 2: 
-This test looks to see that the last file that was copied in the county and place sub-directories. This is more of a "sniff test" but the dates and times should make sense based on the current run, and the last files should be in late folders (e.g. state fips codes should be 56). 
-
+##Test 2: This test looks to see that the last file that was copied in the county and place sub-directories. This is more of a "sniff test" but the dates and times should make sense based on the current run, and the last files should be in late folders (e.g. state fips codes should be 56).
 
 ```{bash}
 
@@ -50,8 +48,8 @@ aws s3 ls s3://mobility-metrics-data-pages-dev/999_county-pages/ --recursive | s
 aws s3 ls s3://mobility-metrics-data-pages-dev/998_place-pages/ --recursive | sort | tail -n 1 
 ```
 
-\`\``## Test 3:  To ensure that all of the files are created, we can count the number of files called`index.html`on the EC2 instance in each of the sub-directories. Specifically, you can run:
+\`\``## Test 3:  To ensure that all of the files are created, we can count the number of files called`index.html\`on the EC2 instance in each of the sub-directories. Specifically, you can run:
 
-`find factsheets/999_county-pages/ -type f -name 'index.html' \| wc -l\`
+`find factsheets/999_county-pages/ -type f -name 'index.html' | wc -l\`
 
 `find factsheets/998_place-pages/ -type f -name 'index.html' | wc -l`
