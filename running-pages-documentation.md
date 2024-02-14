@@ -43,4 +43,8 @@
     - This comes from quarto and the packages not being updated. Ensure you restart R and have all packages installed. With this in place, Gabe finds the code runs successfully. 
     
 #### Step 7: Once the small tests work successfully, you can run the code under "#For actual run". This process takes about 1 - 1.5 hours. 
-  - If you use an instance other than the c6a.32xlarge you will need to change to the NCORES value based on that instance. Note that RStudio cannot handle more than 125 simultaneous connections, so it is likely not beneficial to scale up larger than that instance. 
+  - If you use an instance other than the c6a.32xlarge you will need to change to the NCORES value based on that instance. Note that RStudio cannot handle more than 125 simultaneous connections, so it is likely not beneficial to scale up larger than that instance.
+
+#### Step 8: Run the `aws_cp_command.sh` script:
+  - This copies files from the local EBS volume (storage associated with the EC2 instance) to our S3 bucket where web developers can access them.
+  - You can run this by copying and pasting the code to the terminal or by running `aws_cp_command.sh` in ther terminal (assuming you are in the root directory of the project). 
