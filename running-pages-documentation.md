@@ -7,6 +7,7 @@
      - If you have sufficient AWS permissions, you can do this from the EC2 Console. Go to AWS Console > EC2 page > Launch Template > Choose Elastic Analytics Template and choose a large EC2 instance
      - Gabe recommends c6a.32xlarge if available and another member of the c6a.xlarge family if not.  
      - Note that you may not have credentials to  do this and may need to reach out to the AWS Goverance team for assistance (use the ec2 intake form: https://app.smartsheet.com/b/form/2c9200302b9941cebc0b61e945653f48)
+     - Add the relevant tags!
  - Option 2:
      - Spin up a big EC2 instance with TechTools.  
  - Note: This step may not be necessary if an instance has already been spun up and is currently "off". If this is the case, instead of taking the actions above, you will need to (1) ssh into the instance and (2) rerun the rocker docker image. More guidance on how to do this can be found on the AWS Governance Confluence page. 
@@ -47,4 +48,6 @@
 
 #### Step 8: Run the `aws_cp_command.sh` script:
   - This copies files from the local EBS volume (storage associated with the EC2 instance) to our S3 bucket where web developers can access them.
-  - You can run this by copying and pasting the code to the terminal or by running `aws_cp_command.sh` in ther terminal (assuming you are in the root directory of the project). 
+  - You can run this by copying and pasting the code to the terminal or by running `aws_cp_command.sh` in ther terminal (assuming you are in the root directory of the project).
+#### Step 9: Turn off the instance:
+   - This likely means terminating the instance. If we adopt a model of having a "permanent" EC2 instance that we turn on and off, it would mean just turning the instance off. 
