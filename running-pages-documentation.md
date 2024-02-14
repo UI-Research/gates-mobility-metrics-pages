@@ -48,6 +48,6 @@
 
 #### Step 8: Run the `aws_cp_command.sh` script:
   - This copies files from the local EBS volume (storage associated with the EC2 instance) to our S3 bucket where web developers can access them.
-  - You can run this by copying and pasting the code to the terminal or by running `aws_cp_command.sh` in ther terminal (assuming you are in the root directory of the project).
+  - You can run this by copying and pasting the code to the terminal or by running `bash aws_cp_command.sh` in ther terminal (assuming you are in the root directory of the project).
 #### Step 9: Turn off the instance:
    - This likely means terminating the instance. If we adopt a model of having a "permanent" EC2 instance that we turn on and off, it would mean just turning the instance off. 
